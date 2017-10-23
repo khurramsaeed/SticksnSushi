@@ -17,6 +17,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 
         Button b = (Button) findViewById(R.id.overview_btn);
         b.setOnClickListener(this);
+
     }
 
     @Override
