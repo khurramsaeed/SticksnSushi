@@ -4,12 +4,15 @@ import android.os.Bundle;
 
 import com.company.sticksnsushi.R;
 
-public class Welcome extends BaseActivity {
+/**
+ * Created by Khurram Saeed Malik on 23/10/2017.
+ */
 
+public class OverviewActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedState) {
         super.onCreate(savedState);
 
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.activity_overview);
     }
 }

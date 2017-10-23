@@ -9,7 +9,7 @@ public abstract class BaseAuthActivity extends BaseActivity {
         super.onCreate(savedState);
 
         if (!application.getAuth().getUser().isLoggedIn()) {
-            startActivity(new Intent(this, Welcome.class));
+            startActivity(new Intent(this, WelcomeActivity.class));
             finish();
             return;
         }
