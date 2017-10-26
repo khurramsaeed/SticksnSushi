@@ -11,16 +11,11 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected SticksnSushiApplication application;
-
     protected Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-
-        application = (SticksnSushiApplication) getApplication();
-
     }
 
     @Override
@@ -34,7 +29,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             toolbar.setNavigationIcon(R.drawable.ic_view_headline_black_24dp);
 
         }
-
 
     }
 
