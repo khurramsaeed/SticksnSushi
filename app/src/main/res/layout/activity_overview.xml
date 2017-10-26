@@ -1,13 +1,33 @@
-<ScrollView
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <include
+        layout="@layout/include_toolbar"
+        android:id="@+id/include_toolbar">
+
+    </include>
+
+
+
+
+<ScrollView
+
+    android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#1e1e1e"
-    android:padding="16dp">
+    android:background="#1e1e1e">
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+
 
         <!-- FIRST ROW: START -->
         <TableLayout
@@ -227,4 +247,9 @@
         <!-- FIFTH ROW: END -->
 
     </LinearLayout>
+
 </ScrollView>
+
+
+</LinearLayout>
+
