@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">SticksnSushi</string>
     <string name="hello_world_nikolaj">Hello World! Nikolaj er med på Git</string>
+    <string name="title_activity_side_bar_nav">SideBarNav</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
 </resources>
