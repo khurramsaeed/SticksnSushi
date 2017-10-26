@@ -7,11 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.Views.SideBarNav;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
+
+    protected SideBarNav sideBarNav;
 
     @Override
     protected void onCreate(Bundle savedState) {
