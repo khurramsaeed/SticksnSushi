@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/welcome_background"
     android:paddingTop="16dp">
 
@@ -20,13 +19,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/overview_btn"
+            android:id="@+id/activity_welcome_udforskmenu_btn"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/red_color"
             android:text="Udforsk Menu"
             android:textColor="#ffffff"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:onClick="startOverviewActivity"/>
 
     </LinearLayout>
 
@@ -48,17 +48,24 @@
                 android:gravity="right"
                 android:textAlignment="gravity"
                 android:padding="10dp"/>
-
                 -->
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_facebook_white_18dp"
+                android:id="@+id/social_facebook"
+                android:layout_alignParentEnd="true"
+                android:padding="8dp"/>
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_facebook_white_24dp"
-                    android:id="@+id/nav_share"
-                    android:layout_alignParentEnd="true"
-                    android:padding="8dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_twitter_white_24dp"
+                android:id="@+id/social_twitter"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/social_facebook"
+                android:padding="8dp"/>
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>

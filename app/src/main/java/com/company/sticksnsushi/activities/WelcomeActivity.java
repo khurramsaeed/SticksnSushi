@@ -7,22 +7,14 @@ import android.widget.Button;
 
 import com.company.sticksnsushi.R;
 
-public class WelcomeActivity extends BaseActivity implements View.OnClickListener {
-
+public class WelcomeActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-
         setContentView(R.layout.activity_welcome);
-
-        Button b = (Button) findViewById(R.id.overview_btn);
-        b.setOnClickListener(this);
-
     }
 
-    @Override
-    public void onClick(View view) {
-        Intent i = new Intent(this, OverviewActivity.class);
-        startActivity(i);
+    public void startOverviewActivity(View view) {
+        startActivity(new Intent(this, OverviewActivity.class));
     }
 }
