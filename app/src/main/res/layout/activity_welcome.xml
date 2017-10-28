@@ -1,31 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/welcome_background"
+    android:paddingTop="16dp">
 
-
-    <include
-        layout="@layout/include_toolbar"
-        android:id="@+id/include_toolbar">
-    </include>
-
-
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_world_nikolaj"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Overview"
-        android:id="@+id/overview_btn"
-        android:layout_marginTop="122dp"
-        android:layout_below="@+id/include_toolbar"
-        android:layout_centerHorizontal="true" />
+        android:src="@drawable/logo_black_text"/>
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#A6ffffff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/overview_btn"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/red_color"
+            android:text="Udforsk Menu"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="#B3434343">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <!--
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Socail"
+                android:textColor="#fff"
+                android:gravity="right"
+                android:textAlignment="gravity"
+                android:padding="10dp"/>
+
+                -->
+
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_facebook_white_24dp"
+                    android:id="@+id/nav_share"
+                    android:layout_alignParentEnd="true"
+                    android:padding="8dp"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>
