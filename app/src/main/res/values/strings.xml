@@ -7,4 +7,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+    <string name="red">#ff0000</string>
+    <string name="blue">#0000ff</string>
+    <string name="green">#00ff00</string>
 </resources>

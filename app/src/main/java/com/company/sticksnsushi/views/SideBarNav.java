@@ -1,4 +1,4 @@
-package com.company.sticksnsushi.Views;
+package com.company.sticksnsushi.views;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

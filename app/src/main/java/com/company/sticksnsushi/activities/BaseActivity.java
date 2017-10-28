@@ -1,14 +1,12 @@
 package com.company.sticksnsushi.activities;
 
 import android.os.Bundle;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.Views.SideBarNav;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.views.SideBarNav;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
