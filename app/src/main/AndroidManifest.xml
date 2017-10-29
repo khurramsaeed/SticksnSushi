@@ -22,8 +22,11 @@
         <activity
             android:name=".views.SideBarNav"
             android:label="@string/title_activity_side_bar_nav"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".activities.MenuOverviewActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".activities.MenuOverviewActivity"
+            android:label="@string/title_activity_menu_overview"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
