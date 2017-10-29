@@ -11,8 +11,15 @@
     <string name="blue">#0000ff</string>
     <string name="green">#00ff00</string>
     <string name="title_activity_menu_overview">Our Menu</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
-    <string name="tab_text_3">Tab 3</string>
+
+    <string name="tab_text_1">Starters</string>
+    <string name="tab_text_2">Maki</string>
+    <string name="tab_text_3">Menuer</string>
+    <string name="tab_text_4">Á la Carte</string>
+    <string name="tab_text_5">Kids</string>
+    <string name="tab_text_6">Dessert</string>
+    <string name="tab_text_7">Dip</string>
+    <string name="tab_text_8">Drikkevarer</string>
+
     <string name="section_format">Hello World from section: %1$d</string>
 </resources>
