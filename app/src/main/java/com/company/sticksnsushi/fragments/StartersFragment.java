@@ -19,4 +19,7 @@ public class StartersFragment extends BaseFragment {
 
         return starterView;
     }
+
+
+
 }
