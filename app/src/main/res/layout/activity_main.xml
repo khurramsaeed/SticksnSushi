@@ -4,8 +4,7 @@
     android:layout_height="match_parent">
 
     <include
-        layout="@layout/include_toolbar"
-        android:id="@+id/include_toolbar">
+        layout="@layout/include_toolbar">
     </include>
 
     <Button

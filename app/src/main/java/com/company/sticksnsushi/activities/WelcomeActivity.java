@@ -14,7 +14,6 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
     }
 
-    public void startOverviewActivity(View view) {
-        startActivity(new Intent(this, OverviewActivity.class));
+    public void startOverviewActivity(View view) { startActivity(new Intent(this, OverviewActivity.class));
     }
 }

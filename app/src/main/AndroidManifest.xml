@@ -21,12 +21,10 @@
         <activity android:name=".activities.OverviewActivity" />
         <activity
             android:name=".views.SideBarNav"
-            android:label="@string/title_activity_side_bar_nav"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:label="@string/title_activity_side_bar_nav" />
         <activity
             android:name=".activities.MenuOverviewActivity"
-            android:label="@string/title_activity_menu_overview"
-            android:theme="@style/AppTheme"></activity>
+            android:label="@string/title_activity_menu_overview"></activity>
     </application>
 
 </manifest>
