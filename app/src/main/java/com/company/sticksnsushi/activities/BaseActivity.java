@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.view.Menu;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.views.SideBarNav;
@@ -26,10 +28,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.include_toolbar);
 
         if(toolbar != null){
+            toolbar.setLogo(R.drawable.logo_text);
+            toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
             setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_view_headline_black_24dp);
+            toolbar.setNavigationIcon(R.drawable.menu);
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
     }
 
 }
