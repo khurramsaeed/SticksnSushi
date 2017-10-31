@@ -1409,7 +1409,7 @@
                     android:layout_height="25dp"
                     android:layout_weight=".1"
                     android:layout_column="2"
-                    android:background="@drawable/cart" />
+                    android:background="@drawable/cart"/>
 
             </TableRow>
             <!-- SECOND ROW (NAMES): END -->
