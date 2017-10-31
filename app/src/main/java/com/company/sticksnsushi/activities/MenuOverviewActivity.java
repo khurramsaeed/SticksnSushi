@@ -109,6 +109,15 @@ public class MenuOverviewActivity extends AppCompatActivity {
                 View MakiFragment = inflater.inflate(R.layout.fragment_maki, container, false);
                 return MakiFragment;
              }
+             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3){
+                View MenuerFragment = inflater.inflate(R.layout.fragment_menuer, container, false);
+                return MenuerFragment;
+            }
+            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 5){
+                View KidsFragment = inflater.inflate(R.layout.fragment_kids, container, false);
+                return KidsFragment;
+            }
+
             return null;
         }
 

@@ -1,0 +1,164 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grey_standard">
+
+    <LinearLayout
+        android:id="@+id/target_activity_starters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- FIRST ROW OF MENUER: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_menuer_1_Image"
+                    android:layout_width="0dip"
+                    android:layout_height="130dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/menuer_1"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+
+                <TextView
+                    android:id="@+id/activity_overview_menuer_1_Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/starters_1"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_menuer_kurv_1"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight=".1"
+                    android:layout_column="2"
+                    android:background="@drawable/cart" />
+
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/activity_overview_menuer_1_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/starters_1_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- FIRST ROW OF MENUER: END -->
+
+        <!-- SECOND ROW OF MENUER: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_menuer_2_Image"
+                    android:layout_width="0dip"
+                    android:layout_height="130dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/menuer_2"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+
+                <TextView
+                    android:id="@+id/activity_overview_menuer_2_Text"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/starters_1"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_2"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight=".1"
+                    android:layout_column="2"
+                    android:background="@drawable/cart" />
+
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/activity_overview_menuer_2_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/starters_1_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- SECOND ROW OF MENUER: END -->
+    </LinearLayout>
+
+</ScrollView>
