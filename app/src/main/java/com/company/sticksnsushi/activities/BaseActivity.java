@@ -28,7 +28,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         if(toolbar != null){
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.ic_view_headline_black_24dp);
-
         }
 
     }
