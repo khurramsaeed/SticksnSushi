@@ -30,7 +30,6 @@
                     android:layout_height="230dp"
                     android:layout_column="1"
                     android:layout_weight="1"
-                    android:background=""
                     android:src="@drawable/kids_1"/>
 
             </TableRow>
@@ -105,7 +104,6 @@
                     android:layout_height="230dp"
                     android:layout_column="1"
                     android:layout_weight="1"
-                    android:background=""
                     android:src="@drawable/kids_2"/>
 
             </TableRow>
@@ -179,7 +177,6 @@
                     android:layout_height="190dp"
                     android:layout_column="1"
                     android:layout_weight="1"
-                    android:background=""
                     android:src="@drawable/kids_3"/>
 
             </TableRow>
