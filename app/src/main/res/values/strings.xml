@@ -30,4 +30,46 @@
 
     <string name="starters_2">Ebi hapsere</string>
     <string name="starters_2_price">89 kr./ 6 stk.</string>
+
+
+
+    //Kids
+    <string name="kids_1">Kids sushi menu reje</string>
+    <string name="kids_1_price">79 kr./stk.</string>
+
+    <string name="kids_2">Kids sushi menu laks</string>
+    <string name="kids_2_price">79 kr./stk.</string>
+
+    <string name="kids_3">Kids sticks menu</string>
+    <string name="kids_3_price">79 kr./stk.</string>
+
+    <string name="kids_4">Kids Sticks'n'Sushi laks</string>
+    <string name="kids_4_price">98 kr./stk.</string>
+
+    <string name="kids_5">Kids Sticks'n'Sushi reje</string>
+    <string name="kids_5_price">98 kr./stk.</string>
+
+    <string name="kids_6">Kids Fest Menu</string>
+    <string name="kids_6_price">489 kr./stk.</string>
+
+    <string name="kids_7">Kids hosomaki</string>
+    <string name="kids_7_price">38 kr./stk.</string>
+
+    <string name="kids_8">Kids hosomaki fisk</string>
+    <string name="kids_8_price">39 kr./stk.</string>
+
+    <string name="kids_9">Børneris</string>
+    <string name="kids_9_price">20 kr./stk.</string>
+
+    <string name="kids_10">Risbolle</string>
+    <string name="kids_10_price">5 kr./stk.</string>
+
+    <string name="kids_11">Chokoladefisk</string>
+    <string name="kids_11_price">10 kr./stk.</string>
+
+    <string name="kids_12">Kids T-Shirt</string>
+    <string name="kids_12_price">195 kr./str 2-12 år</string>
+
+    <string name="kids_13">Baby heldragt</string>
+    <string name="kids_13_price">295 kr./62-92cl</string>
 </resources>
