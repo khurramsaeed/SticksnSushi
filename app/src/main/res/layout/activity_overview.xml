@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:onClick="intentMenu">
+            android:onClick="intentMenu"
+            android:paddingTop="16dp">
             <TableLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
