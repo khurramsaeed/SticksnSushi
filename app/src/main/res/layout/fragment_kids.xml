@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1"
+                    android:text="@string/kids_1"
                     android:textColor="#fff"
                     android:textSize="18dp"
                     android:gravity="left"
@@ -58,7 +58,7 @@
                     android:layout_height="25dp"
                     android:layout_column="2"
                     android:layout_weight=".1"
-                    android:background="@drawable/cart" />
+                    android:background="@drawable/cart"/>
             </TableRow>
             <!-- SECOND ROW (NAMES): END -->
 
@@ -72,7 +72,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1_price"
+                    android:text="@string/kids_1_price"
                     android:textColor="@color/price_color"
                     android:textSize="13dp"
                     android:gravity="left"
@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1"
+                    android:text="@string/kids_2"
                     android:textColor="#fff"
                     android:textSize="18dp"
                     android:gravity="left"
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1_price"
+                    android:text="@string/kids_2_price"
                     android:textColor="@color/price_color"
                     android:textSize="13dp"
                     android:gravity="left"
@@ -155,7 +155,8 @@
             <!-- THIRD ROW (PRICES): END -->
 
         </TableLayout>
-        <!-- FIRST ROW OF STARTERS: END -->
+        <!-- SECOND ROW OF STARTERS: END -->
+
 
         <!-- THIRD ROW OF STARTERS: START -->
         <TableLayout
@@ -193,7 +194,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1"
+                    android:text="@string/kids_3"
                     android:textColor="#fff"
                     android:textSize="18dp"
                     android:gravity="left"
@@ -219,7 +220,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:layout_column="1"
-                    android:text="@string/starters_1_price"
+                    android:text="@string/kids_3_price"
                     android:textColor="@color/price_color"
                     android:textSize="13dp"
                     android:gravity="left"
@@ -229,6 +230,639 @@
 
         </TableLayout>
         <!-- Third ROW OF STARTERS: END -->
+
+        <!-- FOURTH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_4"
+                    android:layout_width="0dip"
+                    android:layout_height="190dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:src="@drawable/kids_4"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_4_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_4"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_4"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".1"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_4_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_4_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- FOURTH ROW OF STARTERS: END -->
+
+        <!-- FITH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_5"
+                    android:layout_width="0dip"
+                    android:layout_height="190dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:src="@drawable/kids_5"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_5_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_5"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_5"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".1"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_5_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_5_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- FITH ROW OF STARTERS: END -->
+
+        <!-- SIXTH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_6"
+                    android:layout_width="0dip"
+                    android:layout_height="190dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:src="@drawable/kids_6"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_6_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_6"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_6"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".1"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_6_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_6_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- SIXTH ROW OF STARTERS: END -->
+
+        <!-- SEVENTH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_7"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_7"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_8"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_8"/>
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_7_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_7"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_7"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight=".2"
+                    android:layout_column="1"
+                    android:background="@drawable/cart" />
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_8_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_8"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp" />
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_8"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".2"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_7_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_7_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_8_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_8_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- SEVENTH ROW OF STARTERS: END -->
+
+        <!-- EIGHT ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_9"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_9"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_10"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_10"/>
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_9_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_9"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_9"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight=".2"
+                    android:layout_column="1"
+                    android:background="@drawable/cart" />
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_10_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_10"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp" />
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_10"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".2"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_9_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_9_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_10_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_10_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- EIGHT ROW OF STARTERS: END -->
+
+        <!-- NINTH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_11"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_11"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_12"
+                    android:layout_width="0dip"
+                    android:layout_height="110dp"
+                    android:layout_weight=".5"
+                    android:layout_column="1"
+                    android:src="@drawable/kids_12"/>
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_11_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_11"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_11"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight=".2"
+                    android:layout_column="1"
+                    android:background="@drawable/cart" />
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_12_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_12"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp" />
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_12"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".2"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_11_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_11_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_12_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="2"
+                    android:text="@string/kids_12_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- NINTH ROW OF STARTERS: END -->
+
+        <!-- TENTH ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="20dp"
+            android:paddingBottom="16dp"
+            android:paddingRight="16dp"
+            android:paddingLeft="16dp">
+
+
+
+            <!-- First (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kids_13"
+                    android:layout_width="0dip"
+                    android:layout_height="190dp"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:src="@drawable/kids_13"/>
+
+            </TableRow>
+            <!-- FIRST ROW (IMAGES): END -->
+
+            <!-- SECOND ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="0dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_13_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_13"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_kurv_13"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_column="2"
+                    android:layout_weight=".1"
+                    android:background="@drawable/cart" />
+            </TableRow>
+            <!-- SECOND ROW (NAMES): END -->
+
+            <!-- THIRD ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/activity_overview_kids_13_price"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_column="1"
+                    android:text="@string/kids_13_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="13dp"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:paddingBottom="30dp"/>
+
+            </TableRow>
+            <!-- THIRD ROW (PRICES): END -->
+
+        </TableLayout>
+        <!-- TENTH ROW OF STARTERS: END -->
 
     </LinearLayout>
 
