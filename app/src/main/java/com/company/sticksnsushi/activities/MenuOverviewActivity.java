@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 
@@ -51,6 +50,10 @@ public class MenuOverviewActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+//        if (savedInstanceState == null){
+//            getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
+//        }
     }
 
     /**
@@ -82,11 +85,17 @@ public class MenuOverviewActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_menu_overview, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
+            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
+                View StartersFragment = inflater.inflate(R.layout.fragment_starters, container, false);
+                return StartersFragment;
+            }
+            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2){
+                View MakiFragment = inflater.inflate(R.layout.fragment_maki, container, false);
+                return MakiFragment;
+             }
+            return null;
         }
+
     }
 
     /**
