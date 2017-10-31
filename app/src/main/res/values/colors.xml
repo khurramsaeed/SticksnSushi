@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="red_color">#D12012</color>
     <color name="grey_standard">#1e1e1e</color>
+
+    //Color_price
+    <color name="price_color">#808080</color>
 </resources>

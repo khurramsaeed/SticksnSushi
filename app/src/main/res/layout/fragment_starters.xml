@@ -1,24 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/fragment_starters">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grey_standard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/target_activity_starters">
+
+        <!-- FIRST ROW OF STARTERS: START -->
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <!-- FIRST ROW (NAMES): START -->
+            <TableRow
+                android:paddingTop="10dp"
+                android:paddingBottom="2dp">
 
 
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starters_1"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:id="@+id/activity_overview_startersText"
+                    android:layout_column="1"
+                    android:gravity="left"
+                    android:paddingLeft="25dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="271dp"
-        android:text="Starters fragment"
-        android:textSize="20dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starters_2"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:id="@+id/activity_overview_starters_2"
+                    android:gravity="left"
+                    android:paddingLeft="25dp"
+                    android:layout_column="2"/>
+            </TableRow>
+            <!-- FIRST ROW (NAMES): END -->
 
-</android.support.constraint.ConstraintLayout>
+            <!-- SECOND ROW (PRICES): START -->
+            <TableRow
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starters_1_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="15dp"
+                    android:id="@+id/activity_overview_starters_1_price"
+                    android:gravity="left"
+                    android:paddingLeft="25dp"
+                    android:layout_column="2"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starters_1_price"
+                    android:textColor="@color/price_color"
+                    android:textSize="15dp"
+                    android:id="@+id/activity_overview_starters_2_price"
+                    android:gravity="left"
+                    android:paddingLeft="25dp"
+                    android:layout_column="2"/>
+            </TableRow>
+            <!-- SECOND ROW (PRICES): END -->
+
+            <!-- THIRD ROW (IMAGES): START -->
+            <TableRow>
+
+                <ImageView
+                    android:layout_height="130dp"
+                    android:layout_weight=".5"
+                    android:layout_width="0dip"
+                    android:layout_column="1"
+                    android:src="@drawable/starters_01"
+                    android:id="@+id/activity_overview_startersImage"/>
+
+                <ImageView
+                    android:layout_height="130dp"
+                    android:layout_weight=".5"
+                    android:layout_width="0dip"
+                    android:layout_column="1"
+                    android:src="@drawable/maki_01"
+                    android:id="@+id/activity_overview_makiImage"/>
+            </TableRow>
+            <!-- THIRD ROW (IMAGES): END -->
+
+        </TableLayout>
+        <!-- FIRST ROW OF STARTERS: END -->
+    </LinearLayout>
+
+</ScrollView>

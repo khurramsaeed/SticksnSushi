@@ -22,4 +22,12 @@
     <string name="tab_text_8">Drikkevarer</string>
 
     <string name="section_format">Hello World from section: %1$d</string>
+
+
+    //Starters
+    <string name="starters_1">Kani korokke</string>
+    <string name="starters_1_price">49 kr./ 4 stk.</string>
+
+    <string name="starters_2">Ebi hapsere</string>
+    <string name="starters_2_price">89 kr./ 6 stk.</string>
 </resources>
