@@ -31,6 +31,63 @@
     <string name="starters_2">Ebi hapsere</string>
     <string name="starters_2_price">89 kr./ 6 stk.</string>
 
+    //Menuer
+    <string name="menuer_1">Perfect day menu</string>
+    <string name="menuer_1_price">599 kr./2 personer</string>
+
+    <string name="menuer_2">Laks OD</string>
+    <string name="menuer_2_price">189 kr./menu</string>
+
+    <string name="menuer_3">Nana ban</string>
+    <string name="menuer_3_price">168 kr./menu</string>
+
+    <string name="menuer_4">Greenkeeper</string>
+    <string name="menuer_4_price">219 kr./menu</string>
+
+    <string name="menuer_5">Anden, laksen og venner</string>
+    <string name="menuer_5_price">199 kr./menu</string>
+
+    <string name="menuer_6">Solo</string>
+    <string name="menuer_6_price">179 kr.</string>
+
+    <string name="menuer_7">Ebi Kit Menu</string>
+    <string name="menuer_7_price">399 kr./menu</string>
+
+    <string name="menuer_8">Bord til 2</string>
+    <string name="menuer_8_price">399 kr./menu</string>
+
+    <string name="menuer_9">Mandemad</string>
+    <string name="menuer_9_price">219 kr./menu</string>
+
+    <string name="menuer_10">Blandede følelser</string>
+    <string name="menuer_10_price">214 kr./menu</string>
+
+    <string name="menuer_11">Blandede følelser tuntatar</string>
+    <string name="menuer_11_price">294 kr./menu</string>
+
+    <string name="menuer_12">Bord til 2 med Hotate Katafi</string>
+    <string name="menuer_12_price">499 kr./menu</string>
+
+    <string name="menuer_13">Galla menu</string>
+    <string name="menuer_13_price">798 kr./2 personer</string>
+
+    <string name="menuer_14">Extravaganza menu</string>
+    <string name="menuer_14_price">899 kr./2 personer</string>
+
+    <string name="menuer_15">SushiSøster</string>
+    <string name="menuer_15_price">289 kr./menu</string>
+
+    <string name="menuer_16">Maki Maki</string>
+    <string name="menuer_16_price">489 kr. God at dele</string>
+
+    <string name="menuer_17">Fisk til flere</string>
+    <string name="menuer_17_price">500 kr. God at dele</string>
+
+    <string name="menuer_18">Four meal drive big</string>
+    <string name="menuer_18_price">799 kr. God at dele</string>
+
+    <string name="menuer_19">Four meal drive big Snick snack</string>
+    <string name="menuer_19_price">899 kr./menu</string>
 
 
     //Kids
