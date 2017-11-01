@@ -20,9 +20,6 @@
         <activity android:name=".activities.WelcomeActivity" />
         <activity android:name=".activities.OverviewActivity" />
         <activity
-            android:name=".views.SideBarNav"
-            android:label="@string/title_activity_side_bar_nav" />
-        <activity
             android:name=".activities.MenuOverviewActivity"
             android:label="@string/title_activity_menu_overview"></activity>
     </application>
