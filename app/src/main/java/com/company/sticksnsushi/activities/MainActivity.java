@@ -57,7 +57,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.side_bar_nav, menu);
+        // TODO: 01/11/2017 Her skal indsættes cart
+        getMenuInflater().inflate(R.menu.toolbar_cart, menu);
         return true;
     }
 
