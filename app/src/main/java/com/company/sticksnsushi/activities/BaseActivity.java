@@ -25,8 +25,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         if(toolbar != null){
-            toolbar.setLogo(R.drawable.logo_text);
-            toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
+            // toolbar.setLogo(R.drawable.logo_text);
+            // toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
             setSupportActionBar(toolbar);
             //Doesnt work:
             toolbar.setNavigationIcon(R.drawable.menu);
