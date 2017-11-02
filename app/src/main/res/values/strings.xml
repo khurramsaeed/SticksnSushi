@@ -23,6 +23,7 @@
 
     <string name="section_format">Hello World from section: %1$d</string>
 
+    <string name="all">Se alle</string>
 
     //Starters
     <string name="starters_1">Kani korokke</string>
@@ -89,6 +90,87 @@
     <string name="menuer_19">Four meal drive big Snick snack</string>
     <string name="menuer_19_price">899 kr./menu</string>
 
+    //A la carte
+    //Yakitori
+    <string name="yakitori_title">Yakitori</string>
+
+    <string name="yakitori_1">Eringi</string>
+    <string name="yakitori_1_price">58 kr./2 stk</string>
+
+    <string name="yakitori_2">Sweet Yaki</string>
+    <string name="yakitori_2_price">58 kr./2 stk</string>
+
+    <string name="yakitori_3">Tskune</string>
+    <string name="yakitori_3_price">52 kr./2 stk</string>
+
+    <string name="yakitori_4">Momo chili</string>
+    <string name="yakitori_4_price">58 kr./2 stk</string>
+
+    <string name="yakitori_5">Tebasaki</string>
+    <string name="yakitori_5_price">52 kr./2 stk</string>
+
+    <string name="yakitori_6">Kushi katsu</string>
+    <string name="yakitori_6_price">68 kr./2 stk</string>
+
+    <string name="yakitori_7">Aigamo</string>
+    <string name="yakitori_7_price">52 kr./2 stk</string>
+
+    <string name="yakitori_8">Ramuyaki</string>
+    <string name="yakitori_8_price">70 kr./2 stk</string>
+
+    <string name="yakitori_9">Gyu Habu</string>
+    <string name="yakitori_9_price">90 kr./2 stk</string>
+
+    <string name="yakitori_10">Yakiniku stick</string>
+    <string name="yakitori_10_price">90 kr./2 stk</string>
+
+    <string name="yakitori_11">Wagyu stick</string>
+    <string name="yakitori_11_price">149 kr./ stk</string>
+
+    <string name="yakitori_12">Hotate bacon</string>
+    <string name="yakitori_12_price">86 kr./2 stk</string>
+
+    <string name="yakitori_13">Gindara no miso</string>
+    <string name="yakitori_13_price">124 kr./2 stk</string>
+
+    <string name="yakitori_14">Shake teriyaki</string>
+    <string name="yakitori_14_price">54 kr./2 stk</string>
+
+    <string name="yakitori_15">Buta yaki</string>
+    <string name="yakitori_15_price">66 kr./2 stk</string>
+
+    <string name="yakitori_16">Aspara maki</string>
+    <string name="yakitori_16_price">58 kr./2 stk</string>
+
+    <string name="yakitori_17">Chiizu maki</string>
+    <string name="yakitori_17_price">64 kr./2 stk</string>
+
+    <string name="yakitori_18">Yaki hitsuji</string>
+    <string name="yakitori_18_price">70 kr./2 stk</string>
+
+    <string name="yakitori_19">Supearibu</string>
+    <string name="yakitori_19_price">109 kr./2 stk</string>
+
+    //Sashimi
+    <string name="sashimi_title">Sashimi</string>
+
+    <string name="sashimi_1">SushiSøster</string>
+    <string name="sashimi_1_price">289 kr./menu</string>
+
+    <string name="sashimi_2">Laks</string>
+    <string name="sashimi_2_price">85 kr./5 skiver</string>
+
+    <string name="sashimi_3">Hamachi</string>
+    <string name="sashimi_3_price">99 kr./5 skiver</string>
+
+    <string name="sashimi_4">Saba</string>
+    <string name="sashimi_4_price">69 kr./5 skiver</string>
+
+    <string name="sashimi_5">Tun</string>
+    <string name="sashimi_5_price">9 kr./5 skiver</string>
+
+    <string name="sashimi_6">Mix</string>
+    <string name="sashimi_6_price">135 kr./5 skiver</string>
 
     //Kids
     <string name="kids_1">Kids sushi menu reje</string>
