@@ -117,6 +117,10 @@ public class MenuOverviewActivity extends AppCompatActivity {
                 View KidsFragment = inflater.inflate(R.layout.fragment_kids, container, false);
                 return KidsFragment;
             }
+            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 4){
+                View ALaCarteFragment = inflater.inflate(R.layout.fragment_a_la_carte, container, false);
+                return ALaCarteFragment;
+            }
 
             return null;
         }

@@ -1,0 +1,200 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/grey_standard">
+
+    <LinearLayout
+        android:id="@+id/target_activity_starters"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- FIRST ROW OF STARTERS: START -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TableRow android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/activity_overview_starters_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/starters_1"/>
+
+                <ImageView
+                    android:id="@+id/activity_overview_starters_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/starters_01" />
+
+            </TableRow>
+
+
+
+
+
+        </LinearLayout>
+        </TableLayout>
+        </HorizontalScrollView>
+        <!-- FIRST ROW OF STARTERS: START -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TableRow android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_1"/>
+
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_11"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_01" />
+
+                    </TableRow>
+
+
+
+
+
+                </LinearLayout>
+            </TableLayout>
+        </HorizontalScrollView>
+        <!-- FIRST ROW OF STARTERS: START -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TableRow android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_9"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_1"/>
+
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_01" />
+
+                    </TableRow>
+
+
+
+
+
+                </LinearLayout>
+            </TableLayout>
+        </HorizontalScrollView>
+        <!-- FIRST ROW OF STARTERS: START -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TableRow android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_1"/>
+
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_01" />
+
+                    </TableRow>
+
+
+
+
+
+                </LinearLayout>
+            </TableLayout>
+        </HorizontalScrollView>
+        <!-- FIRST ROW OF STARTERS: START -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TableRow android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_1"/>
+
+                        <ImageView
+                            android:id="@+id/activity_overview_starters_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/starters_01" />
+
+                    </TableRow>
+
+
+
+
+
+                </LinearLayout>
+            </TableLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+</ScrollView>
