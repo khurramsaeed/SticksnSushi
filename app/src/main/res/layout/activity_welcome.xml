@@ -66,7 +66,8 @@
             android:text="Log ind"
             android:layout_weight="1"
             android:backgroundTint="#cc666666"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            android:onClick="startLoginActivity"/>
 
         <Button
             android:layout_width="70dp"

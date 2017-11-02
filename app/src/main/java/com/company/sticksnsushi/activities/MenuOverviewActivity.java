@@ -62,6 +62,11 @@ public class MenuOverviewActivity extends AppCompatActivity {
 //        }
     }
 
+    /**
+     * Effects back button in current activity
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
@@ -99,7 +104,8 @@ public class MenuOverviewActivity extends AppCompatActivity {
 
 
         @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+        public View onCreateView(LayoutInflater inflater,
+                                 ViewGroup container,
                                  Bundle savedInstanceState) {
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
                 View StartersFragment = inflater.inflate(R.layout.fragment_starters, container, false);

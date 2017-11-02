@@ -31,9 +31,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Skærmen man starter i:
-        displaySelectedItem(R.id.item_1);
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -120,4 +117,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void cartPopUp(MenuItem item) {
         Toast.makeText(this, "CartPopUp", Toast.LENGTH_SHORT).show();
     }
+
+    public void intentMenu(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }
