@@ -129,4 +129,9 @@
 
     <string name="kids_13">Baby heldragt</string>
     <string name="kids_13_price">295 kr./62-92cl</string>
+
+    //NavDrawItems
+    <string name="Kurv">Kurv</string>
+    <string name="Betal">Betal</string>
+
 </resources>

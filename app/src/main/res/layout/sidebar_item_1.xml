@@ -6,17 +6,17 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/textview_item_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Item 1"
-        android:textStyle="bold"
         android:gravity="center_vertical|center_horizontal"
-        android:id="@+id/textview_item_1"/>
+        android:text="Item 1"
+        android:textStyle="bold" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="goToWelcome"
-        android:onClick="goToWelcome"/>
+        android:onClick="goToWelcome"
+        android:text="goToWelcome" />
 
 </LinearLayout>
