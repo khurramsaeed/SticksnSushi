@@ -13,16 +13,17 @@ import com.company.sticksnsushi.R;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Allergener extends Fragment {
+public class TakeAway extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sidebar_item_3, container, false);
+        return inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Allergener");
+
+        getActivity().setTitle("TAKEAWAY");
     }
 }

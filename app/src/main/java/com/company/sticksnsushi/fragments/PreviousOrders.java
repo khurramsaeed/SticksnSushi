@@ -13,17 +13,17 @@ import com.company.sticksnsushi.R;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Cart extends Fragment {
+public class PreviousOrders extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sidebar_item_cart, container, false);
+        return inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Kurve");
+        getActivity().setTitle("Previous Orders");
     }
 }

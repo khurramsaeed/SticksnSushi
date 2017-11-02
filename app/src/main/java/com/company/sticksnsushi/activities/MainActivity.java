@@ -7,19 +7,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.fragments.Item1;
+import com.company.sticksnsushi.fragments.PreviousOrders;
+import com.company.sticksnsushi.fragments.TakeAway;
 import com.company.sticksnsushi.fragments.Cart;
-import com.company.sticksnsushi.fragments.Allergener;
+import com.company.sticksnsushi.fragments.Allergies;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -96,11 +93,14 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.item_1: fragment = new Item1();
+            case R.id.item_takeaway: fragment = new TakeAway();
                 break;
-            case R.id.item_2: fragment = new Cart();
+            case R.id.item_cart: fragment = new Cart();
                 break;
-            case R.id.item_3: fragment = new Allergener();
+            case R.id.item_allergies: fragment = new Allergies();
+                break;
+
+            case R.id.item_previous_orders: fragment = new PreviousOrders();
                 break;
         }
 
