@@ -113,9 +113,5 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    public void goToWelcome(View view) { startActivity(new Intent(this, WelcomeActivity.class));
-    }
-
-
-    public void intentMenu(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
+    public void startMenuOverviewActivity(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }
