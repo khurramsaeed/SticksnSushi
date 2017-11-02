@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_takeaway"
+        android:icon="@drawable/heart"
+        android:title="TAKEAWAY" />
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_cart"
+            android:icon="@drawable/cart_black"
+            android:title="@string/Kurv" />
+        <item
+            android:id="@+id/item_allergies"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Allergener" />
+
+        <item
+            android:id="@+id/item_previous_orders"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tidligere odrer" />
+    </group>
+
+    <item android:title="Tilføj mere hernede">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+        </menu>
+    </item>
+
+</menu>

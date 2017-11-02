@@ -1,0 +1,237 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/grey_standard">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <!-- FIRST ROW: START -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="16dp">
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingBottom="16dp">
+
+                <TableRow>
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/starters_01"
+                        android:onClick="startMenuOverviewActivity"
+                        android:id="@+id/activity_overview_startersImage"/>
+
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/activity_overview_makiImage"/>
+                </TableRow>
+
+                <TableRow
+                    android:paddingTop="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Starters"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_startersText"
+                        android:layout_column="1"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Maki"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_makiText"
+                        android:gravity="center_horizontal"
+                        android:layout_column="2"/>
+                </TableRow>
+            </TableLayout>
+            <!-- FIRST ROW: END -->
+
+            <!-- SECOND ROW: START -->
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="130dp"
+                        android:id="@+id/activity_overview_menuerImage"
+                        android:src="@drawable/menu_pdm"
+                        android:layout_column="1"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Menuer"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_menuerText"
+                        android:layout_column="1"/>
+                </TableRow>
+            </TableLayout>
+            <!-- SECOND ROW: END -->
+
+            <!-- THIRD ROW: START -->
+            <TableLayout
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TableRow>
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/alacarte_02"
+                        android:id="@+id/activity_overview_alacarteImage"/>
+
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/kids_01"
+                        android:id="@+id/activity_overview_kidsImage"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="Á la carte"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_alacarteText"
+                        android:layout_column="1"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="Kids"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_kidsText"
+                        android:gravity="center_horizontal"
+                        android:layout_column="2"/>
+                </TableRow>
+            </TableLayout>
+            <!-- THIRD ROW: END -->
+
+            <!-- FOURTH ROW: START -->
+            <TableLayout
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <TableRow>
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/dessert_01"
+                        android:id="@+id/activity_overview_dessertImage"/>
+
+                    <ImageView
+                        android:layout_height="130dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_column="1"
+                        android:src="@drawable/dip_chili"
+                        android:id="@+id/activity_overview_dipImage"/>
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="Dessert"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_dessertText"
+                        android:layout_column="1"
+                        android:gravity="center_horizontal"/>
+                    <TextView
+                        android:layout_weight=".5"
+                        android:layout_width="0dip"
+                        android:layout_height="wrap_content"
+                        android:text="Dip"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_dipText"
+                        android:gravity="center_horizontal"
+                        android:layout_column="2"/>
+                </TableRow>
+            </TableLayout>
+            <!-- FOURTH ROW: END -->
+
+            <!-- FIFTH ROW: START -->
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <TableRow>
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="130dp"
+                        android:id="@+id/activity_overview_drikkervarerImage"
+                        android:src="@drawable/drikkevarer"
+                        android:layout_column="1"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:text="Drikkevarer"
+                        android:textColor="#fff"
+                        android:textSize="28dp"
+                        android:id="@+id/activity_overview_drikkevarerText"
+                        android:layout_column="1"/>
+                </TableRow>
+            </TableLayout>
+            <!-- FIFTH ROW: END -->
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

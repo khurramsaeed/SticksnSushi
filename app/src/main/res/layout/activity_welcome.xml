@@ -1,15 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="@drawable/welcome_background"
+    android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello World!"
-        android:gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_height="250dp"
+        android:paddingTop="14dp"
+        android:layout_weight="1">
 
-</RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_black_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/activity_welcome_journal"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#D9ffffff"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="VIDSTE DU..?"
+            android:textColor="@color/red_color"
+            android:textStyle="bold"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lorem ipsum dolor sit amet, sapien etiam, nunc amet dolor ac odio mauris justo. Luctus arcu, urna praesent at id quisque ac."
+            android:textColor="#808080"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Swipe to learn more.. -->"
+            android:paddingTop="16dp"
+            android:textColor="#808080"
+            android:textStyle="italic"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="horizontal"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:padding="16dp">
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:text="Log ind"
+            android:layout_weight="1"
+            android:backgroundTint="#cc666666"
+            android:textColor="#fff"
+            android:onClick="startLoginActivity"/>
+
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:text="Udforsk menu"
+            android:layout_weight="1"
+            android:backgroundTint="#D9D12012"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:onClick="startOverviewActivity"/>
+
+    </LinearLayout>
+
+</LinearLayout>

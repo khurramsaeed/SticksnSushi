@@ -1,3 +1,137 @@
 <resources>
-    <string name="app_name">SticksnSushi</string>
+    <string name="app_name">STICKS|N|SUSHI</string>
+    <string name="hello_world_nikolaj">Hello World! Nikolaj er med på Git</string>
+    <string name="title_activity_side_bar_nav">SideBarNav</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="red">#ff0000</string>
+    <string name="blue">#0000ff</string>
+    <string name="green">#00ff00</string>
+    <string name="title_activity_menu_overview">Our Menu</string>
+
+    <string name="tab_text_1">Starters</string>
+    <string name="tab_text_2">Maki</string>
+    <string name="tab_text_3">Menuer</string>
+    <string name="tab_text_4">Á la Carte</string>
+    <string name="tab_text_5">Kids</string>
+    <string name="tab_text_6">Dessert</string>
+    <string name="tab_text_7">Dip</string>
+    <string name="tab_text_8">Drikkevarer</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    //Starters
+    <string name="starters_1">Kani korokke</string>
+    <string name="starters_1_price">49 kr./ 4 stk.</string>
+
+    <string name="starters_2">Ebi hapsere</string>
+    <string name="starters_2_price">89 kr./ 6 stk.</string>
+
+    //Menuer
+    <string name="menuer_1">Perfect day menu</string>
+    <string name="menuer_1_price">599 kr./2 personer</string>
+
+    <string name="menuer_2">Laks OD</string>
+    <string name="menuer_2_price">189 kr./menu</string>
+
+    <string name="menuer_3">Nana ban</string>
+    <string name="menuer_3_price">168 kr./menu</string>
+
+    <string name="menuer_4">Greenkeeper</string>
+    <string name="menuer_4_price">219 kr./menu</string>
+
+    <string name="menuer_5">Anden, laksen og venner</string>
+    <string name="menuer_5_price">199 kr./menu</string>
+
+    <string name="menuer_6">Solo</string>
+    <string name="menuer_6_price">179 kr.</string>
+
+    <string name="menuer_7">Ebi Kit Menu</string>
+    <string name="menuer_7_price">399 kr./menu</string>
+
+    <string name="menuer_8">Bord til 2</string>
+    <string name="menuer_8_price">399 kr./menu</string>
+
+    <string name="menuer_9">Mandemad</string>
+    <string name="menuer_9_price">219 kr./menu</string>
+
+    <string name="menuer_10">Blandede følelser</string>
+    <string name="menuer_10_price">214 kr./menu</string>
+
+    <string name="menuer_11">Blandede følelser tuntatar</string>
+    <string name="menuer_11_price">294 kr./menu</string>
+
+    <string name="menuer_12">Bord til 2 med Hotate Katafi</string>
+    <string name="menuer_12_price">499 kr./menu</string>
+
+    <string name="menuer_13">Galla menu</string>
+    <string name="menuer_13_price">798 kr./2 personer</string>
+
+    <string name="menuer_14">Extravaganza menu</string>
+    <string name="menuer_14_price">899 kr./2 personer</string>
+
+    <string name="menuer_15">SushiSøster</string>
+    <string name="menuer_15_price">289 kr./menu</string>
+
+    <string name="menuer_16">Maki Maki</string>
+    <string name="menuer_16_price">489 kr. God at dele</string>
+
+    <string name="menuer_17">Fisk til flere</string>
+    <string name="menuer_17_price">500 kr. God at dele</string>
+
+    <string name="menuer_18">Four meal drive big</string>
+    <string name="menuer_18_price">799 kr. God at dele</string>
+
+    <string name="menuer_19">Four meal drive big Snick snack</string>
+    <string name="menuer_19_price">899 kr./menu</string>
+
+
+    //Kids
+    <string name="kids_1">Kids sushi menu reje</string>
+    <string name="kids_1_price">79 kr./stk.</string>
+
+    <string name="kids_2">Kids sushi menu laks</string>
+    <string name="kids_2_price">79 kr./stk.</string>
+
+    <string name="kids_3">Kids sticks menu</string>
+    <string name="kids_3_price">79 kr./stk.</string>
+
+    <string name="kids_4">Kids Sticks\'n\'Sushi laks</string>
+    <string name="kids_4_price">98 kr./stk.</string>
+
+    <string name="kids_5">Kids Sticks\'n\'Sushi reje</string>
+    <string name="kids_5_price">98 kr./stk.</string>
+
+    <string name="kids_6">Kids Fest Menu</string>
+    <string name="kids_6_price">489 kr./stk.</string>
+
+    <string name="kids_7">Kids hosomaki</string>
+    <string name="kids_7_price">38 kr./stk.</string>
+
+    <string name="kids_8">Kids hosomaki fisk</string>
+    <string name="kids_8_price">39 kr./stk.</string>
+
+    <string name="kids_9">Børneris</string>
+    <string name="kids_9_price">20 kr./stk.</string>
+
+    <string name="kids_10">Risbolle</string>
+    <string name="kids_10_price">5 kr./stk.</string>
+
+    <string name="kids_11">Chokoladefisk</string>
+    <string name="kids_11_price">10 kr./stk.</string>
+
+    <string name="kids_12">Kids T-Shirt</string>
+    <string name="kids_12_price">195 kr./str 2-12 år</string>
+
+    <string name="kids_13">Baby heldragt</string>
+    <string name="kids_13_price">295 kr./62-92cl</string>
+
+    //NavDrawItems
+    <string name="Kurv">Din Kurv</string>
+    <string name="Betal">Betal</string>
+
 </resources>
