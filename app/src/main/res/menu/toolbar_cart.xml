@@ -7,6 +7,5 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         android:icon="@drawable/cart"
-        android:onClick="onOptionsItemSelected"
         app:showAsAction="always" />
 </menu>

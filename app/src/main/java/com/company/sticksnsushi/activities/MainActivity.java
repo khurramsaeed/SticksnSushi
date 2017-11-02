@@ -10,8 +10,10 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.PopupMenuCompat;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
@@ -71,7 +73,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         }
 
-        //PopupMenuCompat popupMenuCompat = new PopupMenuCompat();
 
         return super.onOptionsItemSelected(item);
     }
@@ -115,9 +116,6 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public void goToWelcome(View view) { startActivity(new Intent(this, WelcomeActivity.class));
     }
 
-    public void cartPopUp(MenuItem item) {
-        Toast.makeText(this, "CartPopUp", Toast.LENGTH_SHORT).show();
-    }
 
     public void intentMenu(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }
