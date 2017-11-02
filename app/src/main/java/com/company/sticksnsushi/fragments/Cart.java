@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Item2 extends Fragment {
+public class Cart extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +24,6 @@ public class Item2 extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Item 2");
+        getActivity().setTitle("Cart");
     }
 }

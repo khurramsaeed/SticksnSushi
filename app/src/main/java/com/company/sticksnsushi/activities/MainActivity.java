@@ -11,10 +11,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.Item1;
-import com.company.sticksnsushi.fragments.Item2;
+import com.company.sticksnsushi.fragments.Cart;
 import com.company.sticksnsushi.fragments.Item3;
 
 /**
@@ -69,6 +72,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -95,7 +99,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         switch (id) {
             case R.id.item_1: fragment = new Item1();
                 break;
-            case R.id.item_2: fragment = new Item2();
+            case R.id.item_2: fragment = new Cart();
                 break;
             case R.id.item_3: fragment = new Item3();
                 break;
@@ -111,5 +115,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     }
 
     public void goToWelcome(View view) { startActivity(new Intent(this, WelcomeActivity.class));
+    }
+
+    public void cartPopUp(MenuItem item) {
+        Toast.makeText(this, "CartPopUp", Toast.LENGTH_SHORT).show();
     }
 }

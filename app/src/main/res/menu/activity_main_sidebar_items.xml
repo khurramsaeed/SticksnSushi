@@ -5,7 +5,7 @@
         <item
             android:id="@+id/item_1"
             android:icon="@drawable/heart"
-            android:title="Item 1" />
+            android:title="Favoritter" />
         <item
             android:id="@+id/item_2"
             android:icon="@drawable/cart_black"
@@ -13,7 +13,7 @@
         <item
             android:id="@+id/item_3"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Item 3" />
+            android:title="Tidligere Ordre" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
