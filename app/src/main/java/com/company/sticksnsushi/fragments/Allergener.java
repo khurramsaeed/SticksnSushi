@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Item3 extends Fragment {
+public class Allergener extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -23,6 +23,6 @@ public class Item3 extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Item 3");
+        getActivity().setTitle("Allergener");
     }
 }

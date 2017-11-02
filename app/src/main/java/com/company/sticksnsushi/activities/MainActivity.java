@@ -12,14 +12,12 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.Item1;
 import com.company.sticksnsushi.fragments.Cart;
-import com.company.sticksnsushi.fragments.Item3;
+import com.company.sticksnsushi.fragments.Allergener;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -101,7 +99,7 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
                 break;
             case R.id.item_2: fragment = new Cart();
                 break;
-            case R.id.item_3: fragment = new Item3();
+            case R.id.item_3: fragment = new Allergener();
                 break;
         }
 
