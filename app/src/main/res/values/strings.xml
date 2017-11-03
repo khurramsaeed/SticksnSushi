@@ -172,6 +172,190 @@
     <string name="sashimi_6">Mix</string>
     <string name="sashimi_6_price">135 kr./5 skiver</string>
 
+    //Nigiri
+    <string name="nigiri_title">Nigiri</string>
+
+    <string name="nigiri_1">Broccoli</string>
+    <string name="nigiri_1_price">44 kr./2 stk</string>
+
+    <string name="nigiri_2">Aspara</string>
+    <string name="nigiri_2_price">48 kr./2 stk</string>
+
+    <string name="nigiri_3">Eringi</string>
+    <string name="nigiri_3_price">56 kr./2 stk</string>
+
+    <string name="nigiri_4">Avocado to nori</string>
+    <string name="nigiri_4_price">44 kr./2 stk</string>
+
+    <string name="nigiri_5">Inari Ikura</string>
+    <string name="nigiri_5_price">54 kr./2 stk</string>
+
+    <string name="nigiri_6">Tamago</string>
+    <string name="nigiri_6_price">46 kr./2 stk</string>
+
+    <string name="nigiri_7">Shake</string>
+    <string name="nigiri_7_price">52 kr./2 stk</string>
+
+    <string name="nigiri_8">Smokey Shake</string>
+    <string name="nigiri_8_price">56 kr./2 stk</string>
+
+    <string name="nigiri_9">Shake yaki</string>
+    <string name="nigiri_9_price">56 kr./2 stk</string>
+
+    <string name="nigiri_10">Shake NY</string>
+    <string name="nigiri_10_price">54 kr./2 stk</string>
+
+    <string name="nigiri_11">Maguro</string>
+    <string name="nigiri_11_price">56 kr./2 stk</string>
+
+    <string name="nigiri_12">Suzuki</string>
+    <string name="nigiri_12_price">54 kr./2 stk</string>
+
+    <string name="nigiri_13">Saba</string>
+    <string name="nigiri_13_price">48 kr./2 stk</string>
+
+    <string name="nigiri_14">Hamachi</string>
+    <string name="nigiri_14_price">56 kr./2 stk</string>
+
+    <string name="nigiri_15">Hamachi yaki</string>
+    <string name="nigiri_price">58 kr./2 stk</string>
+
+    <string name="nigiri_16">Ebi</string>
+    <string name="nigiri_16_price">50 kr./2 stk</string>
+
+    <string name="nigiri_17">Hotate yaki</string>
+    <string name="nigiri_17_price">58 kr./2 stk</string>
+
+    <string name="nigiri_18">Ikura gunkan</string>
+    <string name="nigiri_18_price">64 kr./2 stk</string>
+
+    <string name="nigiri_19">Black cod Gunkan</string>
+    <string name="nigiri_19_price">79 kr./2 stk</string>
+
+    <string name="nigiri_20">Sweet potato gunkan</string>
+    <string name="nigiri_20_price">44 kr./2 stk</string>
+
+    //Rice paper rolls
+    <string name="rispapirruller_title">Rispapirruller</string>
+
+    <string name="rispapirruller_1">Laks</string>
+    <string name="rispapirruller_1_price">89 kr./8 skiver</string>
+
+    <string name="rispapirruller_2">And</string>
+    <string name="rispapirruller_2_price">89 kr./8 skiver</string>
+
+    //Salats
+    <string name="salater_title">Salater</string>
+
+    <string name="salater_1">Tokyo Kaos</string>
+    <string name="salater_1_price">189 kr./Menu</string>
+
+    <string name="salater_2">Lille kaos</string>
+    <string name="salater_2_price">99 kr./Menu</string>
+
+    <string name="salater_3">Jungle fish</string>
+    <string name="salater_3_price">169 kr./Salat</string>
+
+    <string name="salater_4">Greengate</string>
+    <string name="salater_4_price">149 kr./Salat</string>
+
+    <string name="salater_5">Salat m. vinger</string>
+    <string name="salater_5_price">169 kr./Salat</string>
+
+    <string name="salater_6">Tangsalat</string>
+    <string name="salater_6_price">49 kr./stk</string>
+
+    //Small dishes
+    <string name="smaa_retter_title">Små retter</string>
+
+    <string name="smaa_retter_1">Kobu Kataifi</string>
+    <string name="smaa_retter_1_price">119 kr./6 stk</string>
+
+    <string name="smaa_retter_2">Beef tataki</string>
+    <string name="smaa_retter_2_price">99 kr./6 skiver</string>
+
+    <string name="smaa_retter_3">Laksetatar</string>
+    <string name="smaa_retter_3_price">74 kr./stk</string>
+
+    <string name="smaa_retter_4">Maguro Tataki</string>
+    <string name="smaa_retter_4_price">125 kr./6 stk</string>
+
+    <string name="smaa_retter_5">Tun Tatar</string>
+    <string name="smaa_retter_5_price">89 kr./stk</string>
+
+    <string name="smaa_retter_6">Wagyu beef tatar</string>
+    <string name="smaa_retter_6_price">249 kr./stk</string>
+
+    <string name="smaa_retter_7">Hotate Ceviche</string>
+    <string name="smaa_retter_7_price">99 kr./stk</string>
+
+    <string name="smaa_retter_8">Kani korokke</string>
+    <string name="smaa_retter_8_price">49 kr./4 stk</string>
+
+    <string name="smaa_retter_9">Shake Tataki</string>
+    <string name="smaa_retter_9_price">99 kr./6 stk</string>
+
+    <string name="smaa_retter_10">Hotate Kataifi</string>
+    <string name="smaa_retter_10_price">109 kr./6 stk</string>
+
+    <string name="smaa_retter_11">Ebi hapser</string>
+    <string name="smaa_retter_11_price">89 kr./6 stk</string>
+
+    <string name="smaa_retter_12">Jordskokker</string>
+    <string name="smaa_retter_12_price">39 kr./stk</string>
+
+    <string name="smaa_retter_13">Grillet avocado</string>
+    <string name="smaa_retter_13_price">25 kr./halv</string>
+
+    <string name="smaa_retter_14">Daikon Green</string>
+    <string name="smaa_retter_14_price">35 kr./4 skiver</string>
+
+    <string name="smaa_retter_15">Daikon Ebi</string>
+    <string name="smaa_retter_15_price">45 kr./4 skiver</string>
+
+    <string name="smaa_retter_16">Daikn Shake</string>
+    <string name="smaa_retter_16_price">40 kr./4 skiver</string>
+
+    <string name="smaa_retter_17">Tangsalat</string>
+    <string name="smaa_retter_17_price">49 kr./stk</string>
+
+    //Side orders
+    <string name="tilbehoer_title">Tilbehør</string>
+
+    <string name="tilbehoer_1">Yasaisticks</string>
+    <string name="tilbehoer_1_price">39 kr./stk</string>
+
+    <string name="tilbehoer_2">Grillet majskolbe</string>
+    <string name="tilbehoer_2_price">32 kr./stk</string>
+
+    <string name="tilbehoer_3">Grillet broccoli</string>
+    <string name="tilbehoer_3_price">36 kr./stk</string>
+
+    <string name="tilbehoer_4">Friteret blomkål</string>
+    <string name="tilbehoer_4_price">36 kr./stk</string>
+
+    <string name="tilbehoer_5">Ris</string>
+    <string name="tilbehoer_5_price">24 kr./stk</string>
+
+    <string name="tilbehoer_6">Kimichi</string>
+    <string name="tilbehoer_6_price">25 kr./stk</string>
+
+    <string name="tilbehoer_7">Grillet avocado</string>
+    <string name="tilbehoer_7_price">25 kr./stk</string>
+
+    <string name="tilbehoer_8">Jordskokker</string>
+    <string name="tilbehoer_8_price">39 kr./4 stk</string>
+
+    <string name="tilbehoer_9">Spicy misosuppe</string>
+    <string name="tilbehoer_9_price">47 kr./stk</string>
+
+    <string name="tilbehoer_10">Klassisk misosuppe</string>
+    <string name="tilbehoer_10_price">25 kr./stk</string>
+
+    <string name="tilbehoer_11">Tangsalat</string>
+    <string name="tilbehoer_11_price">49 kr./stk</string>
+
+
     //Kids
     <string name="kids_1">Kids sushi menu reje</string>
     <string name="kids_1_price">79 kr./stk.</string>
