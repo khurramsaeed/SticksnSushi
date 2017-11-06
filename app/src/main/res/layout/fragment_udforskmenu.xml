@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="Udforsk Menu"
         android:textStyle="bold"
-        android:background="@color/red_color"
+        android:background="@color/colorAccent"
         android:textColor="#ffffff"
         android:id="@+id/fragment_udforskmenu"/>
 

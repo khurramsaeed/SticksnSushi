@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_standard">
+    android:background="@color/colorSecondary">
 
     <TextView
         android:id="@+id/textview_item_2"
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/Kurv"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimaryText"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -35,9 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center|bottom"
-            android:background="@color/red_color"
+            android:background="@color/colorAccent"
             android:text="@string/Betal"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="18sp" />
 
     </LinearLayout>

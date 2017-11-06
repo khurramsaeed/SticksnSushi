@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#434343</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#333333</color>
     <color name="colorAccent">#D12012</color>
-    <color name="red_color">#D12012</color>
-    <color name="grey_standard">#1e1e1e</color>
-    <color name="white">#FFFFFF</color>
+    <color name="colorSecondary">#1e1e1e</color>
+    <color name="colorPrimaryText">#fff</color>
 
     //Color_price
     <color name="price_color">#808080</color>

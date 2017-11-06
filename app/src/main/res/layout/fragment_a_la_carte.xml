@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/grey_standard">
+    android:background="@color/colorSecondary">
 
     <LinearLayout
         android:id="@+id/target_activity_a_la_carte"
