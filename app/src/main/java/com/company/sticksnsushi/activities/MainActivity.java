@@ -9,8 +9,11 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.PreviousOrders;
@@ -57,7 +60,11 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         // TODO: 01/11/2017 Her skal indsættes cart
-        getMenuInflater().inflate(R.menu.toolbar_cart, menu);
+
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cart_pop_up, menu);
+
         return true;
     }
 
@@ -68,12 +75,24 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch(id) {
+
+            case R.id.cartPopUp:
+
+                Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+                break;
 
         }
 
+
+        View menuItemView = findViewById(R.id.cartPopUp);
+
+
+        PopupMenu popupMenu = new PopupMenu(this, menuItemView);
+
+        popupMenu.inflate(R.menu.cart_pop_up);
+
+        popupMenu.show();
 
         return super.onOptionsItemSelected(item);
     }
@@ -116,6 +135,8 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
+
+
 
     public void startMenuOverviewActivity(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }
