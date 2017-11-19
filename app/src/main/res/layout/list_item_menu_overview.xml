@@ -9,7 +9,7 @@
         android:layout_height="130dp"
         android:layout_width="match_parent"
         android:src="@drawable/maki_01"
-        android:id="@+id/category_list_item_image"
+        android:id="@+id/overview_list_item_image"
         android:contentDescription="@string/app_name"/>
 
     <TextView
@@ -18,7 +18,7 @@
         android:textColor="@color/colorPrimaryText"
         android:textSize="28sp"
         android:text="@string/sample_item_name"
-        android:id="@+id/category_list_item_name"
+        android:id="@+id/overview_list_item_name"
         android:gravity="center_horizontal"/>
 
 </LinearLayout>
