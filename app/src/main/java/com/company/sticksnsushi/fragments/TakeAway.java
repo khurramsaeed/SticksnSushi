@@ -24,7 +24,6 @@ public class TakeAway extends Fragment {
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
 
-    private SimpleAdapter adapter;
     private ArrayList<HashMap<String, Object>> data = new ArrayList<>();
 
     @Nullable
@@ -64,7 +63,7 @@ public class TakeAway extends Fragment {
         data.add(new MenuCategoryItem("Desserter", R.drawable.dessert_01).toHashMap());
         data.add(new MenuCategoryItem("Dip & Diverse", R.drawable.dip_chili).toHashMap());
         //}
-        adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
+        SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
 
         ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
         listView.setAdapter(adapter);
