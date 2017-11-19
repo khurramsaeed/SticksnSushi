@@ -25,12 +25,12 @@ import com.company.sticksnsushi.fragments.Allergies;
  * Created by Khurram Saeed Malik on 09/10/2017.
  */
 
-public class MenuCategoryActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class NavDrawerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_navdrawer);
 
 
         // Default set to: Udforsk menu

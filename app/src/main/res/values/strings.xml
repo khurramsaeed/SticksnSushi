@@ -399,5 +399,6 @@
     //NavDrawItems
     <string name="Kurv">Din Kurv</string>
     <string name="Betal">Betal</string>
+    <string name="sample_item_name">Item name</string>
 
 </resources>

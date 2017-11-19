@@ -14,6 +14,6 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
     }
 
-    public void startOverviewActivity(View view) { startActivity(new Intent(this, MenuCategoryActivity.class)); }
+    public void startOverviewActivity(View view) { startActivity(new Intent(this, NavDrawerActivity.class)); }
     public void startLoginActivity(View view) { Toast.makeText(this, "Logind ikke implementeret endnu!", Toast.LENGTH_SHORT).show(); }
 }
