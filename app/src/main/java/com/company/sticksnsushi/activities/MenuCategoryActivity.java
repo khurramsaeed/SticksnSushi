@@ -25,7 +25,7 @@ import com.company.sticksnsushi.fragments.Allergies;
  * Created by Khurram Saeed Malik on 09/10/2017.
  */
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class MenuCategoryActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

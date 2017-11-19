@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.company.sticksnsushi.activities.MainActivity"
+    tools:context="com.company.sticksnsushi.activities.MenuCategoryActivity"
     tools:showIn="@layout/activity_main_appbar"
     android:id="@+id/activity_main_content">
 

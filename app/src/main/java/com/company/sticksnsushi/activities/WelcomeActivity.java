@@ -3,7 +3,6 @@ package com.company.sticksnsushi.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
@@ -15,6 +14,6 @@ public class WelcomeActivity extends BaseActivity {
         setContentView(R.layout.activity_welcome);
     }
 
-    public void startOverviewActivity(View view) { startActivity(new Intent(this, MainActivity.class)); }
+    public void startOverviewActivity(View view) { startActivity(new Intent(this, MenuCategoryActivity.class)); }
     public void startLoginActivity(View view) { Toast.makeText(this, "Logind ikke implementeret endnu!", Toast.LENGTH_SHORT).show(); }
 }
