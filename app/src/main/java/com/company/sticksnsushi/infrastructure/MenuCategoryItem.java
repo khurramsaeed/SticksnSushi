@@ -6,12 +6,12 @@ import java.util.HashMap;
  * Created by Khurram Saeed Malik on 19/11/2017.
  */
 
-public class CategoryItem {
+public class MenuCategoryItem {
 
     private final String itemName;
     private final Object itemImage;
 
-    public CategoryItem(String itemName, Object itemImage) {
+    public MenuCategoryItem(String itemName, Object itemImage) {
         this.itemName = itemName;
         this.itemImage = itemImage;
     }

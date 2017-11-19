@@ -11,7 +11,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.CategoryItem;
+import com.company.sticksnsushi.infrastructure.MenuCategoryItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,11 +58,11 @@ public class TakeAway extends Fragment {
 
         //while(cursor.moveToNext()){
         // Values from the database in column 1 & 2
-        data.add(new CategoryItem("Starters", R.drawable.starters_01).toHashMap());
-        data.add(new CategoryItem("Maki", R.drawable.maki_01).toHashMap());
-        data.add(new CategoryItem("A la Carte", R.drawable.alacarte_02).toHashMap());
-        data.add(new CategoryItem("Desserter", R.drawable.dessert_01).toHashMap());
-        data.add(new CategoryItem("Dip & Diverse", R.drawable.dip_chili).toHashMap());
+        data.add(new MenuCategoryItem("Starters", R.drawable.starters_01).toHashMap());
+        data.add(new MenuCategoryItem("Maki", R.drawable.maki_01).toHashMap());
+        data.add(new MenuCategoryItem("A la Carte", R.drawable.alacarte_02).toHashMap());
+        data.add(new MenuCategoryItem("Desserter", R.drawable.dessert_01).toHashMap());
+        data.add(new MenuCategoryItem("Dip & Diverse", R.drawable.dip_chili).toHashMap());
         //}
         adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
 
