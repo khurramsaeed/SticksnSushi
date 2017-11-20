@@ -59,6 +59,11 @@ public class TakeAway extends Fragment {
         data.add(new MenuCategoryItem("Starters", R.drawable.starters_01).toHashMap());
         data.add(new MenuCategoryItem("Maki", R.drawable.maki_01).toHashMap());
 
+        /*Måden hvorpå vi henter fra JSON
+        resIdMaki = getResources().getIdentifier("maki_01", "drawable", getActivity().getPackageName());
+        */
+
+
         data.add(new MenuCategoryItem("Desserter", R.drawable.dessert_01).toHashMap());
         data.add(new MenuCategoryItem("Maki", R.drawable.maki_01).toHashMap());
         //}
