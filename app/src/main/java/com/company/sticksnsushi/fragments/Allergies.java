@@ -1,6 +1,8 @@
 package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
+import android.preference.CheckBoxPreference;
+import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,8 +16,8 @@ import com.company.sticksnsushi.R;
  */
 
 public class Allergies extends Fragment {
-    @Nullable
-    @Override
+    CheckBoxPreference bloeddyr, fisk, kornsorter, lupin, maelk, noedder, peanuts,
+            selleri, sennep, sesam, skalddyr, soya, sulfitter, aeg;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.sidebar_item_allergies, container, false);
     }
@@ -24,5 +26,15 @@ public class Allergies extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Allergies");
+        getFragmentManager().beginTransaction().replace(, new AllergyScreen()).commit();
+
+
     }
+
+public static class AllergyScreen extends PreferenceFragment{
+    public  void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.allergies);
+    }
+}
 }
