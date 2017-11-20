@@ -13,6 +13,10 @@ import android.widget.SimpleAdapter;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.MenuCategoryItem;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,26 +51,43 @@ public class TakeAway extends Fragment {
      */
     private void retrieveListView(View view) {
 
-        // TODO: 19/11/2017 IMPLEMENT DB OR JSON TO GET FILES DYNAMICALLY
         Log.d(TAG, "retrieveListView: Show data in ListView");
 
         // Local String and int arrays to store values
         String[] hashMapProperties = {"itemName", "itemImage"};
         int[] textViewIds = {R.id.overview_list_item_name, R.id.overview_list_item_image};
 
-        //while(cursor.moveToNext()){
-        // Values from the database in column 1 & 2
-        data.add(new MenuCategoryItem("Starters", R.drawable.starters_01).toHashMap());
-        data.add(new MenuCategoryItem("Maki", R.drawable.maki_01).toHashMap());
+        try {
+            InputStream is = getResources().openRawResource(R.raw.data_categories);
+            //InputStream is = new URL("http://javabog.dk/eksempel.json").openStream();
 
-        /*Måden hvorpå vi henter fra JSON
-        resIdMaki = getResources().getIdentifier("maki_01", "drawable", getActivity().getPackageName());
-        */
+            byte b[] = new byte[is.available()]; // kun små filer
+            is.read(b);
+            String str = new String(b, "UTF-8");
 
+            JSONObject json = new JSONObject(str);
 
-        data.add(new MenuCategoryItem("Desserter", R.drawable.dessert_01).toHashMap());
-        data.add(new MenuCategoryItem("Maki", R.drawable.maki_01).toHashMap());
-        //}
+            JSONArray categories = json.getJSONArray("categories");
+
+            int antal = categories.length();
+            for (int i = 0; i < antal; i++) {
+                JSONObject category = categories.getJSONObject(i);
+                System.err.println("obj = " + category);
+
+                // Get title and imageName from JSON-file
+                String title = category.getString("title");
+                String imageName = category.getString("imageName");
+
+                // resId gets image resource with its identifier (image_name)
+                int resId = getResources().getIdentifier(imageName, "drawable", getActivity().getPackageName());
+                data.add(new MenuCategoryItem(title, resId).toHashMap());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getMessage();
+        }
+
         SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
 
         ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
