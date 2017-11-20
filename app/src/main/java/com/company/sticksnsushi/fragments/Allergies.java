@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.library.SupportPreferenceFragment;
 
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.

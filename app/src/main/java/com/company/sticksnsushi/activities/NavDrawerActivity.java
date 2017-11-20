@@ -135,7 +135,5 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
     }
 
-
-
     public void startMenuOverviewActivity(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }

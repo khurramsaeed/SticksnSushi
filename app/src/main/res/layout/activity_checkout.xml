@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.company.sticksnsushi.activities.CheckoutActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.company.sticksnsushi.activities.CheckoutActivity"
+    android:background="@color/colorSecondary">
 
-    <include layout="@layout/include_toolbar" />
+    <include layout="@layout/include_toolbar"
+        android:id="@+id/include_toolbar"/>
 
+    <android.support.design.widget.BottomNavigationView
+        android:layout_below="@+id/include_toolbar"
+        android:id="@+id/checkout_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/checkout_navigation"
+        app:itemBackground="@color/colorPrimary"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@android:color/white" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_main_frame" />
 
-</LinearLayout>
+</RelativeLayout>

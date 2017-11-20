@@ -15,5 +15,5 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     public void startOverviewActivity(View view) { startActivity(new Intent(this, NavDrawerActivity.class)); }
-    public void startLoginActivity(View view) { Toast.makeText(this, "Logind ikke implementeret endnu!", Toast.LENGTH_SHORT).show(); }
+    public void startLoginActivity(View view) { startActivity(new Intent(this, CheckoutActivity.class));  }
 }
