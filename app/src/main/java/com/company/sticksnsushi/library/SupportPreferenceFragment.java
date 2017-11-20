@@ -4,7 +4,7 @@
  * Anvendes til: Allergies Fragment
  */
 
-package com.company.sticksnsushi.fragments;
+package com.company.sticksnsushi.library;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,11 +27,11 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
- * A PreferenceFragment for the support library. Based on the platform's code with some removed features and a basic ListView layout.
+ * A SupportPreferenceFragment for the support library. Based on the platform's code with some removed features and a basic ListView layout.
  *
  * @author Christophe Beyls
  */
-public abstract class PreferenceFragment extends Fragment {
+public abstract class SupportPreferenceFragment extends Fragment {
 
     private static final int FIRST_REQUEST_CODE = 100;
     static final int MSG_BIND_PREFERENCES = 1;

@@ -1,8 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.PreferenceFragment;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -29,7 +27,7 @@ public class Allergies extends Fragment {
         getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
     }
 
-    public static class AllergyScreen extends com.company.sticksnsushi.fragments.PreferenceFragment{
+    public static class AllergyScreen extends SupportPreferenceFragment {
         public  void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.allergies);
