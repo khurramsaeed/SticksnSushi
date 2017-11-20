@@ -16,8 +16,7 @@ import com.company.sticksnsushi.R;
  */
 
 public class Allergies extends Fragment {
-    CheckBoxPreference bloeddyr, fisk, kornsorter, lupin, maelk, noedder, peanuts,
-            selleri, sennep, sesam, skalddyr, soya, sulfitter, aeg;
+
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.sidebar_item_allergies, container, false);
     }
@@ -26,15 +25,14 @@ public class Allergies extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Allergies");
-        getFragmentManager().beginTransaction().replace(, new AllergyScreen()).commit();
 
-
+        getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
     }
 
-public static class AllergyScreen extends PreferenceFragment{
-    public  void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.allergies);
+    public static class AllergyScreen extends com.company.sticksnsushi.fragments.PreferenceFragment{
+        public  void onCreate(Bundle savedInstanceState){
+            super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.allergies);
+        }
     }
-}
 }

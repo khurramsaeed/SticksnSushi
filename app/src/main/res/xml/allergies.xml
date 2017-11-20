@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-
-
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_bloeddyr"
-        android:title="Bløddyr" />
+        android:title="Bløddyr"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_fisk"
-        android:title="Fisk" />
+        android:title="Fisk"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_kornsorter"
-        android:title="Kornsorter m.	Gluten" />
+        android:title="Kornsorter m.	Gluten"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_lupin"
-        android:title="Lupin" />
+        android:title="Lupin"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_maelk"
-        android:title="Mælk" />
+        android:title="Mælk"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_noedder"
-        android:title="Nødder" />
+        android:title="Nødder"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_peanuts"
-        android:title="Peanuts" />
+        android:title="Peanuts"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_selleri"
-        android:title="Selleri" />
+        android:title="Selleri"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_sennep"
-        android:title="Sennep" />
+        android:title="Sennep"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_sesam"
-        android:title="Sesamfrø" />
+        android:title="Sesamfrø"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_skalddyr"
-        android:title="Skalddyr" />
+        android:title="Skalddyr"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_soya"
-        android:title="Soya" />
+        android:title="Soya"
+        android:textColor="@color/colorPrimaryText"/>
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_sulfitter"
