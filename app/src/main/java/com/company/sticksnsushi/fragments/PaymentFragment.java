@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,14 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.craftman.cardform.Card;
 import com.craftman.cardform.CardForm;
+import com.craftman.cardform.OnPayBtnClickListner;
 
-/**
- * Created by Khurram Saeed Malik on 20/11/2017.
- */
 
 public class PaymentFragment extends Fragment {
 
@@ -29,11 +31,56 @@ public class PaymentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         CardForm cardForm = (CardForm) view.findViewById(R.id.cardform);
-        TextView txtDes = (TextView) view.findViewById(R.id.payment_amount);
         Button btnPay = (Button) view.findViewById(R.id.btn_pay);
+        TextView txtDesAmount = (TextView) view.findViewById(R.id.payment_amount);
+        TextView txtAmount = (TextView) view.findViewById(R.id.payment_amount_holder);
+
+        EditText txtExpireDate = (EditText) view.findViewById(R.id.expiry_date);
+        EditText txtName = (EditText) view.findViewById(R.id.card_name);
+        EditText txtNumber = (EditText) view.findViewById(R.id.card_number);
+        EditText txtCVC = (EditText) view.findViewById(R.id.cvc);
+
 
         btnPay.setText("KØB");
-        txtDes.setText("Beløb");
+        btnPay.setBackgroundColor(Color.RED);
+
+        txtAmount.setText("Beløb");
+        txtAmount.setTextColor(Color.WHITE);
+
+        txtDesAmount.setText("199 kr.");
+        txtDesAmount.setTextColor(Color.WHITE);
+
+        txtName.setHint("Kortholders navn");
+        txtName.setHintTextColor(Color.WHITE);
+        txtName.setTextColor(Color.WHITE);
+
+        txtNumber.setHint("Kortnummer");
+        txtNumber.setHintTextColor(Color.WHITE);
+        txtNumber.setTextColor(Color.WHITE);
+
+
+        txtExpireDate.setHint("MM/DD");
+        txtExpireDate.setHintTextColor(Color.WHITE);
+        txtExpireDate.setTextColor(Color.WHITE);
+
+
+        txtCVC.setHint("CVC/CCV");
+        txtCVC.setHintTextColor(Color.WHITE);
+        txtCVC.setTextColor(Color.WHITE);
+
+
+        cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
+            @Override
+            public void onClick(Card card) {
+                Toast.makeText(getActivity(), "Navn: " + card.getName(), Toast.LENGTH_LONG
+                ).show();
+            }
+        });
+
+
+
+
+
 
     }
 
