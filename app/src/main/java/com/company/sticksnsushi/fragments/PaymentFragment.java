@@ -35,6 +35,10 @@ public class PaymentFragment extends Fragment {
         TextView txtDesAmount = (TextView) view.findViewById(R.id.payment_amount);
         TextView txtAmount = (TextView) view.findViewById(R.id.payment_amount_holder);
 
+        TextView txtCardName = (TextView) view.findViewById(R.id.card_preview_name);
+        TextView txtCardNumber = (TextView) view.findViewById(R.id.card_preview_number);
+        TextView txtCardExpire = (TextView) view.findViewById(R.id.card_preview_expiry);
+
         EditText txtExpireDate = (EditText) view.findViewById(R.id.expiry_date);
         EditText txtName = (EditText) view.findViewById(R.id.card_name);
         EditText txtNumber = (EditText) view.findViewById(R.id.card_number);
@@ -43,6 +47,10 @@ public class PaymentFragment extends Fragment {
 
         btnPay.setText("KØB");
         btnPay.setBackgroundColor(Color.RED);
+
+        txtCardName.setText("Kortholders navn");
+        txtCardNumber.setText("Kortnummer");
+        txtCardExpire.setText("MM/DD");
 
         txtAmount.setText("Beløb");
         txtAmount.setTextColor(Color.WHITE);
