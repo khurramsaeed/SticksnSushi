@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.FirstFragment;
 import com.company.sticksnsushi.fragments.SecondFragment;
-import com.company.sticksnsushi.fragments.ThirdFragment;
+import com.company.sticksnsushi.fragments.PaymentFragment;
 
 public class CheckoutActivity extends BaseActivity {
 
@@ -58,9 +58,9 @@ public class CheckoutActivity extends BaseActivity {
                 break;
             case R.id.menu_information: selectNavItemFragment(new SecondFragment());
                 break;
-            case R.id.menu_payment: selectNavItemFragment(new ThirdFragment());
+            case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
                 break;
-            case R.id.menu_confirm: selectNavItemFragment(new ThirdFragment());
+            case R.id.menu_confirm: selectNavItemFragment(new PaymentFragment());
                 break;
         }
     }
@@ -75,7 +75,7 @@ public class CheckoutActivity extends BaseActivity {
         ft = getSupportFragmentManager().beginTransaction();
         // XML files for animation are downloaded from internet
         ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
-        ft.replace(R.id.activity_main_frame, fragment);
+        ft.replace(R.id.activity_checkout_frame, fragment);
         ft.commit();
     }
 }
