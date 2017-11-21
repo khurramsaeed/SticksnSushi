@@ -20,6 +20,7 @@ import com.craftman.cardform.OnPayBtnClickListner;
 
 public class PaymentFragment extends Fragment {
 
+
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
         ViewGroup PaymentView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_payment, container, false);
@@ -44,9 +45,10 @@ public class PaymentFragment extends Fragment {
         EditText txtNumber = (EditText) view.findViewById(R.id.card_number);
         EditText txtCVC = (EditText) view.findViewById(R.id.cvc);
 
+        int redColor = getResources().getColor(R.color.colorAccent);
 
         btnPay.setText("KØB");
-        btnPay.setBackgroundColor(Color.RED);
+        btnPay.setBackgroundColor(redColor);
 
         txtCardName.setText("Kortholders navn");
         txtCardNumber.setText("Kortnummer");
