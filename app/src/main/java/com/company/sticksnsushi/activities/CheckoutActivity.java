@@ -1,17 +1,17 @@
 package com.company.sticksnsushi.activities;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
 import com.company.sticksnsushi.fragments.ConfirmationFragment;
-import com.company.sticksnsushi.fragments.FirstFragment;
-import com.company.sticksnsushi.fragments.SecondFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
+import com.company.sticksnsushi.fragments.SecondFragment;
 
 public class CheckoutActivity extends BaseActivity {
 
@@ -21,7 +21,7 @@ public class CheckoutActivity extends BaseActivity {
         setContentView(R.layout.activity_checkout);
 
         // Default: Fragment
-        selectNavItemFragment(new FirstFragment());
+        selectNavItemFragment(new CheckoutTimeFragment());
 
         BottomNavigationView checkoutNav = (BottomNavigationView) findViewById(R.id.checkout_navigation);
         checkoutNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -55,7 +55,7 @@ public class CheckoutActivity extends BaseActivity {
      */
     private void selectNavItem(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_chosen_time: selectNavItemFragment(new FirstFragment());
+            case R.id.menu_chosen_time: selectNavItemFragment(new CheckoutTimeFragment());
                 break;
             case R.id.menu_information: selectNavItemFragment(new SecondFragment());
                 break;
