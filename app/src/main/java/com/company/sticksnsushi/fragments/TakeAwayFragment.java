@@ -24,7 +24,8 @@ import java.util.HashMap;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class TakeAway extends Fragment {
+public class TakeAwayFragment extends Fragment {
+
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
     private ArrayList<HashMap<String, Object>> data = new ArrayList<>();
@@ -32,6 +33,7 @@ public class TakeAway extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         return inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
     }
 
@@ -69,8 +71,8 @@ public class TakeAway extends Fragment {
 
             JSONArray categories = json.getJSONArray("categories");
 
-            int antal = categories.length();
-            for (int i = 0; i < antal; i++) {
+            int number = categories.length();
+            for (int i = 0; i < number; i++) {
                 JSONObject category = categories.getJSONObject(i);
                 System.err.println("obj = " + category);
 

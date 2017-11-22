@@ -47,6 +47,7 @@ public class PaymentFragment extends Fragment {
 
         int redColor = getResources().getColor(R.color.colorAccent);
 
+
         btnPay.setText("KØB");
         btnPay.setBackgroundColor(redColor);
 

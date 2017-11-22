@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Cart extends Fragment {
+public class CartFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

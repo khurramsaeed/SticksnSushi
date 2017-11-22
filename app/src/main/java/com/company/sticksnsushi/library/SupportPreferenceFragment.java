@@ -1,7 +1,7 @@
 /**
  * Kilde: https://gist.github.com/cbeyls/7475726
  * Ved godt der findes PreferenceFragmentCombat men dette krævede ekstra akivitetet klasse før at kunne anvende.
- * Anvendes til: Allergies Fragment
+ * Anvendes til: AllergiesFragment Fragment
  */
 
 package com.company.sticksnsushi.library;

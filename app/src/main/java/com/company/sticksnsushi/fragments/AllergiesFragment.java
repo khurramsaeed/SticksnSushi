@@ -14,7 +14,7 @@ import com.company.sticksnsushi.library.SupportPreferenceFragment;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class Allergies extends Fragment {
+public class AllergiesFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.sidebar_item_allergies, container, false);
@@ -23,7 +23,7 @@ public class Allergies extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Allergies");
+        getActivity().setTitle("AllergiesFragment");
 
         getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
     }

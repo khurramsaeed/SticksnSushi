@@ -17,9 +17,9 @@ import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.PreviousOrders;
-import com.company.sticksnsushi.fragments.TakeAway;
-import com.company.sticksnsushi.fragments.Cart;
-import com.company.sticksnsushi.fragments.Allergies;
+import com.company.sticksnsushi.fragments.TakeAwayFragment;
+import com.company.sticksnsushi.fragments.CartFragment;
+import com.company.sticksnsushi.fragments.AllergiesFragment;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -115,11 +115,11 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.item_takeaway: fragment = new TakeAway();
+            case R.id.item_takeaway: fragment = new TakeAwayFragment();
                 break;
-            case R.id.item_cart: fragment = new Cart();
+            case R.id.item_cart: fragment = new CartFragment();
                 break;
-            case R.id.item_allergies: fragment = new Allergies();
+            case R.id.item_allergies: fragment = new AllergiesFragment();
                 break;
 
             case R.id.item_previous_orders: fragment = new PreviousOrders();
