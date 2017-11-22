@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.ConfirmationFragment;
 import com.company.sticksnsushi.fragments.FirstFragment;
 import com.company.sticksnsushi.fragments.SecondFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
@@ -60,7 +61,7 @@ public class CheckoutActivity extends BaseActivity {
                 break;
             case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
                 break;
-            case R.id.menu_confirm: selectNavItemFragment(new PaymentFragment());
+            case R.id.menu_confirm: selectNavItemFragment(new ConfirmationFragment());
                 break;
         }
     }
