@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class PaymentFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        CardForm cardForm = (CardForm) view.findViewById(R.id.cardform);
+        final CardForm cardForm = (CardForm) view.findViewById(R.id.cardform);
         Button btnPay = (Button) view.findViewById(R.id.btn_pay);
         TextView txtDesAmount = (TextView) view.findViewById(R.id.payment_amount);
         TextView txtAmount = (TextView) view.findViewById(R.id.payment_amount_holder);
@@ -65,6 +66,7 @@ public class PaymentFragment extends Fragment {
         txtName.setHintTextColor(Color.WHITE);
         txtName.setTextColor(Color.WHITE);
 
+        //Test kortnummer: 4026 2069 1846 9714
         txtNumber.setHint("Kortnummer");
         txtNumber.setHintTextColor(Color.WHITE);
         txtNumber.setTextColor(Color.WHITE);
@@ -85,15 +87,23 @@ public class PaymentFragment extends Fragment {
             public void onClick(Card card) {
                 Toast.makeText(getActivity(), "Navn: " + card.getName(), Toast.LENGTH_LONG
                 ).show();
+                selectNavItemFragment(new ConfirmationFragment());
             }
         });
 
-
-
-
-
-
     }
-
+    /**
+     * selectNavItemFragment does fragment transaction while we can simply give it an argument of fragment
+     * in this case it is optimal to have this method
+     * @param fragment
+     */
+    private void selectNavItemFragment(Fragment fragment) {
+        FragmentTransaction ft;
+        ft = getFragmentManager().beginTransaction();
+        // XML files for animation are downloaded from internet
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+        ft.replace(R.id.activity_checkout_frame, fragment);
+        ft.commit();
+    }
 }
 
