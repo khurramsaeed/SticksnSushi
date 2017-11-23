@@ -4,13 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
@@ -31,14 +36,57 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
 
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
+
+    private RecyclerView recyclerView;
     private ArrayList<HashMap<String, Object>> data = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
+        View rootView = inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
+        rootView.setTag(TAG);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        //recyclerView.setOnItemClickListener(this); FINDES IKKE - i stedet skal man lytte efter onClick på de enkelte vieww
+        recyclerView.setAdapter(adapter);
+
+        return rootView;
     }
+
+    RecyclerView.Adapter adapter = new RecyclerView.Adapter<ListElemViewholder>() {
+
+        @Override
+        public ListElemViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.list_item_menu_overview, parent, false);
+            ListElemViewholder viewholder = new ListElemViewholder(view);
+
+            viewholder.title = view.findViewById(R.id.overview_list_item_name);
+            viewholder.image = view.findViewById(R.id.overview_list_item_image);
+
+            viewholder.title.setOnClickListener(viewholder);
+            viewholder.image.setOnClickListener(viewholder);
+
+            return viewholder;
+        }
+
+        @Override
+        public void onBindViewHolder(ListElemViewholder holder, int position) {
+            if (position % 3 == 2) {
+                holder.image.setImageResource(R.drawable.maki_01);
+            } else {
+                holder.image.setImageResource(R.drawable.starters_01);
+            }
+        }
+
+
+        @Override
+        public int getItemCount() {
+            return data.size();
+        }
+    };
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -46,15 +94,14 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
 
         getActivity().setTitle("TAKEAWAY");
 
-        retrieveListView(view);
+        retrieveListView();
     }
 
     /***
      * Gets rows from JSON and puts in ArrayList, HashMap
      * afterwards SimpleAdapter is used to create list item views from data
-     * @param view
      */
-    private void retrieveListView(View view) {
+    private void retrieveListView() {
 
         Log.d(TAG, "retrieveListView: Show data in ListView");
 
@@ -93,15 +140,34 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
             e.getMessage();
         }
 
-        SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
+      /*  SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
 
         ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
         listView.setOnItemClickListener(this);
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter); */
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         startActivity(new Intent(getContext(), MenuOverviewActivity.class));
+    }
+
+    /**
+     * En Viewholder husker forskellige views i et listeelement, sådan at søgninger i viewhierakiet
+     * med findViewById() kun behøver at ske EN gang.
+     * Se https://developer.android.com/training/material/lists-cards.html
+     */
+    private class ListElemViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        TextView title;
+        ImageView image;
+
+        public ListElemViewholder(View itemView) {
+            super(itemView);
+        }
+
+        @Override
+        public void onClick(View view) {
+            startActivity(new Intent(getContext(), MenuOverviewActivity.class));
+        }
     }
 }
