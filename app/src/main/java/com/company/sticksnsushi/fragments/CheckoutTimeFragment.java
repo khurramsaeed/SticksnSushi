@@ -6,14 +6,19 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 
@@ -29,7 +34,11 @@ import static android.content.ContentValues.TAG;
  */
 
 public class CheckoutTimeFragment extends Fragment {
-    TextView displayDate, chooseTime;
+    long elapsedDays;
+    RadioButton rbDelivery, rbPickup;
+    TextView chooseDate, chooseTime, chooseRestaurant;
+    boolean deliveryOption = true;
+    Button nextScreenButton;
 
 
     DatePickerDialog.OnDateSetListener dateSetListener;
@@ -37,64 +46,128 @@ public class CheckoutTimeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_checkout_time, container, false);
-        displayDate = view.findViewById(R.id.dateText);
+        chooseDate = view.findViewById(R.id.dateText);
         chooseTime = view.findViewById(R.id.chooseTime);
+        chooseRestaurant = view.findViewById(R.id.chooseRestaurant);
+        rbDelivery = view.findViewById(R.id.rB_delivery);
+        rbPickup = view.findViewById(R.id.rB_pickup);
+        nextScreenButton = view.findViewById(R.id.nextScreenButtom);
+        chooseTime.setVisibility(View.INVISIBLE);
+        setDelivery();
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        displayDate.setOnClickListener(new View.OnClickListener() {
+
+        rbPickup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                setPickup();
+            }
+        });
 
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
+        rbDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDelivery();
+            }
+        });
+            chooseDate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    setDelivery();
+                    Calendar cal = Calendar.getInstance();
+                    int year = cal.get(Calendar.YEAR);
+                    int month = cal.get(Calendar.MONTH);
+                    int day = cal.get(Calendar.DAY_OF_MONTH);
                     DatePickerDialog dialog = new DatePickerDialog(getActivity(), android.R.style.Theme_Holo_Light_Dialog_MinWidth, dateSetListener,
                             year, month, day);
 
                     dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialog.show();
-            }
+                                              }
 
-        }
-        );
-        chooseTime.setOnClickListener(new View.OnClickListener(){
+                                          }
+            );
+            chooseTime.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    setDelivery();
+                    showTimePopup(v);
+
+                }
+            }
+            );
+
+            chooseRestaurant.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    setPickup();
+                    showRestaurantPopup(v);
+
+                }
+            }
+            );
+
+            dateSetListener = new DatePickerDialog.OnDateSetListener() {
+                @Override
+                public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                    Log.d(TAG, "onDateSet: " + year + "/" + month + "/" + dayOfMonth);
+
+
+                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/M/yyyy");
+                    try {
+                        Date date1 = simpleDateFormat.parse(dayOfMonth + "/" + month + "/" + year);
+                        String currenDate = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                                + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR);
+                        Date date2 = simpleDateFormat.parse(currenDate);
+
+                        getDaysDifference(date2, date1);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    month = month + 1;
+                    String date = dayOfMonth + "/" + month + "/" + year;
+                    if (elapsedDays < 0) {
+                        Toast.makeText(getActivity(), "Der kan kun bestilles frem i tiden", Toast.LENGTH_LONG).show();
+                    } else if (elapsedDays > 14) {
+                        Toast.makeText(getActivity(), "Der kan maks bestilles 14 dage frem", Toast.LENGTH_LONG).show();
+                    } else if (elapsedDays > -1 && elapsedDays < 15) {
+                        chooseDate.setText(date);
+                        chooseTime.setVisibility(View.VISIBLE);
+                    }
+                }
+            };
+        nextScreenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View v) {
-                    showPopUp(v);
             }
         });
-        dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                Log.d(TAG, "onDateSet: " + year + "/" + month + "/" + dayOfMonth);
-
-
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/M/yyyy");
-                try {
-                    Date date1 = simpleDateFormat.parse(dayOfMonth + "/" + month + "/" + year);
-                    String currenDate = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-                            + "/" + Calendar.getInstance().get(Calendar.MONTH) + "/" + Calendar.getInstance().get(Calendar.YEAR);
-                    Date date2 = simpleDateFormat.parse(currenDate);
-
-                    printDifference(date2, date1);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-                month = month + 1;
-                String date = dayOfMonth + "/" + month + "/" + year;
-                displayDate.setText(date);
-            }
-        };
     }
 
-        public void showPopUp(View v) {
+    public void showRestaurantPopup(View v) {
+        PopupMenu popup = new PopupMenu(getActivity(), v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.pickup_location_popup, popup.getMenu());
+        popup.show();
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+            public boolean onMenuItemClick(MenuItem item) {
+                chooseRestaurant.setText(item.getTitle());
+                return true;
+            }
+        });
+
+
+    }
+
+
+
+    public void showTimePopup(View v) {
             PopupMenu popup = new PopupMenu(getActivity(), v);
             MenuInflater inflater = popup.getMenuInflater();
             inflater.inflate(R.menu.time_popup, popup.getMenu());
+            int hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+            int hourFixed = hour+2;
             int i = 11;
             int minute = 0;
             int timeIntervalStartMinute = minute;
@@ -104,7 +177,7 @@ public class CheckoutTimeFragment extends Fragment {
                 int timeIntervalEndMinute = timeIntervalStartMinute + 15;
                 if(timeIntervalEndMinute == 60){
                     i++;
-                    timeIntervalEnd=i++;
+                    timeIntervalEnd=++timeIntervalEnd;
                     timeIntervalEndMinute=0;
                 }
                 String timeIntervalStartMinuteString = Integer.toString(timeIntervalStartMinute);
@@ -117,7 +190,19 @@ public class CheckoutTimeFragment extends Fragment {
                 }
                 String timeInterval = timeIntervalStart+":"+timeIntervalStartMinuteString + " - " + timeIntervalEnd
                 + ":" + timeIntervalEndMinuteString;
-                popup.getMenu().add(timeInterval);
+
+                if(elapsedDays == 0) {
+                    if(i < hourFixed){
+
+                    }
+                    else if(i > hourFixed){
+                        popup.getMenu().add(timeInterval);
+                    }
+                }
+                else if(elapsedDays != 0){
+                    popup.getMenu().add(timeInterval);
+                }
+
                 timeIntervalStartMinute = timeIntervalStartMinute + 15;
                 if(timeIntervalStartMinute == 60){
                     timeIntervalStartMinute = 0;
@@ -127,36 +212,71 @@ public class CheckoutTimeFragment extends Fragment {
 
             }
             popup.show();
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
+                public boolean onMenuItemClick(MenuItem item) {
+                    chooseTime.setText(item.getTitle());
+                return true;
+                }
+            });
+
 
     }
 
-    public void printDifference(Date startDate, Date endDate) {
+    public void getDaysDifference(Date startDate, Date endDate) {
         //milliseconds
         long different = endDate.getTime() - startDate.getTime();
-
-        System.out.println("startDate : " + startDate);
-        System.out.println("endDate : "+ endDate);
-        System.out.println("different : " + different);
-
+        
         long secondsInMilli = 1000;
         long minutesInMilli = secondsInMilli * 60;
         long hoursInMilli = minutesInMilli * 60;
         long daysInMilli = hoursInMilli * 24;
 
-        long elapsedDays = different / daysInMilli;
-        different = different % daysInMilli;
+        elapsedDays = different / daysInMilli;
 
-        long elapsedHours = different / hoursInMilli;
-        different = different % hoursInMilli;
-
-        long elapsedMinutes = different / minutesInMilli;
-        different = different % minutesInMilli;
-
-        long elapsedSeconds = different / secondsInMilli;
-
-        System.out.printf(
-                "%d days, %d hours, %d minutes, %d seconds%n",
-                elapsedDays, elapsedHours, elapsedMinutes, elapsedSeconds);
     }
 
-}
+    public void setDelivery(){
+        rbPickup.setChecked(false);
+        rbDelivery.setChecked(true);
+        rbPickup.setTextColor(Color.parseColor("#666666"));
+        chooseRestaurant.setTextColor(Color.parseColor("#666666"));
+        chooseDate.setTextColor(Color.parseColor("#ffffff"));
+        chooseTime.setTextColor(Color.parseColor("#ffffff"));
+        rbDelivery.setTextColor(Color.parseColor("#ffffff"));
+        deliveryOption = true;
+    }
+
+    public void setPickup(){
+        rbPickup.setChecked(true);
+        rbDelivery.setChecked(false);
+        chooseDate.setTextColor(Color.parseColor("#666666"));
+        chooseTime.setTextColor(Color.parseColor("#666666"));
+        rbDelivery.setTextColor(Color.parseColor("#666666"));
+        rbPickup.setTextColor(Color.parseColor("#ffffff"));
+        chooseRestaurant.setTextColor(Color.parseColor("#ffffff"));
+        deliveryOption = false;
+    }
+
+    private void selectNavItemFragment(Fragment fragment) {
+        FragmentTransaction ft;
+        ft = getFragmentManager().beginTransaction();
+        // XML files for animation are downloaded from internet
+        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+        ft.replace(R.id.activity_checkout_frame, fragment);
+        ft.commit();
+    }
+
+
+    private void selectNavItem(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_chosen_time: selectNavItemFragment(new CheckoutTimeFragment());
+                break;
+            case R.id.menu_information: selectNavItemFragment(new SecondFragment());
+                break;
+            case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
+                break;
+            case R.id.menu_confirm: selectNavItemFragment(new ConfirmationFragment());
+                break;
+        }
+    }
+    }

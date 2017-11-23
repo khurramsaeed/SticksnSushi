@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/østerbro"
+        android:title="Østerbro"
+        ></item>
+    <item
+        android:id="@+id/hellerup"
+        android:title="Hellerup"
+        ></item>
+    <item
+        android:id="@+id/vesterbro"
+        android:title="Vesterbro"
+        ></item>
+    <item
+    android:id="@+id/frederiksberg"
+    android:title="Frederiksberg"
+    ></item>
+    <item
+        android:id="@+id/nansensgade"
+        android:title="Nansensgade"></item>
+    <item
+        android:id="@+id/valby"
+        android:title="Valby"
+        ></item>
+    <item
+        android:id="@+id/lyngby"
+        android:title="Lyngby"
+        ></item>
+    <item
+        android:id="@+id/rungsted"
+        android:title="Rungsted"
+        ></item>
+    <item
+        android:id="@+id/borgergade"
+        android:title="Borgergade"
+        ></item>
+    <item
+        android:id="@+id/amager_Krudthuset"
+        android:title="Amager/Krudthuset"
+        ></item>
+</menu>
