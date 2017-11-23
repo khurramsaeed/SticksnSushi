@@ -14,10 +14,9 @@
             android:id="@+id/item_allergies"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Allergener" />
-
         <item
             android:id="@+id/item_previous_orders"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_history"
             android:title="Tidligere odrer" />
     </group>
 
