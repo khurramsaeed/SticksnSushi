@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
 
-public class MenuOverviewActivity extends AppCompatActivity {
+public class MenuOverviewActivity extends BaseActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -41,6 +41,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         // Back button on Toolbar
         if (getSupportActionBar() != null){
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
