@@ -124,6 +124,8 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
             case R.id.item_previous_orders: fragment = new PreviousOrders();
                 break;
+
+            case R.id.item_profile: startActivity(new Intent(this, ProfileActivity.class));
         }
 
         if (fragment != null) {

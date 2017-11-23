@@ -9,7 +9,8 @@
         <item
             android:id="@+id/item_cart"
             android:icon="@drawable/cart_black"
-            android:title="@string/Kurv" />
+            android:title="@string/Kurv"/>
+
         <item
             android:id="@+id/item_allergies"
             android:icon="@drawable/ic_menu_slideshow"
@@ -20,12 +21,19 @@
             android:title="Tidligere odrer" />
     </group>
 
+
     <item android:title="Tilføj mere hernede">
         <menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
+
+            <item
+                android:id="@+id/item_profile"
+                android:icon="@drawable/ic_menu_camera"
+                android:title="Profilos"/>
+
         </menu>
     </item>
 

@@ -27,6 +27,9 @@
             android:name=".activities.MenuOverviewActivity"
             android:label="@string/title_activity_menu_overview" />
         <activity android:name=".activities.CheckoutActivity"></activity>
+        <activity android:name=".activities.ProfileActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+        </activity>
     </application>
 
 </manifest>

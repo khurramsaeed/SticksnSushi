@@ -10,12 +10,16 @@ import android.util.Log;
 public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
     private Auth auth;
+    private User user;
 
     @Override
     public void onCreate() {
+
+
         Log.d(TAG, "onCreate: Applicated Started");
         super.onCreate();
         auth = new Auth(this);
+        user = new User();
     }
 
     public Auth getAuth() {
