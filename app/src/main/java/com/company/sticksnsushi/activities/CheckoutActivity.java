@@ -54,7 +54,7 @@ public class CheckoutActivity extends BaseActivity {
      * @param item
      */
     private void selectNavItem(MenuItem item) {
-        switch (item.getItemId()) {
+                switch (item.getItemId()) {
             case R.id.menu_chosen_time: selectNavItemFragment(new CheckoutTimeFragment());
                 break;
             case R.id.menu_information: selectNavItemFragment(new SecondFragment());
