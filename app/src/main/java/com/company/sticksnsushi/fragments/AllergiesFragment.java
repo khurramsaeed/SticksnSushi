@@ -32,6 +32,7 @@ public class AllergiesFragment extends Fragment {
         public  void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.allergies);
+
         }
     }
 }

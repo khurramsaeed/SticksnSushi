@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 
@@ -24,5 +25,8 @@ public class ConfirmationFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        TextView txtSummary = (TextView) view.findViewById(R.id.txtSuccesSummary);
+        txtSummary.setText("Kommer til at indeholde information om bestilling");
     }
 }

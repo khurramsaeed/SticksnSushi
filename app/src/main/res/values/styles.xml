@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+
     </style>
 
     <style name="AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

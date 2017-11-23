@@ -25,11 +25,12 @@ public class PaymentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
         ViewGroup PaymentView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_payment, container, false);
-
+        setHasOptionsMenu(true);
         return PaymentView;
     }
+
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         final CardForm cardForm = (CardForm) view.findViewById(R.id.cardform);
@@ -87,14 +88,17 @@ public class PaymentFragment extends Fragment {
             public void onClick(Card card) {
                 Toast.makeText(getActivity(), "Navn: " + card.getName(), Toast.LENGTH_LONG
                 ).show();
+
                 selectNavItemFragment(new ConfirmationFragment());
             }
         });
 
     }
+
     /**
      * selectNavItemFragment does fragment transaction while we can simply give it an argument of fragment
      * in this case it is optimal to have this method
+     *
      * @param fragment
      */
     private void selectNavItemFragment(Fragment fragment) {
@@ -104,6 +108,8 @@ public class PaymentFragment extends Fragment {
         ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.activity_checkout_frame, fragment);
         ft.commit();
+
     }
+
 }
 
