@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -7,10 +8,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.MenuCategoryItem;
 
 import org.json.JSONArray;
@@ -24,7 +27,7 @@ import java.util.HashMap;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class TakeAwayFragment extends Fragment {
+public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
@@ -93,6 +96,12 @@ public class TakeAwayFragment extends Fragment {
         SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
 
         ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
+        listView.setOnItemClickListener(this);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        startActivity(new Intent(getContext(), MenuOverviewActivity.class));
     }
 }
