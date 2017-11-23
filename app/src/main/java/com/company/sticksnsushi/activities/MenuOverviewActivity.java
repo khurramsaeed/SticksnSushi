@@ -108,24 +108,19 @@ public class MenuOverviewActivity extends AppCompatActivity {
                                  ViewGroup container,
                                  Bundle savedInstanceState) {
             if(getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                View StartersFragment = inflater.inflate(R.layout.fragment_starters, container, false);
-                return StartersFragment;
+                return inflater.inflate(R.layout.fragment_starters, container, false);
             }
             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                View MakiFragment = inflater.inflate(R.layout.fragment_maki, container, false);
-                return MakiFragment;
+                return inflater.inflate(R.layout.fragment_maki, container, false);
              }
              else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3){
-                View MenuerFragment = inflater.inflate(R.layout.fragment_menuer, container, false);
-                return MenuerFragment;
+                return inflater.inflate(R.layout.fragment_menuer, container, false);
             }
             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 5){
-                View KidsFragment = inflater.inflate(R.layout.fragment_kids, container, false);
-                return KidsFragment;
+                return inflater.inflate(R.layout.fragment_kids, container, false);
             }
             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 4){
-                View ALaCarteFragment = inflater.inflate(R.layout.fragment_a_la_carte, container, false);
-                return ALaCarteFragment;
+                return inflater.inflate(R.layout.fragment_a_la_carte, container, false);
             }
 
             return null;
