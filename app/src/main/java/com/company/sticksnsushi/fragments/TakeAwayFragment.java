@@ -5,16 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
@@ -32,7 +28,7 @@ import java.util.HashMap;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class TakeAwayFragment extends Fragment {
 
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
@@ -50,7 +46,6 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        //recyclerView.setOnItemClickListener(this); FINDES IKKE - i stedet skal man lytte efter onClick på de enkelte vieww
         recyclerView.setAdapter(adapter);
 
         return rootView;
@@ -60,11 +55,11 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
 
         @Override
         public ListElemViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getActivity().getLayoutInflater().inflate(R.layout.list_item_menu_overview, parent, false);
+            View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_takeaway_item, parent, false);
             ListElemViewholder viewholder = new ListElemViewholder(view);
 
-            viewholder.title = view.findViewById(R.id.overview_list_item_name);
-            viewholder.image = view.findViewById(R.id.overview_list_item_image);
+            viewholder.title = view.findViewById(R.id.takeaway_item_name);
+            viewholder.image = view.findViewById(R.id.takeaway_item_image);
 
             viewholder.title.setOnClickListener(viewholder);
             viewholder.image.setOnClickListener(viewholder);
@@ -74,13 +69,12 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
 
         @Override
         public void onBindViewHolder(ListElemViewholder holder, int position) {
-            if (position % 3 == 2) {
+            for (int i =0; i <= position; i++) {
                 holder.image.setImageResource(R.drawable.maki_01);
-            } else {
-                holder.image.setImageResource(R.drawable.starters_01);
+                holder.title.setText("Title her");
             }
-        }
 
+        }
 
         @Override
         public int getItemCount() {
@@ -102,12 +96,6 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
      * afterwards SimpleAdapter is used to create list item views from data
      */
     private void retrieveListView() {
-
-        Log.d(TAG, "retrieveListView: Show data in ListView");
-
-        // Local String and int arrays to store values
-        String[] hashMapProperties = {"itemName", "itemImage"};
-        int[] textViewIds = {R.id.overview_list_item_name, R.id.overview_list_item_image};
 
         try {
             InputStream is = getResources().openRawResource(R.raw.data_categories);
@@ -140,16 +128,11 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
             e.getMessage();
         }
 
-      /*  SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.list_item_menu_overview, hashMapProperties, textViewIds);
+      /*  SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.fragment_takeaway_item, hashMapProperties, textViewIds);
 
         ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
         listView.setOnItemClickListener(this);
         listView.setAdapter(adapter); */
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        startActivity(new Intent(getContext(), MenuOverviewActivity.class));
     }
 
     /**
@@ -158,8 +141,8 @@ public class TakeAwayFragment extends Fragment implements AdapterView.OnItemClic
      * Se https://developer.android.com/training/material/lists-cards.html
      */
     private class ListElemViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView title;
-        ImageView image;
+        private TextView title;
+        private ImageView image;
 
         public ListElemViewholder(View itemView) {
             super(itemView);

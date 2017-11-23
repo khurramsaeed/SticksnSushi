@@ -8,13 +8,14 @@ import java.util.HashMap;
 
 public class MenuCategoryItem {
 
-    private final String itemName;
-    private final Object itemImage;
+    private String itemName;
+    private Object itemImage;
 
     public MenuCategoryItem(String itemName, Object itemImage) {
         this.itemName = itemName;
         this.itemImage = itemImage;
     }
+
 
     public String getItemName() {
         return itemName;
@@ -28,6 +29,7 @@ public class MenuCategoryItem {
         HashMap<String, Object> returnValue = new HashMap<>();
         returnValue.put("itemImage", getItemImage());
         returnValue.put("itemName", getItemName());
+
         return returnValue;
     }
 }
