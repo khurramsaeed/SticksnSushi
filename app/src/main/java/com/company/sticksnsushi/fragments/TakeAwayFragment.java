@@ -1,12 +1,12 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,30 +45,37 @@ public class TakeAwayFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
+        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // Intantiating custom Adapter.
+        CustomDataAdapter adapter = new CustomDataAdapter();
         recyclerView.setAdapter(adapter);
 
         return rootView;
     }
 
-    RecyclerView.Adapter adapter = new RecyclerView.Adapter<ListElemViewholder>() {
+    /**
+     * Custom Adapter
+     * @author Khurram Saeed Malik
+     */
+    public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
 
         @Override
-        public ListElemViewholder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_takeaway_item, parent, false);
-            ListElemViewholder viewholder = new ListElemViewholder(view);
 
-            viewholder.title = view.findViewById(R.id.takeaway_item_name);
-            viewholder.image = view.findViewById(R.id.takeaway_item_image);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), MenuOverviewActivity.class));
+                }
+            });
 
-            viewholder.title.setOnClickListener(viewholder);
-            viewholder.image.setOnClickListener(viewholder);
-
-            return viewholder;
+            return new DataListViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(ListElemViewholder holder, int position) {
+        public void onBindViewHolder(DataListViewHolder holder, int position) {
             for (int i =0; i <= position; i++) {
                 holder.image.setImageResource(R.drawable.maki_01);
                 holder.title.setText("Title her");
@@ -80,7 +87,8 @@ public class TakeAwayFragment extends Fragment {
         public int getItemCount() {
             return data.size();
         }
-    };
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -136,21 +144,19 @@ public class TakeAwayFragment extends Fragment {
     }
 
     /**
-     * En Viewholder husker forskellige views i et listeelement, sådan at søgninger i viewhierakiet
-     * med findViewById() kun behøver at ske EN gang.
-     * Se https://developer.android.com/training/material/lists-cards.html
+     * ViewHolder er et object som er ansvarlig for indeholder referencer
+     * til de enkelte items som vises i RecyclerView
      */
-    private class ListElemViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    private class DataListViewHolder extends RecyclerView.ViewHolder {
         private TextView title;
         private ImageView image;
 
-        public ListElemViewholder(View itemView) {
+        public DataListViewHolder(View itemView) {
             super(itemView);
+
+            title = (TextView) itemView.findViewById(R.id.takeaway_item_name);
+            image = (ImageView) itemView.findViewById(R.id.takeaway_item_image);
         }
 
-        @Override
-        public void onClick(View view) {
-            startActivity(new Intent(getContext(), MenuOverviewActivity.class));
-        }
     }
 }
