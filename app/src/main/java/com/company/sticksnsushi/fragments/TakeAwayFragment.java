@@ -1,7 +1,8 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,14 +16,13 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
-import com.company.sticksnsushi.infrastructure.MenuCategoryItem;
+import com.company.sticksnsushi.infrastructure.Categories;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.
@@ -34,11 +34,21 @@ public class TakeAwayFragment extends Fragment {
     private static final String TAG = "TakeAwayFragment";
 
     private RecyclerView recyclerView;
-    private ArrayList<HashMap<String, Object>> data = new ArrayList<>();
+    private ArrayList<Categories> data = new ArrayList<>();
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        getActivity().setTitle("TAKEAWAY");
+    }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        // Get data from JSON
+        retrieveListView();
 
         View rootView = inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
         rootView.setTag(TAG);
@@ -47,9 +57,15 @@ public class TakeAwayFragment extends Fragment {
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
         // Intantiating custom Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
         recyclerView.setAdapter(adapter);
+
+        // Add data to my adapter
+        for (int i = 0; i < data.size(); i++) {
+            adapter.addItem(data.get(i));
+        }
 
         return rootView;
     }
@@ -59,6 +75,28 @@ public class TakeAwayFragment extends Fragment {
      * @author Khurram Saeed Malik
      */
     public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
+        private final ArrayList<Categories> items;
+
+        public CustomDataAdapter() {
+            this.items = new ArrayList<>();
+        }
+
+        public void addItem(Categories item) {
+            items.add(item);
+            // Sidste element af Array
+            notifyItemInserted(items.size() - 1);
+        }
+
+        // If we want to remove item
+        public void removeItem(Categories item) {
+            int position = items.indexOf(item);
+            if (position == -1) {
+                return;
+            }
+            items.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, items.size() );
+        }
 
         @Override
         public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -76,38 +114,27 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            for (int i =0; i <= position; i++) {
-                holder.image.setImageResource(R.drawable.maki_01);
-                holder.title.setText("Title her");
-            }
+            Categories item = data.get(position);
+
+            holder.title.setText(item.getItemName());
+            holder.image.setImageBitmap(item.getItemImage());
 
         }
 
         @Override
         public int getItemCount() {
-            return data.size();
+            return items.size();
         }
-    }
-
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        getActivity().setTitle("TAKEAWAY");
-
-        retrieveListView();
     }
 
     /***
      * Gets rows from JSON and puts in ArrayList, HashMap
-     * afterwards SimpleAdapter is used to create list item views from data
+     * afterwards SimpleAdapter is used to create list item views from item
      */
     private void retrieveListView() {
 
         try {
             InputStream is = getResources().openRawResource(R.raw.data_categories);
-            //InputStream is = new URL("http://javabog.dk/eksempel.json").openStream();
 
             byte b[] = new byte[is.available()]; // kun små filer
             is.read(b);
@@ -128,7 +155,11 @@ public class TakeAwayFragment extends Fragment {
 
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getActivity().getPackageName());
-                data.add(new MenuCategoryItem(title, resId).toHashMap());
+                // Convert resId to BitMap
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                data.add(new Categories(title, itemImage));
+
             }
 
         } catch (Exception e) {
@@ -136,11 +167,6 @@ public class TakeAwayFragment extends Fragment {
             e.getMessage();
         }
 
-      /*  SimpleAdapter adapter = new SimpleAdapter(getContext(), data, R.layout.fragment_takeaway_item, hashMapProperties, textViewIds);
-
-        ListView listView = view.findViewById(R.id.sidebar_takeaway_listView);
-        listView.setOnItemClickListener(this);
-        listView.setAdapter(adapter); */
     }
 
     /**
