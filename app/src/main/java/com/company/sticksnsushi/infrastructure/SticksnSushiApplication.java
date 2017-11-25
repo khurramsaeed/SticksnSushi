@@ -21,16 +21,16 @@ public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
     private Auth auth;
     private User user;
-    public static ArrayList<Categories> data = new ArrayList<>();
+    public static ArrayList<Categories> data;
 
     @Override
     public void onCreate() {
 
-
-        Log.d(TAG, "onCreate: retrieveListView() called");
+        Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
         auth = new Auth(this);
         user = new User();
+        data = new ArrayList<>();
 
         retrieveListView();
     }
