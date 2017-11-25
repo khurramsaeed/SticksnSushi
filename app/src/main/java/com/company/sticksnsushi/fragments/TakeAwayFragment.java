@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,7 +35,7 @@ public class TakeAwayFragment extends Fragment {
     private static final String TAG = "TakeAwayFragment";
 
     private RecyclerView recyclerView;
-    private ArrayList<Categories> data = new ArrayList<>();
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -46,9 +47,6 @@ public class TakeAwayFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        // Get data from JSON
-        retrieveListView();
 
         View rootView = inflater.inflate(R.layout.sidebar_item_takeaway, container, false);
         rootView.setTag(TAG);
@@ -63,8 +61,8 @@ public class TakeAwayFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Add data to my adapter
-        for (int i = 0; i < data.size(); i++) {
-            adapter.addItem(data.get(i));
+        for (int i = 0; i < SticksnSushiApplication.data.size(); i++) {
+            adapter.addItem(SticksnSushiApplication.data.get(i));
         }
 
         return rootView;
@@ -114,7 +112,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Categories item = data.get(position);
+            Categories item = SticksnSushiApplication.data.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());
@@ -125,48 +123,6 @@ public class TakeAwayFragment extends Fragment {
         public int getItemCount() {
             return items.size();
         }
-    }
-
-    /***
-     * Gets rows from JSON and puts in ArrayList, HashMap
-     * afterwards SimpleAdapter is used to create list item views from item
-     */
-    private void retrieveListView() {
-
-        try {
-            InputStream is = getResources().openRawResource(R.raw.data_categories);
-
-            byte b[] = new byte[is.available()]; // kun små filer
-            is.read(b);
-            String str = new String(b, "UTF-8");
-
-            JSONObject json = new JSONObject(str);
-
-            JSONArray categories = json.getJSONArray("categories");
-
-            int number = categories.length();
-            for (int i = 0; i < number; i++) {
-                JSONObject category = categories.getJSONObject(i);
-                System.err.println("obj = " + category);
-
-                // Get title and imageName from JSON-file
-                String title = category.getString("title");
-                String imageName = category.getString("imageName");
-
-                // resId gets image resource with its identifier (image_name)
-                int resId = getResources().getIdentifier(imageName, "drawable", getActivity().getPackageName());
-                // Convert resId to BitMap
-                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
-
-                data.add(new Categories(title, itemImage));
-
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            e.getMessage();
-        }
-
     }
 
     /**
