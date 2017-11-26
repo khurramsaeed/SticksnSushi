@@ -15,6 +15,8 @@ import com.company.sticksnsushi.fragments.InformationFragment;
 
 public class CheckoutActivity extends BaseActivity {
 
+    // TODO: 26/11/2017 FIX Toolbar
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
