@@ -14,20 +14,20 @@
         android:enabled="true"
         android:icon="@drawable/ic_info"
         android:title="Oplysninger"
-        app:showAsAction="always" />
+        app:showAsAction="" />
 
     <item
         android:id="@+id/menu_payment"
         android:enabled="true"
         android:icon="@drawable/ic_credit_card"
         android:title="Betaling"
-        app:showAsAction="always" />
+        app:showAsAction="" />
 
     <item
         android:id="@+id/menu_confirm"
         android:enabled="true"
         android:icon="@drawable/ic_check_circle"
         android:title="Bekræftelse"
-        app:showAsAction="always" />
+        app:showAsAction="" />
 
 </menu>

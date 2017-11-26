@@ -11,7 +11,7 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
 import com.company.sticksnsushi.fragments.ConfirmationFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
-import com.company.sticksnsushi.fragments.SecondFragment;
+import com.company.sticksnsushi.fragments.InformationFragment;
 
 public class CheckoutActivity extends BaseActivity {
 
@@ -57,7 +57,7 @@ public class CheckoutActivity extends BaseActivity {
                 switch (item.getItemId()) {
             case R.id.menu_chosen_time: selectNavItemFragment(new CheckoutTimeFragment());
                 break;
-            case R.id.menu_information: selectNavItemFragment(new SecondFragment());
+            case R.id.menu_information: selectNavItemFragment(new InformationFragment());
                 break;
             case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
                 break;

@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -141,6 +142,18 @@ public class CheckoutTimeFragment extends Fragment {
         nextScreenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FragmentTransaction ft;
+                ft = getFragmentManager().beginTransaction();
+                // XML files for animation are downloaded from internet
+                ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+                ft.replace(R.id.activity_checkout_frame, new InformationFragment());
+                ft.commit();
+
+                BottomNavigationItemView time = getActivity().findViewById(R.id.menu_chosen_time);
+                time.getItemData().setChecked(false);
+
+                BottomNavigationItemView payment = getActivity().findViewById(R.id.menu_information);
+                payment.getItemData().setChecked(true);
             }
         });
     }
@@ -255,28 +268,5 @@ public class CheckoutTimeFragment extends Fragment {
         rbPickup.setTextColor(Color.parseColor("#ffffff"));
         chooseRestaurant.setTextColor(Color.parseColor("#ffffff"));
         deliveryOption = false;
-    }
-
-    private void selectNavItemFragment(Fragment fragment) {
-        FragmentTransaction ft;
-        ft = getFragmentManager().beginTransaction();
-        // XML files for animation are downloaded from internet
-        ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
-        ft.replace(R.id.activity_checkout_frame, fragment);
-        ft.commit();
-    }
-
-
-    private void selectNavItem(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_chosen_time: selectNavItemFragment(new CheckoutTimeFragment());
-                break;
-            case R.id.menu_information: selectNavItemFragment(new SecondFragment());
-                break;
-            case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
-                break;
-            case R.id.menu_confirm: selectNavItemFragment(new ConfirmationFragment());
-                break;
-        }
     }
     }

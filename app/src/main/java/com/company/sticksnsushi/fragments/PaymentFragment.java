@@ -3,6 +3,7 @@ package com.company.sticksnsushi.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.internal.BottomNavigationItemView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -89,7 +90,19 @@ public class PaymentFragment extends Fragment {
                 Toast.makeText(getActivity(), "Navn: " + card.getName(), Toast.LENGTH_LONG
                 ).show();
 
-                selectNavItemFragment(new ConfirmationFragment());
+
+                FragmentTransaction ft;
+                ft = getFragmentManager().beginTransaction();
+                // XML files for animation are downloaded from internet
+                ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+                ft.replace(R.id.activity_checkout_frame, new ConfirmationFragment());
+                ft.commit();
+
+                BottomNavigationItemView time = getActivity().findViewById(R.id.menu_payment);
+                time.getItemData().setChecked(false);
+
+                BottomNavigationItemView payment = getActivity().findViewById(R.id.menu_confirm);
+                payment.getItemData().setChecked(true);
             }
         });
 
