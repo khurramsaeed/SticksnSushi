@@ -9,6 +9,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,7 +33,13 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navdrawer);
 
-
+        //Special toolbar for this activity
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Back button on Toolbar
+        if (getSupportActionBar() != null) {
+            toolbar.setTitle("Takeaway");
+        }
         // Default set to: Udforsk menu
         displaySelectedItem(R.id.item_takeaway);
 

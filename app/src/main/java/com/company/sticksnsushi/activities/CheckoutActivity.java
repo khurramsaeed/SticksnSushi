@@ -15,23 +15,17 @@ import com.company.sticksnsushi.fragments.InformationFragment;
 
 public class CheckoutActivity extends BaseActivity {
 
-    // TODO: 26/11/2017 FIX Toolbar
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
-
         setSupportActionBar(toolbar);
-
-
-        if (getSupportActionBar() != null){
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        // Back button on Toolbar
+        if (getSupportActionBar() != null) {
+            toolbar.setTitle("Bestilling");
+            toolbar.setNavigationIcon(null);
         }
 
         // Default: Fragment
@@ -45,21 +39,6 @@ public class CheckoutActivity extends BaseActivity {
                 return true;
             }
         });
-    }
-
-    /**
-     * Effects back button in current activity
-     * @param item
-     * @return
-     */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     /**

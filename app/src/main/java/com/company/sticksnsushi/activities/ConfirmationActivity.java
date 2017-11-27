@@ -2,6 +2,7 @@ package com.company.sticksnsushi.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
@@ -15,15 +16,33 @@ public class ConfirmationActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_confirmation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
         // Back button on Toolbar
         if (getSupportActionBar() != null){
             toolbar.setTitle("Bestilling modtaget");
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
         TextView txtSummary = (TextView) findViewById(R.id.txtSuccesSummary);
         txtSummary.setText("Kommer til at indeholde information om bestilling");
+    }
+
+    /**
+     * Effects back button in current activity
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -56,7 +56,7 @@ public class PaymentFragment extends Fragment {
         btnPay.setText("KØB");
         btnPay.setBackgroundColor(redColor);
 
-        txtCardName.setText("Kortholders navn");
+        txtCardName.setHint("Kortholders navn");
         txtCardNumber.setText("Kortnummer");
         txtCardExpire.setText("MM/DD");
 
@@ -70,20 +70,21 @@ public class PaymentFragment extends Fragment {
         txtName.setHintTextColor(Color.WHITE);
         txtName.setTextColor(Color.WHITE);
 
-        //Test kortnummer: 4026 2069 1846 9714
         txtNumber.setHint("Kortnummer");
         txtNumber.setHintTextColor(Color.WHITE);
         txtNumber.setTextColor(Color.WHITE);
+        txtNumber.setText("4826 6921 2324 9540");
 
 
         txtExpireDate.setHint("MM/DD");
         txtExpireDate.setHintTextColor(Color.WHITE);
         txtExpireDate.setTextColor(Color.WHITE);
-
+        txtExpireDate.setText("10/20");
 
         txtCVC.setHint("CVC/CCV");
         txtCVC.setHintTextColor(Color.WHITE);
         txtCVC.setTextColor(Color.WHITE);
+        txtCVC.setText("123");
 
 
         cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {
@@ -114,6 +115,7 @@ public class PaymentFragment extends Fragment {
      *
      * @param fragment
      */
+    @Deprecated
     private void selectNavItemFragment(Fragment fragment) {
         FragmentTransaction ft;
         ft = getFragmentManager().beginTransaction();

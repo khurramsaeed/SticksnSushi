@@ -25,13 +25,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setContentView(@LayoutRes int layoutResID){
         super.setContentView(layoutResID);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.include_toolbar);
 
         if(toolbar != null){
             // toolbar.setLogo(R.drawable.logo_text);
             // toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
             setSupportActionBar(toolbar);
-            //Doesnt work:
             toolbar.setNavigationIcon(R.drawable.menu);
         }
 
