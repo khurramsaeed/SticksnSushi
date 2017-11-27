@@ -24,6 +24,7 @@ public class SticksnSushiApplication extends Application {
     public static ArrayList<Categories> dataCategories;
     public static ArrayList<Item> dataStarters;
     public static ArrayList<Item> dataKids;
+    public static ArrayList<Item> dataMenuer;
 
     @Override
     public void onCreate() {
@@ -35,6 +36,7 @@ public class SticksnSushiApplication extends Application {
         dataCategories = new ArrayList<>();
         dataStarters = new ArrayList<>();
         dataKids = new ArrayList<>();
+        dataMenuer = new ArrayList<>();
 
         retrieveListView();
     }
@@ -62,6 +64,7 @@ public class SticksnSushiApplication extends Application {
             JSONArray categories = json.getJSONArray("categories");
             JSONArray starters = json.getJSONArray("starters");
             JSONArray kids = json.getJSONArray("kids");
+            JSONArray menuer = json.getJSONArray("menuer");
 
             //Data for categories
             int number = categories.length();
@@ -124,6 +127,27 @@ public class SticksnSushiApplication extends Application {
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
                 dataKids.add(new Item(0, price, title, PCS, description, "", itemImage));
+            }
+
+            //Data for menuer
+            int numberMenuer = menuer.length();
+            for (int i = 0; i < numberMenuer; i++) {
+                JSONObject menu = menuer.getJSONObject(i);
+                System.err.println("obj = " + menu);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                int price = menu.getInt("price");
+                String title = menu.getString("title");
+                String PCS = menu.getString("pcs");
+                String description = (String) menu.get("description");
+                String imageName = menu.getString("imageName");
+
+                // resId gets image resource with its identifier (image_name)
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                // Convert resId to BitMap
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+                // TODO: 27-11-2017 Item entity: update constructor id
+                dataMenuer.add(new Item(0, price, title, PCS, description, "", itemImage));
             }
 
 

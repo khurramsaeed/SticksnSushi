@@ -1,4 +1,5 @@
 {
+  //Array of data for categories
   "categories": [
     {
       "title": "Starters",
@@ -18,7 +19,7 @@
     },
     {
       "title": "Kids",
-      "imageName": "kids_01"
+      "imageName": "kids_1"
     },
     {
       "title": "Desserter",
@@ -30,7 +31,7 @@
     }
   ],
 
-
+//Array of data for starters
   "starters": [
     {
       "id": 1,
@@ -187,67 +188,205 @@
     }
   ],
 
+//Array of data for menuer
+  "menuer": [
+    {
+      "title": "Solo",
+      "imageName": "menuer_6",
+      "description": "Valgfrie ruller",
+      "pcs": "menu",
+      "price": 179
+    },
+    {
+      "title": "Laks OD",
+      "imageName": "menuer_2",
+      "description": "",
+      "pcs": "menu",
+      "price": 189
+    },
+    {
+      "title": "Nana ban",
+      "imageName": "menuer_3",
+      "description": "",
+      "pcs": "menu",
+      "price": 169
+    },
+    {
+      "title": "Greenkeeper",
+      "imageName": "menuer_4",
+      "description": "",
+      "pcs": "menu",
+      "price": 219
+    },
+    {
+      "title": "Anden, laksen & deres venner",
+      "imageName": "menuer_5",
+      "description": "",
+      "pcs": "menu",
+      "price": 199
+    },
+    {
+      "title": "Fisk til flere",
+      "imageName": "menuer_17",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 500
+    },
+    {
+      "title": "Ebi Kit Menu",
+      "imageName": "menuer_7",
+      "description": "",
+      "pcs": "menu",
+      "price": 399
+    },
+    {
+      "title": "Perfect day menu",
+      "imageName": "menuer_1",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 599
+    },
+    {
+      "title": "Bord til 2",
+      "imageName": "menuer_8",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 399
+    },
+    {
+      "title": "Mandemad",
+      "imageName": "menuer_9",
+      "description": "",
+      "pcs": "menu",
+      "price": 219
+    },
+    {
+      "title": "Blandede følelser",
+      "imageName": "menuer_10",
+      "description": "",
+      "pcs": "menu",
+      "price": 214
+    },
+    {
+      "title": "Blandede følelser tutatar",
+      "imageName": "menuer_11",
+      "description": "",
+      "pcs": "menu",
+      "price": 294
+    },
+    {
+      "title": "Bord til 2 med Hotate Katafi",
+      "imageName": "menuer_12",
+      "description": "",
+      "pcs": "menu",
+      "price": 499
+    },
+    {
+      "title": "Galla Menu",
+      "imageName": "menuer_13",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 798
+    },
+    {
+      "title": "Extravaganza menu",
+      "imageName": "menuer_14",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 899
+    },
+    {
+      "title": "SushiSøster",
+      "imageName": "menuer_15",
+      "description": "",
+      "pcs": "menu",
+      "price": 289
+    },
+    {
+      "title": "Maki Maki",
+      "imageName": "menuer_16",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 489
+    },
+    {
+      "title": "Four meal drive big",
+      "imageName": "menuer_18",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 799
+    },
+    {
+      "title": "Four meal drive big Snick snack",
+      "imageName": "menuer_19",
+      "description": "",
+      "pcs": "menu",
+      "price": 899
+    }
 
+  ],
+
+// Array of data for kids
   "kids": [
     {
       "title": "Sushi menu reje",
-      "imageName": "kids_01",
+      "imageName": "kids_1",
       "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
       "price": 79
     },
     {
       "title": "Sushi menu laks",
-      "imageName": "kids_02",
+      "imageName": "kids_2",
       "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
       "price": 79
     },
     {
       "title": "Sticks menu",
-      "imageName": "kids_03",
+      "imageName": "kids_3",
       "description": "STICKS 3 kyllingekødboller, kyllingevinger eller laks i teriyaki. Ris, edamame bønner med salt og citron. Yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
       "price": 79
     },
     {
       "title": "Sticks'n'Sushi laks",
-      "imageName": "kids_04",
+      "imageName": "kids_4",
       "description": "NIGIRI: 2 laks. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
       "pcs": "stk.",
       "price": 98
     },
     {
       "title": "Sticks'n'Sushi reje",
-      "imageName": "kids_05",
+      "imageName": "kids_5",
       "description": "NIGIRI: 2 reje. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
       "pcs": "stk.",
       "price": 98
     },
     {
       "title": "Kids fest menu",
-      "imageName": "kids_06",
+      "imageName": "kids_6",
       "description": "64 veldrejede makiruller pakket med Crispy ebi, California, pink Alaska & mamma Mia.",
       "pcs": "Menu.",
       "price": 489
     },
     {
       "title": "Kids hosomaki",
-      "imageName": "kids_07",
+      "imageName": "kids_7",
       "description": "Makirulle med agurk eller økologisk avocado",
       "pcs": "8 stk.",
       "price": 38
     },
     {
       "title": "Kids hosomaki fisk",
-      "imageName": "kids_08",
+      "imageName": "kids_8",
       "description": "Makirulle med laks eller reje",
       "pcs": "8 stk.",
       "price": 38
     },
     {
       "title": "Børneris",
-      "imageName": "kids_09",
+      "imageName": "kids_9",
       "description": "Lille skål velkogte og bløde ris med grøntsagsstave",
       "pcs": "8 stk.",
       "price": 38
