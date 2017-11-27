@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.MakiFragment;
+import com.company.sticksnsushi.fragments.StartersFragment;
 
 public class MenuOverviewActivity extends BaseActivity {
 
@@ -103,30 +105,6 @@ public class MenuOverviewActivity extends BaseActivity {
             return fragment;
         }
 
-
-        @Override
-        public View onCreateView(LayoutInflater inflater,
-                                 ViewGroup container,
-                                 Bundle savedInstanceState) {
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                return inflater.inflate(R.layout.fragment_starters, container, false);
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                return inflater.inflate(R.layout.fragment_maki, container, false);
-             }
-             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3){
-                return inflater.inflate(R.layout.fragment_menuer, container, false);
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 5){
-                return inflater.inflate(R.layout.fragment_kids, container, false);
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 4){
-                return inflater.inflate(R.layout.fragment_a_la_carte, container, false);
-            }
-
-            return null;
-        }
-
     }
 
     /**
@@ -141,6 +119,11 @@ public class MenuOverviewActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
+            if (position==0) return new StartersFragment();
+            if (position==1) return new MakiFragment();
+            if (position==2) return new MakiFragment();
+            if (position==3) return new MakiFragment();
+            if (position==4) return new MakiFragment();
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
            return PlaceholderFragment.newInstance(position + 1);

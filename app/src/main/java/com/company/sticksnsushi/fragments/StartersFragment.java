@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
+
+import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.dataItem;
 
 /**
  * Created by Khurram Saeed Malik on 26/10/2017.
@@ -49,12 +52,13 @@ public class StartersFragment extends BaseFragment {
 
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
-        recyclerView.setAdapter(adapter);
 
         // Add data to my adapter
-        for (int i = 0; i < SticksnSushiApplication.dataItem.size(); i++) {
-            adapter.addItem(SticksnSushiApplication.dataItem.get(i));
+        for (int i = 0; i < dataItem.size(); i++) {
+            System.err.println("TOTAL ITEMS: " + dataItem.size());
+            adapter.addItem(dataItem.get(i));
         }
+        recyclerView.setAdapter(adapter);
 
         return rootView;
     }
@@ -91,18 +95,23 @@ public class StartersFragment extends BaseFragment {
         public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_starters_item, parent, false);
 
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
 
             return new DataListViewHolder(view);
         }
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = SticksnSushiApplication.dataItem.get(position);
+            Item item = dataItem.get(position);
 
             holder.title.setText(item.getItemName());
-            holder.description.setText(item.getItemDescription());
-            holder.price.setText(item.getPrice());
-            holder.pcs.setText(item.getItemPCS());
+            holder.price.setText(item.getPrice() + " kr.");
+            holder.pcs.setText("/"+item.getItemPCS());
             holder.image.setImageBitmap(item.getItemImage());
 
         }
@@ -127,14 +136,13 @@ public class StartersFragment extends BaseFragment {
      * til de enkelte items som vises i RecyclerView
      */
     private class DataListViewHolder extends RecyclerView.ViewHolder {
-        private TextView title, description, pcs, price;
+        private TextView title, pcs, price;
         private ImageView image;
 
         public DataListViewHolder(View itemView) {
             super(itemView);
 
             title = itemView.findViewById(R.id.starters_item_name);
-            description = itemView.findViewById(R.id.starters_item_description);
             pcs = itemView.findViewById(R.id.starters_item_pcs);
             price = itemView.findViewById(R.id.starters_item_price);
             image = itemView.findViewById(R.id.starters_item_image);

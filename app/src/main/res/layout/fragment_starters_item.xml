@@ -4,62 +4,75 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:orientation="vertical"
-    android:background="?android:selectableItemBackground"
+    android:background="?attr/selectableItemBackground"
     android:clickable="true">
-
-    <ImageView
-        android:paddingTop="16dp"
-        android:layout_height="130dp"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:src="@drawable/maki_01"
-        android:id="@+id/starters_item_image"
-        android:contentDescription="@string/app_name"
-        android:scrollbars="vertical"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_gravity="bottom"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="28sp"
-        android:text="@string/sample_item_name"
-        android:id="@+id/starters_item_name"
-        android:gravity="center_horizontal"
-        android:scrollbars="vertical"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:id="@+id/fragment_starters_item_top">
 
-    <TextView
-        android:layout_gravity="bottom"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="28sp"
-        android:text="@string/sample_item_name"
-        android:id="@+id/starters_item_description"
-        android:gravity="center_horizontal"
-        android:scrollbars="vertical"/>
+        <ImageView
+            android:paddingTop="16dp"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:layout_width="match_parent"
+            android:src="@drawable/maki_01"
+            android:id="@+id/starters_item_image"
+            android:contentDescription="@string/app_name"
+            android:scrollbars="vertical"/>
 
-    <TextView
-        android:layout_gravity="bottom"
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="28sp"
-        android:text="@string/sample_item_name"
-        android:id="@+id/starters_item_pcs"
-        android:gravity="center_horizontal"
-        android:scrollbars="vertical"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp"
+            android:text="@string/sample_item_name"
+            android:id="@+id/starters_item_name"
+            android:gravity="center_horizontal"
+            android:scrollbars="vertical" />
 
-    <TextView
-        android:paddingBottom="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="28sp"
-        android:text="@string/sample_item_name"
-        android:id="@+id/starters_item_price"
-        android:gravity="center_horizontal"
-        android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:paddingBottom="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/price_color"
+                android:textSize="13sp"
+                android:text="Price"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/starters_item_price"
+                android:scrollbars="vertical"/>
+
+            <TextView
+                android:paddingBottom="16dp"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/price_color"
+                android:textSize="13sp"
+                android:layout_gravity="center_horizontal"
+                android:text="pcs"
+                android:id="@+id/starters_item_pcs"
+                android:scrollbars="vertical"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
 </FrameLayout>
