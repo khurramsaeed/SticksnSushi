@@ -76,8 +76,6 @@ public class CheckoutActivity extends BaseActivity {
                 break;
             case R.id.menu_payment: selectNavItemFragment(new PaymentFragment());
                 break;
-            case R.id.menu_confirm: selectNavItemFragment(new ConfirmationFragment());
-                break;
         }
     }
 

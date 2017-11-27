@@ -23,11 +23,4 @@
         android:title="Betaling"
         app:showAsAction="" />
 
-    <item
-        android:id="@+id/menu_confirm"
-        android:enabled="true"
-        android:icon="@drawable/ic_check_circle"
-        android:title="Bekræftelse"
-        app:showAsAction="" />
-
 </menu>
