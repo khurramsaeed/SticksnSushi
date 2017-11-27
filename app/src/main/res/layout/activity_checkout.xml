@@ -18,9 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/checkout_navigation"
-        app:itemBackground="@color/colorPrimary"
+        app:itemBackground="@color/colorSecondary"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/checkout_navigation"
+        android:background="@color/colorPrimaryText" />
 
     <FrameLayout
         android:layout_width="match_parent"

@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
@@ -21,6 +22,18 @@ public class CheckoutActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
+
+        setSupportActionBar(toolbar);
+
+
+        if (getSupportActionBar() != null){
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         // Default: Fragment
         selectNavItemFragment(new CheckoutTimeFragment());
