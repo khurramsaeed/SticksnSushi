@@ -10,7 +10,6 @@ import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
-import com.company.sticksnsushi.fragments.ConfirmationFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
 import com.company.sticksnsushi.fragments.InformationFragment;
 

@@ -13,7 +13,8 @@ import com.company.sticksnsushi.R;
 /**
  * Created by Khurram Saeed Malik on 22/11/2017.
  */
-
+// TODO: 27/11/2017 Moved to ConfirmationActivity
+@Deprecated
 public class ConfirmationFragment extends Fragment {
 
     @Nullable
