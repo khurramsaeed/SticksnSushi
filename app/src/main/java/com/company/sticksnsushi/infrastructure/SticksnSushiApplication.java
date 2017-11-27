@@ -21,8 +21,9 @@ public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
     private Auth auth;
     private User user;
-    public static ArrayList<Categories> data;
-    public static ArrayList<Item> dataItem;
+    public static ArrayList<Categories> dataCategories;
+    public static ArrayList<Item> dataStarters;
+    public static ArrayList<Item> dataKids;
 
     @Override
     public void onCreate() {
@@ -31,8 +32,9 @@ public class SticksnSushiApplication extends Application {
         super.onCreate();
         auth = new Auth(this);
         user = new User();
-        data = new ArrayList<>();
-        dataItem = new ArrayList<>();
+        dataCategories = new ArrayList<>();
+        dataStarters = new ArrayList<>();
+        dataKids = new ArrayList<>();
 
         retrieveListView();
     }
@@ -48,23 +50,18 @@ public class SticksnSushiApplication extends Application {
     private void retrieveListView() {
 
         try {
-            InputStream is = getResources().openRawResource(R.raw.data_categories);
+            InputStream inputStream = getResources().openRawResource(R.raw.data_backend);
 
-            byte b[] = new byte[is.available()]; // kun små filer
-            is.read(b);
-            String str = new String(b, "UTF-8");
+            byte bytes[] = new byte[inputStream.available()]; // kun små filer
+            inputStream.read(bytes);
+            String data = new String(bytes, "UTF-8");
 
-            InputStream ss = getResources().openRawResource(R.raw.data_starters);
-            byte bs[] = new byte[ss.available()]; // kun små filer
-            ss.read(bs);
-            String st = new String(bs, "UTF-8");
+            JSONObject json = new JSONObject(data);
 
-
-            JSONObject json = new JSONObject(str);
-            JSONObject jsonStart = new JSONObject(st);
 
             JSONArray categories = json.getJSONArray("categories");
-            JSONArray starters = jsonStart.getJSONArray("starters");
+            JSONArray starters = json.getJSONArray("starters");
+            JSONArray kids = json.getJSONArray("kids");
 
             //Data for categories
             int number = categories.length();
@@ -81,7 +78,7 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
 
-                data.add(new Categories(title, itemImage));
+                dataCategories.add(new Categories(title, itemImage));
 
             }
 
@@ -105,8 +102,30 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
 
-                dataItem.add(new Item(id, price, title, PCS, description, category, itemImage));
+                dataStarters.add(new Item(id, price, title, PCS, description, category, itemImage));
             }
+
+            //Data for kids
+            int numberKids = kids.length();
+            for (int i = 0; i < numberKids; i++) {
+                JSONObject kid = kids.getJSONObject(i);
+                System.err.println("obj = " + kid);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                int price = kid.getInt("price");
+                String title = kid.getString("title");
+                String PCS = kid.getString("pcs");
+                String description = (String) kid.get("description");
+                String imageName = kid.getString("imageName");
+
+                // resId gets image resource with its identifier (image_name)
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                // Convert resId to BitMap
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+                // TODO: 27-11-2017 Item entity: update constructor id
+                dataKids.add(new Item(0, price, title, PCS, description, "", itemImage));
+            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

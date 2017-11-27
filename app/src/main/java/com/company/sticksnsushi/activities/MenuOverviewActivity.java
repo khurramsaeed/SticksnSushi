@@ -6,14 +6,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.KidsFragment;
 import com.company.sticksnsushi.fragments.MakiFragment;
 import com.company.sticksnsushi.fragments.StartersFragment;
 
@@ -123,7 +120,7 @@ public class MenuOverviewActivity extends BaseActivity {
             if (position==1) return new MakiFragment();
             if (position==2) return new MakiFragment();
             if (position==3) return new MakiFragment();
-            if (position==4) return new MakiFragment();
+            if (position==4) return new KidsFragment();
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
            return PlaceholderFragment.newInstance(position + 1);

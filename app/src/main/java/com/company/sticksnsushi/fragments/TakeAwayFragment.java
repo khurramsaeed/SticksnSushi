@@ -1,8 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,10 +17,6 @@ import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -60,9 +54,9 @@ public class TakeAwayFragment extends Fragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
         recyclerView.setAdapter(adapter);
 
-        // Add data to my adapter
-        for (int i = 0; i < SticksnSushiApplication.data.size(); i++) {
-            adapter.addItem(SticksnSushiApplication.data.get(i));
+        // Add dataCategories to my adapter
+        for (int i = 0; i < SticksnSushiApplication.dataCategories.size(); i++) {
+            adapter.addItem(SticksnSushiApplication.dataCategories.get(i));
         }
 
         return rootView;
@@ -112,7 +106,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Categories item = SticksnSushiApplication.data.get(position);
+            Categories item = SticksnSushiApplication.dataCategories.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());

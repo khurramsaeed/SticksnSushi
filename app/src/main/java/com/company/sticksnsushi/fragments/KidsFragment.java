@@ -16,16 +16,15 @@ import com.company.sticksnsushi.infrastructure.Item;
 
 import java.util.ArrayList;
 
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.dataStarters;
+import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.dataKids;
 
 /**
- * Created by Khurram Saeed Malik on 26/10/2017.
+ * Created by Nikolaj on 27-11-2017.
  */
 
-public class StartersFragment extends BaseFragment {
-
+public class KidsFragment extends BaseFragment {
     // For debugging purposes
-    private static final String TAG = "StartersFragment";
+    private static final String TAG = "KidsFragment";
 
     private RecyclerView recyclerView;
 
@@ -34,17 +33,17 @@ public class StartersFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("STARTERS");
+        getActivity().setTitle("KIDS");
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_starters, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_kids, container, false);
         rootView.setTag(TAG);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView1);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewKids);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
@@ -53,8 +52,9 @@ public class StartersFragment extends BaseFragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < dataStarters.size(); i++) {
-            adapter.addItem(dataStarters.get(i));
+        for (int i = 0; i < dataKids.size(); i++) {
+            System.err.println("TOTAL ITEMS: " + dataKids.size());
+            adapter.addItem(dataKids.get(i));
         }
         recyclerView.setAdapter(adapter);
 
@@ -91,7 +91,7 @@ public class StartersFragment extends BaseFragment {
 
         @Override
         public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_starters_item, parent, false);
+            View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_kids_item, parent, false);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -105,7 +105,7 @@ public class StartersFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = dataStarters.get(position);
+            Item item = dataKids.get(position);
 
             holder.title.setText(item.getItemName());
             holder.price.setText(item.getPrice() + " kr.");
@@ -140,11 +140,12 @@ public class StartersFragment extends BaseFragment {
         public DataListViewHolder(View itemView) {
             super(itemView);
 
-            title = itemView.findViewById(R.id.starters_item_name);
-            pcs = itemView.findViewById(R.id.starters_item_pcs);
-            price = itemView.findViewById(R.id.starters_item_price);
-            image = itemView.findViewById(R.id.starters_item_image);
+            title = itemView.findViewById(R.id.kids_item_name);
+            pcs = itemView.findViewById(R.id.kids_item_pcs);
+            price = itemView.findViewById(R.id.kids_item_price);
+            image = itemView.findViewById(R.id.kids_item_image);
         }
 
     }
 }
+
