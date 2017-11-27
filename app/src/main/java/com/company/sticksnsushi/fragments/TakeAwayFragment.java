@@ -19,6 +19,8 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
+import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.instance;
+
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
@@ -55,8 +57,8 @@ public class TakeAwayFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < SticksnSushiApplication.dataCategories.size(); i++) {
-            adapter.addItem(SticksnSushiApplication.dataCategories.get(i));
+        for (int i = 0; i < instance.dataCategories.size(); i++) {
+            adapter.addItem(instance.dataCategories.get(i));
         }
 
         return rootView;
@@ -106,7 +108,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Categories item = SticksnSushiApplication.dataCategories.get(position);
+            Categories item = instance.dataCategories.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());

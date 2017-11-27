@@ -1,11 +1,19 @@
 package com.company.sticksnsushi.infrastructure;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
+import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.library.NetworkStatus;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,6 +27,15 @@ import java.util.ArrayList;
 
 public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
+
+    public static SticksnSushiApplication instance;
+    public static SharedPreferences prefs;
+    public static ConnectivityManager connectivityManager;
+    public static String versionsnavn = BuildConfig.VERSION_NAME;
+    public static Handler mainThread;
+    public static Resources res;
+    public static NetworkStatus network;
+
     private Auth auth;
     private User user;
     public static ArrayList<Categories> dataCategories;
@@ -31,6 +48,13 @@ public class SticksnSushiApplication extends Application {
 
         Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
+        instance = this;
+        //mainThread = new Handler();
+        connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        res = SticksnSushiApplication.instance.getResources();
+        network = new NetworkStatus();
+
         auth = new Auth(this);
         user = new User();
         dataCategories = new ArrayList<>();
