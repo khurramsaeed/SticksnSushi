@@ -31,7 +31,7 @@ public class SticksnSushiApplication extends Application {
     public static SticksnSushiApplication instance;
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
-    public static String versionsnavn = BuildConfig.VERSION_NAME;
+    public static String versionName = BuildConfig.VERSION_NAME;
     public static Handler mainThread;
     public static Resources res;
     public static NetworkStatus network;
