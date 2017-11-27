@@ -1,5 +1,7 @@
 package com.company.sticksnsushi.infrastructure;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by ksm on 08/11/2017.
  */
@@ -8,15 +10,19 @@ public class Item {
     private int id;
     private int price;
     private String itemName;
+    private String itemPCS;
     private String itemDescription;
     private String category;
+    private Bitmap itemImage;
 
-    public Item(int id, int price, String itemName, String itemDescription, String category) {
+    public Item(int id, int price, String itemName, String itemPCS , String itemDescription, String category, Bitmap itemImage) {
         this.id = id;
         this.price = price;
         this.itemName = itemName;
+        this.itemPCS= itemPCS;
         this.itemDescription = itemDescription;
         this.category = category;
+        this.itemImage = itemImage;
     }
 
     public int getId() {
@@ -43,6 +49,10 @@ public class Item {
         this.itemName = itemName;
     }
 
+    public String  getItemPCS() {return itemPCS; }
+
+    public void setItemPCS(String itemPCS) {this.itemPCS = itemPCS; }
+
     public String getItemDescription() {
         return itemDescription;
     }
@@ -57,5 +67,13 @@ public class Item {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Bitmap getItemImage() {
+        return itemImage;
+    }
+
+    public void setItemImage(Bitmap itemImage) {
+        this.itemImage = itemImage;
     }
 }

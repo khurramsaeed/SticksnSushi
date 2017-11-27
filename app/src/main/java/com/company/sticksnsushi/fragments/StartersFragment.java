@@ -1,9 +1,20 @@
 package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+
+import java.util.ArrayList;
 
 /**
  * Created by Khurram Saeed Malik on 26/10/2017.
@@ -11,15 +22,123 @@ import android.view.ViewGroup;
 
 public class StartersFragment extends BaseFragment {
 
+    // For debugging purposes
+    private static final String TAG = "StartersFragment";
+
+    private RecyclerView recyclerView;
+
+
     @Override
-    public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
-//       ViewGroup startersView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_starters, container, false);
-//
-//        return startersView;
-        return null;
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        getActivity().setTitle("STARTERS");
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_starters, container, false);
+        rootView.setTag(TAG);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView1);
+
+        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        // Intantiating Adapter.
+        CustomDataAdapter adapter = new CustomDataAdapter();
+        recyclerView.setAdapter(adapter);
+
+        // Add data to my adapter
+        for (int i = 0; i < SticksnSushiApplication.dataItem.size(); i++) {
+            adapter.addItem(SticksnSushiApplication.dataItem.get(i));
+        }
+
+        return rootView;
+    }
+
+    /**
+     * Custom Adapter
+     * @author Khurram Saeed Malik
+     */
+    public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
+        private final ArrayList<Item> items;
+
+        public CustomDataAdapter() {
+            this.items = new ArrayList<>();
+        }
+
+        public void addItem(Item item) {
+            items.add(item);
+            // Sidste element af Array
+            notifyItemInserted(items.size() - 1);
+        }
+
+        // If we want to remove item
+        public void removeItem(Item item) {
+            int position = items.indexOf(item);
+            if (position == -1) {
+                return;
+            }
+            items.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, items.size() );
+        }
+
+        @Override
+        public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_starters_item, parent, false);
 
 
+            return new DataListViewHolder(view);
+        }
 
+        @Override
+        public void onBindViewHolder(DataListViewHolder holder, int position) {
+            Item item = SticksnSushiApplication.dataItem.get(position);
+
+            holder.title.setText(item.getItemName());
+            holder.description.setText(item.getItemDescription());
+            holder.price.setText(item.getPrice());
+            holder.pcs.setText(item.getItemPCS());
+            holder.image.setImageBitmap(item.getItemImage());
+
+        }
+
+//        @Override
+//        public void onBindViewHolder(TakeAwayFragment.DataListViewHolder holder, int position) {
+//            Categories item = SticksnSushiApplication.data.get(position);
+//
+//            holder.title.setText(item.getItemName());
+//            holder.image.setImageBitmap(item.getItemImage());
+//
+//        }
+
+        @Override
+        public int getItemCount() {
+            return items.size();
+        }
+    }
+
+    /**
+     * ViewHolder er et object som er ansvarlig for indeholder referencer
+     * til de enkelte items som vises i RecyclerView
+     */
+    private class DataListViewHolder extends RecyclerView.ViewHolder {
+        private TextView title, description, pcs, price;
+        private ImageView image;
+
+        public DataListViewHolder(View itemView) {
+            super(itemView);
+
+            title = itemView.findViewById(R.id.starters_item_name);
+            description = itemView.findViewById(R.id.starters_item_description);
+            pcs = itemView.findViewById(R.id.starters_item_pcs);
+            price = itemView.findViewById(R.id.starters_item_price);
+            image = itemView.findViewById(R.id.starters_item_image);
+        }
+
+    }
 }
