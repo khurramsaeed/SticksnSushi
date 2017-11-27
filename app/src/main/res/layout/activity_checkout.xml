@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:menu="@menu/checkout_navigation"
+        android:background="?attr/selectableItemBackground"
         app:itemBackground="@color/colorSecondary"
         app:itemIconTint="@android:color/white"
         app:itemTextColor="@android:color/white" />
@@ -26,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@id/checkout_navigation"
-        android:background="@color/colorPrimaryText" />
+        android:background="@color/colorAccent" />
 
     <FrameLayout
         android:layout_width="match_parent"
