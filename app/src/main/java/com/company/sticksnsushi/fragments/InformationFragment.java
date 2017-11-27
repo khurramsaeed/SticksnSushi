@@ -24,7 +24,7 @@ public class InformationFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Information");
+        getActivity().setTitle("Bestilling");
 
     }
 }

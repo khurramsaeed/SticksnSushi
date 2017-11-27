@@ -5,11 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.company.sticksnsushi.R;
-
-/**
- * Created by Khurram Saeed Malik on 23/10/2017.
- */
-
+//REMOVE THIS ACTIVITY - INCLUDING XML FILE
+// TODO: 27/11/2017 DELETE THIS ACTIVITY
+@Deprecated
 public class OverviewActivity extends BaseActivity {
 
     @Override
