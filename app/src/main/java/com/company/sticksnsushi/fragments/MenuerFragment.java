@@ -44,7 +44,7 @@ public class MenuerFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_menuer, container, false);
         rootView.setTag(TAG);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView1);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMenuer);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 1 row.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));

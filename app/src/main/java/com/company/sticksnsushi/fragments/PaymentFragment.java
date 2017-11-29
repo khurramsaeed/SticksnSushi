@@ -50,6 +50,9 @@ public class PaymentFragment extends Fragment {
         EditText txtNumber = (EditText) view.findViewById(R.id.card_number);
         EditText txtCVC = (EditText) view.findViewById(R.id.cvc);
 
+
+
+
         int redColor = getResources().getColor(R.color.colorAccent);
 
 
@@ -69,22 +72,26 @@ public class PaymentFragment extends Fragment {
         txtName.setHint("Kortholders navn");
         txtName.setHintTextColor(Color.WHITE);
         txtName.setTextColor(Color.WHITE);
+        txtName.setTextSize(15);
 
         txtNumber.setHint("Kortnummer");
         txtNumber.setHintTextColor(Color.WHITE);
         txtNumber.setTextColor(Color.WHITE);
         txtNumber.setText("4826 6921 2324 9540");
+        txtNumber.setTextSize(15);
 
 
         txtExpireDate.setHint("MM/DD");
         txtExpireDate.setHintTextColor(Color.WHITE);
         txtExpireDate.setTextColor(Color.WHITE);
         txtExpireDate.setText("10/20");
+        txtExpireDate.setTextSize(15);
 
         txtCVC.setHint("CVC/CCV");
         txtCVC.setHintTextColor(Color.WHITE);
         txtCVC.setTextColor(Color.WHITE);
         txtCVC.setText("123");
+        txtCVC.setTextSize(15);
 
 
         cardForm.setPayBtnClickListner(new OnPayBtnClickListner() {

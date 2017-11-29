@@ -44,7 +44,7 @@ public class StartersFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.fragment_starters, container, false);
         rootView.setTag(TAG);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView1);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewStarters);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
