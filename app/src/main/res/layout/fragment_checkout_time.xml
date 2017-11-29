@@ -76,6 +76,8 @@
         android:text="Videre"
         android:layout_marginTop="59dp"
         android:layout_below="@+id/chooseRestaurant"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimaryText"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 

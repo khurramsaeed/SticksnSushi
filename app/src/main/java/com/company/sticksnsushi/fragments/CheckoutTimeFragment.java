@@ -224,6 +224,9 @@ public class CheckoutTimeFragment extends Fragment {
 
 
             }
+            if(popup.getMenu().size()==0){
+                Toast.makeText(getActivity(), "Der kan ikke længere bestilles takeaway i dag", Toast.LENGTH_LONG).show();
+            }
             popup.show();
             popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener(){
                 public boolean onMenuItemClick(MenuItem item) {
@@ -257,6 +260,7 @@ public class CheckoutTimeFragment extends Fragment {
         chooseTime.setTextColor(Color.parseColor("#ffffff"));
         rbDelivery.setTextColor(Color.parseColor("#ffffff"));
         deliveryOption = true;
+        chooseRestaurant.setText("Vælg restaurant");
     }
 
     public void setPickup(){
@@ -268,5 +272,8 @@ public class CheckoutTimeFragment extends Fragment {
         rbPickup.setTextColor(Color.parseColor("#ffffff"));
         chooseRestaurant.setTextColor(Color.parseColor("#ffffff"));
         deliveryOption = false;
+        chooseDate.setText("Vælg dato for levering");
+        chooseTime.setText("Vælg tidspunkt");
+        chooseTime.setVisibility(View.INVISIBLE);
     }
     }
