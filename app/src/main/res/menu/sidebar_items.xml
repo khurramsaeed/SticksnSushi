@@ -13,7 +13,7 @@
 
         <item
             android:id="@+id/item_allergies"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/alert_octagon"
             android:title="Allergener" />
         <item
             android:id="@+id/item_previous_orders"
