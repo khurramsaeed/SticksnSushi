@@ -32,7 +32,7 @@ public class ProfileActivity extends BaseActivity {
 
         setContentView(R.layout.activity_profile);
 
-        displaySelectedItem(1);
+        displaySelectedItem(2);
     }
 
     private void displaySelectedItem(int id) {
