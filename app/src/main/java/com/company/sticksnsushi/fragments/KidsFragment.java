@@ -16,7 +16,7 @@ import com.company.sticksnsushi.infrastructure.Item;
 
 import java.util.ArrayList;
 
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.dataKids;
+import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.instance;
 
 /**
  * Created by Nikolaj on 27-11-2017.
@@ -52,9 +52,9 @@ public class KidsFragment extends BaseFragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < dataKids.size(); i++) {
-            System.err.println("TOTAL ITEMS: " + dataKids.size());
-            adapter.addItem(dataKids.get(i));
+        for (int i = 0; i < instance.dataKids.size(); i++) {
+            System.err.println("TOTAL ITEMS: " + instance.dataKids.size());
+            adapter.addItem(instance.dataKids.get(i));
         }
         recyclerView.setAdapter(adapter);
 
@@ -105,7 +105,7 @@ public class KidsFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = dataKids.get(position);
+            Item item = instance.dataKids.get(position);
 
             holder.title.setText(item.getItemName());
             holder.price.setText(item.getPrice() + " kr.");
