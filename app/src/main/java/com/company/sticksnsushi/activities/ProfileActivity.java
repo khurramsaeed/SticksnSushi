@@ -8,11 +8,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.activities.BaseActivity;
-import com.company.sticksnsushi.fragments.AllergiesFragment;
-import com.company.sticksnsushi.fragments.CartFragment;
-import com.company.sticksnsushi.fragments.PreviousOrders;
-import com.company.sticksnsushi.fragments.TakeAwayFragment;
 import com.company.sticksnsushi.fragments.UserProfileFragment1;
 import com.company.sticksnsushi.fragments.UserProfileFragment2;
 import com.company.sticksnsushi.fragments.UserProfileFragment3;
