@@ -41,6 +41,7 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:maxLines="1"
         android:backgroundTint="@color/colorPrimary"/>
 
         <TextView
@@ -54,6 +55,7 @@
             android:id="@+id/editFirma"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:backgroundTint="@color/colorPrimary"
             />
 
@@ -67,6 +69,7 @@
             android:id="@+id/editAdresse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:backgroundTint="@color/colorPrimary"/>
 
         <TextView
@@ -79,6 +82,7 @@
             android:id="@+id/editpostnr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:backgroundTint="@color/colorPrimary"/>
 
         <TextView
@@ -91,6 +95,7 @@
             android:id="@+id/editCity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:backgroundTint="@color/colorPrimary"/>
 
 
@@ -100,15 +105,28 @@
             android:text=""/>
 
 
-
-
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/colorPrimaryText" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom">
 
+        <Button
+            android:id="@+id/nextScreenButtom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Videre"
+            android:gravity="center"
+            android:layout_marginTop="59dp"
+            android:background="@color/colorAccent"
+            android:textColor="@color/colorPrimaryText"/>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
