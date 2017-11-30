@@ -1,0 +1,424 @@
+{
+  //Array of data for categories
+  "categories": [
+    {
+      "title": "Starters",
+      "imageName": "starters_01"
+    },
+    {
+      "title": "Maki",
+      "imageName": "maki_01"
+    },
+    {
+      "title": "Menuer",
+      "imageName": "menuer_4"
+    },
+    {
+      "title": "À la carte",
+      "imageName": "alacarte_02"
+    },
+    {
+      "title": "Kids",
+      "imageName": "kids_1"
+    },
+    {
+      "title": "Desserter",
+      "imageName": "dessert_01"
+    },
+    {
+      "title": "Dip & diverse",
+      "imageName": "dip_chili"
+    }
+  ],
+
+//Array of data for starters
+  "starters": [
+    {
+      "id": 1,
+      "title": "Kani korokke",
+      "imageName": "starters_1",
+      "description": "Krabbe croquetter med wasabi caesar dressing",
+      "pcs": "4 stk.",
+      "price": 49,
+      "category": "Starters"
+    },
+    {
+      "id": 2,
+      "title": "Ebi hapser",
+      "imageName": "starters_2",
+      "description": "Tempurareje, miso aïoli, chili, lime og koriander",
+      "pcs": "6 stk.",
+      "price": 89,
+      "category": "Starters"
+    },
+    {
+      "id": 3,
+      "title": "Hotate Kataifi",
+      "imageName": "starters_3",
+      "description": "Kammusling, miso aïoli, ørredrogn & urter",
+      "pcs": "6 stk.",
+      "price": 109,
+      "category": "Starters"
+    },
+    {
+      "id": 4,
+      "title": "Jordskokker",
+      "imageName": "starters_4",
+      "description": "Friterede jordskokker, serveret med miso aïoli",
+      "pcs": "stk",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 5,
+      "title": "Grillet broccoli",
+      "imageName": "starters_5",
+      "description": "Grillet broccoli med spicy goma ",
+      "pcs": "stk",
+      "price": 36,
+      "category": "Starters"
+    },
+    {
+      "id": 6,
+      "title": "Friteret blomkål",
+      "imageName": "starters_6",
+      "description": "Friteret blomkål serveret med trøffel gomadressing",
+      "pcs": "stk",
+      "price": 36,
+      "category": "Starters"
+    },
+    {
+      "id": 7,
+      "title": "Edamame bønner",
+      "imageName": "starters_7",
+      "description": "Lune edamame bønner med citron og havsalt",
+      "pcs": "skål",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 8,
+      "title": "Grillede edamame bønner",
+      "imageName": "starters_8",
+      "description": "Edamame bønner grillet med soya",
+      "pcs": "stk",
+      "price": 43,
+      "category": "Starters"
+    },
+    {
+      "id": 9,
+      "title": "Spicy edamame bønner",
+      "imageName": "starters_9",
+      "description": "Spicy edamame bønner",
+      "pcs": "skål",
+      "price": 41,
+      "category": "Starters"
+    },
+    {
+      "id": 10,
+      "title": "Yasaisticks",
+      "imageName": "starters_10",
+      "description": "Årstidens økologiske grøntsager med miso- eller keikodip",
+      "pcs": "stk",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 11,
+      "title": "Spicy misosuppe",
+      "imageName": "starters_11",
+      "description": "Misosuppe med laks, tofu, kimchi, shiitake, wakametang, chili og koriander",
+      "pcs": "stk",
+      "price": 47,
+      "category": "Starters"
+    },
+    {
+      "id": 12,
+      "title": "Klassisk misosuppe",
+      "imageName": "starters_12",
+      "description": "Klassisk misosuppe med tofu, forårsløg og tang",
+      "pcs": "stk",
+      "price": 25,
+      "category": "Starters"
+    },
+    {
+      "id": 13,
+      "title": "Grillet avocado",
+      "imageName": "starters_13",
+      "description": "Grillet økologisk avocado med ponzu og wasabi",
+      "pcs": "halv",
+      "price": 25,
+      "category": "Starters"
+    },
+    {
+      "id": 14,
+      "title": "Tangsalat",
+      "imageName": "starters_14",
+      "description": "Tang, kelp-nudler, tomat, radise, asparges serveret med goma og yuzu vinaigrette",
+      "pcs": "stk",
+      "price": 49,
+      "category": "Starters"
+    },
+    {
+      "id": 15,
+      "title": "Daikon Shake",
+      "imageName": "starters_15",
+      "description": "Laks, cream cheese, avocado og agurk rullet i kinaradise serveret med ponzu",
+      "pcs": "4 skiver",
+      "price": 40,
+      "category": "Starters"
+    },
+    {
+      "id": 16,
+      "title": "Daikon Green",
+      "imageName": "starters_16",
+      "description": "Årstidens grønt rullet i kinaradise ",
+      "pcs": "4 skiver",
+      "price": 35,
+      "category": "Starters"
+    },
+    {
+      "id": 17,
+      "title": "Daikon Ebi",
+      "imageName": "starters_17",
+      "description": "Reje, avocado, agurk og karse rullet i kinaradise ",
+      "pcs": "4 skiver",
+      "price": 45,
+      "category": "Starters"
+    }
+  ],
+
+//Array of data for menuer
+  "menuer": [
+    {
+      "title": "Solo",
+      "imageName": "menuer_6",
+      "description": "Valgfrie ruller",
+      "pcs": "menu",
+      "price": 179
+    },
+    {
+      "title": "Laks OD",
+      "imageName": "menuer_2",
+      "description": "",
+      "pcs": "menu",
+      "price": 189
+    },
+    {
+      "title": "Nana ban",
+      "imageName": "menuer_3",
+      "description": "",
+      "pcs": "menu",
+      "price": 169
+    },
+    {
+      "title": "Greenkeeper",
+      "imageName": "menuer_4",
+      "description": "",
+      "pcs": "menu",
+      "price": 219
+    },
+    {
+      "title": "Anden, laksen & deres venner",
+      "imageName": "menuer_5",
+      "description": "",
+      "pcs": "menu",
+      "price": 199
+    },
+    {
+      "title": "Fisk til flere",
+      "imageName": "menuer_17",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 500
+    },
+    {
+      "title": "Ebi Kit Menu",
+      "imageName": "menuer_7",
+      "description": "",
+      "pcs": "menu",
+      "price": 399
+    },
+    {
+      "title": "Perfect day menu",
+      "imageName": "menuer_1",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 599
+    },
+    {
+      "title": "Bord til 2",
+      "imageName": "menuer_8",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 399
+    },
+    {
+      "title": "Mandemad",
+      "imageName": "menuer_9",
+      "description": "",
+      "pcs": "menu",
+      "price": 219
+    },
+    {
+      "title": "Blandede følelser",
+      "imageName": "menuer_10",
+      "description": "",
+      "pcs": "menu",
+      "price": 214
+    },
+    {
+      "title": "Blandede følelser tutatar",
+      "imageName": "menuer_11",
+      "description": "",
+      "pcs": "menu",
+      "price": 294
+    },
+    {
+      "title": "Bord til 2 med Hotate Katafi",
+      "imageName": "menuer_12",
+      "description": "",
+      "pcs": "menu",
+      "price": 499
+    },
+    {
+      "title": "Galla Menu",
+      "imageName": "menuer_13",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 798
+    },
+    {
+      "title": "Extravaganza menu",
+      "imageName": "menuer_14",
+      "description": "",
+      "pcs": "2 personer",
+      "price": 899
+    },
+    {
+      "title": "SushiSøster",
+      "imageName": "menuer_15",
+      "description": "",
+      "pcs": "menu",
+      "price": 289
+    },
+    {
+      "title": "Maki Maki",
+      "imageName": "menuer_16",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 489
+    },
+    {
+      "title": "Four meal drive big",
+      "imageName": "menuer_18",
+      "description": "",
+      "pcs": "god at dele",
+      "price": 799
+    },
+    {
+      "title": "Four meal drive big Snick snack",
+      "imageName": "menuer_19",
+      "description": "",
+      "pcs": "menu",
+      "price": 899
+    }
+
+  ],
+
+// Array of data for kids
+  "kids": [
+    {
+      "title": "Sushi menu reje",
+      "imageName": "kids_1",
+      "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
+      "pcs": "stk.",
+      "price": 79
+    },
+    {
+      "title": "Sushi menu laks",
+      "imageName": "kids_2",
+      "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
+      "pcs": "stk.",
+      "price": 79
+    },
+    {
+      "title": "Sticks menu",
+      "imageName": "kids_3",
+      "description": "STICKS 3 kyllingekødboller, kyllingevinger eller laks i teriyaki. Ris, edamame bønner med salt og citron. Yasai sticks med miso dip. Chokoladefisk",
+      "pcs": "stk.",
+      "price": 79
+    },
+    {
+      "title": "Sticks'n'Sushi laks",
+      "imageName": "kids_4",
+      "description": "NIGIRI: 2 laks. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
+      "pcs": "stk.",
+      "price": 98
+    },
+    {
+      "title": "Sticks'n'Sushi reje",
+      "imageName": "kids_5",
+      "description": "NIGIRI: 2 reje. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
+      "pcs": "stk.",
+      "price": 98
+    },
+    {
+      "title": "Kids fest menu",
+      "imageName": "kids_6",
+      "description": "64 veldrejede makiruller pakket med Crispy ebi, California, pink Alaska & mamma Mia.",
+      "pcs": "Menu.",
+      "price": 489
+    },
+    {
+      "title": "Kids hosomaki",
+      "imageName": "kids_7",
+      "description": "Makirulle med agurk eller økologisk avocado",
+      "pcs": "8 stk.",
+      "price": 38
+    },
+    {
+      "title": "Kids hosomaki fisk",
+      "imageName": "kids_8",
+      "description": "Makirulle med laks eller reje",
+      "pcs": "8 stk.",
+      "price": 38
+    },
+    {
+      "title": "Børneris",
+      "imageName": "kids_9",
+      "description": "Lille skål velkogte og bløde ris med grøntsagsstave",
+      "pcs": "8 stk.",
+      "price": 38
+    },
+    {
+      "title": "Risbolle",
+      "imageName": "kids_10",
+      "description": "Risbolle",
+      "pcs": "stk.",
+      "price": 5
+    },
+    {
+      "title": "Chokoladefisk",
+      "imageName": "kids_11",
+      "description": "CHOKOLADEFISK af mælkechokolade eller eller 70% mørk laktosefri chokolade ",
+      "pcs": "stk.",
+      "price": 10
+    },
+    {
+      "title": "Kids T-shirt",
+      "imageName": "kids_12",
+      "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
+      "pcs": "str 2-12 år",
+      "price": 195
+    },
+    {
+      "title": "Baby heldragt",
+      "imageName": "kids_13",
+      "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
+      "pcs": "62-92cl",
+      "price": 295
+    }
+  ]
+
+}

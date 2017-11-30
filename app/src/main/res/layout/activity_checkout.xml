@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.company.sticksnsushi.activities.CheckoutActivity"
+    android:background="@color/colorSecondary">
+
+    <include layout="@layout/include_toolbar"
+        android:id="@+id/include_toolbar"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:layout_below="@+id/include_toolbar"
+        android:id="@+id/checkout_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/checkout_navigation"
+        android:background="?attr/selectableItemBackground"
+        app:itemBackground="@color/colorSecondary"
+        app:itemIconTint="@android:color/white"
+        app:itemTextColor="@android:color/white" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/checkout_navigation"
+        android:background="@color/colorAccent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_checkout_frame"
+        android:layout_below="@+id/checkout_navigation"
+        android:layout_marginTop="16dp"/>
+
+
+</RelativeLayout>

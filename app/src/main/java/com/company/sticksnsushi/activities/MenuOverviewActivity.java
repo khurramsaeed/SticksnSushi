@@ -6,16 +6,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.KidsFragment;
+import com.company.sticksnsushi.fragments.MakiFragment;
+import com.company.sticksnsushi.fragments.MenuerFragment;
+import com.company.sticksnsushi.fragments.StartersFragment;
 
-public class MenuOverviewActivity extends AppCompatActivity {
+public class MenuOverviewActivity extends BaseActivity {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -37,12 +37,12 @@ public class MenuOverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_overview);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
         // Back button on Toolbar
         if (getSupportActionBar() != null){
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            toolbar.setTitle("Kategorier");
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
         }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -102,35 +102,6 @@ public class MenuOverviewActivity extends AppCompatActivity {
             return fragment;
         }
 
-
-        @Override
-        public View onCreateView(LayoutInflater inflater,
-                                 ViewGroup container,
-                                 Bundle savedInstanceState) {
-            if(getArguments().getInt(ARG_SECTION_NUMBER) == 1) {
-                View StartersFragment = inflater.inflate(R.layout.fragment_starters, container, false);
-                return StartersFragment;
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 2){
-                View MakiFragment = inflater.inflate(R.layout.fragment_maki, container, false);
-                return MakiFragment;
-             }
-             else if (getArguments().getInt(ARG_SECTION_NUMBER) == 3){
-                View MenuerFragment = inflater.inflate(R.layout.fragment_menuer, container, false);
-                return MenuerFragment;
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 5){
-                View KidsFragment = inflater.inflate(R.layout.fragment_kids, container, false);
-                return KidsFragment;
-            }
-            else if (getArguments().getInt(ARG_SECTION_NUMBER) == 4){
-                View ALaCarteFragment = inflater.inflate(R.layout.fragment_a_la_carte, container, false);
-                return ALaCarteFragment;
-            }
-
-            return null;
-        }
-
     }
 
     /**
@@ -145,6 +116,11 @@ public class MenuOverviewActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            if (position==0) return new StartersFragment();
+            if (position==1) return new MakiFragment();
+            if (position==2) return new MenuerFragment();
+            if (position==3) return new MakiFragment();
+            if (position==4) return new KidsFragment();
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
            return PlaceholderFragment.newInstance(position + 1);

@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="VIDSTE DU..?"
-            android:textColor="@color/red_color"
+            android:textColor="@color/colorAccent"
             android:textStyle="bold"
             android:textSize="16sp"/>
 
@@ -63,7 +63,7 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:text="Log ind"
+            android:text="Checkout Activity"
             android:layout_weight="1"
             android:backgroundTint="#cc666666"
             android:textColor="#fff"
@@ -72,7 +72,7 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="60dp"
-            android:text="Udforsk menu"
+            android:text="Udforsk Menu"
             android:layout_weight="1"
             android:backgroundTint="#D9D12012"
             android:textColor="#fff"

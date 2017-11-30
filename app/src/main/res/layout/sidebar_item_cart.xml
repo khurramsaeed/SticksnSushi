@@ -4,41 +4,79 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_standard">
-
-    <TextView
-        android:id="@+id/textview_item_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/Kurv"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:text="Din kurve er tom!"
-        android:textColor="#ccc"/>
+    android:background="@color/colorSecondary">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:text="Navn"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:paddingLeft="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Antal"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="à"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Pris"
+                android:textColor="@color/colorPrimaryText"
+                android:textStyle="bold"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <include
+            layout="@layout/sidebar_item_cart_items">
+        </include>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="bottom">
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|bottom"
-            android:background="@color/red_color"
+            android:background="@color/colorAccent"
             android:text="@string/Betal"
-            android:textColor="@color/white"
+            android:textColor="@color/colorPrimaryText"
             android:textSize="18sp" />
+        </LinearLayout>
 
     </LinearLayout>
 

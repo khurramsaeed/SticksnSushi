@@ -1,0 +1,157 @@
+{
+  "starters": [
+    {
+      "id": 1,
+      "title": "Kani korokke",
+      "imageName": "starters_1",
+      "description": "Krabbe croquetter med wasabi caesar dressing",
+      "pcs": "4 stk.",
+      "price": 49,
+      "category": "Starters"
+    },
+    {
+      "id": 2,
+      "title": "Ebi hapser",
+      "imageName": "starters_2",
+      "description": "Tempurareje, miso aïoli, chili, lime og koriander",
+      "pcs": "6 stk.",
+      "price": 89,
+      "category": "Starters"
+    },
+    {
+      "id": 3,
+      "title": "Hotate Kataifi",
+      "imageName": "starters_3",
+      "description": "Kammusling, miso aïoli, ørredrogn & urter",
+      "pcs": "6 stk.",
+      "price": 109,
+      "category": "Starters"
+    },
+    {
+      "id": 4,
+      "title": "Jordskokker",
+      "imageName": "starters_4",
+      "description": "Friterede jordskokker, serveret med miso aïoli",
+      "pcs": "stk",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 5,
+      "title": "Grillet broccoli",
+      "imageName": "starters_5",
+      "description": "Grillet broccoli med spicy goma ",
+      "pcs": "stk",
+      "price": 36,
+      "category": "Starters"
+    },
+    {
+      "id": 6,
+      "title": "Friteret blomkål",
+      "imageName": "starters_6",
+      "description": "Friteret blomkål serveret med trøffel gomadressing",
+      "pcs": "stk",
+      "price": 36,
+      "category": "Starters"
+    },
+    {
+      "id": 7,
+      "title": "Edamame bønner",
+      "imageName": "starters_7",
+      "description": "Lune edamame bønner med citron og havsalt",
+      "pcs": "skål",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 8,
+      "title": "Grillede edamame bønner",
+      "imageName": "starters_8",
+      "description": "Edamame bønner grillet med soya",
+      "pcs": "stk",
+      "price": 43,
+      "category": "Starters"
+    },
+    {
+      "id": 9,
+      "title": "Spicy edamame bønner",
+      "imageName": "starters_9",
+      "description": "Spicy edamame bønner",
+      "pcs": "skål",
+      "price": 41,
+      "category": "Starters"
+    },
+    {
+      "id": 10,
+      "title": "Yasaisticks",
+      "imageName": "starters_10",
+      "description": "Årstidens økologiske grøntsager med miso- eller keikodip",
+      "pcs": "stk",
+      "price": 39,
+      "category": "Starters"
+    },
+    {
+      "id": 11,
+      "title": "Spicy misosuppe",
+      "imageName": "starters_11",
+      "description": "Misosuppe med laks, tofu, kimchi, shiitake, wakametang, chili og koriander",
+      "pcs": "stk",
+      "price": 47,
+      "category": "Starters"
+    },
+    {
+      "id": 12,
+      "title": "Klassisk misosuppe",
+      "imageName": "starters_12",
+      "description": "Klassisk misosuppe med tofu, forårsløg og tang",
+      "pcs": "stk",
+      "price": 25,
+      "category": "Starters"
+    },
+    {
+      "id": 13,
+      "title": "Grillet avocado",
+      "imageName": "starters_13",
+      "description": "Grillet økologisk avocado med ponzu og wasabi",
+      "pcs": "halv",
+      "price": 25,
+      "category": "Starters"
+    },
+    {
+      "id": 14,
+      "title": "Tangsalat",
+      "imageName": "starters_14",
+      "description": "Tang, kelp-nudler, tomat, radise, asparges serveret med goma og yuzu vinaigrette",
+      "pcs": "stk",
+      "price": 49,
+      "category": "Starters"
+    },
+    {
+      "id": 15,
+      "title": "Daikon Shake",
+      "imageName": "starters_15",
+      "description": "Laks, cream cheese, avocado og agurk rullet i kinaradise serveret med ponzu",
+      "pcs": "4 skiver",
+      "price": 40,
+      "category": "Starters"
+    },
+    {
+      "id": 16,
+      "title": "Daikon Green",
+      "imageName": "starters_16",
+      "description": "Årstidens grønt rullet i kinaradise ",
+      "pcs": "4 skiver",
+      "price": 35,
+      "category": "Starters"
+    },
+    {
+      "id": 17,
+      "title": "Daikon Ebi",
+      "imageName": "starters_17",
+      "description": "Reje, avocado, agurk og karse rullet i kinaradise ",
+      "pcs": "4 skiver",
+      "price": 45,
+      "category": "Starters"
+    }
+  ]
+}

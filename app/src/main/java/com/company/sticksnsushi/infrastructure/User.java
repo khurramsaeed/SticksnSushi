@@ -1,5 +1,12 @@
 package com.company.sticksnsushi.infrastructure;
 
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextClock;
+import android.widget.TextView;
+
+import com.company.sticksnsushi.R;
+
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
  * DTO class object
@@ -55,9 +62,9 @@ public class User {
         this.displayName = displayName;
     }
 
-    public String getUserName() {
-        return userName;
-    }
+    public String getUserName() {return userName;}
+
+    public void setInitials(){}
 
     public void setUserName(String userName) {
         this.userName = userName;
