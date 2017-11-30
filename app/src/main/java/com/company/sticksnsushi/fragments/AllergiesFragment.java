@@ -23,7 +23,7 @@ public class AllergiesFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("AllergiesFragment");
+        getActivity().setTitle("Allergener");
 
         getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
     }
