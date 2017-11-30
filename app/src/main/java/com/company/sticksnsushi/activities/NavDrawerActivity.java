@@ -8,16 +8,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.view.Menu;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.fragments.PreviousOrders;
+import com.company.sticksnsushi.fragments.PreviousOrdersFragment;
 import com.company.sticksnsushi.fragments.TakeAwayFragment;
 import com.company.sticksnsushi.fragments.CartFragment;
 import com.company.sticksnsushi.fragments.AllergiesFragment;
@@ -89,7 +85,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             case R.id.item_allergies: fragment = new AllergiesFragment();
                 break;
 
-            case R.id.item_previous_orders: fragment = new PreviousOrders();
+            case R.id.item_previous_orders: fragment = new PreviousOrdersFragment();
                 break;
 
             case R.id.item_profile: startActivity(new Intent(this, ProfileActivity.class));

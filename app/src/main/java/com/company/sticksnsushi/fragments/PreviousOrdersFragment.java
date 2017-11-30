@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class PreviousOrders extends Fragment {
+public class PreviousOrdersFragment extends Fragment {
 
     public static ArrayList<PreviousOrdersItem> dataPreviousOrders = new ArrayList<>();
 
@@ -119,9 +119,7 @@ public class PreviousOrders extends Fragment {
             holder.info.setText(item.getInfo());
             holder.price.setText(item.getPrice());
             holder.date.setText(item.getDate());
-
         }
-
 
         @Override
         public int getItemCount() {
