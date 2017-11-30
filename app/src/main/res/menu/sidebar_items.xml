@@ -6,7 +6,7 @@
             android:id="@+id/item_takeaway"
             android:icon="@drawable/heart"
             android:title="Takeaway"
-            android:iconTint="@color/colorAccent"/>
+            />
         <item
             android:id="@+id/item_previous_orders"
             android:icon="@drawable/ic_history"
@@ -28,7 +28,7 @@
             <item
                 android:id="@+id/item_profile"
                 android:icon="@drawable/ic_account"
-                android:title="Profile"/>
+                android:title="Profil"/>
             <item
                 android:id="@+id/item_notifications"
                 android:icon="@drawable/ic_notifications"
