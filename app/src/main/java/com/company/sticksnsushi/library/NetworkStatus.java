@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by j on 06-03-14.
+ * This class is borrowed from: VUC-app
  */
 public class NetworkStatus extends BroadcastReceiver {
   public enum Status {

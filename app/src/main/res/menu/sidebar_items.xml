@@ -5,7 +5,12 @@
         <item
             android:id="@+id/item_takeaway"
             android:icon="@drawable/heart"
-            android:title="TAKEAWAY" />
+            android:title="Takeaway"
+            android:iconTint="@color/colorAccent"/>
+        <item
+            android:id="@+id/item_previous_orders"
+            android:icon="@drawable/ic_history"
+            android:title="Tidligere odrer" />
         <item
             android:id="@+id/item_cart"
             android:icon="@drawable/cart_black"
@@ -15,25 +20,23 @@
             android:id="@+id/item_allergies"
             android:icon="@drawable/alert_octagon"
             android:title="Allergener" />
-        <item
-            android:id="@+id/item_previous_orders"
-            android:icon="@drawable/ic_history"
-            android:title="Tidligere odrer" />
     </group>
 
 
-    <item android:title="Tilføj mere hernede">
+    <item android:title="">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-
-            <item
                 android:id="@+id/item_profile"
-                android:icon="@drawable/ic_menu_camera"
-                android:title="Profilos"/>
-
+                android:icon="@drawable/ic_account"
+                android:title="Profile"/>
+            <item
+                android:id="@+id/item_notifications"
+                android:icon="@drawable/ic_notifications"
+                android:title="Notifikationer" />
+            <item
+                android:id="@+id/item_settings"
+                android:icon="@drawable/ic_settings"
+                android:title="Indstillinger" />
         </menu>
     </item>
 
