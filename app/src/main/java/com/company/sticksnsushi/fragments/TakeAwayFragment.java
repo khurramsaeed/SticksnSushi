@@ -15,7 +15,6 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -94,7 +93,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_takeaway_item, parent, false);
+            View view = getActivity().getLayoutInflater().inflate(R.layout.sidebar_item_takeaway_items, parent, false);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
