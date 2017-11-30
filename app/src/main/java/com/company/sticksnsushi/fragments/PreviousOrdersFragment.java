@@ -21,7 +21,7 @@ import java.util.ArrayList;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class PreviousOrders extends Fragment {
+public class PreviousOrdersFragment extends Fragment {
 
     public static ArrayList<PreviousOrdersItem> dataPreviousOrders = new ArrayList<>();
 
@@ -53,6 +53,7 @@ public class PreviousOrders extends Fragment {
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
 
+        //Dummie data for testing
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
