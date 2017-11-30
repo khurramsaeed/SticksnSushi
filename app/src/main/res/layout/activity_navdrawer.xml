@@ -23,6 +23,9 @@
         app:headerLayout="@layout/activity_navdrawer_sidebar_header"
         app:menu="@menu/sidebar_items"
         app:itemIconTint="@android:color/black"
-        app:itemTextColor="@android:color/black"/>
+        app:itemTextColor="@drawable/selected_item_color">
+
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>
