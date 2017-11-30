@@ -53,6 +53,7 @@ public class PreviousOrdersFragment extends Fragment {
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
 
+        //Dummie data for testing
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
         dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
