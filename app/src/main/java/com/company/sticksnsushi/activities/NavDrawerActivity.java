@@ -63,46 +63,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        // TODO: 01/11/2017 Her skal indsættes cart
-
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.cart_pop_up, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch(id) {
-
-            case R.id.cartPopUp:
-
-                Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
-                break;
-
-        }
-
-
-        View menuItemView = findViewById(R.id.cartPopUp);
-
-
-        PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-
-        popupMenu.inflate(R.menu.cart_pop_up);
-
-        popupMenu.show();
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {

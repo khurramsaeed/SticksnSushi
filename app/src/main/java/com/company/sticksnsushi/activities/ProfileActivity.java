@@ -1,11 +1,12 @@
 package com.company.sticksnsushi.activities;
 
-import android.content.Intent;
+
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
+import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.UserProfileFragment1;
@@ -27,7 +28,6 @@ public class ProfileActivity extends BaseActivity {
 
         setContentView(R.layout.activity_profile);
 
-        displaySelectedItem(2);
     }
 
     private void displaySelectedItem(int id) {
