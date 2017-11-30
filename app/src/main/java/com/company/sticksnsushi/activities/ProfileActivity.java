@@ -2,17 +2,12 @@ package com.company.sticksnsushi.activities;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.fragments.UserProfileFragment1;
-import com.company.sticksnsushi.fragments.UserProfileFragment2;
-import com.company.sticksnsushi.fragments.UserProfileFragment3;
-import com.company.sticksnsushi.fragments.UserProfileFragment4;
+import com.company.sticksnsushi.fragments.UserInfoFragment;
+import com.company.sticksnsushi.fragments.FavoritesFragment;
 
 /**
  * Created by Swagam on 20/11/2017.
@@ -34,14 +29,9 @@ public class ProfileActivity extends BaseActivity {
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.editInfo: fragment = new UserProfileFragment1();
+            case R.id.editInfo: fragment = new UserInfoFragment();
                 break;
-            case R.id.editFav: fragment = new UserProfileFragment2();
-                break;
-            case R.id.editAllergies: fragment = new UserProfileFragment3();
-                break;
-
-            case R.id.editRestaurant: fragment = new UserProfileFragment4();
+            case R.id.editFav: fragment = new FavoritesFragment();
                 break;
         }
 
