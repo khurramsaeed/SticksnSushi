@@ -51,6 +51,7 @@ public class SticksnSushiApplication extends Application {
         Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
         instance = this;
+
         //mainThread = new Handler();
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
