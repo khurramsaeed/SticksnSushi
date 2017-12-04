@@ -36,6 +36,7 @@ public class SticksnSushiApplication extends Application {
     public static String versionName = BuildConfig.VERSION_NAME;
     public static Handler mainThread;
     public static Resources res;
+
     public static NetworkStatus network;
 
     private Auth auth;
