@@ -28,8 +28,8 @@ import java.util.ArrayList;
 public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
-    public static SticksnSushiApplication instance;
-    private SticksnSushiApplication() {}
+    private static SticksnSushiApplication instance;
+
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
     public static String versionName = BuildConfig.VERSION_NAME;
@@ -64,6 +64,10 @@ public class SticksnSushiApplication extends Application {
         dataMenuer = new ArrayList<>();
 
         retrieveListView();
+    }
+
+    public static SticksnSushiApplication getInstance() {
+        return instance;
     }
 
     public Auth getAuth() {
