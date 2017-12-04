@@ -12,6 +12,7 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
 import com.company.sticksnsushi.fragments.InformationFragment;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 public class CheckoutActivity extends BaseActivity {
 

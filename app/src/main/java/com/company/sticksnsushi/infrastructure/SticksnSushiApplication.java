@@ -29,6 +29,7 @@ public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
     public static SticksnSushiApplication instance;
+    private SticksnSushiApplication() {}
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
     public static String versionName = BuildConfig.VERSION_NAME;
