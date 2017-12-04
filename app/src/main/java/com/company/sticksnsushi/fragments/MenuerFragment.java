@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -27,6 +28,7 @@ public class MenuerFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "MenuerFragment";
 
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private RecyclerView recyclerView;
 
 
@@ -53,8 +55,8 @@ public class MenuerFragment extends BaseFragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < getInstance().dataMenuer.size(); i++) {
-            adapter.addItem(getInstance().dataMenuer.get(i));
+        for (int i = 0; i < app.dataMenuer.size(); i++) {
+            adapter.addItem(app.dataMenuer.get(i));
         }
         recyclerView.setAdapter(adapter);
 
@@ -105,7 +107,7 @@ public class MenuerFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = getInstance().dataMenuer.get(position);
+            Item item = app.dataMenuer.get(position);
 
             holder.title.setText(item.getItemName());
             holder.price.setText(item.getPrice() + " kr.");

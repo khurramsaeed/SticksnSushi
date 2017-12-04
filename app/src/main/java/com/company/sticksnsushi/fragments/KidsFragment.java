@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -26,6 +27,7 @@ public class KidsFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "KidsFragment";
 
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private RecyclerView recyclerView;
 
 
@@ -52,9 +54,9 @@ public class KidsFragment extends BaseFragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < getInstance().dataKids.size(); i++) {
-            System.err.println("TOTAL ITEMS: " + getInstance().dataKids.size());
-            adapter.addItem(getInstance().dataKids.get(i));
+        for (int i = 0; i < app.dataKids.size(); i++) {
+            System.err.println("TOTAL ITEMS: " + app.dataKids.size());
+            adapter.addItem(app.dataKids.get(i));
         }
         recyclerView.setAdapter(adapter);
 
@@ -105,7 +107,7 @@ public class KidsFragment extends BaseFragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = getInstance().dataKids.get(position);
+            Item item = app.dataKids.get(position);
 
             holder.title.setText(item.getItemName());
             holder.price.setText(item.getPrice() + " kr.");

@@ -28,8 +28,7 @@ import java.util.ArrayList;
 public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
-    private static SticksnSushiApplication instance = new SticksnSushiApplication();
-    private SticksnSushiApplication() {}
+    private static SticksnSushiApplication instance;
 
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
@@ -40,10 +39,11 @@ public class SticksnSushiApplication extends Application {
 
     private Auth auth;
     private User user;
+
     public ArrayList<Categories> dataCategories;
-    public static ArrayList<Item> dataStarters;
-    public static ArrayList<Item> dataKids;
-    public static ArrayList<Item> dataMenuer;
+    public ArrayList<Item> dataStarters;
+    public ArrayList<Item> dataKids;
+    public ArrayList<Item> dataMenuer;
 
     @Override
     public void onCreate() {
