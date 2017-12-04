@@ -64,6 +64,7 @@ public class TakeAwayFragment extends Fragment {
             adapter.addItem(app.dataCategories.get(i));
         }
 
+
         return rootView;
     }
 
