@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -31,6 +32,8 @@ public class TakeAwayFragment extends Fragment {
     private static final String TAG = "TakeAwayFragment";
 
     private RecyclerView recyclerView;
+
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
 
     @Override
@@ -57,8 +60,8 @@ public class TakeAwayFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < getInstance().dataCategories.size(); i++) {
-            adapter.addItem(getInstance().dataCategories.get(i));
+        for (int i = 0; i < app.dataCategories.size(); i++) {
+            adapter.addItem(app.dataCategories.get(i));
         }
 
         return rootView;
@@ -108,7 +111,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Categories item = getInstance().dataCategories.get(position);
+            Categories item = app.dataCategories.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());
