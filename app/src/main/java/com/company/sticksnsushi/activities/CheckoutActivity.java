@@ -6,15 +6,16 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
 import com.company.sticksnsushi.fragments.InformationFragment;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
-public class CheckoutActivity extends BaseActivity {
+public class CheckoutActivity extends BaseActivity implements Runnable {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class CheckoutActivity extends BaseActivity {
         // Back button on Toolbar
         if (getSupportActionBar() != null) {
             toolbar.setTitle("Bestilling");
-            toolbar.setNavigationIcon(null);
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
         }
 
         // Default: Fragment
@@ -40,6 +41,21 @@ public class CheckoutActivity extends BaseActivity {
                 return true;
             }
         });
+    }
+
+    /**
+     * Effects back button in current activity
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -70,5 +86,10 @@ public class CheckoutActivity extends BaseActivity {
         ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
         ft.replace(R.id.activity_checkout_frame, fragment);
         ft.commit();
+    }
+
+    @Override
+    public void run() {
+
     }
 }

@@ -3,6 +3,7 @@ package com.company.sticksnsushi.activities;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
@@ -44,7 +45,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         // TODO: 01/11/2017 Her skal indsættes cart
 
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
 
@@ -63,20 +63,19 @@ public abstract class BaseActivity extends AppCompatActivity {
             case R.id.cartPopUp:
 
                 Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+
+                View menuItemView = findViewById(R.id.cartPopUp);
+
+
+                PopupMenu popupMenu = new PopupMenu(this, menuItemView);
+
+                popupMenu.inflate(R.menu.cart_pop_up);
+
+                popupMenu.show();
+
                 break;
 
         }
-
-
-        View menuItemView = findViewById(R.id.cartPopUp);
-
-
-        PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-
-        popupMenu.inflate(R.menu.cart_pop_up);
-
-        popupMenu.show();
-
         return super.onOptionsItemSelected(item);
     }
 

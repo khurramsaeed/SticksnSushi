@@ -47,7 +47,9 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="x2"
+                android:text="1"
+                android:maxLines="1"
+                android:maxLength="2"
                 android:textColor="@color/colorPrimary"
                 android:background="@android:color/white"
                 android:gravity="center"/>

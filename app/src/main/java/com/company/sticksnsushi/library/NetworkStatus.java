@@ -46,7 +46,6 @@ public class NetworkStatus extends BroadcastReceiver {
     if (status != newStatus) {
       status = newStatus;
       //Log.d("NetworkStatus\n" + intent + "\n" + networkInfo);
-      //if (App.fejlsøgning) App.kortToast("NetworkStatus\n" + status);
       for (Runnable o : new ArrayList<Runnable>(observer)) o.run();
     }
   }
