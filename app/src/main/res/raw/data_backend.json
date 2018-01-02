@@ -40,7 +40,8 @@
       "description": "Krabbe croquetter med wasabi caesar dressing",
       "pcs": "4 stk.",
       "price": 49,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
     },
     {
       "id": 2,
@@ -49,7 +50,8 @@
       "description": "Tempurareje, miso aïoli, chili, lime og koriander",
       "pcs": "6 stk.",
       "price": 89,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Koriander", "gluten", "skaldyr", "æg", "sennep", "soya"]
     },
     {
       "id": 3,
@@ -58,7 +60,8 @@
       "description": "Kammusling, miso aïoli, ørredrogn & urter",
       "pcs": "6 stk.",
       "price": 109,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Gluten", "æg", "fisk", "bløddyr", "sennep", "soya"]
     },
     {
       "id": 4,
@@ -67,7 +70,8 @@
       "description": "Friterede jordskokker, serveret med miso aïoli",
       "pcs": "stk",
       "price": 39,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 5,
