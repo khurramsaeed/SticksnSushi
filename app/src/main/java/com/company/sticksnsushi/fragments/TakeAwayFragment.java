@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
@@ -103,7 +104,12 @@ public class TakeAwayFragment extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(getContext(), MenuOverviewActivity.class));
+                    int index = recyclerView.getChildAdapterPosition(view);
+                    Toast.makeText(getContext(), "Item clicked: " + index, Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(getContext(), MenuOverviewActivity.class);
+                    intent.putExtra("index", index);
+                    startActivity(intent);
                 }
             });
 

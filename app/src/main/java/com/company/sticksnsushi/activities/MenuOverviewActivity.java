@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -15,27 +16,24 @@ import com.company.sticksnsushi.fragments.MakiFragment;
 import com.company.sticksnsushi.fragments.MenuerFragment;
 import com.company.sticksnsushi.fragments.StartersFragment;
 
+import java.util.ArrayList;
+
 public class MenuOverviewActivity extends BaseActivity {
+    private static final String TAG = "MenuOverviewActivity";
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private SectionsPagerAdapter sectionsPagerAdapter;
+    private ViewPager viewPager;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    private ViewPager mViewPager;
+    int index;
+    ArrayList<Fragment> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_overview);
+
+        Intent intent = getIntent();
+        index = intent.getIntExtra("index", 0);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -46,20 +44,26 @@ public class MenuOverviewActivity extends BaseActivity {
         }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+        viewPager = (ViewPager) findViewById(R.id.container);
+        viewPager.setAdapter(sectionsPagerAdapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
-        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-//        if (savedInstanceState == null){
-//            getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
-//        }
+
+        list = new ArrayList<>();
+        list.add(new StartersFragment());
+        list.add(new MakiFragment());
+        list.add(new MenuerFragment());
+
+        //if (savedInstanceState == null){
+        //    getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
+        //}
     }
 
     /**
@@ -116,16 +120,16 @@ public class MenuOverviewActivity extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            if (position==0) return new StartersFragment();
-            if (position==1) return new MakiFragment();
-            if (position==2) return new MenuerFragment();
-            if (position==3) return new MakiFragment();
-            if (position==4) return new KidsFragment();
+
+            if (position == 0) return new StartersFragment();
+            if (position == 1) return new MakiFragment();
+            if (position == 2) return new MenuerFragment();
+            if (position == 3) return new MakiFragment();
+            if (position == 4) return new KidsFragment();
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-           return PlaceholderFragment.newInstance(position + 1);
-
-       }
+            return MenuOverviewActivity.PlaceholderFragment.newInstance(position + 1);
+        }
 
         @Override
         public int getCount() {
@@ -134,4 +138,6 @@ public class MenuOverviewActivity extends BaseActivity {
         }
 
     }
+
+
 }
