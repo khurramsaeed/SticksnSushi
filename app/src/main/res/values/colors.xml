@@ -8,4 +8,6 @@
 
     //Color_price
     <color name="price_color">#808080</color>
+
+    <color name="greyNew">#C1C1C1</color>
 </resources>

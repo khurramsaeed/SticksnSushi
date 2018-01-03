@@ -16,7 +16,6 @@ public class User {
     private int id;
     private String userName;
     private String displayName;
-    private String avatarUrl;
     private boolean isLoggedIn;
     private boolean hasPassword;
     private String email;
@@ -44,16 +43,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
-
+    
     public String getDisplayName() {
         return displayName;
     }

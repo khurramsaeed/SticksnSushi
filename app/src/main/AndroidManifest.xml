@@ -23,7 +23,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.OverviewActivity" />
         <activity android:name=".activities.ConfirmationActivity" />
         <activity
             android:name=".activities.MenuOverviewActivity"

@@ -23,7 +23,7 @@ import com.company.sticksnsushi.fragments.AllergiesFragment;
  * Created by Khurram Saeed Malik on 09/10/2017.
  */
 
-public class NavDrawerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener  {
+public class NavDrawerActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "NavDrawerActivity";
 
@@ -126,23 +126,29 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
     /**
      * Handles logic of changning fragment while selecting Item from NavDrawer
+     *
      * @param id
      */
     private void displaySelectedItem(int id) {
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.item_takeaway: fragment = new TakeAwayFragment();
+            case R.id.item_takeaway:
+                fragment = new TakeAwayFragment();
                 break;
-            case R.id.item_cart: fragment = new CartFragment();
+            case R.id.item_cart:
+                fragment = new CartFragment();
                 break;
-            case R.id.item_allergies: fragment = new AllergiesFragment();
+            case R.id.item_allergies:
+                fragment = new AllergiesFragment();
                 break;
 
-            case R.id.item_previous_orders: fragment = new PreviousOrdersFragment();
+            case R.id.item_previous_orders:
+                fragment = new PreviousOrdersFragment();
                 break;
 
-            case R.id.item_profile: startActivity(new Intent(this, ProfileActivity.class));
+            case R.id.item_profile:
+                startActivity(new Intent(this, ProfileActivity.class));
         }
 
         if (fragment != null) {
@@ -154,5 +160,4 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    public void startMenuOverviewActivity(View view) { startActivity(new Intent(this, MenuOverviewActivity.class));    }
 }
