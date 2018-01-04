@@ -91,7 +91,7 @@
       "pcs": "stk",
       "price": 36,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Æg", "sennep", "sesam", "soya"]
     },
     {
       "id": 7,
@@ -101,7 +101,7 @@
       "pcs": "skål",
       "price": 39,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["soya"]
     },
     {
       "id": 8,
@@ -111,7 +111,7 @@
       "pcs": "stk",
       "price": 43,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "sesam", "soya"]
     },
     {
       "id": 9,
@@ -121,7 +121,7 @@
       "pcs": "skål",
       "price": 41,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Sennep" ,"sesam", "soya"]
     },
     {
       "id": 10,
@@ -131,7 +131,7 @@
       "pcs": "stk",
       "price": 39,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": [""]
     },
     {
       "id": 11,
@@ -141,7 +141,7 @@
       "pcs": "stk",
       "price": 47,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Koriander", "gluten", "fisk", "soya"]
     },
     {
       "id": 12,
@@ -151,7 +151,7 @@
       "pcs": "stk",
       "price": 25,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Fisk", "soya"]
     },
     {
       "id": 13,
@@ -161,7 +161,7 @@
       "pcs": "halv",
       "price": 25,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
     },
     {
       "id": 14,
@@ -171,7 +171,7 @@
       "pcs": "stk",
       "price": 49,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "æg", "sennep", "sesam", "soya"]
     },
     {
       "id": 15,
@@ -181,7 +181,7 @@
       "pcs": "4 skiver",
       "price": 40,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "fisk", "mælk", "soya"]
     },
     {
       "id": 16,
@@ -191,7 +191,7 @@
       "pcs": "4 skiver",
       "price": 35,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Sesam", "soya"]
     },
     {
       "id": 17,
@@ -201,7 +201,7 @@
       "pcs": "4 skiver",
       "price": 45,
       "category": "Starters",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "sennep", "soya"]
     }
   ],
 
@@ -213,6 +213,7 @@
       "description": "Valgfrie ruller",
       "pcs": "menu",
       "price": 179,
+      "category": "Menuer",
       "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
     },
     {
@@ -221,6 +222,7 @@
       "description": "",
       "pcs": "menu",
       "price": 189,
+      "category": "Menuer",
       "allergies": ["Æg", "sennep", "soya"]
     },
     {
@@ -228,119 +230,153 @@
       "imageName": "menuer_3",
       "description": "",
       "pcs": "menu",
-      "price": 169
+      "price": 169,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Greenkeeper",
       "imageName": "menuer_4",
       "description": "",
       "pcs": "menu",
-      "price": 219
+      "price": 219,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Anden, laksen & deres venner",
       "imageName": "menuer_5",
       "description": "",
       "pcs": "menu",
-      "price": 199
+      "price": 199,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Fisk til flere",
       "imageName": "menuer_17",
       "description": "",
       "pcs": "god at dele",
-      "price": 500
+      "price": 500,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Ebi Kit Menu",
       "imageName": "menuer_7",
       "description": "",
       "pcs": "menu",
-      "price": 399
+      "price": 399,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Perfect day menu",
       "imageName": "menuer_1",
       "description": "",
       "pcs": "2 personer",
-      "price": 599
+      "price": 599,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Bord til 2",
       "imageName": "menuer_8",
       "description": "",
       "pcs": "god at dele",
-      "price": 399
+      "price": 399,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Mandemad",
       "imageName": "menuer_9",
       "description": "",
       "pcs": "menu",
-      "price": 219
+      "price": 219,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Blandede følelser",
       "imageName": "menuer_10",
       "description": "",
       "pcs": "menu",
-      "price": 214
+      "price": 214,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Blandede følelser tutatar",
       "imageName": "menuer_11",
       "description": "",
       "pcs": "menu",
-      "price": 294
+      "price": 294,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Bord til 2 med Hotate Katafi",
       "imageName": "menuer_12",
       "description": "",
       "pcs": "menu",
-      "price": 499
+      "price": 499,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Galla Menu",
       "imageName": "menuer_13",
       "description": "",
       "pcs": "2 personer",
-      "price": 798
+      "price": 798,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Extravaganza menu",
       "imageName": "menuer_14",
       "description": "",
       "pcs": "2 personer",
-      "price": 899
+      "price": 899,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "SushiSøster",
       "imageName": "menuer_15",
       "description": "",
       "pcs": "menu",
-      "price": 289
+      "price": 289,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Maki Maki",
       "imageName": "menuer_16",
       "description": "",
       "pcs": "god at dele",
-      "price": 489
+      "price": 489,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Four meal drive big",
       "imageName": "menuer_18",
       "description": "",
       "pcs": "god at dele",
-      "price": 799
+      "price": 799,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Four meal drive big Snick snack",
       "imageName": "menuer_19",
       "description": "",
       "pcs": "menu",
-      "price": 899
+      "price": 899,
+      "category": "Menuer",
+      "allergies": ["Æg", "sennep", "soya"]
     }
 
   ],
