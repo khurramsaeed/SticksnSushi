@@ -32,6 +32,10 @@
         <activity android:name=".activities.ProfileActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="ca7ebe61a093b2b307fd35b1e2292088ad44f7b5" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

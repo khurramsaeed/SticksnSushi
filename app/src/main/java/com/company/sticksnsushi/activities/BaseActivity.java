@@ -3,9 +3,7 @@ package com.company.sticksnsushi.activities;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.widget.Toolbar;
-import android.text.Html;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -72,8 +70,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 popupMenu.inflate(R.menu.cart_pop_up);
 
                 popupMenu.show();
-
-                break;
+             //   break;
 
         }
         return super.onOptionsItemSelected(item);

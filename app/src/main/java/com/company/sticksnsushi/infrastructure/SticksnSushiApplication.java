@@ -15,6 +15,8 @@ import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.library.NetworkStatus;
 
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -51,6 +53,7 @@ public class SticksnSushiApplication extends Application {
 
         Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         instance = this;
 
         //mainThread = new Handler();
