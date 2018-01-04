@@ -3,7 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            layout="@layout/include_toolbar"
+            android:id="@id/include_toolbar" />
+    </android.support.design.widget.AppBarLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,26 +27,36 @@
             android:orientation="vertical">
 
     <TextView
+        android:paddingTop="10dp"
+        android:paddingStart="10dp"
         android:id="@+id/dishTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="28sp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/colorPrimaryText"
         android:text="" />
     <ImageView
+        android:id="@+id/dishImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"      />
 
-       />
         <LinearLayout
+            android:paddingTop="25dp"
+            android:paddingBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
             <TextView
+                android:paddingStart="40dp"
                 android:id="@+id/dishPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:textSize="15sp"
+                android:textColor="@color/price_color"
                 />
 
             <Button
@@ -46,14 +69,17 @@
                 android:textColor="@color/colorPrimaryText"/>
         </LinearLayout>
             <TextView
+                android:paddingStart="15dp"
                 android:id="@+id/dishDisciption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimaryText"
               />
             <TextView
                 android:id="@+id/dishAllergies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/price_color"
                 />
         </LinearLayout>
     </ScrollView>

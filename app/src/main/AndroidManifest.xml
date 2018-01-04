@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ConfirmationActivity" />
+        <activity android:name=".activities.SpecificDishActivity" />
         <activity
             android:name=".activities.MenuOverviewActivity"
             android:label="@string/title_activity_menu_overview" />

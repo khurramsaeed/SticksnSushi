@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,15 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.SpecificDishActivity;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
-
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.getInstance;
 
 /**
  * Created by Khurram Saeed Malik on 26/10/2017.
@@ -92,13 +91,19 @@ public class StartersFragment extends BaseFragment {
         }
 
         @Override
-        public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public DataListViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_starters_item, parent, false);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+                    int id = recyclerView.getChildLayoutPosition(view);
+                    String category = app.dataStarters.get(id).getCategory();
+                    Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
+                    myintent.putExtra("Category", category);
+                    myintent.putExtra("ID", id);
+
+                    startActivity(myintent);
                 }
             });
 
