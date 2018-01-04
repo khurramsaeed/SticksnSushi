@@ -80,7 +80,8 @@
       "description": "Grillet broccoli med spicy goma ",
       "pcs": "stk",
       "price": 36,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 6,
@@ -89,7 +90,8 @@
       "description": "Friteret blomkål serveret med trøffel gomadressing",
       "pcs": "stk",
       "price": 36,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 7,
@@ -98,7 +100,8 @@
       "description": "Lune edamame bønner med citron og havsalt",
       "pcs": "skål",
       "price": 39,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 8,
@@ -107,7 +110,8 @@
       "description": "Edamame bønner grillet med soya",
       "pcs": "stk",
       "price": 43,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 9,
@@ -116,7 +120,8 @@
       "description": "Spicy edamame bønner",
       "pcs": "skål",
       "price": 41,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 10,
@@ -125,7 +130,8 @@
       "description": "Årstidens økologiske grøntsager med miso- eller keikodip",
       "pcs": "stk",
       "price": 39,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 11,
@@ -134,7 +140,8 @@
       "description": "Misosuppe med laks, tofu, kimchi, shiitake, wakametang, chili og koriander",
       "pcs": "stk",
       "price": 47,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 12,
@@ -143,7 +150,8 @@
       "description": "Klassisk misosuppe med tofu, forårsløg og tang",
       "pcs": "stk",
       "price": 25,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 13,
@@ -152,7 +160,8 @@
       "description": "Grillet økologisk avocado med ponzu og wasabi",
       "pcs": "halv",
       "price": 25,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 14,
@@ -161,7 +170,8 @@
       "description": "Tang, kelp-nudler, tomat, radise, asparges serveret med goma og yuzu vinaigrette",
       "pcs": "stk",
       "price": 49,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 15,
@@ -170,7 +180,8 @@
       "description": "Laks, cream cheese, avocado og agurk rullet i kinaradise serveret med ponzu",
       "pcs": "4 skiver",
       "price": 40,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 16,
@@ -179,7 +190,8 @@
       "description": "Årstidens grønt rullet i kinaradise ",
       "pcs": "4 skiver",
       "price": 35,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "id": 17,
@@ -188,7 +200,8 @@
       "description": "Reje, avocado, agurk og karse rullet i kinaradise ",
       "pcs": "4 skiver",
       "price": 45,
-      "category": "Starters"
+      "category": "Starters",
+      "allergies": ["Æg", "sennep", "soya"]
     }
   ],
 
@@ -207,7 +220,8 @@
       "imageName": "menuer_2",
       "description": "",
       "pcs": "menu",
-      "price": 189
+      "price": 189,
+      "allergies": ["Æg", "sennep", "soya"]
     },
     {
       "title": "Nana ban",

@@ -124,9 +124,6 @@ public class SticksnSushiApplication extends Application {
                 System.err.println("obj = " + starter);
 
 
-
-
-
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int id = starter.getInt("id");
                 int price = starter.getInt("price");
@@ -156,11 +153,7 @@ public class SticksnSushiApplication extends Application {
                 JSONObject kid = kids.getJSONObject(i);
                 System.err.println("obj = " + kid);
 
-                JSONArray all = kid.getJSONArray("allergies");
-                String allergies="";
-                for (i=0; i<all.length(); i++){
-                    allergies = allergies + all.getString(i);
-                }
+
 
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = kid.getInt("price");
@@ -168,6 +161,12 @@ public class SticksnSushiApplication extends Application {
                 String PCS = kid.getString("pcs");
                 String description = (String) kid.get("description");
                 String imageName = kid.getString("imageName");
+
+                String allergies=kid.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
 
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
@@ -183,11 +182,6 @@ public class SticksnSushiApplication extends Application {
                 JSONObject menu = menuer.getJSONObject(i);
                 System.err.println("obj = " + menu);
 
-                JSONArray all = menu.getJSONArray("allergies");
-                String allergies="";
-                for (i=0; i<all.length(); i++){
-                    allergies = allergies + all.getString(i);
-                }
 
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = menu.getInt("price");
@@ -195,6 +189,12 @@ public class SticksnSushiApplication extends Application {
                 String PCS = menu.getString("pcs");
                 String description = (String) menu.get("description");
                 String imageName = menu.getString("imageName");
+
+                String allergies=menu.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
 
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
