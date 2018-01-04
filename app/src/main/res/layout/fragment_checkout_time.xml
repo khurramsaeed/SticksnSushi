@@ -2,29 +2,40 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Vælg dato for levering"
-        android:textSize="20sp"
-        android:textColor="@color/colorPrimaryText"
         android:layout_below="@+id/rB_delivery"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="23dp"
+        android:text="Vælg dato for levering"
+        android:textColor="@color/greyNew"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/chooseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Vælg tispunkt"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="20sp"
+        android:layout_alignStart="@+id/chooseRestaurant"
         android:layout_below="@+id/dateText"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        android:text="Vælg tidspunkt"
+        android:textColor="@color/greyNew"
+        android:textSize="20sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chooseTime"
+        android:layout_marginTop="9dp"
+        android:background="@color/colorAccent" />
+
 
     <RadioButton
         android:id="@+id/rB_pickup"
@@ -41,33 +52,24 @@
         android:id="@+id/rB_delivery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Sticks'N'Sushi leveret lige til døren"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="8dp"
         android:checked="true"
+        android:text="Sticks'N'Sushi leveret lige til døren"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="18sp"
-        android:layout_below="@+id/information" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/chooseRestaurant"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rB_pickup"
+        android:layout_marginTop="27dp"
         android:text="Vælg restaurant"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="20sp"
-        android:layout_alignTop="@+id/rB_pickup"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp" />
-
-    <TextView
-        android:id="@+id/information"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="Vælg leveringsform"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="25sp"
-        android:layout_marginStart="16dp" />
+        android:textColor="@color/greyNew"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/nextScreenButtom"

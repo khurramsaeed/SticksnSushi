@@ -53,7 +53,7 @@ public class CheckoutTimeFragment extends Fragment {
         rbDelivery = view.findViewById(R.id.rB_delivery);
         rbPickup = view.findViewById(R.id.rB_pickup);
         nextScreenButton = view.findViewById(R.id.nextScreenButtom);
-        chooseTime.setVisibility(View.INVISIBLE);
+        chooseTime.setVisibility(View.GONE);
         setDelivery();
         return view;
     }

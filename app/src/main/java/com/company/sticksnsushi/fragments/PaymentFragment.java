@@ -44,10 +44,6 @@ public class PaymentFragment extends Fragment {
                 final EditText et1 = view.findViewById(R.id.editCvc);
                 final EditText et2 = view.findViewById(R.id.editDate);
 
-
-
-
-
                 tv.setVisibility(View.GONE);
                 tv1.setVisibility(View.GONE);
                 tv2.setVisibility(View.GONE);
