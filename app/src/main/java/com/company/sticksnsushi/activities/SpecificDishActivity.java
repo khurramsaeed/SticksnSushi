@@ -37,6 +37,7 @@ public class SpecificDishActivity extends BaseActivity{
             pcs = app.dataStarters.get(id).getItemPCS();
             price.setText(Integer.toString(app.dataStarters.get(id).getPrice()) + " kr./ " + pcs);
             decription.setText(app.dataStarters.get(id).getItemDescription());
+            allergies.setText(app.dataStarters.get(id).getAllergies());
             image.setImageBitmap(app.dataStarters.get(id).getItemImage());
         }
 

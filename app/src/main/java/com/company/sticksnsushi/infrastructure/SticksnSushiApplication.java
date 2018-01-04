@@ -123,6 +123,10 @@ public class SticksnSushiApplication extends Application {
                 JSONObject starter = starters.getJSONObject(i);
                 System.err.println("obj = " + starter);
 
+
+
+
+
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int id = starter.getInt("id");
                 int price = starter.getInt("price");
@@ -132,12 +136,18 @@ public class SticksnSushiApplication extends Application {
                 String category = starter.getString("category");
                 String imageName = starter.getString("imageName");
 
+                String allergies=starter.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
 
-                dataStarters.add(new Item(id, price, title, PCS, description, category, itemImage));
+                dataStarters.add(new Item(id, price, title, PCS, description, category, allergies, itemImage));
             }
 
             //Data for kids
@@ -145,6 +155,12 @@ public class SticksnSushiApplication extends Application {
             for (int i = 0; i < numberKids; i++) {
                 JSONObject kid = kids.getJSONObject(i);
                 System.err.println("obj = " + kid);
+
+                JSONArray all = kid.getJSONArray("allergies");
+                String allergies="";
+                for (i=0; i<all.length(); i++){
+                    allergies = allergies + all.getString(i);
+                }
 
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = kid.getInt("price");
@@ -158,7 +174,7 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataKids.add(new Item(0, price, title, PCS, description, "", itemImage));
+                dataKids.add(new Item(0, price, title, PCS, description, "",allergies, itemImage));
             }
 
             //Data for menuer
@@ -166,6 +182,12 @@ public class SticksnSushiApplication extends Application {
             for (int i = 0; i < numberMenuer; i++) {
                 JSONObject menu = menuer.getJSONObject(i);
                 System.err.println("obj = " + menu);
+
+                JSONArray all = menu.getJSONArray("allergies");
+                String allergies="";
+                for (i=0; i<all.length(); i++){
+                    allergies = allergies + all.getString(i);
+                }
 
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = menu.getInt("price");
@@ -179,7 +201,7 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataMenuer.add(new Item(0, price, title, PCS, description, "", itemImage));
+                dataMenuer.add(new Item(0, price, title, PCS, description, "", allergies, itemImage));
             }
 
 

@@ -199,7 +199,8 @@
       "imageName": "menuer_6",
       "description": "Valgfrie ruller",
       "pcs": "menu",
-      "price": 179
+      "price": 179,
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
     },
     {
       "title": "Laks OD",
@@ -337,7 +338,8 @@
       "imageName": "kids_1",
       "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
-      "price": 79
+      "price": 79,
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
     },
     {
       "title": "Sushi menu laks",
