@@ -214,7 +214,7 @@
       "pcs": "menu",
       "price": 179,
       "category": "Menuer",
-      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
+      "allergies": []
     },
     {
       "title": "Laks OD",
@@ -223,7 +223,7 @@
       "pcs": "menu",
       "price": 189,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "æg", "fisk", "mælk", "sennep", "sesam", "soya"]
     },
     {
       "title": "Nana ban",
@@ -232,7 +232,7 @@
       "pcs": "menu",
       "price": 169,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Soya", "selleri", "hvede", "skaldyr", "æg", "fisk", "bløddyr", "sennep", "sesamfrø"]
     },
     {
       "title": "Greenkeeper",
@@ -241,7 +241,7 @@
       "pcs": "menu",
       "price": 219,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "æg", "mælk", "sennep", "nødder", "sesam", "soya"]
     },
     {
       "title": "Anden, laksen & deres venner",
@@ -250,7 +250,7 @@
       "pcs": "menu",
       "price": 199,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesam", "soya"]
     },
     {
       "title": "Fisk til flere",
@@ -259,7 +259,7 @@
       "pcs": "god at dele",
       "price": 500,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": []
     },
     {
       "title": "Ebi Kit Menu",
@@ -268,7 +268,7 @@
       "pcs": "menu",
       "price": 399,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "crustaceans (reje)", "æg", "fisk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Perfect day menu",
@@ -277,7 +277,7 @@
       "pcs": "2 personer",
       "price": 599,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Bord til 2",
@@ -286,7 +286,7 @@
       "pcs": "god at dele",
       "price": 399,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø"]
     },
     {
       "title": "Mandemad",
@@ -295,7 +295,7 @@
       "pcs": "menu",
       "price": 219,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "æg", "fisk", "mælk", "sennep", "nødder"]
     },
     {
       "title": "Blandede følelser",
@@ -304,7 +304,7 @@
       "pcs": "menu",
       "price": 214,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Blandede følelser tutatar",
@@ -313,7 +313,7 @@
       "pcs": "menu",
       "price": 294,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Bord til 2 med Hotate Katafi",
@@ -322,7 +322,7 @@
       "pcs": "menu",
       "price": 499,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Galla Menu",
@@ -331,7 +331,7 @@
       "pcs": "2 personer",
       "price": 798,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
     },
     {
       "title": "Extravaganza menu",
@@ -340,7 +340,7 @@
       "pcs": "2 personer",
       "price": 899,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
     },
     {
       "title": "SushiSøster",
@@ -349,7 +349,7 @@
       "pcs": "menu",
       "price": 289,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Koriander", "selleri", "gluten", "skalddyr", "fisk", "bløddyr", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Maki Maki",
@@ -358,7 +358,7 @@
       "pcs": "god at dele",
       "price": 489,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Four meal drive big",
@@ -367,7 +367,7 @@
       "pcs": "god at dele",
       "price": 799,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "nødder", "soya"]
     },
     {
       "title": "Four meal drive big Snick snack",
@@ -376,7 +376,7 @@
       "pcs": "menu",
       "price": 899,
       "category": "Menuer",
-      "allergies": ["Æg", "sennep", "soya"]
+      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     }
 
   ],
