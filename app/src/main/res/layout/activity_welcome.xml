@@ -79,6 +79,16 @@
             android:textStyle="bold"
             android:onClick="startOverviewActivity"/>
 
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:text="Login"
+            android:layout_weight="1"
+            android:backgroundTint="#D9D12012"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:onClick="startSignUpActivity"/>
+
     </LinearLayout>
 
 </LinearLayout>
