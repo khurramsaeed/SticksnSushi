@@ -26,7 +26,8 @@
         <activity android:name=".activities.SpecificDishActivity" />
         <activity
             android:name=".activities.MenuOverviewActivity"
-            android:label="@string/title_activity_menu_overview" />
+            android:label="@string/title_activity_menu_overview"
+            android:launchMode="singleTop"/>
         <activity android:name=".activities.CheckoutActivity" />
         <activity
             android:name=".activities.ProfileActivity"
@@ -36,8 +37,10 @@
             android:name="io.fabric.ApiKey"
             android:value="ca7ebe61a093b2b307fd35b1e2292088ad44f7b5" />
 
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SignUpActivity"></activity>
+        <activity android:name=".activities.LoginActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".activities.SignUpActivity"
+            android:launchMode="singleTask"></activity>
     </application>
 
 </manifest>
