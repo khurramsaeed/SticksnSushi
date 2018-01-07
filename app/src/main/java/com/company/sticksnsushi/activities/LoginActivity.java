@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -23,6 +25,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         linkSignUp = findViewById(R.id.link_signup);
         linkSignUp.setOnClickListener(this);
+
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("message");
+
+        myRef.setValue("Hello, World!");
     }
 
 

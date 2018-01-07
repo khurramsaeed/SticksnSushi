@@ -1,8 +1,9 @@
 package com.company.sticksnsushi.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.util.Patterns;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,73 +17,71 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText editTextEmail, editTextPassword;
-    private Button createUser;
-    private FirebaseAuth mAuth;
-    private String email, password;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private Button buttonSignup;
+    private ProgressDialog progressDialog;
+    private FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        mAuth = FirebaseAuth.getInstance();
+        //initializing firebase auth object
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        editTextEmail = findViewById(R.id.input_editText_signUp_email);
-        editTextPassword = findViewById(R.id.input_editText_signUp_password);
+        //initializing views
+        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 
-        createUser = findViewById(R.id.btn_signUp);
-        createUser.setOnClickListener(this);
+        buttonSignup = (Button) findViewById(R.id.buttonSignup);
+
+        progressDialog = new ProgressDialog(this);
+
+        //attaching listener to button
+        buttonSignup.setOnClickListener(this);
 
     }
 
-    private void registreUser() {
-        email = editTextEmail.getText().toString().trim();
-        password = editTextPassword.getText().toString().trim();
+    private void registerUser(){
 
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email er påkrævet");
-            editTextEmail.requestFocus();
+        //getting email and password from edit texts
+        String email = editTextEmail.getText().toString().trim();
+        String password  = editTextPassword.getText().toString().trim();
+
+        //checking if email and passwords are empty
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(this,"Please enter email",Toast.LENGTH_LONG).show();
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            editTextEmail.setError("Skriv venligts en gyldig email");
-            editTextEmail.requestFocus();
-            return;
-        }
-        if (password.isEmpty()) {
-            editTextPassword.setError("Password er påkrævet");
-            editTextPassword.requestFocus();
-            return;
-        }
-        if (password.length() <= 1) {
-            editTextPassword.setError("Password skal bestå af minimum 1 tegn");
-            editTextPassword.requestFocus();
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(this,"Please enter password",Toast.LENGTH_LONG).show();
             return;
         }
 
+        //if the email and password are not empty
+        //displaying a progress dialog
 
-//        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//            @Override
-//            public void onComplete(@NonNull Task<AuthResult> task) {
-//                if(task.isSuccessful()){
-//                    Toast.makeText(getApplicationContext(),"Bruger registreret", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//        });
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+        progressDialog.setMessage("Registering Please Wait...");
+        progressDialog.show();
+
+        //creating a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(getApplicationContext(), "Bruger registreret", Toast.LENGTH_LONG).show();
+                        //checking if success
+                        if(task.isSuccessful()){
+                            //display some message here
+                            Toast.makeText(SignUpActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                        }else{
+                            //display some message here
+                            Toast.makeText(SignUpActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
                         }
-                        else if (!task.isSuccessful()) {
-                            Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
+                        progressDialog.dismiss();
                     }
                 });
 
@@ -90,9 +89,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        if (view == createUser) {
-            System.out.println("Angivet email og password: " + email + " - " + password);
-            registreUser();
-        }
+        //calling register method on click
+        registerUser();
     }
 }

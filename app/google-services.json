@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "446844494848",
-    "firebase_url": "https://sticksnsushi-736c6.firebaseio.com",
-    "project_id": "sticksnsushi-736c6",
-    "storage_bucket": "sticksnsushi-736c6.appspot.com"
+    "project_number": "805678993859",
+    "firebase_url": "https://sticks-n-sushi.firebaseio.com",
+    "project_id": "sticks-n-sushi",
+    "storage_bucket": "sticks-n-sushi.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:446844494848:android:f4efc4c1175bdd3b",
+        "mobilesdk_app_id": "1:805678993859:android:f4efc4c1175bdd3b",
         "android_client_info": {
           "package_name": "com.company.sticksnsushi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "446844494848-itdnq9ake4u2r5j66jhrk3ddro7uqar6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.company.sticksnsushi",
-            "certificate_hash": "1ad236dcb80a5322de6fa87025d070c377d31a71"
-          }
-        },
-        {
-          "client_id": "446844494848-ub4jrc0a5g6kd3qlc1rstqb964eee061.apps.googleusercontent.com",
+          "client_id": "805678993859-uo1v2ccu6r4ik8sdgdalkfar0oufbo4b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCG-QFpu1-6e6Zrf7Pw_rQGHrqqWbMmlHY"
+          "current_key": "AIzaSyDevUdqoIw2sRTJ8Y4BeV52iL6Yt5B2tPw"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "446844494848-ub4jrc0a5g6kd3qlc1rstqb964eee061.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
