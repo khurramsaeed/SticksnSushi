@@ -16,14 +16,17 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
-    EditText editTextEmail, editTextPassword;
-    Button createUser;
+    private EditText editTextEmail, editTextPassword;
+    private Button createUser;
     private FirebaseAuth mAuth;
+    private String email, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        mAuth = FirebaseAuth.getInstance();
 
         editTextEmail = findViewById(R.id.input_editText_signUp_email);
         editTextPassword = findViewById(R.id.input_editText_signUp_password);
@@ -31,13 +34,11 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         createUser = findViewById(R.id.btn_signUp);
         createUser.setOnClickListener(this);
 
-        mAuth = FirebaseAuth.getInstance();
-
     }
 
     private void registreUser() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
+        email = editTextEmail.getText().toString().trim();
+        password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty()) {
             editTextEmail.setError("Email er påkrævet");
@@ -55,11 +56,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
             editTextPassword.requestFocus();
             return;
         }
-        if (password.length() >= 1) {
+        if (password.length() <= 1) {
             editTextPassword.setError("Password skal bestå af minimum 1 tegn");
             editTextPassword.requestFocus();
             return;
         }
+
 
 //        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //            @Override
@@ -70,11 +72,15 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 //            }
 //        });
         mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Bruger registreret", Toast.LENGTH_LONG).show();
+                        }
+                        else if (!task.isSuccessful()) {
+                            Toast.makeText(SignUpActivity.this, "Authentication failed." + task.getException(),
+                                    Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -85,6 +91,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     @Override
     public void onClick(View view) {
         if (view == createUser) {
+            System.out.println("Angivet email og password: " + email + " - " + password);
             registreUser();
         }
     }
