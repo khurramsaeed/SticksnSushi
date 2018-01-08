@@ -14,14 +14,15 @@ import android.util.Log;
 import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.library.NetworkStatus;
-
 import com.crashlytics.android.Crashlytics;
-import io.fabric.sdk.android.Fabric;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -163,6 +164,7 @@ public class SticksnSushiApplication extends Application {
                 String title = kid.getString("title");
                 String PCS = kid.getString("pcs");
                 String description = (String) kid.get("description");
+                String category = kid.getString("category");
                 String imageName = kid.getString("imageName");
 
                 String allergies=kid.getJSONArray("allergies").toString();
@@ -176,7 +178,7 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataKids.add(new Item(0, price, title, PCS, description, "",allergies, itemImage));
+                dataKids.add(new Item(0, price, title, PCS, description, category,allergies, itemImage));
             }
 
             //Data for menuer
@@ -190,6 +192,7 @@ public class SticksnSushiApplication extends Application {
                 int price = menu.getInt("price");
                 String title = menu.getString("title");
                 String PCS = menu.getString("pcs");
+                String category = menu.getString("category");
                 String description = (String) menu.get("description");
                 String imageName = menu.getString("imageName");
 
@@ -204,7 +207,7 @@ public class SticksnSushiApplication extends Application {
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataMenuer.add(new Item(0, price, title, PCS, description, "", allergies, itemImage));
+                dataMenuer.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
             }
 
 
