@@ -58,13 +58,13 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/editTextAdsress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:textColorHint="@color/colorPrimaryText"
                 android:textColor="@color/colorPrimaryText"
                 android:inputType="text"
@@ -76,12 +76,12 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/editTextPostalAdsress"
                 android:layout_width="match_parent"
+                android:textSize="15dp"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/colorPrimaryText"
                 android:textColor="@color/colorPrimaryText"
@@ -94,13 +94,13 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
             <EditText android:id="@+id/editTextCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="15dp"
                 android:textColorHint="@color/colorPrimaryText"
                 android:textColor="@color/colorPrimaryText"
                 android:inputType="text"
