@@ -37,7 +37,7 @@ public class BadgeDrawable extends Drawable {
         mBadgePaint.setAntiAlias(true);
         mBadgePaint.setStyle(Paint.Style.FILL);
         mBadgePaint1 = new Paint();
-        mBadgePaint1.setColor(ContextCompat.getColor(context.getApplicationContext(), R.color.greyNew));
+        mBadgePaint1.setColor(ContextCompat.getColor(context.getApplicationContext(), R.color.colorPrimaryText));
         mBadgePaint1.setAntiAlias(true);
         mBadgePaint1.setStyle(Paint.Style.FILL);
 
@@ -72,8 +72,8 @@ public class BadgeDrawable extends Drawable {
         float centerY = radius -5;
         if(mCount.length() <= 2){
             // Draw badge circle.
-            canvas.drawCircle(centerX, centerY, (int)(radius+7.5), mBadgePaint1);
-            canvas.drawCircle(centerX, centerY, (int)(radius+5.5), mBadgePaint);
+            //canvas.drawCircle(centerX, centerY, (int)(radius+7.5), mBadgePaint1);
+            canvas.drawCircle(centerX, centerY, (int)(radius+3.5), mBadgePaint);
         }
         else{
             canvas.drawCircle(centerX, centerY, (int)(radius+8.5), mBadgePaint1);
