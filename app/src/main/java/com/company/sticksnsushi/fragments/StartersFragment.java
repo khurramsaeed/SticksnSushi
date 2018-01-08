@@ -121,15 +121,6 @@ public class StartersFragment extends BaseFragment {
 
         }
 
-//        @Override
-//        public void onBindViewHolder(TakeAwayFragment.DataListViewHolder holder, int position) {
-//            Categories item = SticksnSushiApplication.dataCategories.get(position);
-//
-//            holder.title.setText(item.getItemName());
-//            holder.image.setImageBitmap(item.getItemImage());
-//
-//        }
-
         @Override
         public int getItemCount() {
             return items.size();

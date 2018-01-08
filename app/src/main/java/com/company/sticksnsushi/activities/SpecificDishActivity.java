@@ -61,6 +61,27 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             allergies.setText(app.dataStarters.get(i).getAllergies());
             itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
         }
+        else if (category.equals("Menuer")){
+            item = app.dataMenuer.get(i);
+
+            itemName.setText(app.dataMenuer.get(i).getItemName());
+            pcs = app.dataMenuer.get(i).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataMenuer.get(i).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataMenuer.get(i).getItemDescription());
+            allergies.setText(app.dataMenuer.get(i).getAllergies());
+            itemImage.setImageBitmap(app.dataMenuer.get(i).getItemImage());
+        }
+
+        else if (category.equals("Kids")){
+            item = app.dataKids.get(i);
+
+            itemName.setText(app.dataKids.get(i).getItemName());
+            pcs = app.dataKids.get(i).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataKids.get(i).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataKids.get(i).getItemDescription());
+            allergies.setText(app.dataKids.get(i).getAllergies());
+            itemImage.setImageBitmap(app.dataKids.get(i).getItemImage());
+        }
 
     }
     /**

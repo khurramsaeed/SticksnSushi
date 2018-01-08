@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,15 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.SpecificDishActivity;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
-
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.getInstance;
 
 /**
  * Created by Nikolaj on 27-11-2017.
@@ -98,12 +97,20 @@ public class MenuerFragment extends BaseFragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+                    int id = recyclerView.getChildLayoutPosition(view);
+                    String category = app.dataMenuer.get(id).getCategory();
+                    Intent menuerIntent=new Intent(getContext(), SpecificDishActivity.class);
+                    menuerIntent.putExtra("Category", category);
+                    menuerIntent.putExtra("ID", id);
+
+                    startActivity(menuerIntent);
                 }
             });
 
             return new DataListViewHolder(view);
         }
+
+
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
