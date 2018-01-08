@@ -1,14 +1,15 @@
 package com.company.sticksnsushi.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 /**
@@ -16,37 +17,65 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
  */
 
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
-    TextView title,price, decription, allergies;
-    ImageView image;
+    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private Item item;
+
+    private TextView itemName, itemPrice, itemDesc, allergies;
+    private String pcs;
+    private ImageView itemImage;
     private Button addToBasket;
-    String pcs;
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
-        Intent intent = getIntent();
-        int id = getIntent().getIntExtra("ID",0);
+        int i = getIntent().getIntExtra("ID",0);
         String category = getIntent().getStringExtra("Category");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
+        setSupportActionBar(toolbar);
+        // Back button on Toolbar
+        if (getSupportActionBar() != null){
+            // TODO: 08/01/2018 GET ITEM NAME HERE
+            toolbar.setTitle(category);
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+        }
 
 
         addToBasket = (Button) findViewById(R.id.addToBasket);
         addToBasket.setOnClickListener(this);
 
-        title = findViewById(R.id.dishTitle);
-        price = findViewById(R.id.dishPrice);
-        decription = findViewById(R.id.dishDisciption);
-        image = findViewById(R.id.dishImage);
+        itemName = findViewById(R.id.dishTitle);
+        itemPrice = findViewById(R.id.dishPrice);
+        itemDesc = findViewById(R.id.dishDisciption);
+        itemImage = findViewById(R.id.dishImage);
         allergies = findViewById(R.id.dishAllergies);
 
         if(category.equals("Starters")) {
-            title.setText(app.dataStarters.get(id).getItemName());
-            pcs = app.dataStarters.get(id).getItemPCS();
-            price.setText(Integer.toString(app.dataStarters.get(id).getPrice()) + " kr./ " + pcs);
-            decription.setText(app.dataStarters.get(id).getItemDescription());
-            allergies.setText(app.dataStarters.get(id).getAllergies());
-            image.setImageBitmap(app.dataStarters.get(id).getItemImage());
+
+            item = app.dataStarters.get(i);
+
+            itemName.setText(app.dataStarters.get(i).getItemName());
+            pcs = app.dataStarters.get(i).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataStarters.get(i).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataStarters.get(i).getItemDescription());
+            allergies.setText(app.dataStarters.get(i).getAllergies());
+            itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
         }
 
+    }
+    /**
+     * Effects back button in current activity
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item){
+        // handle arrow click here
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
