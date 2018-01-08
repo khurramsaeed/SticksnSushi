@@ -389,91 +389,116 @@
       "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
       "price": 79,
-      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep"]
+      "category": "Kids",
+      "allergies": ["Gluten", "skalddyr","mælk", "sesam","soya"]
     },
     {
       "title": "Sushi menu laks",
       "imageName": "kids_2",
       "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
-      "price": 79
+      "price": 79,
+      "category": "Kids",
+      "allergies": ["Gluten","mælk", "sesam","soya"]
     },
     {
       "title": "Sticks menu",
       "imageName": "kids_3",
       "description": "STICKS 3 kyllingekødboller, kyllingevinger eller laks i teriyaki. Ris, edamame bønner med salt og citron. Yasai sticks med miso dip. Chokoladefisk",
       "pcs": "stk.",
-      "price": 79
+      "price": 79,
+      "category": "Kids",
+      "allergies": ["Gluten", "æg","mælk", "sesam","soya"]
     },
     {
       "title": "Sticks'n'Sushi laks",
       "imageName": "kids_4",
       "description": "NIGIRI: 2 laks. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
       "pcs": "stk.",
-      "price": 98
+      "price": 98,
+      "category": "Kids",
+      "allergies": ["Gluten", "æg","mælk", "sesam","soya"]
     },
     {
       "title": "Sticks'n'Sushi reje",
       "imageName": "kids_5",
       "description": "NIGIRI: 2 reje. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
       "pcs": "stk.",
-      "price": 98
+      "price": 98,
+      "category": "Kids",
+      "allergies": ["Gluten", "æg","mælk", "sesam","soya"]
     },
     {
       "title": "Kids fest menu",
       "imageName": "kids_6",
       "description": "64 veldrejede makiruller pakket med Crispy ebi, California, pink Alaska & mamma Mia.",
       "pcs": "Menu.",
-      "price": 489
+      "price": 489,
+      "category": "Kids",
+      "allergies": ["Gluten", "skalddyr", "æg", "mælk", "sesam","soya"]
     },
     {
       "title": "Kids hosomaki",
       "imageName": "kids_7",
       "description": "Makirulle med agurk eller økologisk avocado",
       "pcs": "8 stk.",
-      "price": 38
+      "price": 38,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Kids hosomaki fisk",
       "imageName": "kids_8",
       "description": "Makirulle med laks eller reje",
       "pcs": "8 stk.",
-      "price": 38
+      "price": 38,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Børneris",
       "imageName": "kids_9",
       "description": "Lille skål velkogte og bløde ris med grøntsagsstave",
       "pcs": "8 stk.",
-      "price": 38
+      "price": 38,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Risbolle",
       "imageName": "kids_10",
       "description": "Risbolle",
       "pcs": "stk.",
-      "price": 5
+      "price": 5,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Chokoladefisk",
       "imageName": "kids_11",
       "description": "CHOKOLADEFISK af mælkechokolade eller eller 70% mørk laktosefri chokolade ",
       "pcs": "stk.",
-      "price": 10
+      "price": 10,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Kids T-shirt",
       "imageName": "kids_12",
       "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
       "pcs": "str 2-12 år",
-      "price": 195
+      "price": 195,
+      "category": "Kids",
+      "allergies": []
     },
     {
       "title": "Baby heldragt",
       "imageName": "kids_13",
       "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
       "pcs": "62-92cl",
-      "price": 295
+      "price": 295,
+      "category": "Kids",
+      "allergies": []
     }
   ]
 
