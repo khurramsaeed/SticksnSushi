@@ -37,7 +37,8 @@
             android:value="ca7ebe61a093b2b307fd35b1e2292088ad44f7b5" />
 
         <activity android:name=".activities.LoginActivity"/>
-        <activity android:name=".activities.SignUpActivity"></activity>
+        <activity android:name=".activities.SignUpActivity"/>
+        <activity android:name=".activities.CartActivity"/>
     </application>
 
 </manifest>

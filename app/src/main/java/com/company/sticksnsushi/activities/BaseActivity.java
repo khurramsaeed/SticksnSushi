@@ -1,14 +1,19 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.PopupMenu;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
@@ -60,20 +65,36 @@ public abstract class BaseActivity extends AppCompatActivity {
 
             case R.id.cartPopUp:
 
-                Toast.makeText(this, "Clicked", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "CartPopUp", Toast.LENGTH_LONG).show();
 
                 View menuItemView = findViewById(R.id.cartPopUp);
 
+                PopupWindow popupwindow_obj = popupDisplay();
 
-                PopupMenu popupMenu = new PopupMenu(this, menuItemView);
-
-                popupMenu.inflate(R.menu.cart_pop_up);
-
-                popupMenu.show();
-             //   break;
+                popupwindow_obj.showAsDropDown(menuItemView, -40, 18); // where u want show on view click event popupwindow.showAsDropDown(view, x, y);
 
         }
+
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public PopupWindow popupDisplay(){
+
+        final PopupWindow popupWindow = new PopupWindow(this);
+
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View view = inflater.inflate(R.layout.popup_cart, null);
+
+        popupWindow.setFocusable(true);
+
+        popupWindow.setWidth(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+        popupWindow.setContentView(view);
+
+        return popupWindow;
     }
 
 

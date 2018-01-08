@@ -11,12 +11,10 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.PreviousOrdersFragment;
 import com.company.sticksnsushi.fragments.TakeAwayFragment;
-import com.company.sticksnsushi.fragments.CartFragment;
 import com.company.sticksnsushi.fragments.AllergiesFragment;
 
 /**
@@ -137,7 +135,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                 fragment = new TakeAwayFragment();
                 break;
             case R.id.item_cart:
-                fragment = new CartFragment();
+                startActivity(new Intent(this, CartActivity.class));
                 break;
             case R.id.item_allergies:
                 fragment = new AllergiesFragment();
@@ -149,6 +147,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
             case R.id.item_profile:
                 startActivity(new Intent(this, LoginActivity.class));
+                break;
         }
 
         if (fragment != null) {
