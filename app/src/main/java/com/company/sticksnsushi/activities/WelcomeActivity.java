@@ -1,10 +1,7 @@
 package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.company.sticksnsushi.R;
@@ -17,8 +14,9 @@ public class WelcomeActivity extends BaseActivity {
     }
 
     public void startOverviewActivity(View view) { startActivity(new Intent(this, NavDrawerActivity.class)); }
-    public void startLoginActivity(View view) { startActivity(new Intent(this, CheckoutActivity.class));  }
-    public void startSignUpActivity(View view) { startActivity(new Intent(this, LoginActivity.class));  }
+    public void startLoginActivity(View view) { startActivity(new Intent(this, LoginActivity.class));  }
+    public void startSignUpActivity(View view) { startActivity(new Intent(this, SignUpActivity.class));  }
+    public void startCheckoutActivity(View view) { startActivity(new Intent(this, CheckoutActivity.class));  }
 
 
 

@@ -4,14 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +27,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     private EditText editTextEmail, editTextPassword;
     private Button buttonSignup;
+    private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
 
@@ -33,12 +37,23 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
+        setSupportActionBar(toolbar);
+        // Back button on Toolbar
+        if (getSupportActionBar() != null){
+            toolbar.setTitle("Opret profil");
+            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+        }
+
         //initializing firebase auth object
         firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
+        editTextEmail = (EditText) findViewById(R.id.editTextSignUpEmail);
+        editTextPassword = (EditText) findViewById(R.id.editTextSignUpPassword);
+
+        linkLogin = findViewById(R.id.link_login);
+        linkLogin.setOnClickListener(this);
 
         buttonSignup = (Button) findViewById(R.id.buttonSignup);
 
@@ -78,6 +93,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         progressDialog.setMessage("Registrerer. Vent venligst...");
         progressDialog.show();
 
+        SticksnSushiApplication.getInstance().getAuth().getUser().getUserName();
+
         //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -109,7 +126,15 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        //calling register method on click
-        registerUser();
+       if(view == linkLogin) {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+        }
+        else if(view == buttonSignup){
+            //calling register method on click
+            registerUser();
+        }
     }
+
 }
+
