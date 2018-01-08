@@ -105,7 +105,6 @@ public class TakeAwayFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     int index = recyclerView.getChildAdapterPosition(view);
-                    Toast.makeText(getContext(), "Item clicked: " + index, Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(getContext(), MenuOverviewActivity.class);
                     intent.putExtra("index", index);

@@ -60,6 +60,7 @@ public class MenuOverviewActivity extends BaseActivity {
         list.add(new StartersFragment());
         list.add(new MakiFragment());
         list.add(new MenuerFragment());
+        viewPager.setCurrentItem(index);
 
         //if (savedInstanceState == null){
         //    getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
