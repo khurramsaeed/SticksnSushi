@@ -23,9 +23,7 @@ public class MenuOverviewActivity extends BaseActivity {
 
     private SectionsPagerAdapter sectionsPagerAdapter;
     private ViewPager viewPager;
-
     int index;
-    ArrayList<Fragment> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,15 +53,8 @@ public class MenuOverviewActivity extends BaseActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
+        viewPager.setCurrentItem(index);
 
-        list = new ArrayList<>();
-        list.add(new StartersFragment());
-        list.add(new MakiFragment());
-        list.add(new MenuerFragment());
-
-        //if (savedInstanceState == null){
-        //    getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
-        //}
     }
 
     /**
