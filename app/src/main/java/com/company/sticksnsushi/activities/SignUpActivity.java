@@ -88,9 +88,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                             //display some message here
                             Toast.makeText(SignUpActivity.this,"Konto oprettet",Toast.LENGTH_LONG).show();
                             Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);
-                            //Should prevent that the user can go back to signup screen by pressing back button. NOT WORKING PROPERLY!
-                            intentMenuOverview.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intentMenuOverview);
+                            finish();
                         }
                         else{
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){

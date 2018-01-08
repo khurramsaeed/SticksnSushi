@@ -84,9 +84,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Intent intentMenuOverview = new Intent(LoginActivity.this, MenuOverviewActivity.class);
-                    //Should prevent that the user can go back to login screen by pressing back button. NOT WORKING PROPERLY!
-                    intentMenuOverview.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intentMenuOverview);
+                    finish();
                 }
                 else{
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();

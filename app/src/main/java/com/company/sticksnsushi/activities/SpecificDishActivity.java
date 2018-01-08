@@ -2,8 +2,11 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
@@ -12,10 +15,12 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
  * Created by 1234 on 03-01-2018.
  */
 
-public class SpecificDishActivity extends BaseActivity{
+public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
     TextView title,price, decription, allergies;
     ImageView image;
+    private Button addToBasket;
     String pcs;
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
@@ -24,7 +29,8 @@ public class SpecificDishActivity extends BaseActivity{
         String category = getIntent().getStringExtra("Category");
 
 
-        SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+        addToBasket = (Button) findViewById(R.id.addToBasket);
+        addToBasket.setOnClickListener(this);
 
         title = findViewById(R.id.dishTitle);
         price = findViewById(R.id.dishPrice);
@@ -41,5 +47,12 @@ public class SpecificDishActivity extends BaseActivity{
             image.setImageBitmap(app.dataStarters.get(id).getItemImage());
         }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == addToBasket) {
+            // TODO: 08/01/2018 add item in basket
+        }
     }
 }
