@@ -17,25 +17,37 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextEmail"
+        <!-- Email Label -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="Enter email"
-            android:textColorHint="@color/colorPrimaryText"
-            android:textColor="@color/colorPrimaryText"
-            android:inputType="textEmailAddress" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="#ffff">
+            <EditText android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="Email" />
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:id="@+id/editTextPassword"
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="Enter password"
-            android:textColorHint="@color/colorPrimaryText"
-            android:textColor="@color/colorPrimaryText"
-            android:inputType="textPassword" />
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="textPassword"
+                android:hint="Password"/>
+        </android.support.design.widget.TextInputLayout>
 
         <Button
             android:id="@+id/buttonSignup"
