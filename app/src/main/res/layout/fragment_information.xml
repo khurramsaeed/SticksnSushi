@@ -18,80 +18,94 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fulde navn"
-        android:textColor="@color/greyNew"/>
-
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Telefon"
-            android:textColor="@color/greyNew"/>
-
-
-        <EditText
-            android:id="@+id/editTelefon"
+        <!-- Name Label -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/colorPrimary"
-            />
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="textPersonName"
+                android:hint="Fulde navn"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Adresse"
-            android:textColor="@color/greyNew"/>
 
-        <EditText
-            android:id="@+id/editAdresse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Postnummer"
-            android:textColor="@color/greyNew"/>
-
-        <EditText
-            android:id="@+id/editpostnr"
+        <!-- Phone number Label -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/colorPrimary"/>
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="number"
+                android:hint="Telefonnummer"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="By"
-            android:textColor="@color/greyNew"/>
 
-        <EditText
-            android:id="@+id/editCity"
+        <!-- Address Label -->
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/colorPrimaryText"/>
+            android:textSize="15dp"
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextAdsress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="text"
+                android:hint="Adresse"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!-- PostalAddress Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextPostalAdsress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="phone"
+                android:hint="Postnummer"/>
+        </android.support.design.widget.TextInputLayout>
+
+
+        <!-- City Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:layout_marginTop="8dp"
+            android:textColorHint="#ffff"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/editTextCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorPrimaryText"
+                android:textColor="@color/colorPrimaryText"
+                android:inputType="text"
+                android:hint="By"/>
+        </android.support.design.widget.TextInputLayout>
 
 
         <CheckBox
