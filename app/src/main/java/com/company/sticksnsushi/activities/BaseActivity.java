@@ -2,6 +2,8 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +19,14 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.BadgeDrawable;
+
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
+
+    protected Button clickbtn;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -48,8 +54,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         // TODO: 01/11/2017 Her skal indsættes cart
 
+
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
+
+
+        MenuItem item = menu.findItem(R.id.cartPopUp);
+        LayerDrawable icon = (LayerDrawable) item.getIcon();
+        setBadgeCount(this, icon, "1");
+
+
 
         return true;
     }
@@ -59,6 +73,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         switch(id) {
@@ -71,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
                 PopupWindow popupwindow_obj = popupDisplay();
 
-                popupwindow_obj.showAsDropDown(menuItemView, -40, 18); // where u want show on view click event popupwindow.showAsDropDown(view, x, y);
+                popupwindow_obj.showAsDropDown(menuItemView, -40, 18);
 
         }
 
@@ -94,8 +109,35 @@ public abstract class BaseActivity extends AppCompatActivity {
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setContentView(view);
 
+        clickbtn = view.findViewById(R.id.button1);
+        clickbtn.setOnClickListener(new View.OnClickListener()
+        {
+            public void onClick(View v)
+
+            {
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
+            }
+        });
+
         return popupWindow;
     }
 
+
+    public static void setBadgeCount(Context context, LayerDrawable icon, String count) {
+
+        BadgeDrawable badge;
+
+        // Reuse drawable if possible
+        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
+        if (reuse != null && reuse instanceof BadgeDrawable) {
+            badge = (BadgeDrawable) reuse;
+        } else {
+            badge = new BadgeDrawable(context);
+        }
+
+        badge.setCount(count);
+        icon.mutate();
+        icon.setDrawableByLayerId(R.id.ic_badge, badge);
+    }
 
 }
