@@ -133,12 +133,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
        if(view == linkLogin) {
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
-            finish();
+           finish();
+
         }
         else if(view == buttonSignup){
             //calling register method on click
             registerUser();
-            finish();
         }
     }
 
