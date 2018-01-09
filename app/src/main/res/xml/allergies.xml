@@ -14,7 +14,7 @@
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="allergies_kornsorter"
-        android:title="Kornsorter m.	Gluten"
+        android:title="Kornsorter m. Gluten"
         android:layout="@layout/checkboxpreference_custom_layout" />
     <CheckBoxPreference
         android:defaultValue="false"
@@ -53,8 +53,8 @@
         android:layout="@layout/checkboxpreference_custom_layout" />
     <CheckBoxPreference
         android:defaultValue="false"
-        android:key="allergies_skalddyr"
-        android:title="Skalddyr"
+        android:key="allergies_skaldyr"
+        android:title="Skaldyr"
         android:layout="@layout/checkboxpreference_custom_layout" />
     <CheckBoxPreference
         android:defaultValue="false"
