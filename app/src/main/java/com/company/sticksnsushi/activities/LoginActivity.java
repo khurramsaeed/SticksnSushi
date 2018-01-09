@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -32,13 +31,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
-        setSupportActionBar(toolbar);
-        // Back button on Toolbar
-        if (getSupportActionBar() != null){
-            toolbar.setTitle("Login");
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
-        }
 
         progressDialog = new ProgressDialog(this);
 

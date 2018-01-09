@@ -8,11 +8,6 @@
 
     tools:context="com.company.sticksnsushi.activities.LoginActivity">
 
-    <include
-        layout="@layout/include_toolbar"
-        android:id="@id/include_toolbar" />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
