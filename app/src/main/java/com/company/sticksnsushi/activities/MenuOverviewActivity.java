@@ -38,7 +38,7 @@ public class MenuOverviewActivity extends BaseActivity {
         // Back button on Toolbar
         if (getSupportActionBar() != null){
             toolbar.setTitle("Kategorier");
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
         }
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.

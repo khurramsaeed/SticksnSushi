@@ -23,7 +23,7 @@ public class ConfirmationActivity extends BaseActivity {
         // Back button on Toolbar
         if (getSupportActionBar() != null){
             toolbar.setTitle("Bestilling modtaget");
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }

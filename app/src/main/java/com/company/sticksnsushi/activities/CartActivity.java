@@ -47,7 +47,7 @@ public class CartActivity extends BaseActivity {
         // Back button on Toolbar
         if (getSupportActionBar() != null) {
             toolbar.setTitle("Bestilling");
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
         }
 
         retrieveListView();

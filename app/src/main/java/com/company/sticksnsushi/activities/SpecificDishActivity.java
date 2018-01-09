@@ -41,7 +41,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         if (getSupportActionBar() != null){
             // TODO: 08/01/2018 GET ITEM NAME HERE
             toolbar.setTitle(category);
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
         }
 
 

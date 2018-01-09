@@ -31,10 +31,11 @@ public class CheckoutActivity extends BaseActivity{
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
+
         // Back button on Toolbar
         if (getSupportActionBar() != null) {
             toolbar.setTitle("Bestilling");
-            toolbar.setNavigationIcon(R.drawable.ic_backspace);
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
         }
 
             mSectionsPagerAdapter = new SectionAdapter(getSupportFragmentManager());
