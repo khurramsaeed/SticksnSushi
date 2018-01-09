@@ -30,6 +30,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    String userFullName;
 
 
     @Override
@@ -67,7 +68,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private void registerUser(){
 
         //getting email and password from edit texts
-        String email = editTextEmail.getText().toString().trim();
+        final String userName = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
@@ -93,7 +95,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         progressDialog.setMessage("Registrerer. Vent venligst...");
         progressDialog.show();
 
-        SticksnSushiApplication.getInstance().getAuth().getUser().getUserName();
 
         //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
@@ -102,6 +103,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if(task.isSuccessful()){
+                            SticksnSushiApplication.getInstance().getAuth().getUser().setEmail(email);
+                            //SticksnSushiApplication.getInstance().getAuth().getUser().set
+                            //userFullName = SticksnSushiApplication.getInstance().getAuth().getUser().setDisplayName(userName);
                             //display some message here
                             Toast.makeText(SignUpActivity.this,"Konto oprettet",Toast.LENGTH_LONG).show();
                             Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);
@@ -129,10 +133,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
        if(view == linkLogin) {
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
+            finish();
         }
         else if(view == buttonSignup){
             //calling register method on click
             registerUser();
+            finish();
         }
     }
 

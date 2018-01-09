@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
@@ -20,67 +21,135 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-    <TextView
-        android:paddingTop="10dp"
-        android:paddingStart="10dp"
-        android:id="@+id/dishTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="28sp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/colorPrimaryText"
-        android:text="" />
-    <ImageView
-        android:id="@+id/dishImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"      />
+            <TextView
+                android:id="@+id/dishTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:text=""
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="28sp"
+                tools:text="dishTitle" />
+            <ImageView
+                android:id="@+id/dishImage"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_gravity="center"      />
 
-        <LinearLayout
-            android:paddingTop="25dp"
-            android:paddingBottom="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dishPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingStart="40dp"
+                    android:textColor="@color/price_color"
+                    android:textSize="15sp"
+                    tools:text="dishPrice+pcs" />
+
+                <Button
+                    android:id="@+id/addToBasket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Tilføj til kurv"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryText" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
 
             <TextView
-                android:paddingStart="40dp"
-                android:id="@+id/dishPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:textSize="15sp"
-                android:textColor="@color/price_color"
-                />
-
-            <Button
-                android:id="@+id/addToBasket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tilføj til kurv"
-                android:background="@color/colorAccent"
-                android:textColor="@color/colorPrimaryText" />
-        </LinearLayout>
-            <TextView
-                android:paddingStart="15dp"
                 android:id="@+id/dishDisciption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/colorPrimaryText"
-              />
+                tools:text="description" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/titleRecommendations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimaryText"
+                android:text="Anbefalinger" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <include layout="@layout/fragment_starters_item"
+                    android:id="@+id/firstRec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <include layout="@layout/fragment_starters_item"
+                    android:id="@+id/secondRec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+                <include layout="@layout/fragment_starters_item"
+                    android:id="@+id/firstRec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/titleAllergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorPrimaryText"
+                android:text="Allergener:" />
+
             <TextView
                 android:id="@+id/dishAllergies"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/price_color"
-                />
+                tools:text="Allergies" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
