@@ -21,11 +21,9 @@ import android.widget.Toast;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
 
-
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
-
     protected Button clickbtn;
 
     @Override
@@ -79,8 +77,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         switch(id) {
 
             case R.id.cartPopUp:
-
-                Toast.makeText(this, "CartPopUp", Toast.LENGTH_LONG).show();
 
                 View menuItemView = findViewById(R.id.cartPopUp);
 
