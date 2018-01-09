@@ -53,6 +53,8 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         if(category.equals("Starters")) {
 
             item = app.dataStarters.get(i);
+            app.getCart().addItem(item);
+            app.getCart().toString();
 
             itemName.setText(app.dataStarters.get(i).getItemName());
             pcs = app.dataStarters.get(i).getItemPCS();
@@ -62,7 +64,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
         }
         else if (category.equals("Menuer")){
+
             item = app.dataMenuer.get(i);
+            app.getCart().addItem(item);
 
             itemName.setText(app.dataMenuer.get(i).getItemName());
             pcs = app.dataMenuer.get(i).getItemPCS();
@@ -73,7 +77,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         }
 
         else if (category.equals("Kids")){
+
             item = app.dataKids.get(i);
+            app.getCart().addItem(item);
 
             itemName.setText(app.dataKids.get(i).getItemName());
             pcs = app.dataKids.get(i).getItemPCS();

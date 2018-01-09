@@ -16,6 +16,9 @@ public class Item {
     private String allergies;
     private Bitmap itemImage;
 
+    public Item() {
+    }
+
     public Item(int id, int price, String itemName, String itemPCS , String itemDescription, String category, String allergies, Bitmap itemImage) {
         this.id = id;
         this.price = price;

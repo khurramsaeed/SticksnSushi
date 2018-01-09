@@ -22,6 +22,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -44,6 +45,7 @@ public class SticksnSushiApplication extends Application {
 
     private Auth auth;
     private User user;
+    private Cart cart;
 
     public ArrayList<Categories> dataCategories;
     public ArrayList<Item> dataStarters;
@@ -66,16 +68,21 @@ public class SticksnSushiApplication extends Application {
 
         auth = new Auth(this);
         user = new User();
+        cart = new Cart();
+
         dataCategories = new ArrayList<>();
         dataStarters = new ArrayList<>();
         dataKids = new ArrayList<>();
         dataMenuer = new ArrayList<>();
-
         retrieveListView();
     }
 
     public static SticksnSushiApplication getInstance() {
         return instance;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     public Auth getAuth() {
@@ -218,4 +225,6 @@ public class SticksnSushiApplication extends Application {
         }
 
     }
+
+
 }
