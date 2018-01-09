@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+    <include layout="@layout/content_welcome" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_black_text"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/LoginButton"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorAccent"
+            android:padding="12dp"
+            android:text="Login"
+            android:textColor="#ffff"
+            android:onClick="startLoginActivity"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/signUpButton"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorAccent"
+            android:padding="12dp"
+            android:text="Opret profil"
+            android:textColor="#ffff"
+            android:layout_below="@id/LoginButton"
+            android:onClick="startSignUpActivity"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/seeMenuButton"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:height="45dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorAccent"
+            android:padding="12dp"
+            android:text="Menu"
+            android:textColor="#ffff"
+            android:layout_alignParentBottom="true"
+            android:onClick="startOverviewActivity"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/seeCheckoutButton"
+            android:layout_width="250dp"
+            android:layout_height="45dp"
+            android:height="45dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/colorAccent"
+            android:padding="12dp"
+            android:text="Checkout"
+            android:textColor="#ffff"
+            android:layout_above="@id/seeMenuButton"
+            android:onClick="startCheckoutActivity"/>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
+
+
+
