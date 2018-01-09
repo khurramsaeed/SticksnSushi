@@ -73,6 +73,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             changeState(savedInstanceState.getInt(BUNDLE_STATE));
         }
     }
+    
 
     /**
      * This method is called when you rotate screen

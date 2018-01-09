@@ -55,7 +55,6 @@ public class BadgeDrawable extends Drawable {
     public void draw(Canvas canvas) {
 
 
-
         if (!mWillDraw) {
             return;
         }

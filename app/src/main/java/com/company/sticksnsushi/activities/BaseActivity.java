@@ -20,11 +20,15 @@ import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
     protected Button clickbtn;
+
+
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -59,8 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         MenuItem item = menu.findItem(R.id.cartPopUp);
         LayerDrawable icon = (LayerDrawable) item.getIcon();
-        setBadgeCount(this, icon, "1");
-
+        setBadgeCount(this, icon, ""+ app.getCart().getItems().size());
 
 
         return true;
