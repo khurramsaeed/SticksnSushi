@@ -1,7 +1,9 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
@@ -29,6 +32,7 @@ public class StartersFragment extends BaseFragment {
 
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private RecyclerView recyclerView;
+    AllergiesFragment allergies = new AllergiesFragment();
 
 
     @Override
@@ -58,6 +62,9 @@ public class StartersFragment extends BaseFragment {
             adapter.addItem(app.dataStarters.get(i));
         }
         recyclerView.setAdapter(adapter);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        allergies.markAllergies(sp);
 
         return rootView;
     }
@@ -102,6 +109,7 @@ public class StartersFragment extends BaseFragment {
                     Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
                     myintent.putExtra("Category", category);
                     myintent.putExtra("ID", id);
+                    checkForAllergies(view);
 
                     startActivity(myintent);
                 }
@@ -144,5 +152,36 @@ public class StartersFragment extends BaseFragment {
             image = itemView.findViewById(R.id.starters_item_image);
         }
 
+    }
+
+    public void checkForAllergies(View view) {
+        int id = recyclerView.getChildLayoutPosition(view);
+        String matchedAllergies ="";
+        String inputStr;
+        int i = 0;
+        while(i < allergies.getAllergies().size()) {
+            try {
+                String checkedAllergy = allergies.getAllergies().get(i);
+                SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+                inputStr = app.dataStarters.get(id).getAllergies().toLowerCase();
+                if (inputStr.contains(checkedAllergy)) {
+                    if(matchedAllergies.equals("")){
+                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                    }
+                    else if (matchedAllergies.length()>1){
+                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                    }
+
+                }
+            }
+            catch (IndexOutOfBoundsException e)  // CS0168
+            {
+
+            }
+            i++;
+        }
+        if(matchedAllergies.length()>0) {
+            Toast.makeText(getContext(), "Retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+        }
     }
 }

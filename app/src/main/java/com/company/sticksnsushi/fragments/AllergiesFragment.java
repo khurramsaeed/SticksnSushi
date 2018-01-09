@@ -48,18 +48,72 @@ public class AllergiesFragment extends Fragment {
         return allergyList;
     }
 
-    public void markAllergies(SharedPreferences sp){
-        //sp = PreferenceManager.getDefaultSharedPreferences(getContext());
-        boolean allergiBloeddyr = sp.getBoolean("allergies_skaldyr", false);
+    public void markAllergies(SharedPreferences sp) {
         allergyList.clear();
-        if (allergiBloeddyr){
-            allergyList.add("skaldyr");
-            System.out.println(getAllergies());
-        }
-        boolean allergiMaelk = sp.getBoolean("allergies_maelk", false);
-        if (allergiMaelk){
-            allergyList.add("mælk");
-            System.out.println(getAllergies());
-        }
+        boolean allergiesSkaldyr = sp.getBoolean("allergies_skaldyr", false);
+            if (allergiesSkaldyr) {
+                allergyList.add("skaldyr");
+            }
+            boolean allergiMaelk = sp.getBoolean("allergies_maelk", false);
+            if (allergiMaelk) {
+                allergyList.add("mælk");
+            }
+            boolean allergiBloeddyr = sp.getBoolean("allergies_bloeddyr", false);
+            if (allergiBloeddyr) {
+            allergyList.add("bløddyr");
+            }
+            boolean allergiFisk = sp.getBoolean("allergies_fisk", false);
+            if (allergiFisk) {
+            allergyList.add("fisk");
+            }
+            boolean allergiGluten = sp.getBoolean("allergies_kornsorter", false);
+            if (allergiGluten) {
+            allergyList.add("gluten");
+            }
+            boolean allergiLupin = sp.getBoolean("allergies_lupin", false);
+            if (allergiLupin) {
+            allergyList.add("lupin");
+            }
+            boolean allergiNoedder = sp.getBoolean("allergies_noedder", false);
+            if (allergiNoedder) {
+            allergyList.add("nødder");
+            }
+            boolean allergiPeanuts = sp.getBoolean("allergies_peanuts", false);
+            if (allergiPeanuts) {
+            allergyList.add("peanuts");
+            }
+            boolean allergiSelleri = sp.getBoolean("allergies_selleri", false);
+            if (allergiSelleri) {
+            allergyList.add("selleri");
+            }
+            boolean allergiSennep = sp.getBoolean("allergies_sennep", false);
+            if (allergiSennep) {
+            allergyList.add("sennep");
+            }
+            boolean allergiSesam = sp.getBoolean("allergies_sesam", false);
+            if (allergiSesam) {
+            allergyList.add("sesam");
+            }
+            boolean allergiSoya = sp.getBoolean("allergies_soya", false);
+            if (allergiSoya) {
+            allergyList.add("soya");
+            }
+            boolean allergiSulfitter = sp.getBoolean("allergies_sulfitter", false);
+            if (allergiSulfitter) {
+            allergyList.add("sulfitter");
+            }
+            boolean allergiAeg = sp.getBoolean("allergies_aeg", false);
+            if (allergiAeg) {
+            allergyList.add("æg");
+            }
+
+
+
+
+
+
+
+
     }
+
 }
