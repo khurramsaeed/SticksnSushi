@@ -27,7 +27,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar toolbar;
     protected Button clickbtn;
 
-
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
     @Override
@@ -36,12 +35,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID){
+    public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
 
         toolbar = (Toolbar) findViewById(R.id.include_toolbar);
 
-        if(toolbar != null){
+        if (toolbar != null) {
             // toolbar.setLogo(R.drawable.logo_text);
             // toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
             setSupportActionBar(toolbar);
@@ -54,17 +53,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        // TODO: 01/11/2017 Her skal indsættes cart
-
-
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
 
-
         MenuItem item = menu.findItem(R.id.cartPopUp);
         LayerDrawable icon = (LayerDrawable) item.getIcon();
-        setBadgeCount(this, icon, ""+ app.getCart().getItems().size());
-
+        setBadgeCount(this, icon, "" + app.getCart().getItems().size());
 
         return true;
     }
@@ -76,30 +70,21 @@ public abstract class BaseActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-
-        switch(id) {
-
+        switch (id) {
             case R.id.cartPopUp:
-
                 View menuItemView = findViewById(R.id.cartPopUp);
-
                 PopupWindow popupwindow_obj = popupDisplay();
-
                 popupwindow_obj.showAsDropDown(menuItemView, -40, 18);
-
+                break;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
 
-
-    public PopupWindow popupDisplay(){
+    public PopupWindow popupDisplay() {
 
         final PopupWindow popupWindow = new PopupWindow(this);
-
         LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
         View view = inflater.inflate(R.layout.popup_cart, null);
 
         popupWindow.setFocusable(true);
@@ -109,11 +94,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         popupWindow.setContentView(view);
 
         clickbtn = view.findViewById(R.id.button1);
-        clickbtn.setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View v)
-
-            {
+        clickbtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
             }
         });
@@ -121,11 +103,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         return popupWindow;
     }
 
-
     public static void setBadgeCount(Context context, LayerDrawable icon, String count) {
 
         BadgeDrawable badge;
-
         // Reuse drawable if possible
         Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
         if (reuse != null && reuse instanceof BadgeDrawable) {
@@ -138,5 +118,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         icon.mutate();
         icon.setDrawableByLayerId(R.id.ic_badge, badge);
     }
+
 
 }
