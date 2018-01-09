@@ -61,7 +61,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
         }
         else if (category.equals("Menuer")){
-            Toast.makeText(this, app.getCart().getItems().get(i).getItemName(), Toast.LENGTH_SHORT).show();
             itemName.setText(app.dataMenuer.get(i).getItemName());
             pcs = app.dataMenuer.get(i).getItemPCS();
             itemPrice.setText(Integer.toString(app.dataMenuer.get(i).getPrice()) + " kr./ " + pcs);
