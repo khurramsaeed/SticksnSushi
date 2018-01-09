@@ -2,7 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="100dp"
     android:background="@color/colorSecondary"
     android:clickable="true">
 
@@ -13,19 +13,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="8dp">
 
             <LinearLayout
-                android:layout_width="120dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/sidebar_item_itemName"
-                    android:layout_width="120dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="Item name"
                     android:textColor="@color/colorPrimaryText"
@@ -36,7 +35,7 @@
                 <ImageView
                     android:id="@+id/sidebar_item_itemImage"
                     android:padding="8dp"
-                    android:layout_width="120dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:src="@drawable/starters_2"/>
 
@@ -52,19 +51,20 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cart"
+                        android:background="@drawable/plus"
+                        android:backgroundTint="@color/colorAccent"
                         android:layout_margin="6dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="1"
                         android:layout_gravity="center"
-                        android:textColor="@color/colorPrimaryText"
-                        android:layout_margin="6dp"/>
+                        android:textColor="@color/colorPrimaryText"/>
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/cart"
+                        android:background="@drawable/minus"
+                        android:backgroundTint="@color/colorAccent"
                         android:layout_margin="6dp"/>
                 </LinearLayout>
             <TextView
@@ -73,7 +73,8 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="0 kr."
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorPrimaryText"
+                android:layout_gravity="center"
                 android:gravity="center"/>
 
             <TextView
@@ -82,8 +83,9 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="0 kr."
-                android:textColor="@color/colorPrimary"
-                android:gravity="center"/>
+                android:textColor="@color/colorPrimaryText"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
 
 
