@@ -19,18 +19,19 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
     private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
-    private Item item;
 
     private TextView itemName, itemPrice, itemDesc, allergies;
     private String pcs;
     private ImageView itemImage;
     private Button addToBasket;
+    private String category;
+    private int i;
 
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
-        int i = getIntent().getIntExtra("ID",0);
-        String category = getIntent().getStringExtra("Category");
+        i = getIntent().getIntExtra("ID",0);
+        category = getIntent().getStringExtra("Category");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -52,12 +53,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         allergies = findViewById(R.id.dishAllergies);
 
         if(category.equals("Starters")) {
-
-
-            // To add in Cart
-            app.getCart().addItem(app.dataStarters.get(i));
-
-
             itemName.setText(app.dataStarters.get(i).getItemName());
             pcs = app.dataStarters.get(i).getItemPCS();
             itemPrice.setText(Integer.toString(app.dataStarters.get(i).getPrice()) + " kr./ " + pcs);
@@ -66,12 +61,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
         }
         else if (category.equals("Menuer")){
-
-
-            // To add in Cart
-            app.getCart().addItem(app.dataMenuer.get(i));
-
-
             Toast.makeText(this, app.getCart().getItems().get(i).getItemName(), Toast.LENGTH_SHORT).show();
             itemName.setText(app.dataMenuer.get(i).getItemName());
             pcs = app.dataMenuer.get(i).getItemPCS();
@@ -82,19 +71,12 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         }
 
         else if (category.equals("Kids")){
-
             itemName.setText(app.dataKids.get(i).getItemName());
             pcs = app.dataKids.get(i).getItemPCS();
             itemPrice.setText(Integer.toString(app.dataKids.get(i).getPrice()) + " kr./ " + pcs);
             itemDesc.setText(app.dataKids.get(i).getItemDescription());
             allergies.setText(app.dataKids.get(i).getAllergies());
             itemImage.setImageBitmap(app.dataKids.get(i).getItemImage());
-
-
-            // To add in Cart
-            app.getCart().addItem(app.dataKids.get(i));
-            System.out.println(app.dataKids.get(i).toString());
-
         }
 
     }
@@ -116,7 +98,10 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view == addToBasket) {
-            // TODO: 08/01/2018 add item in basket
+            Toast.makeText(this, "Tilføjet til kurven", Toast.LENGTH_SHORT).show();
+            if(category.equals("Starters")) { app.getCart().addItem(app.dataStarters.get(i));}
+            else if (category.equals("Menuer")){app.getCart().addItem(app.dataMenuer.get(i));}
+            else if (category.equals("Kids")){ app.getCart().addItem(app.dataKids.get(i)); }
         }
     }
 }
