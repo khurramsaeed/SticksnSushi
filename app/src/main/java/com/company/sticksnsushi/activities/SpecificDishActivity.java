@@ -1,7 +1,9 @@
 package com.company.sticksnsushi.activities;
 
+import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -94,13 +96,16 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         return super.onOptionsItemSelected(item);
     }
 
+
     @Override
     public void onClick(View view) {
         if (view == addToBasket) {
             Toast.makeText(this, "Tilføjet til kurven", Toast.LENGTH_SHORT).show();
-            if(category.equals("Starters")) { app.getCart().addItem(app.dataStarters.get(i));}
+            if(category.equals("Starters")) {app.getCart().addItem(app.dataStarters.get(i));}
             else if (category.equals("Menuer")){app.getCart().addItem(app.dataMenuer.get(i));}
-            else if (category.equals("Kids")){ app.getCart().addItem(app.dataKids.get(i)); }
+            else if (category.equals("Kids")){ app.getCart().addItem(app.dataKids.get(i));
+            }
         }
     }
+
 }

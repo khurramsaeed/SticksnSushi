@@ -210,7 +210,7 @@
     {
       "title": "Solo",
       "imageName": "menuer_6",
-      "description": "Valgfrie ruller",
+      "description": "NIGIRI: laks, tun og reje.\n\nVALGFRI:\n\nURAMAKI: pink Alaska, crispy ebi, mamma Mia, California ebi, spicy tuna eller \n\n RISPAPIR: med and eller laks (8 skiver)",
       "pcs": "menu",
       "price": 179,
       "category": "Menuer",
@@ -219,7 +219,7 @@
     {
       "title": "Laks OD",
       "imageName": "menuer_2",
-      "description": "",
+      "description": "NIGIRI: soyagravad laks, laks, laks New York og flammegrillet laks\n\nMAKI: hosomaki inside-out med laks\n\nSHAKE TATAKI: med kinaradisse, shiso, kizami, wasabi og ponzu\n\nDAIKON med laks og ponzu",
       "pcs": "menu",
       "price": 189,
       "category": "Menuer",
@@ -228,7 +228,7 @@
     {
       "title": "Nana ban",
       "imageName": "menuer_3",
-      "description": "",
+      "description": "NIGIRI: havbars, tun, grillet kammusling, flammegrillet laks, flammegrillet hamachi, avocado med miso aioli og reje nigiri",
       "pcs": "menu",
       "price": 169,
       "category": "Menuer",
@@ -237,7 +237,7 @@
     {
       "title": "Greenkeeper",
       "imageName": "menuer_4",
-      "description": "",
+      "description": "NIGIRI: avocado, tofu og asparges\n\nHOSOMAKI: inside-out med grønt\n\nSTICKS kejserhat og sweet potato\n\nSpicy edamame, grillet majs og tangsalat",
       "pcs": "menu",
       "price": 219,
       "category": "Menuer",
@@ -246,7 +246,7 @@
     {
       "title": "Anden, laksen & deres venner",
       "imageName": "menuer_5",
-      "description": "",
+      "description": "NIGIRI: laks\n\nKABURIMAKI: ebi panko med sprød tempurareje og spicy sauce toppet med avocado\n\nURAMAKI: spicy tuna med tun og agurk og pink Alaska med laks rullet i stenbiderrogn\n\nRISPAPIR: skiver af andebryst med avocado, salat og gomadressing.",
       "pcs": "menu",
       "price": 199,
       "category": "Menuer",
@@ -255,7 +255,7 @@
     {
       "title": "Fisk til flere",
       "imageName": "menuer_17",
-      "description": "",
+      "description": "URAMAKI: spicy tuna med tun og agurk. Pink Alaska med laks rullet i stenbiderrogn. Mamma Mia med agurk og avocado og California roll med reje\n\nNIGIRI: laks, tun, reje, flammegrillet laks og tofu.\n\nSoya, wasabi og ingefær",
       "pcs": "god at dele",
       "price": 500,
       "category": "Menuer",
@@ -264,7 +264,7 @@
     {
       "title": "Ebi Kit Menu",
       "imageName": "menuer_7",
-      "description": "",
+      "description": "KABURIMAKI: hell's kitchen med tempurareje, avocado og spicy sauce. Ebi panko med tempurareje og spicy sauce, toppet med avocado\n\nNew York subway med tempurareje, avocado og spicy sauce toppet med laks og hvidløg",
       "pcs": "menu",
       "price": 399,
       "category": "Menuer",
@@ -273,7 +273,7 @@
     {
       "title": "Perfect day menu",
       "imageName": "menuer_1",
-      "description": "",
+      "description": "MAKI: Crispy ebi, spicy tuna roll og rispapir med and og goma\n\nNIGIRI: Avocado, flammegrillet laks og tun\n\nTATAKI: Laks med ponzu Krabbe croquetter med wasabi caesar\n\nEDAMAME BØNNER: med salt og citron\n\nSTICKS: Kyllingekødboller med teriyaki, asparges svøbt i bacon og laks med teriyaki",
       "pcs": "2 personer",
       "price": 599,
       "category": "Menuer",
@@ -282,7 +282,7 @@
     {
       "title": "Bord til 2",
       "imageName": "menuer_8",
-      "description": "",
+      "description": "NIGIRI: laks, tun reje, laks New York, tofu og havbars\n\nFUTOMAKI: med flammegrillet fisk, avocado, chilli, ingefær og rødløg\n\nURAMAKI: pink Alaska med laks, avocado og stenbiderrogn og spicy tuna med tun, agurk, chilli, masago, kataifi og urter",
       "pcs": "god at dele",
       "price": 399,
       "category": "Menuer",
@@ -291,7 +291,7 @@
     {
       "title": "Mandemad",
       "imageName": "menuer_9",
-      "description": "",
+      "description": "STICKS: emmentaler svøbt i bacon, frilandsgris med yuzu-miso, kylling med chili, kyllingekødboller, spareribs og pankopaneret and\n\nEdamame bønner og ris",
       "pcs": "menu",
       "price": 219,
       "category": "Menuer",
@@ -300,7 +300,7 @@
     {
       "title": "Blandede følelser",
       "imageName": "menuer_10",
-      "description": "",
+      "description": "NIGIRI: reje, laks, hamachi og tun\n\nMAKI: pink Alaska, spicy tuna og gypsy roll\n\nSTICKS: kyllingekødboller, kylling med teriyaki og chili og pork belly af frilandsgris\n\nEDAMAME BØNNER: med salt og citron",
       "pcs": "menu",
       "price": 214,
       "category": "Menuer",
@@ -309,7 +309,7 @@
     {
       "title": "Blandede følelser tutatar",
       "imageName": "menuer_11",
-      "description": "",
+      "description": "NIGIRI: reje, laks, hamachi og tun\n\nMAKI: pink Alaska, spicy tuna og gypsy roll\n\nSTICKS: kyllingekødboller, kylling med teriyaki og chili og pork belly af frilandsgris\n\nEDAMAME BØNNER: med salt og citron\n\nTUNTATAR: tun, avocado, sesam, miso, yuzu, ingefær og rischips ",
       "pcs": "menu",
       "price": 294,
       "category": "Menuer",
@@ -318,7 +318,7 @@
     {
       "title": "Bord til 2 med Hotate Katafi",
       "imageName": "menuer_12",
-      "description": "",
+      "description": "NIGIRI: laks, tun reje, laks New York, tofu og havbars\n\nFUTOMAKI: med flammegrillet fisk, avocado, chilli, ingefær og rødløg\n\nURAMAKI: pink Alaska med laks, avocado og stenbiderrogn og spicy tuna med tun, agurk, chilli, masago, kataifi og urter\n\nTILVALG: kammusling med miso aïoli, øredrogn og urter",
       "pcs": "menu",
       "price": 499,
       "category": "Menuer",
@@ -327,7 +327,7 @@
     {
       "title": "Galla Menu",
       "imageName": "menuer_13",
-      "description": "",
+      "description": "MAKI: ebi panko og pink Alaska\n\nNIGIRI: laks, tun og reje\n\nTUNTATAR med, avocado, sesam, yuzu, miso og rischips\n\nHOTATE KATAIFI: kammusling, kataifi, miso aïoli, ørredrogn og shiso\n\nBEEF TATAKI Okse, rygeost, purløg, mandler, yuzu-kosho og spicy goma\n\nSTICKS kylling med chili og teriyaki, lammekotelet med miso kryddersmør og andebryst med panko og wasabi caesar\n\nEDAMAME BØNNER: med spicy sauce",
       "pcs": "2 personer",
       "price": 798,
       "category": "Menuer",
@@ -336,7 +336,7 @@
     {
       "title": "Extravaganza menu",
       "imageName": "menuer_14",
-      "description": "",
+      "description": "MAGURO TATAKI: tun, chunky wafu, daikon og trøffel-goma\n\nHOTATE CEVICHE: kammusling, lime, chili, koriander og selleri\n\nSHAKE TATAKI laks:, kizami wasabi og ponzu Grillede edamame med soya og sesam\n\nEBI HAPSER: tempurareje, miso aïoli, chili, lime og koriander\n\nNIGIRI: flammegrillet hamachi og laks\n\nMAKI: ebi panko, hell's kitchen og wagyu maki\n\nSTICKS: kammusling svøbt i bacon, okse entrecôte med miso kryddersmør og black cod med miso",
       "pcs": "2 personer",
       "price": 899,
       "category": "Menuer",
@@ -345,7 +345,7 @@
     {
       "title": "SushiSøster",
       "imageName": "menuer_15",
-      "description": "",
+      "description": "SASHIMI: hamachi, makrel, tun, flammegrillet laks, havbars, laks og flammegrillede kammuslinger\n\nDAIKON: med reje\n\nTAMAGO: med ørredrogn.",
       "pcs": "menu",
       "price": 289,
       "category": "Menuer",
@@ -354,7 +354,7 @@
     {
       "title": "Maki Maki",
       "imageName": "menuer_16",
-      "description": "",
+      "description": "KABURIMAKI: hell’s Kitchen med tempurareje, avocado og spicy sauce. Ebi panko med tempurareje og spicy sauce, toppet med avocado. Shake aïoli med sukkerærter, avocado, miso aïoli, ørredrogn og agurk og lakse ceviche med rødløg, avocado og agurk toppet med laks og korriander.\n\nMINI MAKI MAKI: 4 skiver af hver rulle",
       "pcs": "god at dele",
       "price": 489,
       "category": "Menuer",
@@ -363,7 +363,7 @@
     {
       "title": "Four meal drive big",
       "imageName": "menuer_18",
-      "description": "",
+      "description": "NIGIRI: tun, havbars, laks, flammegrillet laks, reje, makrel\n\nKABURIMAKI: lakse ceviche med rødløg og avocado og ebi panko med avocado og tempura reje\n\nURAMAKI: spicy tuna med tun og agurk og pink Alaska med laks rullet i stenbiderrogn\n\nFUTOMAKI: gypsy roll med flammegrillet fisk\n\nHOSOMAKI: ebi hot med reje og chilli",
       "pcs": "god at dele",
       "price": 799,
       "category": "Menuer",
@@ -372,7 +372,7 @@
     {
       "title": "Four meal drive big Snick snack",
       "imageName": "menuer_19",
-      "description": "",
+      "description": "NIGIRI: tun, havbars, laks, flammegrillet laks, reje, makrel\n\nKABURIMAKI lakse ceviche med rødløg og avocado og ebi panko med avocado og tempura reje\n\nURAMAKI: spicy tuna med tun og agurk og pink Alaska med laks rullet i stenbiderrogn\n\nFUTOMAKI: gypsy roll med flammegrillet fisk\n\nHOSOMAKI: ebi hot med reje og chilli\n\nTILVALG: croquetter med krabbe, friterede jordskokker med miso aïoli og grillede Edamame bønner",
       "pcs": "menu",
       "price": 899,
       "category": "Menuer",
@@ -386,7 +386,7 @@
     {
       "title": "Sushi menu reje",
       "imageName": "kids_1",
-      "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
+      "description": "MAKIRULLER: 8 med økologisk agurk, økologisk avocado eller laks. \n\nEdamame bønner med salt & citron & yasai sticks med miso dip.\n\nChokoladefisk",
       "pcs": "stk.",
       "price": 79,
       "category": "Kids",
@@ -395,7 +395,7 @@
     {
       "title": "Sushi menu laks",
       "imageName": "kids_2",
-      "description": "MAKIRULLER 8 med økologisk agurk, økologisk avocado eller laks. Edamame bønner med salt & citron & yasai sticks med miso dip. Chokoladefisk",
+      "description": "MAKIRULLER: 8 med økologisk agurk, økologisk avocado eller laks. \n\nEdamame bønner med salt & citron & yasai sticks med miso dip. \n\nChokoladefisk",
       "pcs": "stk.",
       "price": 79,
       "category": "Kids",
@@ -404,7 +404,7 @@
     {
       "title": "Sticks menu",
       "imageName": "kids_3",
-      "description": "STICKS 3 kyllingekødboller, kyllingevinger eller laks i teriyaki. Ris, edamame bønner med salt og citron. Yasai sticks med miso dip. Chokoladefisk",
+      "description": "STICKS: 3 kyllingekødboller, kyllingevinger eller laks i teriyaki. \n\nRis, edamame bønner med salt og citron. \n\nYasai sticks med miso dip. \n\nChokoladefisk",
       "pcs": "stk.",
       "price": 79,
       "category": "Kids",
@@ -413,7 +413,7 @@
     {
       "title": "Sticks'n'Sushi laks",
       "imageName": "kids_4",
-      "description": "NIGIRI: 2 laks. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
+      "description": "NIGIRI: 2 laks. \n\nSTICKS: 2 kyllingekødboller. \n\nHOSOMAKI: 8 med laks, avocado eller agurk. \n\nRis og edamame bønner med salt & citron. \n\nChokoladefisk",
       "pcs": "stk.",
       "price": 98,
       "category": "Kids",
@@ -422,7 +422,7 @@
     {
       "title": "Sticks'n'Sushi reje",
       "imageName": "kids_5",
-      "description": "NIGIRI: 2 reje. STICKS: 2 kyllingekødboller. HOSOMAKI: 8 med laks, avocado eller agurk. Ris og edamame bønner med salt & citron. Chokoladefisk",
+      "description": "NIGIRI: 2 reje. \n\nSTICKS: 2 kyllingekødboller. \n\nHOSOMAKI: 8 med laks, avocado eller agurk. \n\nRis og edamame bønner med salt & citron. \n\nChokoladefisk",
       "pcs": "stk.",
       "price": 98,
       "category": "Kids",
@@ -485,7 +485,7 @@
     {
       "title": "Kids T-shirt",
       "imageName": "kids_12",
-      "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
+      "description": "Børne T-Shirt i blød økologisk bomuld. \n\nHistorien om katten Maneki. \n\nOplys størrelse i tekstfeltet ved afslutning af købet. ",
       "pcs": "str 2-12 år",
       "price": 195,
       "category": "Kids",
@@ -494,7 +494,7 @@
     {
       "title": "Baby heldragt",
       "imageName": "kids_13",
-      "description": "Børne T-Shirt i blød økologisk bomuld. Historien om katten Maneki. Oplys størrelse i tekstfeltet ved afslutning af købet. ",
+      "description": "Børne T-Shirt i blød økologisk bomuld. \n\nHistorien om katten Maneki. \n\nOplys størrelse i tekstfeltet ved afslutning af købet. ",
       "pcs": "62-92cl",
       "price": 295,
       "category": "Kids",
