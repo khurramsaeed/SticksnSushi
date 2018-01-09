@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
@@ -52,9 +53,10 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
         if(category.equals("Starters")) {
 
-            item = app.dataStarters.get(i);
-            app.getCart().addItem(item);
-            app.getCart().toString();
+
+            // To add in Cart
+            app.getCart().addItem(app.dataStarters.get(i));
+
 
             itemName.setText(app.dataStarters.get(i).getItemName());
             pcs = app.dataStarters.get(i).getItemPCS();
@@ -65,9 +67,12 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         }
         else if (category.equals("Menuer")){
 
-            item = app.dataMenuer.get(i);
-            app.getCart().addItem(item);
 
+            // To add in Cart
+            app.getCart().addItem(app.dataMenuer.get(i));
+
+
+            Toast.makeText(this, app.getCart().getItems().get(i).getItemName(), Toast.LENGTH_SHORT).show();
             itemName.setText(app.dataMenuer.get(i).getItemName());
             pcs = app.dataMenuer.get(i).getItemPCS();
             itemPrice.setText(Integer.toString(app.dataMenuer.get(i).getPrice()) + " kr./ " + pcs);
@@ -78,15 +83,18 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
         else if (category.equals("Kids")){
 
-            item = app.dataKids.get(i);
-            app.getCart().addItem(item);
-
             itemName.setText(app.dataKids.get(i).getItemName());
             pcs = app.dataKids.get(i).getItemPCS();
             itemPrice.setText(Integer.toString(app.dataKids.get(i).getPrice()) + " kr./ " + pcs);
             itemDesc.setText(app.dataKids.get(i).getItemDescription());
             allergies.setText(app.dataKids.get(i).getAllergies());
             itemImage.setImageBitmap(app.dataKids.get(i).getItemImage());
+
+
+            // To add in Cart
+            app.getCart().addItem(app.dataKids.get(i));
+            System.out.println(app.dataKids.get(i).toString());
+
         }
 
     }

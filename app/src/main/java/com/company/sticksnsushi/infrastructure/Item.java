@@ -88,4 +88,18 @@ public class Item {
     public void setItemImage(Bitmap itemImage) {
         this.itemImage = itemImage;
     }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id=" + id +
+                ", price=" + price +
+                ", itemName='" + itemName + '\'' +
+                ", itemPCS='" + itemPCS + '\'' +
+                ", itemDescription='" + itemDescription + '\'' +
+                ", category='" + category + '\'' +
+                ", allergies='" + allergies + '\'' +
+                ", itemImage=" + itemImage +
+                '}';
+    }
 }

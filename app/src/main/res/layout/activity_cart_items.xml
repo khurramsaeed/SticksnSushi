@@ -23,7 +23,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/sidebar_item_itemName"
+                    android:id="@+id/cart_itemName"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:text="Item name"
@@ -33,7 +33,7 @@
                     android:maxLines="1" />
             
                 <ImageView
-                    android:id="@+id/sidebar_item_itemImage"
+                    android:id="@+id/cart_itemImage"
                     android:padding="8dp"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
@@ -54,6 +54,7 @@
                         android:background="@drawable/plus"
                         android:backgroundTint="@color/colorAccent"
                         android:layout_margin="6dp"/>
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -61,6 +62,7 @@
                         android:layout_gravity="center"
                         android:textColor="@color/colorPrimaryText"
                         android:id="@+id/cart_itemAmount"/>
+
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,7 +71,7 @@
                         android:layout_margin="6dp"/>
                 </LinearLayout>
             <TextView
-                android:id="@+id/sidebar_item_pricePrItem"
+                android:id="@+id/cart_pricePrItem"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
@@ -79,7 +81,7 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/sidebar_item_price_total"
+                android:id="@+id/cart_priceTotal"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

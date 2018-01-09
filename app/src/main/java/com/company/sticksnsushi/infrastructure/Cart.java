@@ -47,4 +47,8 @@ public class Cart {
     public void setTotal(int total) {
         this.total = total;
     }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
 }
