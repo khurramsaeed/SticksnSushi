@@ -15,6 +15,7 @@ public class Item {
     private String category;
     private String allergies;
     private Bitmap itemImage;
+    private int quantity;
 
     public Item() {
     }
@@ -89,17 +90,11 @@ public class Item {
         this.itemImage = itemImage;
     }
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "id=" + id +
-                ", price=" + price +
-                ", itemName='" + itemName + '\'' +
-                ", itemPCS='" + itemPCS + '\'' +
-                ", itemDescription='" + itemDescription + '\'' +
-                ", category='" + category + '\'' +
-                ", allergies='" + allergies + '\'' +
-                ", itemImage=" + itemImage +
-                '}';
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
