@@ -12,8 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.activities.SpecificDishActivity;
-import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.activities.MenuOverviewActivity;
+import com.company.sticksnsushi.infrastructure.Categories;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
@@ -54,8 +54,8 @@ import java.util.ArrayList;
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < app.dataStarters.size(); i++) {
-            adapter.addItem(app.dataStarters.get(i));
+        for (int i = 0; i < app.dataMakiCategories.size(); i++) {
+            adapter.addItem(app.dataMakiCategories.get(i));
         }
         recyclerView.setAdapter(adapter);
 
@@ -68,13 +68,13 @@ import java.util.ArrayList;
      * @author Khurram Saeed Malik
      */
     public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
-        private final ArrayList<Item> items;
+        private final ArrayList<Categories> items;
 
         public CustomDataAdapter() {
             this.items = new ArrayList<>();
         }
 
-        public void addItem(Item item) {
+        public void addItem(Categories item) {
             items.add(item);
             // Sidste element af Array
             notifyItemInserted(items.size() - 1);
@@ -82,7 +82,7 @@ import java.util.ArrayList;
 
 
         // If we want to remove item
-        public void removeItem(Item item) {
+        public void removeItem(Categories item) {
             int position = items.indexOf(item);
             if (position == -1) {
                 return;
@@ -100,10 +100,8 @@ import java.util.ArrayList;
                 @Override
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
-                    String category = app.dataStarters.get(id).getCategory();
-                    Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
-                    myintent.putExtra("Category", category);
-                    myintent.putExtra("ID", id);
+                    Intent myintent=new Intent(getContext(), MenuOverviewActivity.class);
+                    myintent.putExtra("index", id);
 
                     startActivity(myintent);
                 }
@@ -114,7 +112,7 @@ import java.util.ArrayList;
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = app.dataStarters.get(position);
+            Categories item = app.dataMakiCategories.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());

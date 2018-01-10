@@ -47,6 +47,7 @@ public class SticksnSushiApplication extends Application {
     private Cart cart;
 
     public ArrayList<Categories> dataCategories;
+    public ArrayList<Categories> dataMakiCategories;
     public ArrayList<Item> dataStarters;
     public ArrayList<Item> dataKids;
     public ArrayList<Item> dataMenuer;
@@ -71,6 +72,7 @@ public class SticksnSushiApplication extends Application {
         cart = new Cart();
 
         dataCategories = new ArrayList<>();
+        dataMakiCategories = new ArrayList<>();
         dataStarters = new ArrayList<>();
         dataKids = new ArrayList<>();
         dataMenuer = new ArrayList<>();
@@ -106,6 +108,7 @@ public class SticksnSushiApplication extends Application {
 
 
             JSONArray categories = json.getJSONArray("categories");
+            JSONArray makiCategories = json.getJSONArray("makiCategories");
             JSONArray starters = json.getJSONArray("starters");
             JSONArray kids = json.getJSONArray("kids");
             JSONArray menuer = json.getJSONArray("menuer");
@@ -126,6 +129,26 @@ public class SticksnSushiApplication extends Application {
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
 
                 dataCategories.add(new Categories(title, itemImage));
+
+            }
+
+
+            //Data for makiCategories
+            int numberMaki = makiCategories.length();
+            for (int i = 0; i < numberMaki; i++) {
+                JSONObject makiCategory = makiCategories.getJSONObject(i);
+                System.err.println("obj = " + makiCategory);
+
+                // Get title and imageName from JSON-file
+                String title = makiCategory.getString("title");
+                String imageName = makiCategory.getString("imageName");
+
+                // resId gets image resource with its identifier (image_name)
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                // Convert resId to BitMap
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataMakiCategories.add(new Categories(title, itemImage));
 
             }
 
