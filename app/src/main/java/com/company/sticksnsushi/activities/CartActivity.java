@@ -1,8 +1,11 @@
 package com.company.sticksnsushi.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -52,9 +55,13 @@ public class CartActivity extends BaseActivity {
         retrieveListView();
     }
 
-    public void startCheckoutActivity(View view) { startActivity(new Intent(this, CheckoutActivity.class));  }
+    public void startCheckoutActivity(View view) {
+        startActivity(new Intent(this, CheckoutActivity.class));
+    }
+
     /**
      * Clears Cart Menu
+     *
      * @param menu
      * @return
      */
@@ -66,11 +73,12 @@ public class CartActivity extends BaseActivity {
 
     /**
      * Effects back button in current activity
+     *
      * @param item
      * @return
      */
     @Override
-    public boolean onOptionsItemSelected (MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
@@ -79,7 +87,7 @@ public class CartActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void retrieveListView(){
+    private void retrieveListView() {
 
         data.addAll(app.getCart().getItems());
 
@@ -89,7 +97,6 @@ public class CartActivity extends BaseActivity {
         listView.setAdapter(adapter);
 
     }
-
 
 
     public class CartAdapter extends ArrayAdapter<Item> {
@@ -115,7 +122,7 @@ public class CartActivity extends BaseActivity {
             TextView itemName = (TextView) view.findViewById(R.id.cart_itemName);
             TextView itemQuantity = (TextView) view.findViewById(R.id.cart_itemAmount);
             TextView pricePrItem = (TextView) view.findViewById(R.id.cart_pricePrItem);
-            TextView priceTotal = (TextView)  view.findViewById(R.id.cart_priceTotal);
+            TextView priceTotal = (TextView) view.findViewById(R.id.cart_priceTotal);
 
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
@@ -124,7 +131,7 @@ public class CartActivity extends BaseActivity {
 
 
             itemName.setText(item.getItemName().toString());
-            itemQuantity.setText(""+item.getQuantity());
+            itemQuantity.setText("" + item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
             priceTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
@@ -134,7 +141,7 @@ public class CartActivity extends BaseActivity {
                 @Override
                 public void onClick(View view) {
 
-                    item.setQuantity(item.getQuantity()+1);
+                    item.setQuantity(item.getQuantity() + 1);
                     notifyDataSetChanged();
 
                 }
@@ -143,11 +150,30 @@ public class CartActivity extends BaseActivity {
             minusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
-                    if(item.getQuantity() >= 1) {
+                    if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
                         notifyDataSetChanged();
 
+                    } else {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                if (!isFinishing()) {
+                                    new AlertDialog.Builder(CartActivity.this)
+                                            .setTitle("Du er ved fjerne "+item.getItemName())
+                                            .setMessage("Ønsker du at fjerne retten?")
+                                            .setCancelable(true)
+                                            .setNegativeButton("Nej", null)
+                                            .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    data.remove(item);
+                                                    notifyDataSetChanged();
+                                                }
+                                            }).show();
+                                }
+                            }
+                        });
                     }
                 }
             });
@@ -156,6 +182,7 @@ public class CartActivity extends BaseActivity {
             return view;
 
         }
+
 
     }
 

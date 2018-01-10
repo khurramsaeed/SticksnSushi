@@ -29,6 +29,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private String category;
     private int i, recomID1, recomID2, recomID3;
     private int quantity=0;
+
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
@@ -114,7 +115,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view == addToBasket) {
-
             if(category.equals("Starters")) {
                 if (!app.getCart().getItems().contains(app.dataStarters.get(i))) {
                 app.getCart().addItem(app.dataStarters.get(i)); }
@@ -136,6 +136,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 quantity++;
                 app.dataKids.get(i).setQuantity(quantity);
             }
+
+            adapter.notifyDataSetChanged();
+
         }
         if(view==recomItemImage1){
             String category = app.dataStarters.get(recomID1).getCategory();

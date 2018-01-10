@@ -7,6 +7,7 @@ import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -14,36 +15,43 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
+import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
-public abstract class BaseActivity extends AppCompatActivity {
+import java.util.ArrayList;
 
-    protected Toolbar toolbar;
-    protected Button clickbtn;
+public abstract class BaseActivity extends AppCompatActivity {
+    private Button clickbtn;
     private MenuItem item;
+    private ListView listView;
+    protected Toolbar toolbar;
+    protected PopupCartAdapter adapter;
 
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        setContentView(R.layout.popup_cart);
+        listView = findViewById(R.id.popup_cart_listView);
+        retrieveCartList();
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
-
         toolbar = (Toolbar) findViewById(R.id.include_toolbar);
-
         if (toolbar != null) {
-            // toolbar.setLogo(R.drawable.logo_text);
-            // toolbar.setTitle(Html.fromHtml("<font color='#cecece'></font>"));
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.menu);
         }
@@ -58,13 +66,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         inflater.inflate(R.menu.cart_pop_up, menu);
 
         item = menu.findItem(R.id.cartPopUp);
-        notifyCartChanges();
+        updatedCartBadgeCount();
         return true;
     }
 
     @Override
     protected void onResume() {
-        notifyCartChanges();
+        updatedCartBadgeCount();
         super.onResume();
     }
 
@@ -72,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Checks for boolean value becomes true
      * Then enables button input
      */
-    Runnable updateBadgeCount = new Runnable() {
+    private Runnable updateBadgeCount = new Runnable() {
         int temp = 0;
         @Override
         public void run() {
@@ -86,7 +94,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     };
 
-    private void notifyCartChanges() {
+    private void updatedCartBadgeCount() {
         new Handler().post(updateBadgeCount);
     }
 
@@ -119,6 +127,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                 View menuItemView = findViewById(R.id.cartPopUp);
                 PopupWindow popupwindow_obj = popupDisplay();
                 popupwindow_obj.showAsDropDown(menuItemView, -40, 18);
+                retrieveCartList();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -141,11 +150,48 @@ public abstract class BaseActivity extends AppCompatActivity {
         clickbtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                //Close popup window
+                popupWindow.dismiss();
             }
         });
 
         return popupWindow;
     }
+
+    private void retrieveCartList(){
+        adapter = new PopupCartAdapter(BaseActivity.this, app.getCart().getItems());
+        listView.setAdapter(adapter);
+
+    }
+
+    public class PopupCartAdapter extends ArrayAdapter<Item> {
+
+
+        public PopupCartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
+            super(context, 0, itemArrayList);
+        }
+
+        @Override
+        public View getView(int position, View view, ViewGroup viewGroup) {
+
+            Item item = getItem(position);
+            if (view == null) {
+                view = LayoutInflater.from(getContext()).inflate(R.layout.popup_cart_item, viewGroup, false);
+            }
+
+            TextView itemName = (TextView) view.findViewById(R.id.popup_itemQuantity);
+            TextView itemQuantity = (TextView) view.findViewById(R.id.popup_itemName);
+
+            itemName.setText(item.getItemName().toString());
+            itemQuantity.setText(""+item.getQuantity());
+
+            return view;
+
+        }
+
+
+    }
+
 
 
 }
