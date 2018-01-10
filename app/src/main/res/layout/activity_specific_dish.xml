@@ -101,38 +101,125 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:layout_marginLeft="15dp"
                 android:layout_gravity="center_horizontal"
                 android:textColor="@color/colorPrimaryText"
                 android:text="Anbefalinger" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
 
-                <include layout="@layout/fragment_starters_item"
-                    android:id="@+id/firstRec"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item1"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image1"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/recom_name1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="13sp"
+                        android:singleLine="true"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item2"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image2"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/recom_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:singleLine="true"
+                        android:textSize="13sp"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    />
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item3"
+                    android:layout_gravity="center_horizontal">
 
-                <include layout="@layout/fragment_starters_item"
-                    android:id="@+id/secondRec"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    />
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image3"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
 
-                <include layout="@layout/fragment_starters_item"
-                    android:id="@+id/firstRec"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    />
+                    <TextView
+                        android:id="@+id/recom_name3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="13sp"
+                        android:singleLine="true"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
 
             </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
 
             <TextView
                 android:id="@+id/titleAllergies"
@@ -148,6 +235,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
                 android:textColor="@color/price_color"
                 tools:text="Allergies" />
         </LinearLayout>

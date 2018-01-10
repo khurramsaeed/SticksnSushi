@@ -35,6 +35,7 @@
             android:textSize="18sp"
             android:text="@string/sample_item_name"
             android:id="@+id/starters_item_name"
+            android:singleLine="true"
             android:gravity="center_horizontal"
             android:scrollbars="vertical" />
 
