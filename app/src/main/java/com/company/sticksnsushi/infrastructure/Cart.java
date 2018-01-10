@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Cart {
     private int itemId;
-    private int quantity;
+    private int quantity = 1;
     private int total;
 
     ArrayList<Item> items = new ArrayList<>();
@@ -51,4 +51,5 @@ public class Cart {
     public ArrayList<Item> getItems() {
         return items;
     }
+
 }

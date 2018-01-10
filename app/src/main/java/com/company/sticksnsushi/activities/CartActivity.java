@@ -2,9 +2,6 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -21,8 +18,6 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -125,9 +120,9 @@ public class CartActivity extends BaseActivity {
 
             itemName.setText(item.getItemName().toString());
             // TODO: 09/01/2018 Mangler Quantity
-            itemQuantity.setText(""+item.getId());
+            itemQuantity.setText(""+item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
-            priceTotal.setText(item.getId() * item.getPrice() + "kr.");
+            priceTotal.setText(app.getCart().getQuantity() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
 
 
