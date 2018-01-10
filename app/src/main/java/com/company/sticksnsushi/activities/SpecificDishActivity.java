@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ import android.widget.Toast;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
+import java.util.Random;
+
 /**
  * Created by 1234 on 03-01-2018.
  */
@@ -19,13 +22,12 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
     private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
-    private TextView itemName, itemPrice, itemDesc, allergies;
+    private TextView itemName, itemPrice, itemDesc, allergies, recomItemName1, recomItemName2, recomItemName3;
     private String pcs;
-    private ImageView itemImage;
+    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3;
     private Button addToBasket;
     private String category;
-    private int i;
-
+    private int i, recomID1, recomID2, recomID3;
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
@@ -50,6 +52,19 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         itemDesc = findViewById(R.id.dishDisciption);
         itemImage = findViewById(R.id.dishImage);
         allergies = findViewById(R.id.dishAllergies);
+
+        recomItemName1 = findViewById(R.id.recom_name1);
+        recomItemImage1 = findViewById(R.id.recom_image1);
+        recomItemImage1.setOnClickListener(this);
+
+        recomItemName2 = findViewById(R.id.recom_name2);
+        recomItemImage2 = findViewById(R.id.recom_image2);
+        recomItemImage2.setOnClickListener(this);
+
+        recomItemName3 = findViewById(R.id.recom_name3);
+        recomItemImage3 = findViewById(R.id.recom_image3);
+        recomItemImage3.setOnClickListener(this);
+
 
         if(category.equals("Starters")) {
             itemName.setText(app.dataStarters.get(i).getItemName());
@@ -77,6 +92,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             itemImage.setImageBitmap(app.dataKids.get(i).getItemImage());
         }
 
+        addRecom();
     }
     /**
      * Effects back button in current activity
@@ -102,6 +118,62 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             else if (category.equals("Menuer")){app.getCart().addItem(app.dataMenuer.get(i));}
             else if (category.equals("Kids")){ app.getCart().addItem(app.dataKids.get(i));
             }
+        }
+        if(view==recomItemImage1){
+            String category = app.dataStarters.get(recomID1).getCategory();
+            Intent myintent=new Intent(this, SpecificDishActivity.class);
+            myintent.putExtra("Category", category);
+            myintent.putExtra("ID", recomID1);
+            myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(myintent);
+        }
+        if(view==recomItemImage2){
+            String category = app.dataStarters.get(recomID2).getCategory();
+            Intent myintent=new Intent(this, SpecificDishActivity.class);
+            myintent.putExtra("Category", category);
+            myintent.putExtra("ID", recomID2);
+            myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(myintent);
+        }
+        if(view==recomItemImage3){
+            String category = app.dataStarters.get(recomID3).getCategory();
+            Intent myintent=new Intent(this, SpecificDishActivity.class);
+            myintent.putExtra("Category", category);
+            myintent.putExtra("ID", recomID3);
+            myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(myintent);
+        }
+    }
+    public void addRecom() {
+        Random rand = new Random();
+        int nextRec = 0;
+        while (nextRec <=3) {
+            if (nextRec==1) {
+                recomID1 = rand.nextInt(5);
+                while (recomID1 == i){
+                    recomID1 = rand.nextInt(5);
+                }
+                recomItemName1.setText(app.dataStarters.get(recomID1).getItemName());
+                recomItemImage1.setImageBitmap(app.dataStarters.get(recomID1).getItemImage());
+            }
+            else if (nextRec==2){
+                recomID2=rand.nextInt(6)+ 6;
+                while (recomID2 == i){
+                    recomID2 = rand.nextInt(6)+ 6;
+                }
+                recomItemName2.setText(app.dataStarters.get(recomID2).getItemName());
+                recomItemImage2.setImageBitmap(app.dataStarters.get(recomID2).getItemImage());
+            }
+            else if (nextRec==3){
+                recomID3=rand.nextInt(4)+13;
+                while (recomID3 == i){
+                    recomID3 = rand.nextInt(4)+13;
+                }
+                recomItemName3.setText(app.dataStarters.get(recomID3).getItemName());
+                recomItemImage3.setImageBitmap(app.dataStarters.get(recomID3).getItemImage());
+            }
+
+            nextRec++;
         }
     }
 
