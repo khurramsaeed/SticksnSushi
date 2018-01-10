@@ -77,13 +77,10 @@ public class CartActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     private void retrieveListView(){
 
+        data.addAll(app.getCart().getItems());
 
-        for (int i =0; i < app.getCart().getItems().size(); i++) {
-            data.add(app.getCart().getItems().get(i));
-        }
         adapter = new CartAdapter(this, data);
 
         ListView listView = findViewById(R.id.activity_cart_listView);
@@ -119,10 +116,9 @@ public class CartActivity extends BaseActivity {
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
             itemName.setText(item.getItemName().toString());
-            // TODO: 09/01/2018 Mangler Quantity
             itemQuantity.setText(""+item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
-            priceTotal.setText(app.getCart().getQuantity() * item.getPrice() + "kr.");
+            priceTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
 
 

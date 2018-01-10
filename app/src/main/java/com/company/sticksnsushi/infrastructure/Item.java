@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
  */
 
 public class Item {
-    private int id;
+    private int id =0;
     private int price;
     private String itemName;
     private String itemPCS;

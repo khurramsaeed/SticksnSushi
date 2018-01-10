@@ -17,7 +17,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.PopupWindow;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
@@ -59,30 +58,54 @@ public abstract class BaseActivity extends AppCompatActivity {
         inflater.inflate(R.menu.cart_pop_up, menu);
 
         item = menu.findItem(R.id.cartPopUp);
-        Check();
+        notifyCartChanges();
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        notifyCartChanges();
+        super.onResume();
     }
 
     /**
      * Checks for boolean value becomes true
      * Then enables button input
      */
-
-    int temp = app.getCart().getItems().size();
-    private void Check() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (temp != app.getCart().getItems().size()) {
-                    LayerDrawable icon = (LayerDrawable) item.getIcon();
-                    setBadgeCount(getApplicationContext(), icon, "" + app.getCart().getItems().size());
-
-                } else {
-                    Check();
-                }
+    Runnable updateBadgeCount = new Runnable() {
+        int temp = 0;
+        @Override
+        public void run() {
+            // Vi er for tidligt på den og Menuen er ikke oprettet endnu - der kommer et kald i forbindelse ned oprettelse af menuen
+            if (item==null) return;
+            if (temp != app.getCart().getItems().size()) {
+                temp = app.getCart().getItems().size();
+                LayerDrawable icon = (LayerDrawable) item.getIcon();
+                setBadgeCount(getApplicationContext(), icon, "" + app.getCart().getItems().size());
             }
-        }, 1);
+        }
+    };
+
+    private void notifyCartChanges() {
+        new Handler().post(updateBadgeCount);
     }
+
+    private static void setBadgeCount(Context context, LayerDrawable icon, String count) {
+
+        BadgeDrawable badge;
+        // Reuse drawable if possible
+        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
+        if (reuse != null && reuse instanceof BadgeDrawable) {
+            badge = (BadgeDrawable) reuse;
+        } else {
+            badge = new BadgeDrawable(context);
+        }
+
+        badge.setCount(count);
+        icon.mutate();
+        icon.setDrawableByLayerId(R.id.ic_badge, badge);
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -122,22 +145,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         });
 
         return popupWindow;
-    }
-
-    public static void setBadgeCount(Context context, LayerDrawable icon, String count) {
-
-        BadgeDrawable badge;
-        // Reuse drawable if possible
-        Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
-        if (reuse != null && reuse instanceof BadgeDrawable) {
-            badge = (BadgeDrawable) reuse;
-        } else {
-            badge = new BadgeDrawable(context);
-        }
-
-        badge.setCount(count);
-        icon.mutate();
-        icon.setDrawableByLayerId(R.id.ic_badge, badge);
     }
 
 

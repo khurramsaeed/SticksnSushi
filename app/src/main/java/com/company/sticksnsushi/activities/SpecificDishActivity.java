@@ -28,6 +28,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private Button addToBasket;
     private String category;
     private int i, recomID1, recomID2, recomID3;
+    private int quantity=0;
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
@@ -113,10 +114,27 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if (view == addToBasket) {
-            Toast.makeText(this, "Tilføjet til kurven", Toast.LENGTH_SHORT).show();
-            if(category.equals("Starters")) {app.getCart().addItem(app.dataStarters.get(i));}
-            else if (category.equals("Menuer")){app.getCart().addItem(app.dataMenuer.get(i));}
-            else if (category.equals("Kids")){ app.getCart().addItem(app.dataKids.get(i));
+
+            if(category.equals("Starters")) {
+                if (!app.getCart().getItems().contains(app.dataStarters.get(i))) {
+                app.getCart().addItem(app.dataStarters.get(i)); }
+                //app.getCart().setItemId(app.dataStarters.get(i).getId());
+                quantity++;
+                app.dataStarters.get(i).setQuantity(quantity);
+            }
+            else if (category.equals("Menuer")){
+                if (!app.getCart().getItems().contains(app.dataMenuer.get(i))) {
+                app.getCart().addItem(app.dataMenuer.get(i)); }
+                //app.getCart().setItemId(app.dataMenuer.get(i).getId());
+                quantity++;
+                app.dataMenuer.get(i).setQuantity(quantity);
+            }
+            else if (category.equals("Kids")){
+                if (!app.getCart().getItems().contains(app.dataKids.get(i))) {
+                app.getCart().addItem(app.dataKids.get(i)); }
+                //app.getCart().setItemId(app.dataKids.get(i).getId());
+                quantity++;
+                app.dataKids.get(i).setQuantity(quantity);
             }
         }
         if(view==recomItemImage1){
