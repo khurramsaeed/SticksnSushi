@@ -24,12 +24,14 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
-    private EditText editTextEmail, editTextPassword;
+    private EditText editTextEmail, editTextPassword, editTextUsersFullName;
     private Button buttonSignup;
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    String userFullName;
+    String usersFullName;
+
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
 
     @Override
@@ -41,13 +43,14 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
-        editTextEmail = (EditText) findViewById(R.id.editTextSignUpEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextSignUpPassword);
+        editTextEmail = findViewById(R.id.editTextSignUpEmail);
+        editTextPassword = findViewById(R.id.editTextSignUpPassword);
+        editTextUsersFullName = findViewById(R.id.editTextSignUpName);
 
         linkLogin = findViewById(R.id.link_login);
         linkLogin.setOnClickListener(this);
 
-        buttonSignup = (Button) findViewById(R.id.buttonSignup);
+        buttonSignup = findViewById(R.id.buttonSignup);
 
         progressDialog = new ProgressDialog(this);
 
@@ -59,9 +62,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private void registerUser(){
 
         //getting email and password from edit texts
-        final String userName = editTextEmail.getText().toString().trim();
+        final String usersFullName = editTextUsersFullName.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
-        String password  = editTextPassword.getText().toString().trim();
+        final String password  = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
@@ -94,9 +97,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if(task.isSuccessful()){
-                            SticksnSushiApplication.getInstance().getAuth().getUser().setEmail(email);
-                            //SticksnSushiApplication.getInstance().getAuth().getUser().set
+                            app.getAuth().getUser().setEmail(email);
+                            app.getAuth().getUser().setHasPassword(true);
+                            app.getAuth().getUser().setUserName(usersFullName);
+
                             //userFullName = SticksnSushiApplication.getInstance().getAuth().getUser().setDisplayName(userName);
+
                             //display some message here
                             Toast.makeText(SignUpActivity.this,"Konto oprettet",Toast.LENGTH_LONG).show();
                             Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);

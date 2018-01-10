@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -16,13 +15,13 @@ import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -57,7 +56,8 @@ public class SticksnSushiApplication extends Application {
 
         Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
-        Fabric.with(this, new Crashlytics());
+        CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build();
+        Fabric.with(this, new Crashlytics.Builder().core(core).build());
         instance = this;
 
         //mainThread = new Handler();
