@@ -42,9 +42,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        setContentView(R.layout.popup_cart);
-        listView = findViewById(R.id.popup_cart_listView);
-        retrieveCartList();
     }
 
     @Override
@@ -126,7 +123,6 @@ public abstract class BaseActivity extends AppCompatActivity {
                 View menuItemView = findViewById(R.id.cartPopUp);
                 PopupWindow popupwindow_obj = popupDisplay();
                 popupwindow_obj.showAsDropDown(menuItemView, -40, 18);
-                retrieveCartList();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -138,6 +134,11 @@ public abstract class BaseActivity extends AppCompatActivity {
         final PopupWindow popupWindow = new PopupWindow(this);
         LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.popup_cart, null);
+
+        //Add cart data to listview
+        listView = view.findViewById(R.id.popup_cart_listView);
+        adapter = new PopupCartAdapter(this, app.getCart().getItems());
+        listView.setAdapter(adapter);
 
         popupWindow.setFocusable(true);
 
@@ -157,13 +158,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         return popupWindow;
     }
 
-    private void retrieveCartList(){
-
-        adapter = new PopupCartAdapter(BaseActivity.this, app.getCart().getItems());
-        listView.setAdapter(adapter);
-
-    }
-
     public class PopupCartAdapter extends ArrayAdapter<Item> {
 
         public PopupCartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
@@ -178,11 +172,11 @@ public abstract class BaseActivity extends AppCompatActivity {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.popup_cart_item, viewGroup, false);
             }
 
-            TextView itemName = (TextView) view.findViewById(R.id.popup_itemQuantity);
-            TextView itemQuantity = (TextView) view.findViewById(R.id.popup_itemName);
+            TextView itemName = (TextView) view.findViewById(R.id.popup_itemName);
+            TextView itemQuantity = (TextView) view.findViewById(R.id.popup_itemQuantity);
 
             itemName.setText(item.getItemName().toString());
-            itemQuantity.setText(""+item.getQuantity());
+            itemQuantity.setText(" x "+item.getQuantity());
 
             return view;
 

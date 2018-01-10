@@ -137,8 +137,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.dataKids.get(i).setQuantity(quantity);
             }
 
-            adapter.notifyDataSetChanged();
-
         }
         if(view==recomItemImage1){
             String category = app.dataStarters.get(recomID1).getCategory();
