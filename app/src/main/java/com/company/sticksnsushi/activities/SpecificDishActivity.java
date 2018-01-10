@@ -16,7 +16,7 @@ import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 import java.util.Random;
 
 /**
- * Created by 1234 on 03-01-2018.
+ * Created by Gruppe 23 on 03-01-2018.
  */
 
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
