@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
@@ -47,6 +48,17 @@ public class CheckoutActivity extends BaseActivity {
 //        if (savedInstanceState == null){
 //            getFragmentManager().beginTransaction().add(R.id.menu_overview, new StartersFragment()).commit();
 //        }
+    }
+
+    /**
+     * Clears Cart Menu
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return true;
     }
 
     /**

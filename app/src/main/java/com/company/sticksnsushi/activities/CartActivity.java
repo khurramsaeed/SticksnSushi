@@ -1,6 +1,7 @@
 package com.company.sticksnsushi.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +54,19 @@ public class CartActivity extends BaseActivity {
 
         retrieveListView();
     }
+
+    public void startCheckoutActivity(View view) { startActivity(new Intent(this, CheckoutActivity.class));  }
+    /**
+     * Clears Cart Menu
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return true;
+    }
+
     /**
      * Effects back button in current activity
      * @param item

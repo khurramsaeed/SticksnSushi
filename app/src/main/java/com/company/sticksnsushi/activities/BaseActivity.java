@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -26,6 +27,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected Toolbar toolbar;
     protected Button clickbtn;
+    private MenuItem item;
 
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
@@ -56,11 +58,30 @@ public abstract class BaseActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
 
-        MenuItem item = menu.findItem(R.id.cartPopUp);
-        LayerDrawable icon = (LayerDrawable) item.getIcon();
-        setBadgeCount(this, icon, "" + app.getCart().getItems().size());
-
+        item = menu.findItem(R.id.cartPopUp);
+        Check();
         return true;
+    }
+
+    /**
+     * Checks for boolean value becomes true
+     * Then enables button input
+     */
+
+    int temp = app.getCart().getItems().size();
+    private void Check() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (temp != app.getCart().getItems().size()) {
+                    LayerDrawable icon = (LayerDrawable) item.getIcon();
+                    setBadgeCount(getApplicationContext(), icon, "" + app.getCart().getItems().size());
+
+                } else {
+                    Check();
+                }
+            }
+        }, 1);
     }
 
     @Override
