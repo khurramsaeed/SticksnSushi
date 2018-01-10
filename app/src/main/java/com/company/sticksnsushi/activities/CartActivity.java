@@ -126,8 +126,8 @@ public class CartActivity extends BaseActivity {
             itemName.setText(item.getItemName().toString());
             // TODO: 09/01/2018 Mangler Quantity
             itemQuantity.setText(""+item.getId());
-            pricePrItem.setText(""+item.getPrice());
-            priceTotal.setText(""+item.getId() * item.getPrice());
+            pricePrItem.setText(item.getPrice() + "kr./stk.");
+            priceTotal.setText(item.getId() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
 
 

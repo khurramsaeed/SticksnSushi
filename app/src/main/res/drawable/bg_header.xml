@@ -5,8 +5,9 @@
 
         android:startColor="@color/colorAccent"
 
+        android:centerColor="@color/colorPrimary"
 
-        android:endColor="#690909"
+        android:endColor="#1E1E1E"
 
         android:angle="270">
 
