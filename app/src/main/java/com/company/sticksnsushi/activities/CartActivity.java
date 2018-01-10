@@ -2,6 +2,7 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -88,6 +90,8 @@ public class CartActivity extends BaseActivity {
 
     }
 
+
+
     public class CartAdapter extends ArrayAdapter<Item> {
 
 
@@ -103,7 +107,7 @@ public class CartActivity extends BaseActivity {
         @Override
         public View getView(int position, View view, ViewGroup viewGroup) {
 
-            Item item = getItem(position);
+            final Item item = getItem(position);
             if (view == null) {
                 view = LayoutInflater.from(getContext()).inflate(R.layout.activity_cart_items, viewGroup, false);
             }
@@ -115,6 +119,10 @@ public class CartActivity extends BaseActivity {
 
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
+            ImageButton plusQuantity = (ImageButton) view.findViewById(R.id.plus);
+            final ImageButton minusQuantity = (ImageButton) view.findViewById(R.id.minus);
+
+
             itemName.setText(item.getItemName().toString());
             itemQuantity.setText(""+item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
@@ -122,10 +130,32 @@ public class CartActivity extends BaseActivity {
             itemImage.setImageBitmap(item.getItemImage());
 
 
+            plusQuantity.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    item.setQuantity(item.getQuantity()+1);
+                    notifyDataSetChanged();
+
+                }
+            });
+
+            minusQuantity.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if(item.getQuantity() >= 1) {
+                        item.setQuantity(item.getQuantity() - 1);
+                        notifyDataSetChanged();
+
+                    }
+                }
+            });
+
+
             return view;
 
         }
-
 
     }
 

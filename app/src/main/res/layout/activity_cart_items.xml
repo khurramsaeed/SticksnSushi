@@ -49,6 +49,7 @@
                     android:layout_gravity="center">
 
                     <ImageButton
+                        android:id="@+id/plus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/plus"
@@ -64,11 +65,11 @@
                         android:id="@+id/cart_itemAmount"/>
 
                     <ImageButton
+                        android:id="@+id/minus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/minus"
-                        android:backgroundTint="@color/colorAccent"
                         android:layout_margin="6dp"/>
+
                 </LinearLayout>
             <TextView
                 android:id="@+id/cart_pricePrItem"
