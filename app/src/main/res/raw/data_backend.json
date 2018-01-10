@@ -31,6 +31,26 @@
     }
   ],
 
+  //Array of data for maki subcategories
+  "makiCategories": [
+    {
+      "title": "Uramaki",
+      "imageName": "uramaki_4"
+    },
+    {
+      "title": "Kaburimaki",
+      "imageName": "kaburimaki_3"
+    },
+    {
+      "title": "Futomaki",
+      "imageName": "futomaki_1"
+    },
+    {
+      "title": "Hosomaki",
+      "imageName": "hosomaki_4"
+    }
+    ],
+
 //Array of data for starters
   "starters": [
     {
@@ -277,7 +297,7 @@
       "pcs": "2 personer",
       "price": 599,
       "category": "Menuer",
-      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Bord til 2",
@@ -286,7 +306,7 @@
       "pcs": "god at dele",
       "price": 399,
       "category": "Menuer",
-      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesamfrø"]
     },
     {
       "title": "Mandemad",
@@ -304,7 +324,7 @@
       "pcs": "menu",
       "price": 214,
       "category": "Menuer",
-      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Blandede følelser tutatar",
@@ -313,7 +333,7 @@
       "pcs": "menu",
       "price": 294,
       "category": "Menuer",
-      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Bord til 2 med Hotate Katafi",
@@ -322,7 +342,7 @@
       "pcs": "menu",
       "price": 499,
       "category": "Menuer",
-      "allergies": ["Gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Galla Menu",
@@ -331,7 +351,7 @@
       "pcs": "2 personer",
       "price": 798,
       "category": "Menuer",
-      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
     },
     {
       "title": "Extravaganza menu",
@@ -340,7 +360,7 @@
       "pcs": "2 personer",
       "price": 899,
       "category": "Menuer",
-      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk", "mælk", "bløddyr", "sennep", "nødder", "sesamfrø", "soya"]
     },
     {
       "title": "SushiSøster",
@@ -349,7 +369,7 @@
       "pcs": "menu",
       "price": 289,
       "category": "Menuer",
-      "allergies": ["Koriander", "selleri", "gluten", "skalddyr", "fisk", "bløddyr", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Koriander", "selleri", "gluten", "skaldyr", "fisk", "bløddyr", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Maki Maki",
@@ -358,7 +378,7 @@
       "pcs": "god at dele",
       "price": 489,
       "category": "Menuer",
-      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk", "sennep", "sesamfrø", "soya"]
     },
     {
       "title": "Four meal drive big",
@@ -367,7 +387,7 @@
       "pcs": "god at dele",
       "price": 799,
       "category": "Menuer",
-      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "nødder", "soya"]
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "nødder", "soya"]
     },
     {
       "title": "Four meal drive big Snick snack",
@@ -376,7 +396,7 @@
       "pcs": "menu",
       "price": 899,
       "category": "Menuer",
-      "allergies": ["Selleri", "gluten", "skalddyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk", "mælk", "sennep", "sesamfrø", "soya"]
     }
 
   ],
@@ -390,7 +410,7 @@
       "pcs": "stk.",
       "price": 79,
       "category": "Kids",
-      "allergies": ["Gluten", "skalddyr","mælk", "sesam","soya"]
+      "allergies": ["Gluten", "skaldyr","mælk", "sesam","soya"]
     },
     {
       "title": "Sushi menu laks",
@@ -435,7 +455,7 @@
       "pcs": "Menu.",
       "price": 489,
       "category": "Kids",
-      "allergies": ["Gluten", "skalddyr", "æg", "mælk", "sesam","soya"]
+      "allergies": ["Gluten", "skaldyr", "æg", "mælk", "sesam","soya"]
     },
     {
       "title": "Kids hosomaki",
@@ -499,6 +519,316 @@
       "price": 295,
       "category": "Kids",
       "allergies": []
+    }
+  ],
+  // Array of data for uramaki
+  "uramaki": [
+    {
+      "title": "Crispy ebi roll",
+      "imageName": "uramaki_1",
+      "description": "Tempurareje, økologisk avocado, spicy sauce & tsume soya",
+      "pcs": "8 skiver",
+      "price": 99,
+      "category": "Uramaki",
+      "allergies": ["Gluten", "skaldyr","sennep", "sesam","soya"]
+    },
+    {
+      "title": "California",
+      "imageName": "uramaki_2",
+      "description": "Rejer, økologisk avocado, agurk & miso aïoli, rullet i masago & sesam",
+      "pcs": "8 skiver",
+      "price": 99,
+      "category": "Uramaki",
+      "allergies": ["Gluten","skaldyr", "æg","fisk","sennep", "sesam","soya"]
+    },
+    {
+      "title": "Pink Alaska",
+      "imageName": "uramaki_3",
+      "description": "Laks, avocado & flødeost rullet i stenbiderrogn",
+      "pcs": "8 skiver",
+      "price": 94,
+      "category": "Uramaki",
+      "allergies": ["Gluten", "fisk","mælk", "sennep","soya"]
+    },
+    {
+      "title": "Spicy tuna",
+      "imageName": "uramaki_4",
+      "description": "Tun, agurk, chiliolie, økologisk avocado, miso aïoli toppet med masago, kataifi og urter",
+      "pcs": "8 skiver",
+      "price": 99,
+      "category": "Uramaki",
+      "allergies": ["Gluten", "æg","fisk", "sennep","soya"]
+    },
+    {
+      "title": "Mamma mia roll",
+      "imageName": "uramaki_5",
+      "description": "Økologisk avocado & agurk rullet i purløg",
+      "pcs": "8 skiver",
+      "price": 79,
+      "category": "Uramaki",
+      "allergies": ["Gluten","sennep", "sesam","soya"]
+    }
+    ],
+
+  // Array of data for Kaburimaki
+  "kaburimaki": [
+    {
+      "title": "New York subway",
+      "imageName": "kaburimaki_1",
+      "description": "Tempurareje, avocado. spicy sauce, laks & hvidløg",
+      "pcs": "8 skiver",
+      "price": 145,
+      "category": "Kaburimaki",
+      "allergies": ["Gluten", "skaldyr","æg", "sennep", "sesam","soya"]
+    },
+    {
+      "title": "Ebi panko roll",
+      "imageName": "kaburimaki_2",
+      "description": "Tempurareje & spicy sauce toppet med økologisk avocado, sesam & tsume soya",
+      "pcs": "8 skiver",
+      "price": 139,
+      "category": "Kaburimaki",
+      "allergies": ["Gluten","skaldyr", "æg","fisk","sennep", "sesam","soya"]
+    },
+    {
+      "title": "Hell's Kitchen roll",
+      "imageName": "kaburimaki_3",
+      "description": "Tempurareje, økologisk avocado, spicy sauce, toppet med tun & barbecuesauce",
+      "pcs": "8 skiver",
+      "price": 145,
+      "category": "Kaburimaki",
+      "allergies": ["Selleri", "gluten", "skaldyr", "æg", "fisk","sennep","soya"]
+    },
+    {
+      "title": "Rainbow",
+      "imageName": "kaburimaki_4",
+      "description": "Rejer, miso aioli & sukkerærter toppet med laks, tun, hamachi & økologisk avocado",
+      "pcs": "8 skiver",
+      "price": 139,
+      "category": "Kaburimaki",
+      "allergies": ["Gluten", "skaldyr","æg","fisk", "sennep","soya"]
+    },
+    {
+      "title": "Shake aiolo roll",
+      "imageName": "kaburimaki_5",
+      "description": "Sukkerærter, økologisk avocado, agurk & miso aïoli toppet med flammegrillet laks, sesam, tsume soya, purløg & ørredrogn",
+      "pcs": "8 skiver",
+      "price": 139,
+      "category": "Kaburimaki",
+      "allergies": ["Gluten","æg", "fisk","sennep", "sesam","soya"]
+    },
+    {
+      "title": "Lakse ceviche",
+      "imageName": "kaburimaki_5",
+      "description": "Rødløg, agurk & avocado toppet med laks, koriander & limemarinade",
+      "pcs": "8 skiver",
+      "price": 145,
+      "category": "Kaburimaki",
+      "allergies": ["Seleri","gluten","fisk", "sennep","soya"]
+    }
+  ],
+  // Array of data for Futomaki
+  "futomaki": [
+    {
+      "title": "Wagyu Maki",
+      "imageName": "futomaki_1",
+      "description": "Wagyutatar, kizami wasabi & forårsløg",
+      "pcs": "",
+      "price": 125,
+      "category": "Futomaki",
+      "allergies": []
+    },
+    {
+      "title": "Black Cod Dakon",
+      "imageName": "futomaki_2",
+      "description": "Misomarineret black cod, avocado, cream cheese, rødløg, asparges, tsume soya, masago & kinaradise",
+      "pcs": "6 skiver",
+      "price": 129,
+      "category": "Futomaki",
+      "allergies": ["Gluten","fisk","sennep", "mælk","soya"]
+    },
+    {
+      "title": "Crunchy chicken",
+      "imageName": "futomaki_3",
+      "description": "Kylling, sprødt kyllingeskind, soyaristede mandler, rygeost, salat, crunchy chilisauce, rødløg & tsume soya",
+      "pcs": "6 skiver",
+      "price": 69,
+      "category": "Futomaki",
+      "allergies": ["Gluten", "mælk","sennep", "nødder","sesam","soya"]
+    },
+    {
+      "title": "Gypsy roll",
+      "imageName": "futomaki_4",
+      "description": "Flammegrillet fisk, økologisk avocado, agurk, ingefær, chili, rødløg & tsume soya",
+      "pcs": "6 skiver",
+      "price": 69,
+      "category": "Futomaki",
+      "allergies": ["Gluten", "æg","fisk", "sennep","sesam","soya"]
+    }
+  ],
+  // Array of data for Hosomaki
+  "hosomaki": [
+    {
+      "title": "Green maki",
+      "imageName": "hosomaki_1",
+      "description": "Hosomaki inside-out. Jordskokker, avocado, crunchy chili & koriander",
+      "pcs": "8 skiver",
+      "price": 49,
+      "category": "Hosomaki",
+      "allergies": ["Koriander", "nødder", "sesam", "soya"]
+    },
+    {
+      "title": "Shake inside-out",
+      "imageName": "hosomaki_2",
+      "description": "Hosomaki inside-out. Laks, agurk, miso aïoli & hvidløg",
+      "pcs": "8 skiver",
+      "price": 59,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "æg", "fisk", "sennep", "sesam", "soya"]
+    },
+    {
+      "title": "Ebi hot",
+      "imageName": "hosomaki_3",
+      "description": "Hosomaki inside-out. Reje, avocado, spicy sauce & koriander",
+      "pcs": "8 skiver",
+      "price": 59,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "skaldyr", "æg", "sennep", "sesam", "soya"]
+    },
+    {
+      "title": "Laks",
+      "imageName": "hosomaki_4",
+      "description": "Laks",
+      "pcs": "8 skiver",
+      "price": 39,
+      "category": "Hosomaki",
+      "allergies": ["Gluten,", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Avocado",
+      "imageName": "hosomaki_5",
+      "description": "Økologisk avocado",
+      "pcs": "8 skiver",
+      "price": 39,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "sennep", "soya"]
+    },
+    {
+      "title": "Agurk",
+      "imageName": "hosomaki_6",
+      "description": "Agurk",
+      "pcs": "8 skiver",
+      "price": 38,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "sennep", "soya"]
+    },
+    {
+      "title": "Laks med forårsløg",
+      "imageName": "hosomaki_7",
+      "description": "Laks med forårsløg",
+      "pcs": "8 skiver",
+      "price": 48,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Laks med hvidløg",
+      "imageName": "hosomaki_8",
+      "description": "Laks med hvidløg",
+      "pcs": "8 skiver",
+      "price": 48,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Laks med koriander",
+      "imageName": "hosomaki_9",
+      "description": "Laks med koriander",
+      "pcs": "8 skiver",
+      "price": 48,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Reje",
+      "imageName": "hosomaki_10",
+      "description": "Reje",
+      "pcs": "8 skiver",
+      "price": 45,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Reje",
+      "imageName": "hosomaki_10",
+      "description": "Reje",
+      "pcs": "8 skiver",
+      "price": 45,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Reje med chili",
+      "imageName": "hosomaki_11",
+      "description": "Reje med chili",
+      "pcs": "8 skiver",
+      "price": 48,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Reje med forårsløg",
+      "imageName": "hosomaki_12",
+      "description": "Reje med forårsløg",
+      "pcs": "8 skiver",
+      "price": 48,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Tun",
+      "imageName": "hosomaki_13",
+      "description": "Tun",
+      "pcs": "8 skiver",
+      "price": 49,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Tun med chili",
+      "imageName": "hosomaki_14",
+      "description": "Tun med chili",
+      "pcs": "8 skiver",
+      "price": 49,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Tun med forårsløg",
+      "imageName": "hosomaki_15",
+      "description": "Tun med forårsløg",
+      "pcs": "8 skiver",
+      "price": 49,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Ørredrogn",
+      "imageName": "hosomaki_16",
+      "description": "Ørredrogn",
+      "pcs": "8 skiver",
+      "price": 68,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "fisk", "sennep", "soya"]
+    },
+    {
+      "title": "Japans omelet",
+      "imageName": "hosomaki_17",
+      "description": "Omelet",
+      "pcs": "8 skiver",
+      "price": 38,
+      "category": "Hosomaki",
+      "allergies": ["Gluten", "æg", "fisk", "sennep", "soya"]
     }
   ]
 

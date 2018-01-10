@@ -190,7 +190,7 @@ public class MenuerFragment extends BaseFragment {
             i++;
         }
         if(matchedAllergies.length()>0) {
-            Toast.makeText(getContext(), "Retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
         }
     }
 
