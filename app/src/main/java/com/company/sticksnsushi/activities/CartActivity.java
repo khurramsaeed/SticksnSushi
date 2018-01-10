@@ -1,8 +1,6 @@
 package com.company.sticksnsushi.activities;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -33,9 +31,7 @@ import java.util.ArrayList;
 public class CartActivity extends BaseActivity {
 
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
-
     private CartAdapter adapter;
-    private ArrayList<Item> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -89,9 +85,7 @@ public class CartActivity extends BaseActivity {
 
     private void retrieveListView() {
 
-        data.addAll(app.getCart().getItems());
-
-        adapter = new CartAdapter(this, data);
+        adapter = new CartAdapter(this, app.getCart().getItems());
 
         ListView listView = findViewById(R.id.activity_cart_listView);
         listView.setAdapter(adapter);
@@ -104,11 +98,6 @@ public class CartActivity extends BaseActivity {
 
         public CartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
             super(context, 0, itemArrayList);
-        }
-
-        @Override
-        public int getCount() {
-            return data.size();
         }
 
         @Override
@@ -167,7 +156,7 @@ public class CartActivity extends BaseActivity {
                                             .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    data.remove(item);
+                                                    app.getCart().getItems().remove(item);
                                                     notifyDataSetChanged();
                                                 }
                                             }).show();

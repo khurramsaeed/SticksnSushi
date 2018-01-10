@@ -64,7 +64,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
-
         item = menu.findItem(R.id.cartPopUp);
         updatedCartBadgeCount();
         return true;
@@ -159,13 +158,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     private void retrieveCartList(){
+
         adapter = new PopupCartAdapter(BaseActivity.this, app.getCart().getItems());
         listView.setAdapter(adapter);
 
     }
 
     public class PopupCartAdapter extends ArrayAdapter<Item> {
-
 
         public PopupCartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
             super(context, 0, itemArrayList);
@@ -188,10 +187,5 @@ public abstract class BaseActivity extends AppCompatActivity {
             return view;
 
         }
-
-
     }
-
-
-
 }
