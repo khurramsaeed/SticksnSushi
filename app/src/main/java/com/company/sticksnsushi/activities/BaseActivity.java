@@ -27,6 +27,7 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
@@ -42,7 +43,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-
     }
 
     @Override
@@ -54,6 +54,20 @@ public abstract class BaseActivity extends AppCompatActivity {
             toolbar.setNavigationIcon(R.drawable.menu);
         }
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+        if(currentUser != null){
+//        if(app.getAuth().getUser().isLoggedIn()){
+            System.out.println("Bruger logget ind: " + app.firebaseAuth.getCurrentUser());
+            System.out.println("Bruger med email: " + app.firebaseAuth.getCurrentUser().getEmail());
+        }
+        else {
+            System.out.println("Bruger ikke logget ind");
+        }
     }
 
 
