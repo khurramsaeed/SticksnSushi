@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
@@ -34,6 +33,8 @@ public class MenuerFragment extends BaseFragment {
     private RecyclerView recyclerView;
     Item item;
     AllergiesFragment allergies = new AllergiesFragment();
+    String allergyAlert;
+    boolean containsAllergies = false;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -106,10 +107,15 @@ public class MenuerFragment extends BaseFragment {
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
                     String category = app.dataMenuer.get(id).getCategory();
+                    checkForAllergies(view);
                     Intent menuerIntent=new Intent(getContext(), SpecificDishActivity.class);
                     menuerIntent.putExtra("Category", category);
                     menuerIntent.putExtra("ID", id);
-                    checkForAllergies(view);
+                    menuerIntent.putExtra("AllergiesBoolean", containsAllergies);
+                    if(containsAllergies){
+                        menuerIntent.putExtra("AllergiesAlert", allergyAlert);
+                    }
+
                     startActivity(menuerIntent);
                 }
             });
@@ -175,10 +181,10 @@ public class MenuerFragment extends BaseFragment {
                 inputStr = app.dataMenuer.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
-                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                        matchedAllergies = matchedAllergies +   "     - "+checkedAllergy;
                     }
                     else if (matchedAllergies.length()>1){
-                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                        matchedAllergies = matchedAllergies + "\n" + "     - "+ checkedAllergy;
                     }
 
                 }
@@ -189,8 +195,10 @@ public class MenuerFragment extends BaseFragment {
             }
             i++;
         }
+        containsAllergies=false;
         if(matchedAllergies.length()>0) {
-            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+            allergyAlert ="Denne ret indeholder:\n" +matchedAllergies;
+            containsAllergies=true;
         }
     }
 

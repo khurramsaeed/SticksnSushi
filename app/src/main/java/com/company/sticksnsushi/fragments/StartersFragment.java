@@ -108,6 +108,7 @@ public class StartersFragment extends BaseFragment {
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
                     String category = app.dataStarters.get(id).getCategory();
+                    checkForAllergies(view);
                     Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
                     myintent.putExtra("Category", category);
                     myintent.putExtra("ID", id);
@@ -115,7 +116,7 @@ public class StartersFragment extends BaseFragment {
                     if(containsAllergies){
                         myintent.putExtra("AllergiesAlert", allergyAlert);
                     }
-                    checkForAllergies(view);
+
 
                     startActivity(myintent);
                 }
@@ -185,10 +186,10 @@ public class StartersFragment extends BaseFragment {
                 inputStr = app.dataStarters.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
-                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                        matchedAllergies = matchedAllergies +   "     - "+checkedAllergy;
                     }
                     else if (matchedAllergies.length()>1){
-                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                        matchedAllergies = matchedAllergies + "\n" + "     - "+ checkedAllergy;
                     }
 
                 }
@@ -199,8 +200,9 @@ public class StartersFragment extends BaseFragment {
             }
             i++;
         }
+        containsAllergies=false;
         if(matchedAllergies.length()>0) {
-            allergyAlert ="BEMÆRK, retten indeholder: " + matchedAllergies;
+            allergyAlert ="Denne ret indeholder:\n" +matchedAllergies;
             containsAllergies=true;
         }
     }
