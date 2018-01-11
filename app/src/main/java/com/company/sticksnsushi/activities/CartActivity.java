@@ -111,7 +111,8 @@ public class CartActivity extends BaseActivity {
             TextView itemName = (TextView) view.findViewById(R.id.cart_itemName);
             TextView itemQuantity = (TextView) view.findViewById(R.id.cart_itemAmount);
             TextView pricePrItem = (TextView) view.findViewById(R.id.cart_pricePrItem);
-            TextView priceTotal = (TextView) view.findViewById(R.id.cart_priceTotal);
+            TextView itemTotal = (TextView) view.findViewById(R.id.cart_itemTotal);
+            TextView priceTotal = (TextView) view.findViewById(R.id.priceTotal);
 
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
@@ -119,11 +120,13 @@ public class CartActivity extends BaseActivity {
             final ImageButton minusQuantity = (ImageButton) view.findViewById(R.id.minus);
 
 
+
             itemName.setText(item.getItemName().toString());
             itemQuantity.setText("" + item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
-            priceTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
+            itemTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
+
 
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
