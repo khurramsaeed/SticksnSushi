@@ -18,7 +18,8 @@ public class Cart {
 
 
     public void addItem(Item item) {
-        this.items.add(item);
+        if (items.contains(item)) {return;} else {
+        this.items.add(item);}
     }
     public void updateQuantity(int quantity) {
         this.quantity = quantity;

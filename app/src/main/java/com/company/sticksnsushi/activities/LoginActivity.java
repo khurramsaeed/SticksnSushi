@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,7 +25,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private Button button_login;
     private EditText editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
-    private FirebaseAuth firebaseAuth;
+
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    FirebaseAuth firebaseAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +37,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
 
         progressDialog = new ProgressDialog(this);
+        firebaseAuth = app.firebaseAuth;
 
-        firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
         editTextEmail = findViewById(R.id.input_email);
@@ -50,7 +54,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void userLogin(){
 
         //getting email and password from edit texts
-        String email = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
@@ -71,6 +75,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
         if(password.length() < 6){
             Toast.makeText(this, "Skriv minimum 6 tegn", Toast.LENGTH_LONG).show();
+            return;
         }
 
         //if the email and password are not empty
@@ -86,6 +91,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                 if(task.isSuccessful()){
                     //User is logged in
                     app.getAuth().getUser().setLoggedIn(true);
+                    app.getAuth().getUser().setEmail(email);
 
                     Intent intentMenuOverview = new Intent(LoginActivity.this, MenuOverviewActivity.class);
                     startActivity(intentMenuOverview);

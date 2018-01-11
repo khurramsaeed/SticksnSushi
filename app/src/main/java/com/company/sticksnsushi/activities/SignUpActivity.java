@@ -29,9 +29,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    String usersFullName;
-
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
 
     @Override
@@ -40,7 +38,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         setContentView(R.layout.activity_sign_up);
 
         //initializing firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = app.firebaseAuth;
 
         //initializing views
         editTextEmail = findViewById(R.id.editTextSignUpEmail);

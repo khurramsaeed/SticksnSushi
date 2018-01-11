@@ -28,7 +28,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private Button addToBasket;
     private String category;
     private int i, recomID1, recomID2, recomID3;
-    private int quantity=0;
+    private int quantity=app.dataStarters.get(i).getQuantity();
 
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
@@ -116,23 +116,17 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view == addToBasket) {
             if(category.equals("Starters")) {
-                if (!app.getCart().getItems().contains(app.dataStarters.get(i))) {
-                app.getCart().addItem(app.dataStarters.get(i)); }
-                //app.getCart().setItemId(app.dataStarters.get(i).getId());
+                app.getCart().addItem(app.dataStarters.get(i));
                 quantity++;
                 app.dataStarters.get(i).setQuantity(quantity);
             }
             else if (category.equals("Menuer")){
-                if (!app.getCart().getItems().contains(app.dataMenuer.get(i))) {
-                app.getCart().addItem(app.dataMenuer.get(i)); }
-                //app.getCart().setItemId(app.dataMenuer.get(i).getId());
+                app.getCart().addItem(app.dataMenuer.get(i));
                 quantity++;
                 app.dataMenuer.get(i).setQuantity(quantity);
             }
             else if (category.equals("Kids")){
-                if (!app.getCart().getItems().contains(app.dataKids.get(i))) {
-                app.getCart().addItem(app.dataKids.get(i)); }
-                //app.getCart().setItemId(app.dataKids.get(i).getId());
+                app.getCart().addItem(app.dataKids.get(i));
                 quantity++;
                 app.dataKids.get(i).setQuantity(quantity);
             }

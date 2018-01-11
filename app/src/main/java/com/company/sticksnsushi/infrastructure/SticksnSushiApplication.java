@@ -16,6 +16,8 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,6 +41,7 @@ public class SticksnSushiApplication extends Application {
     public static String versionName = BuildConfig.VERSION_NAME;
     public static Handler mainThread;
     public static Resources res;
+    public static FirebaseAuth firebaseAuth;
 
     public static NetworkStatus network;
 
@@ -66,6 +69,7 @@ public class SticksnSushiApplication extends Application {
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         res = SticksnSushiApplication.instance.getResources();
         network = new NetworkStatus();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         auth = new Auth(this);
         user = new User();

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -142,14 +143,27 @@ public class StartersFragment extends BaseFragment {
     private class DataListViewHolder extends RecyclerView.ViewHolder {
         private TextView title, pcs, price;
         private ImageView image;
+        private ImageButton addToBasket;
 
-        public DataListViewHolder(View itemView) {
+
+        public DataListViewHolder(final View itemView) {
             super(itemView);
-
             title = itemView.findViewById(R.id.starters_item_name);
             pcs = itemView.findViewById(R.id.starters_item_pcs);
             price = itemView.findViewById(R.id.starters_item_price);
             image = itemView.findViewById(R.id.starters_item_image);
+            addToBasket = itemView.findViewById(R.id.starters_item_addToBasket);
+
+            addToBasket.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity=app.dataStarters.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataStarters.get(index));
+                    quantity++;
+                    app.dataStarters.get(index).setQuantity(quantity);
+                }
+            });
         }
 
     }

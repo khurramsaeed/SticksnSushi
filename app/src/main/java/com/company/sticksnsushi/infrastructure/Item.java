@@ -15,7 +15,7 @@ public class Item {
     private String category;
     private String allergies;
     private Bitmap itemImage;
-    private int quantity;
+    private int quantity=0;
 
     public Item() {
     }
