@@ -145,10 +145,11 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.dataKids.get(i).setQuantity(quantity);
 
             }
-            if (view==allergyAlertButton){
-                showAlert(view);
-            }
 
+
+        }
+        if (view==allergyAlertButton){
+            showAlert();
         }
         if(view==recomItemImage1){
             String category = app.dataStarters.get(recomID1).getCategory();
@@ -176,8 +177,8 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private void showAlert(View view) {
-        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+    private void showAlert() {
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_DARK);
         myAlert.setMessage(allergyAlert)
                 .setPositiveButton("Forstået", new DialogInterface.OnClickListener() {
                     @Override
@@ -185,6 +186,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                         dialog.dismiss();
                     }
                 })
+                .setTitle("Bemærk")
                 .create();
         myAlert.show();
     }
