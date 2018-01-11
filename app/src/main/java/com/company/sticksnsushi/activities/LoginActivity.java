@@ -59,7 +59,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Skriv venligst din email",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst din email");
             return;
         }
 
@@ -70,11 +70,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
 
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Skriv venligst dit password",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst dit password");
             return;
         }
         if(password.length() < 6){
-            Toast.makeText(this, "Skriv minimum 6 tegn", Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv minimum 6 tegn");
             return;
         }
 
@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     finish();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    app.longToastMessage(task.getException().getMessage());
                 }
                 progressDialog.dismiss();
             }

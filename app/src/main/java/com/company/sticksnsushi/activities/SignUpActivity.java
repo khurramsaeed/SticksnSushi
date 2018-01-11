@@ -66,7 +66,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Skriv venligst din email",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst din email");
             return;
         }
 
@@ -77,7 +77,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         }
 
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Skriv venligst dit password",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst dit password");
             return;
         }
 
@@ -102,17 +102,17 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                             //userFullName = SticksnSushiApplication.getInstance().getAuth().getUser().setDisplayName(userName);
 
                             //display some message here
-                            Toast.makeText(SignUpActivity.this,"Konto oprettet",Toast.LENGTH_LONG).show();
+                            app.longToastMessage("Konto oprettet");
                             Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);
                             startActivity(intentMenuOverview);
                             finish();
                         }
                         else{
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(getApplicationContext(), "Du har allerede en konto", Toast.LENGTH_LONG).show();
+                                app.longToastMessage("Du har allerede en konto");
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                app.longToastMessage(task.getException().getMessage());
                             }
 //                            //display some message here
 //                            Toast.makeText(SignUpActivity.this,"Registration Error",Toast.LENGTH_LONG).show();

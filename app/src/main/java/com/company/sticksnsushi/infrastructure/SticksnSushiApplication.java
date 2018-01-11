@@ -10,6 +10,7 @@ import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
@@ -17,7 +18,6 @@ import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,18 +35,16 @@ public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
     private static SticksnSushiApplication instance;
-
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
     public static String versionName = BuildConfig.VERSION_NAME;
-    public static Handler mainThread;
+    public static Handler foregroundThread;
     public static Resources res;
     public static FirebaseAuth firebaseAuth;
 
     public static NetworkStatus network;
 
     private Auth auth;
-    private User user;
     private Cart cart;
 
     public ArrayList<Categories> dataCategories;
@@ -58,21 +56,21 @@ public class SticksnSushiApplication extends Application {
     @Override
     public void onCreate() {
 
-        Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
+        Log.d(TAG, "onCreate: Auth(context), Cart(), User(), retrieveListView() called");
         super.onCreate();
         CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build();
         Fabric.with(this, new Crashlytics.Builder().core(core).build());
         instance = this;
 
-        //mainThread = new Handler();
+        //foregroundThread = new Handler();
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         res = SticksnSushiApplication.instance.getResources();
+        foregroundThread = new Handler();
         network = new NetworkStatus();
         firebaseAuth = FirebaseAuth.getInstance();
 
         auth = new Auth(this);
-        user = new User();
         cart = new Cart();
 
         dataCategories = new ArrayList<>();
@@ -252,6 +250,31 @@ public class SticksnSushiApplication extends Application {
         }
 
     }
+
+
+    /**
+     * toastMessage to make toast short
+     * @param message - String resource
+     */
+    public void shortToastMessage(final String message){
+        foregroundThread.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getInstance(), message, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+    public void longToastMessage(final String message){
+        foregroundThread.post(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getInstance(), message, Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
 
 
 }
