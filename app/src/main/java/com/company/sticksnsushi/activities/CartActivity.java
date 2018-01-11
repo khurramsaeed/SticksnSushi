@@ -42,6 +42,7 @@ public class CartActivity extends BaseActivity {
         setContentView(R.layout.activity_cart);
 
         priceTotal = (TextView) findViewById(R.id.priceTotal);
+        priceTotal.setText(""+ app.getCart().getTotal());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -122,20 +123,18 @@ public class CartActivity extends BaseActivity {
             final ImageButton minusQuantity = (ImageButton) view.findViewById(R.id.minus);
 
 
-
             itemName.setText(item.getItemName().toString());
             itemQuantity.setText("" + item.getQuantity());
             pricePrItem.setText(item.getPrice() + "kr./stk.");
-            itemTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
+            itemTotal.setText(item.getItemTotal() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
             priceTotal.setText(app.getCart().getTotal() + "");
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     item.setQuantity(item.getQuantity() + 1);
-                    priceTotal.append(app.getCart().getTotal() + "");
+                    priceTotal.setText(""+app.getCart().getTotal());
                     notifyDataSetChanged();
 
                 }
@@ -146,7 +145,7 @@ public class CartActivity extends BaseActivity {
                 public void onClick(View view) {
                     if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
-                        priceTotal.setText(app.getCart().getTotal() + "");
+                        priceTotal.setText(""+app.getCart().getTotal());
                         notifyDataSetChanged();
 
                     } else {
@@ -172,8 +171,6 @@ public class CartActivity extends BaseActivity {
                     }
                 }
             });
-
-
             return view;
 
         }

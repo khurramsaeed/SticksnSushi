@@ -31,6 +31,10 @@ public class Item {
         this.itemImage = itemImage;
     }
 
+    public int getItemTotal() {
+        return getPrice() * getQuantity();
+    }
+
     public int getId() {
         return id;
     }
