@@ -38,7 +38,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         app.network.observer.add(this);
 
         if (app.network.isOnline()) {
-            app.shortToastMessage("ONLINE");
+            app.shortToastMessage("CONNECTED");
         } else if (!app.network.isOnline()) {
             app.shortToastMessage("NOT CONNECTED");
         }
