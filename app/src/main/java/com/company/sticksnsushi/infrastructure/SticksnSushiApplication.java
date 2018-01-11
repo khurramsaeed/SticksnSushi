@@ -14,12 +14,16 @@ import android.util.Log;
 import com.company.sticksnsushi.BuildConfig;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.library.NetworkStatus;
+import com.crashlytics.android.Crashlytics;
+import com.crashlytics.android.core.CrashlyticsCore;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -28,27 +32,35 @@ import java.util.ArrayList;
 public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
-    public static SticksnSushiApplication instance;
+    private static SticksnSushiApplication instance;
+
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
     public static String versionName = BuildConfig.VERSION_NAME;
     public static Handler mainThread;
     public static Resources res;
+
     public static NetworkStatus network;
 
     private Auth auth;
     private User user;
-    public static ArrayList<Categories> dataCategories;
-    public static ArrayList<Item> dataStarters;
-    public static ArrayList<Item> dataKids;
-    public static ArrayList<Item> dataMenuer;
+    private Cart cart;
+
+    public ArrayList<Categories> dataCategories;
+    public ArrayList<Categories> dataMakiCategories;
+    public ArrayList<Item> dataStarters;
+    public ArrayList<Item> dataKids;
+    public ArrayList<Item> dataMenuer;
 
     @Override
     public void onCreate() {
 
         Log.d(TAG, "onCreate: Auth(context), User(), retrieveListView() called");
         super.onCreate();
+        CrashlyticsCore core = new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build();
+        Fabric.with(this, new Crashlytics.Builder().core(core).build());
         instance = this;
+
         //mainThread = new Handler();
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -57,12 +69,22 @@ public class SticksnSushiApplication extends Application {
 
         auth = new Auth(this);
         user = new User();
+        cart = new Cart();
+
         dataCategories = new ArrayList<>();
+        dataMakiCategories = new ArrayList<>();
         dataStarters = new ArrayList<>();
         dataKids = new ArrayList<>();
         dataMenuer = new ArrayList<>();
-
         retrieveListView();
+    }
+
+    public static SticksnSushiApplication getInstance() {
+        return instance;
+    }
+
+    public Cart getCart() {
+        return cart;
     }
 
     public Auth getAuth() {
@@ -86,6 +108,7 @@ public class SticksnSushiApplication extends Application {
 
 
             JSONArray categories = json.getJSONArray("categories");
+            JSONArray makiCategories = json.getJSONArray("makiCategories");
             JSONArray starters = json.getJSONArray("starters");
             JSONArray kids = json.getJSONArray("kids");
             JSONArray menuer = json.getJSONArray("menuer");
@@ -109,11 +132,32 @@ public class SticksnSushiApplication extends Application {
 
             }
 
+
+            //Data for makiCategories
+            int numberMaki = makiCategories.length();
+            for (int i = 0; i < numberMaki; i++) {
+                JSONObject makiCategory = makiCategories.getJSONObject(i);
+                System.err.println("obj = " + makiCategory);
+
+                // Get title and imageName from JSON-file
+                String title = makiCategory.getString("title");
+                String imageName = makiCategory.getString("imageName");
+
+                // resId gets image resource with its identifier (image_name)
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                // Convert resId to BitMap
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataMakiCategories.add(new Categories(title, itemImage));
+
+            }
+
             //Data for starters
             int numberStarters = starters.length();
             for (int i = 0; i < numberStarters; i++) {
                 JSONObject starter = starters.getJSONObject(i);
                 System.err.println("obj = " + starter);
+
 
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int id = starter.getInt("id");
@@ -124,12 +168,18 @@ public class SticksnSushiApplication extends Application {
                 String category = starter.getString("category");
                 String imageName = starter.getString("imageName");
 
+                String allergies=starter.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
 
-                dataStarters.add(new Item(id, price, title, PCS, description, category, itemImage));
+                dataStarters.add(new Item(id, price, title, PCS, description, category, allergies, itemImage));
             }
 
             //Data for kids
@@ -138,19 +188,28 @@ public class SticksnSushiApplication extends Application {
                 JSONObject kid = kids.getJSONObject(i);
                 System.err.println("obj = " + kid);
 
+
+
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = kid.getInt("price");
                 String title = kid.getString("title");
                 String PCS = kid.getString("pcs");
                 String description = (String) kid.get("description");
+                String category = kid.getString("category");
                 String imageName = kid.getString("imageName");
+
+                String allergies=kid.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
 
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataKids.add(new Item(0, price, title, PCS, description, "", itemImage));
+                dataKids.add(new Item(0, price, title, PCS, description, category,allergies, itemImage));
             }
 
             //Data for menuer
@@ -159,19 +218,27 @@ public class SticksnSushiApplication extends Application {
                 JSONObject menu = menuer.getJSONObject(i);
                 System.err.println("obj = " + menu);
 
+
                 // Get id, price, title, PCS, description, category and imageName from JSON-file
                 int price = menu.getInt("price");
                 String title = menu.getString("title");
                 String PCS = menu.getString("pcs");
+                String category = menu.getString("category");
                 String description = (String) menu.get("description");
                 String imageName = menu.getString("imageName");
+
+                String allergies=menu.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
 
                 // resId gets image resource with its identifier (image_name)
                 int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
                 // Convert resId to BitMap
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
-                dataMenuer.add(new Item(0, price, title, PCS, description, "", itemImage));
+                dataMenuer.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
             }
 
 
@@ -181,4 +248,6 @@ public class SticksnSushiApplication extends Application {
         }
 
     }
+
+
 }

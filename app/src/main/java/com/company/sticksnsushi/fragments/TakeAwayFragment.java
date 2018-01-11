@@ -11,14 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.instance;
+import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.getInstance;
+
 
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.
@@ -30,6 +33,8 @@ public class TakeAwayFragment extends Fragment {
     private static final String TAG = "TakeAwayFragment";
 
     private RecyclerView recyclerView;
+
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
 
     @Override
@@ -56,9 +61,10 @@ public class TakeAwayFragment extends Fragment {
         recyclerView.setAdapter(adapter);
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < instance.dataCategories.size(); i++) {
-            adapter.addItem(instance.dataCategories.get(i));
+        for (int i = 0; i < app.dataCategories.size(); i++) {
+            adapter.addItem(app.dataCategories.get(i));
         }
+
 
         return rootView;
     }
@@ -98,7 +104,11 @@ public class TakeAwayFragment extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    startActivity(new Intent(getContext(), MenuOverviewActivity.class));
+                    int index = recyclerView.getChildAdapterPosition(view);
+
+                    Intent intent = new Intent(getContext(), MenuOverviewActivity.class);
+                    intent.putExtra("index", index);
+                    startActivity(intent);
                 }
             });
 
@@ -107,7 +117,7 @@ public class TakeAwayFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Categories item = instance.dataCategories.get(position);
+            Categories item = app.dataCategories.get(position);
 
             holder.title.setText(item.getItemName());
             holder.image.setImageBitmap(item.getItemImage());

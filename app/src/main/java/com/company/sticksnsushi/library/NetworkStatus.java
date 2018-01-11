@@ -20,6 +20,8 @@ public class NetworkStatus extends BroadcastReceiver {
     WIFI, MOBILE, NONE
   }
 
+  SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+
   public Status status;
   public List<Runnable> observer = new ArrayList<Runnable>();
 
@@ -29,7 +31,7 @@ public class NetworkStatus extends BroadcastReceiver {
 
   @Override
   public void onReceive(Context context, Intent intent) {
-    NetworkInfo networkInfo = SticksnSushiApplication.connectivityManager.getActiveNetworkInfo();
+    NetworkInfo networkInfo = app.connectivityManager.getActiveNetworkInfo();
 
     Status newStatus;
 
@@ -44,7 +46,6 @@ public class NetworkStatus extends BroadcastReceiver {
     if (status != newStatus) {
       status = newStatus;
       //Log.d("NetworkStatus\n" + intent + "\n" + networkInfo);
-      //if (App.fejlsøgning) App.kortToast("NetworkStatus\n" + status);
       for (Runnable o : new ArrayList<Runnable>(observer)) o.run();
     }
   }

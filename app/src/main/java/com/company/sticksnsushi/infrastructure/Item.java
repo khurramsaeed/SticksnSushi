@@ -7,21 +7,27 @@ import android.graphics.Bitmap;
  */
 
 public class Item {
-    private int id;
+    private int id =0;
     private int price;
     private String itemName;
     private String itemPCS;
     private String itemDescription;
     private String category;
+    private String allergies;
     private Bitmap itemImage;
+    private int quantity;
 
-    public Item(int id, int price, String itemName, String itemPCS , String itemDescription, String category, Bitmap itemImage) {
+    public Item() {
+    }
+
+    public Item(int id, int price, String itemName, String itemPCS , String itemDescription, String category, String allergies, Bitmap itemImage) {
         this.id = id;
         this.price = price;
         this.itemName = itemName;
         this.itemPCS= itemPCS;
         this.itemDescription = itemDescription;
         this.category = category;
+        this.allergies = allergies;
         this.itemImage = itemImage;
     }
 
@@ -69,11 +75,26 @@ public class Item {
         this.category = category;
     }
 
+    public void setAllergies (String allergies){
+        this.allergies=allergies;
+    }
+    public String getAllergies(){
+        return allergies;
+    }
+
     public Bitmap getItemImage() {
         return itemImage;
     }
 
     public void setItemImage(Bitmap itemImage) {
         this.itemImage = itemImage;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

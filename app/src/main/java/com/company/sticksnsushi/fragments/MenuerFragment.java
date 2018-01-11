@@ -1,6 +1,9 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,11 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.SpecificDishActivity;
 import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
-
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.instance;
 
 /**
  * Created by Nikolaj on 27-11-2017.
@@ -27,8 +30,10 @@ public class MenuerFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "MenuerFragment";
 
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private RecyclerView recyclerView;
-
+    Item item;
+    AllergiesFragment allergies = new AllergiesFragment();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -53,10 +58,13 @@ public class MenuerFragment extends BaseFragment {
         CustomDataAdapter adapter = new CustomDataAdapter();
 
         // Add dataCategories to my adapter
-        for (int i = 0; i < instance.dataMenuer.size(); i++) {
-            adapter.addItem(instance.dataMenuer.get(i));
+        for (int i = 0; i < app.dataMenuer.size(); i++) {
+            adapter.addItem(app.dataMenuer.get(i));
         }
         recyclerView.setAdapter(adapter);
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity().getBaseContext());
+        allergies.markAllergies(sp);
 
         return rootView;
     }
@@ -96,16 +104,24 @@ public class MenuerFragment extends BaseFragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+                    int id = recyclerView.getChildLayoutPosition(view);
+                    String category = app.dataMenuer.get(id).getCategory();
+                    Intent menuerIntent=new Intent(getContext(), SpecificDishActivity.class);
+                    menuerIntent.putExtra("Category", category);
+                    menuerIntent.putExtra("ID", id);
+                    checkForAllergies(view);
+                    startActivity(menuerIntent);
                 }
             });
 
             return new DataListViewHolder(view);
         }
 
+
+
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-            Item item = instance.dataMenuer.get(position);
+            item = app.dataMenuer.get(position);
 
             holder.title.setText(item.getItemName());
             holder.price.setText(item.getPrice() + " kr.");
@@ -147,5 +163,36 @@ public class MenuerFragment extends BaseFragment {
         }
 
     }
+    public void checkForAllergies(View view) {
+        int id = recyclerView.getChildLayoutPosition(view);
+        String matchedAllergies ="";
+        String inputStr;
+        int i = 0;
+        while(i < allergies.getAllergies().size()) {
+            try {
+                String checkedAllergy = allergies.getAllergies().get(i);
+                SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+                inputStr = app.dataMenuer.get(id).getAllergies().toLowerCase();
+                if (inputStr.contains(checkedAllergy)) {
+                    if(matchedAllergies.equals("")){
+                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                    }
+                    else if (matchedAllergies.length()>1){
+                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                    }
+
+                }
+            }
+            catch (IndexOutOfBoundsException e)  // CS0168
+            {
+
+            }
+            i++;
+        }
+        if(matchedAllergies.length()>0) {
+            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
 

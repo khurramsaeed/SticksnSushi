@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "805678993859",
+    "firebase_url": "https://sticks-n-sushi.firebaseio.com",
+    "project_id": "sticks-n-sushi",
+    "storage_bucket": "sticks-n-sushi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805678993859:android:f4efc4c1175bdd3b",
+        "android_client_info": {
+          "package_name": "com.company.sticksnsushi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805678993859-uo1v2ccu6r4ik8sdgdalkfar0oufbo4b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDevUdqoIw2sRTJ8Y4BeV52iL6Yt5B2tPw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

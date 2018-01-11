@@ -1,15 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    android:padding="16dp"
+    >
 
-    <!-- This payment fragment comes from a library and has been modified.
-    The library is added in Android Manifest: 'com.craftman.cardform:cardform:0.0.2'
-    -->
 
-        <com.craftman.cardform.CardForm
-            android:id="@+id/cardform"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="40dp"
+       android:layout_alignParentTop="@+id/linearMobile"
+       android:background="@color/colorPrimary"
+       android:orientation="horizontal"
+       android:id="@+id/linearKredit">
 
-    </RelativeLayout>
+       <CheckBox
+           android:id="@+id/checkKredit"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:layout_weight="1"
+           android:buttonTint="@color/colorPrimaryText"
+           android:text="Kreditkort"
+           android:textColor="@color/colorPrimaryText" />
+
+
+       <ImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="start|center"
+           android:layout_marginRight="16dp"
+           android:src="@drawable/ic_credit_card" />
+
+
+   </LinearLayout>
+
+    <TextView
+        android:id="@+id/cardnr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearKredit"
+        android:layout_marginTop="19dp"
+        android:text="Kort Nummer"
+        android:textColor="@color/greyNew" />
+
+    <EditText
+        android:id="@+id/editCardNumber"
+        android:layout_width="match_parent"
+        android:layout_marginTop="68dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="@color/colorPrimary"
+        android:maxLines="1"
+        android:textColor="@color/colorPrimaryText"/>
+
+    <TextView
+        android:id="@+id/cvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/editCvc"
+        android:text="CVC Nummer"
+        android:textColor="@color/greyNew" />
+
+
+    <EditText
+        android:id="@+id/editCvc"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editCardNumber"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:maxLines="1" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cvc"
+        android:layout_alignBottom="@+id/cvc"
+        android:layout_alignStart="@+id/editDate"
+        android:id="@+id/date"
+        android:text="Udløbs Dato"
+        android:textColor="@color/greyNew" />
+
+
+    <EditText
+        android:id="@+id/editDate"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/cvc"
+        android:layout_marginEnd="17dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:maxLines="1" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/linearKredit"
+        android:layout_below="@+id/editCvc"
+        android:layout_marginTop="60dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:id="@+id/linearMobile">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/checkMobilePay"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimaryText"
+            android:text="Mobile Pay"
+            android:textColor="@color/colorPrimaryText" />
+
+
+        <ImageView
+            android:id="@+id/mobilePay"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start|center"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/mobilepay" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/linearMobile"
+        android:layout_marginTop="16dp"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout3">
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:buttonTint="@color/colorPrimaryText"
+            android:text="PayPal"
+            android:textColor="@color/colorPrimaryText" />
+
+
+        <ImageView
+            android:id="@+id/payPal"
+            android:layout_width="100dp"
+            android:layout_height="16dp"
+            android:layout_gravity="right|center"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/paypal" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

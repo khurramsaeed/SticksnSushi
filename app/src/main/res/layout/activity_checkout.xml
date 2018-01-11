@@ -1,40 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="com.company.sticksnsushi.activities.CheckoutActivity"
-    android:background="@color/colorSecondary">
+    android:fitsSystemWindows="true"
+    android:background="@color/colorSecondary"
+    tools:context="com.company.sticksnsushi.activities.CheckoutActivity">
 
-    <include layout="@layout/include_toolbar"
-        android:id="@+id/include_toolbar"/>
-
-    <android.support.design.widget.BottomNavigationView
-        android:layout_below="@+id/include_toolbar"
-        android:id="@+id/checkout_navigation"
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/checkout_navigation"
-        android:background="?attr/selectableItemBackground"
-        app:itemBackground="@color/colorSecondary"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white" />
+        android:theme="@style/AppTheme.AppBarOverlay">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/checkout_navigation"
-        android:background="@color/colorAccent" />
+        <include layout="@layout/include_toolbar"
+            android:id="@+id/include_toolbar"/>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tid og sted" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oplysninger" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Betaling" />
+
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activity_checkout_frame"
-        android:layout_below="@+id/checkout_navigation"
-        android:layout_marginTop="16dp"/>
+        android:id="@+id/menu_overview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
 
+    </FrameLayout>
 
-</RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/container"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+</android.support.design.widget.CoordinatorLayout>
+
