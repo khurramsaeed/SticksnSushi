@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
@@ -34,6 +33,8 @@ public class StartersFragment extends BaseFragment {
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private RecyclerView recyclerView;
     AllergiesFragment allergies = new AllergiesFragment();
+    String allergyAlert;
+    boolean containsAllergies = false;
 
 
     @Override
@@ -110,6 +111,10 @@ public class StartersFragment extends BaseFragment {
                     Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
                     myintent.putExtra("Category", category);
                     myintent.putExtra("ID", id);
+                    myintent.putExtra("AllergiesBoolean", containsAllergies);
+                    if(containsAllergies){
+                        myintent.putExtra("AllergiesAlert", allergyAlert);
+                    }
                     checkForAllergies(view);
 
                     startActivity(myintent);
@@ -195,7 +200,8 @@ public class StartersFragment extends BaseFragment {
             i++;
         }
         if(matchedAllergies.length()>0) {
-            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+            allergyAlert ="BEMÆRK, retten indeholder: " + matchedAllergies;
+            containsAllergies=true;
         }
     }
 }

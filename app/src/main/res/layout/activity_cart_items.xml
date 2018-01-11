@@ -83,7 +83,7 @@
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/cart_priceTotal"
+                android:id="@+id/cart_itemTotal"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

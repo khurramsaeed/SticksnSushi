@@ -1,5 +1,7 @@
 package com.company.sticksnsushi.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
@@ -24,17 +25,28 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
     private TextView itemName, itemPrice, itemDesc, allergies, recomItemName1, recomItemName2, recomItemName3;
     private String pcs;
-    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3;
+    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3, allergyAlertButton;
     private Button addToBasket;
-    private String category;
+    private String category, allergyAlert;
     private int i, recomID1, recomID2, recomID3;
     private int quantity=app.dataStarters.get(i).getQuantity();
+    private boolean containsAlllergies;
+
+
 
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
         i = getIntent().getIntExtra("ID",0);
         category = getIntent().getStringExtra("Category");
+        containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
+        if(containsAlllergies){
+            allergyAlert = getIntent().getStringExtra("AllergiesAlert");
+            allergyAlertButton = findViewById(R.id.allergyAlert);
+            allergyAlertButton.setVisibility(View.VISIBLE);
+            allergyAlertButton.setOnClickListener(this);
+        }
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -119,16 +131,22 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.getCart().addItem(app.dataStarters.get(i));
                 quantity++;
                 app.dataStarters.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
             }
             else if (category.equals("Menuer")){
                 app.getCart().addItem(app.dataMenuer.get(i));
                 quantity++;
                 app.dataMenuer.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
             }
             else if (category.equals("Kids")){
                 app.getCart().addItem(app.dataKids.get(i));
                 quantity++;
                 app.dataKids.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
+            }
+            if (view==allergyAlertButton){
+                showAlert(view);
             }
 
         }
@@ -157,6 +175,20 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             startActivity(myintent);
         }
     }
+
+    private void showAlert(View view) {
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage(allergyAlert)
+                .setPositiveButton("Forstået", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
+    }
+
     public void addRecom() {
         Random rand = new Random();
         int nextRec = 0;

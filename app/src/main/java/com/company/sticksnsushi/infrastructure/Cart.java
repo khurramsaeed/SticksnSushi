@@ -45,8 +45,13 @@ public class Cart {
         return total;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTotal() {
+
+        for(int i = 0; i < items.size(); i++) {
+
+            this.total = items.get(i).getPrice() * items.get(i).getQuantity() + items.get(i).getPrice();
+
+        }
     }
 
     public ArrayList<Item> getItems() {
