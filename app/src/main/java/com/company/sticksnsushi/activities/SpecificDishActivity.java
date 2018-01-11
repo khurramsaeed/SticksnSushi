@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
@@ -26,15 +25,23 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private String pcs;
     private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3;
     private Button addToBasket;
-    private String category;
+    private String category, allergyAlert;
     private int i, recomID1, recomID2, recomID3;
     private int quantity=0;
+    private boolean containsAlllergies;
+
+
 
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
         i = getIntent().getIntExtra("ID",0);
         category = getIntent().getStringExtra("Category");
+        containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
+        if(containsAlllergies){
+            allergyAlert = getIntent().getStringExtra("AllergiesAlert");
+        }
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -121,6 +128,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 //app.getCart().setItemId(app.dataStarters.get(i).getId());
                 quantity++;
                 app.dataStarters.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
             }
             else if (category.equals("Menuer")){
                 if (!app.getCart().getItems().contains(app.dataMenuer.get(i))) {
@@ -128,6 +136,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 //app.getCart().setItemId(app.dataMenuer.get(i).getId());
                 quantity++;
                 app.dataMenuer.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
             }
             else if (category.equals("Kids")){
                 if (!app.getCart().getItems().contains(app.dataKids.get(i))) {
@@ -135,6 +144,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 //app.getCart().setItemId(app.dataKids.get(i).getId());
                 quantity++;
                 app.dataKids.get(i).setQuantity(quantity);
+                app.getCart().setTotal();
             }
 
         }
