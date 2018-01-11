@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
@@ -45,7 +46,7 @@ public class NetworkStatus extends BroadcastReceiver {
 
     if (status != newStatus) {
       status = newStatus;
-      //Log.d("NetworkStatus\n" + intent + "\n" + networkInfo);
+      Log.d("NetworkStatus\n" + intent + "\n" + networkInfo, "Stats");
       for (Runnable o : new ArrayList<Runnable>(observer)) o.run();
     }
   }

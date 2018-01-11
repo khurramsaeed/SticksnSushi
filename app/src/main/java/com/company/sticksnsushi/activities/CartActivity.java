@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.library.NetworkStatus;
 
 import java.util.ArrayList;
 
@@ -38,7 +39,6 @@ public class CartActivity extends BaseActivity {
     protected void onCreate(Bundle savedState) {
 
         super.onCreate(savedState);
-
         setContentView(R.layout.activity_cart);
 
         priceTotal = (TextView) findViewById(R.id.priceTotal);
@@ -95,7 +95,6 @@ public class CartActivity extends BaseActivity {
         listView.setAdapter(adapter);
 
     }
-
 
     public class CartAdapter extends ArrayAdapter<Item> {
 

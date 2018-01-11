@@ -42,6 +42,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+
     }
 
     @Override

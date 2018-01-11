@@ -19,7 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener, Runnable {
 
     private TextView linkSignUp;
     private Button button_login;
@@ -35,6 +35,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        app.network.observer.add(this);
+
+        if (app.network.isOnline()) {
+            app.shortToastMessage("ONLINE");
+        } else if (!app.network.isOnline()) {
+            app.shortToastMessage("NOT CONNECTED");
+        }
 
         progressDialog = new ProgressDialog(this);
         firebaseAuth = app.firebaseAuth;
@@ -106,7 +113,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
-
     @Override
     public void onClick(View view) {
         if(view == linkSignUp) {
@@ -119,5 +125,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             userLogin();
 
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        app.network.observer.remove(this);
+    }
+
+    @Override
+    public void run() {
+
     }
 }

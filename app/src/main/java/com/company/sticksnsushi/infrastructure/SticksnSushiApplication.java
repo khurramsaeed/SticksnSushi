@@ -2,6 +2,7 @@ package com.company.sticksnsushi.infrastructure;
 
 import android.app.Application;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -18,6 +19,7 @@ import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -35,15 +37,18 @@ public class SticksnSushiApplication extends Application {
     private static final String TAG = "SticksnSushiApplication";
 
     private static SticksnSushiApplication instance;
+
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
     public static String versionName = BuildConfig.VERSION_NAME;
     public static Handler foregroundThread;
     public static Resources res;
     public static FirebaseAuth firebaseAuth;
+
     public static NetworkStatus network;
 
     private Auth auth;
+    private User user;
     private Cart cart;
 
     public ArrayList<Categories> dataCategories = new ArrayList<>();
@@ -70,7 +75,18 @@ public class SticksnSushiApplication extends Application {
         firebaseAuth = FirebaseAuth.getInstance();
 
         auth = new Auth(this);
+        user = new User();
         cart = new Cart();
+
+
+        dataCategories = new ArrayList<>();
+        dataMakiCategories = new ArrayList<>();
+        dataStarters = new ArrayList<>();
+        dataKids = new ArrayList<>();
+        dataMenuer = new ArrayList<>();
+
+        registerReceiver(network, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+        network.onReceive(this, null); // Update network status
 
         retrieveJSONData();
     }
