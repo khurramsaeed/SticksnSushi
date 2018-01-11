@@ -1,5 +1,7 @@
 package com.company.sticksnsushi.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -23,7 +25,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
     private TextView itemName, itemPrice, itemDesc, allergies, recomItemName1, recomItemName2, recomItemName3;
     private String pcs;
-    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3;
+    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3, allergyAlertButton;
     private Button addToBasket;
     private String category, allergyAlert;
     private int i, recomID1, recomID2, recomID3;
@@ -40,6 +42,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
         if(containsAlllergies){
             allergyAlert = getIntent().getStringExtra("AllergiesAlert");
+            allergyAlertButton = findViewById(R.id.allergyAlert);
+            allergyAlertButton.setVisibility(View.VISIBLE);
+            allergyAlertButton.setOnClickListener(this);
         }
 
 
@@ -146,6 +151,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.dataKids.get(i).setQuantity(quantity);
                 app.getCart().setTotal();
             }
+            if (view==allergyAlertButton){
+                showAlert(view);
+            }
 
         }
         if(view==recomItemImage1){
@@ -173,6 +181,20 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             startActivity(myintent);
         }
     }
+
+    private void showAlert(View view) {
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage(allergyAlert)
+                .setPositiveButton("Forstået", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.show();
+    }
+
     public void addRecom() {
         Random rand = new Random();
         int nextRec = 0;
