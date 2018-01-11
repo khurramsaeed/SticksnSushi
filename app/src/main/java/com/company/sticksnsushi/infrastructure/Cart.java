@@ -25,6 +25,8 @@ public class Cart {
 
     }
 
+
+
     public void updateQuantity(int quantity) {
         this.quantity = quantity;
     }
