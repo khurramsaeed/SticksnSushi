@@ -32,6 +32,7 @@ public class CartActivity extends BaseActivity {
 
     SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private CartAdapter adapter;
+    TextView priceTotal;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -39,6 +40,8 @@ public class CartActivity extends BaseActivity {
         super.onCreate(savedState);
 
         setContentView(R.layout.activity_cart);
+
+        priceTotal = (TextView) findViewById(R.id.priceTotal);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -112,7 +115,6 @@ public class CartActivity extends BaseActivity {
             TextView itemQuantity = (TextView) view.findViewById(R.id.cart_itemAmount);
             TextView pricePrItem = (TextView) view.findViewById(R.id.cart_pricePrItem);
             TextView itemTotal = (TextView) view.findViewById(R.id.cart_itemTotal);
-            TextView priceTotal = (TextView) view.findViewById(R.id.priceTotal);
 
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
@@ -126,14 +128,14 @@ public class CartActivity extends BaseActivity {
             pricePrItem.setText(item.getPrice() + "kr./stk.");
             itemTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
-
-
+            priceTotal.setText(app.getCart().getTotal() + "");
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
                     item.setQuantity(item.getQuantity() + 1);
+                    priceTotal.append(app.getCart().getTotal() + "");
                     notifyDataSetChanged();
 
                 }
@@ -144,6 +146,7 @@ public class CartActivity extends BaseActivity {
                 public void onClick(View view) {
                     if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
+                        priceTotal.setText(app.getCart().getTotal() + "");
                         notifyDataSetChanged();
 
                     } else {

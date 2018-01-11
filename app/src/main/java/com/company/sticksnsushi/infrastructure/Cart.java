@@ -10,7 +10,7 @@ import java.util.List;
 public class Cart {
     private int itemId;
     private int quantity = 1;
-    private int total;
+    private int total = 0;
 
     ArrayList<Item> items = new ArrayList<>();
 
@@ -19,8 +19,13 @@ public class Cart {
 
     public void addItem(Item item) {
         if (items.contains(item)) {return;} else {
-        this.items.add(item);}
+        this.items.add(item);
+        System.out.println(item.getPrice() + "");
+        this.total += (item.getPrice() * item.getQuantity());
+        }
+
     }
+
     public void updateQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -43,15 +48,6 @@ public class Cart {
 
     public int getTotal() {
         return total;
-    }
-
-    public void setTotal() {
-
-        for(int i = 0; i < items.size(); i++) {
-
-            this.total = items.get(i).getPrice() * items.get(i).getQuantity() + items.get(i).getPrice();
-
-        }
     }
 
     public ArrayList<Item> getItems() {
