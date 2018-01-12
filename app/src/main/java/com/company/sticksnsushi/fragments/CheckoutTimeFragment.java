@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -20,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.stepstone.stepper.Step;
+import com.stepstone.stepper.VerificationError;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,7 +35,7 @@ import static android.content.ContentValues.TAG;
  * Created by Khurram Saeed Malik on 20/11/2017.
  */
 
-public class CheckoutTimeFragment extends Fragment {
+public class CheckoutTimeFragment extends Fragment implements Step {
     long elapsedDays;
     RadioButton rbDelivery, rbPickup;
     TextView chooseDate, chooseTime, chooseRestaurant;
@@ -257,4 +260,20 @@ public class CheckoutTimeFragment extends Fragment {
         chooseTime.setText("Vælg tidspunkt");
         chooseTime.setVisibility(View.INVISIBLE);
     }
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        return null;
     }
+
+    @Override
+    public void onSelected() {
+
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
+
+    }
+}

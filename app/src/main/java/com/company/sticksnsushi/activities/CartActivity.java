@@ -128,6 +128,7 @@ public class CartActivity extends BaseActivity {
             itemTotal.setText(item.getItemTotal() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
             priceTotal.setText(app.getCart().getTotal() + "");
+            System.out.println(app.getCart().getTotal() + "");
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override

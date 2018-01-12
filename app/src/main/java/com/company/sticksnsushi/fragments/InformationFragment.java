@@ -1,6 +1,7 @@
 package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.stepstone.stepper.Step;
+import com.stepstone.stepper.VerificationError;
 
 
-public class InformationFragment extends Fragment {
+public class InformationFragment extends Fragment implements Step {
 
     @Nullable
     @Override
@@ -25,6 +28,22 @@ public class InformationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         getActivity().setTitle("Bestilling");
+
+    }
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        return null;
+    }
+
+    @Override
+    public void onSelected() {
+
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
 
     }
 }
