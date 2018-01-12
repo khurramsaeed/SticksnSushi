@@ -159,7 +159,17 @@
             android:src="@drawable/paypal" />
 
 
+
     </LinearLayout>
+
+    <Button
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Betal"
+        android:background="@color/colorAccent"
+        android:textColor="@color/colorPrimaryText"
+        android:layout_alignParentBottom="true" />
 
 
 </RelativeLayout>

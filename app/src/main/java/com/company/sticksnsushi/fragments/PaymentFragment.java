@@ -2,26 +2,38 @@ package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-public class PaymentFragment extends Fragment {
+public class PaymentFragment extends Fragment implements View.OnClickListener {
+
+    DatabaseReference databaseReference;
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
         ViewGroup PaymentView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_payment, container, false);
         setHasOptionsMenu(true);
+
+        if(app.firebaseAuth.getCurrentUser() == null){
+            // TODO: 12-01-2018 data skal udfyldes
+        }
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         return PaymentView;
 
@@ -38,6 +50,9 @@ public class PaymentFragment extends Fragment {
                 final TextView tv = view.findViewById(R.id.cardnr);
                 final TextView tv1 = view.findViewById(R.id.cvc);
                 final TextView tv2 = view.findViewById(R.id.date);
+
+                final Button pay = view.findViewById(R.id.payButton);
+                pay.setOnClickListener(this);
 
 
                 final EditText et = view.findViewById(R.id.editCardNumber);
@@ -123,6 +138,16 @@ public class PaymentFragment extends Fragment {
         );
     }
 
+    private void saveOrder(){
+        FirebaseUser user = app.firebaseAuth.getCurrentUser();
+        databaseReference.child(user.getUid()).setValue(app.getCart());
+        app.longToastMessage("Bestilling gemt");
+    }
+
+    @Override
+    public void onClick(View view) {
+        saveOrder();
+    }
 }
 
 
