@@ -7,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -15,32 +14,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+public class PaymentFragment extends Fragment implements Step {
 
-public class PaymentFragment extends Fragment implements View.OnClickListener, Step {
-
-    DatabaseReference databaseReference;
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
         ViewGroup PaymentView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_payment, container, false);
         setHasOptionsMenu(true);
 
-        if (app.firebaseAuth.getCurrentUser() == null) {
-            // TODO: 12-01-2018 data skal udfyldes
-        }
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         return PaymentView;
 
@@ -58,7 +42,6 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
         final TextView tv1 = view.findViewById(R.id.cvc);
         final TextView tv2 = view.findViewById(R.id.date);
 
-        final Button pay = view.findViewById(R.id.payButton);
 
         final EditText et = view.findViewById(R.id.editCardNumber);
         final EditText et1 = view.findViewById(R.id.editCvc);
@@ -72,7 +55,6 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
         et1.setVisibility(View.GONE);
         et2.setVisibility(View.GONE);
 
-        pay.setOnClickListener(this);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                           @Override
@@ -127,19 +109,6 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
                                        }
 
         );
-    }
-
-    private void saveOrder() {
-        FirebaseUser user = app.firebaseAuth.getCurrentUser();
-        app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
-        app.getCart().getItems().get(0).setItemImage(null);
-        databaseReference.child(user.getUid()).setValue(app.getCart());
-        app.longToastMessage("Bestilling gemt");
-    }
-
-    @Override
-    public void onClick(View view) {
-        saveOrder();
     }
 
 

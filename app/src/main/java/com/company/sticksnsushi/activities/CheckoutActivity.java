@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -10,13 +11,24 @@ import android.view.View;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.StepperAdapter;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class CheckoutActivity extends BaseActivity implements StepperLayout.StepperListener{
 
     private StepperLayout mStepperLayout;
     private ViewPager viewPager;
+
+    DatabaseReference databaseReference;
+    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
 
 
     @Override
@@ -32,14 +44,30 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
             toolbar.setNavigationIcon(R.drawable.arrow_left);
         }
 
+        if (app.firebaseAuth.getCurrentUser() == null) {
+            // TODO: 12-01-2018 data skal udfyldes
+        }
+
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+
         mStepperLayout = (StepperLayout) findViewById(R.id.stepperLayout);
         mStepperLayout.setAdapter(new StepperAdapter(getSupportFragmentManager(), this));
         mStepperLayout.setListener(this);
 
     }
 
+    private void saveOrder() {
+        FirebaseUser user = app.firebaseAuth.getCurrentUser();
+        app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
+        databaseReference.child(user.getUid()).setValue(app.getCart());
+        app.longToastMessage("Bestilling gemt");
+    }
+
     @Override
     public void onCompleted(View completeButton) {
+        saveOrder();
+
+        startActivity(new Intent(this, ConfirmationActivity.class));
 
     }
 
