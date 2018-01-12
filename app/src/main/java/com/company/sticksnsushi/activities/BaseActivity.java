@@ -150,6 +150,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.popup_cart, null);
 
+
+        TextView priceTotal = view.findViewById(R.id.popup_cart_totalPrice);
+        priceTotal.setText(app.getCart().getTotal() + " kr.");
+
         //Add cart data to listview
         listView = view.findViewById(R.id.popup_cart_listView);
         adapter = new PopupCartAdapter(this, app.getCart().getItems());

@@ -42,7 +42,6 @@ public class CartActivity extends BaseActivity {
         setContentView(R.layout.activity_cart);
 
         priceTotal = (TextView) findViewById(R.id.priceTotal);
-        priceTotal.setText(""+ app.getCart().getTotal());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -98,7 +97,6 @@ public class CartActivity extends BaseActivity {
 
     public class CartAdapter extends ArrayAdapter<Item> {
 
-
         public CartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
             super(context, 0, itemArrayList);
         }
@@ -127,14 +125,15 @@ public class CartActivity extends BaseActivity {
             pricePrItem.setText(item.getPrice() + "kr./stk.");
             itemTotal.setText(item.getItemTotal() + "kr.");
             itemImage.setImageBitmap(item.getItemImage());
-            priceTotal.setText(app.getCart().getTotal() + "");
-            System.out.println(app.getCart().getTotal() + "");
+
+            app.getCart().setTotal(item.getItemTotal());
+            priceTotal.setText(app.getCart().getTotal()+ " kr.");
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     item.setQuantity(item.getQuantity() + 1);
-                    priceTotal.setText(""+app.getCart().getTotal());
+
                     notifyDataSetChanged();
 
                 }
@@ -145,7 +144,7 @@ public class CartActivity extends BaseActivity {
                 public void onClick(View view) {
                     if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
-                        priceTotal.setText(""+app.getCart().getTotal());
+
                         notifyDataSetChanged();
 
                     } else {
@@ -161,7 +160,7 @@ public class CartActivity extends BaseActivity {
                                             .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    app.getCart().getItems().remove(item);
+                                                    app.getCart().removeItem(item);
                                                     notifyDataSetChanged();
                                                 }
                                             }).show();

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -61,14 +62,11 @@
             android:layout_height="1.5dp"
             android:background="@color/colorAccent" />
 
-
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/activity_cart_listView">
         </ListView>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -82,10 +80,12 @@
                 android:background="@drawable/bg_total_outline"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="1dp"
+                android:orientation="horizontal"
                 android:padding="16dp">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="Total"
                     android:textColor="@color/colorPrimaryText"
@@ -93,9 +93,13 @@
 
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
                     android:id="@+id/priceTotal"
+                    android:textStyle="bold"
+                    tools:text="0 kr."
                     android:textColor="@color/colorPrimaryText"/>
 
             </LinearLayout>

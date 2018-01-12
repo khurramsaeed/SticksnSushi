@@ -16,11 +16,15 @@ public class Cart {
     public Cart() {}
 
     public void addItem(Item item) {
-        this.total = (item.getItemTotal() + total);
-        System.out.println(toString());
         if (items.contains(item)) {return;}
-        this.items.add(item);
+        items.add(item);
+    }
 
+    public void removeItem(Item item) {
+        int itemTotal = item.getItemTotal();
+        total = total - itemTotal;
+        if (items.contains(item)) {
+            items.remove(item);}
     }
 
     public void setOrderDate(String orderDate) {
@@ -44,8 +48,8 @@ public class Cart {
         return total;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
+    public void setTotal(int price) {
+        total = total + price;
     }
 
     public ArrayList<Item> getItems() {
