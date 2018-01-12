@@ -19,6 +19,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class PaymentFragment extends Fragment implements View.OnClickListener {
 
     DatabaseReference databaseReference;
@@ -140,6 +144,7 @@ public class PaymentFragment extends Fragment implements View.OnClickListener {
 
     private void saveOrder(){
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
+        app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
         databaseReference.child(user.getUid()).setValue(app.getCart());
         app.longToastMessage("Bestilling gemt");
     }
