@@ -62,8 +62,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
         if(currentUser != null){
 //        if(app.getAuth().getUser().isLoggedIn()){
-            System.out.println("Bruger logget ind: " + app.firebaseAuth.getCurrentUser());
-            System.out.println("Bruger med email: " + app.firebaseAuth.getCurrentUser().getEmail());
+            System.out.println("Bruger logget ind: " + currentUser);
+            System.out.println("Bruger med email: " + currentUser.getEmail());
         }
         else {
             System.out.println("Bruger ikke logget ind");
