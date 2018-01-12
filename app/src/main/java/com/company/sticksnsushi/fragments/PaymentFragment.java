@@ -36,11 +36,13 @@ public class PaymentFragment extends Fragment implements Step {
 
         final CheckBox cb = view.findViewById(R.id.checkKredit);
         final CheckBox cb1 = view.findViewById(R.id.checkMobilePay);
+        final CheckBox cb2 = view.findViewById(R.id.checkPaypal);
 
 
         final TextView tv = view.findViewById(R.id.cardnr);
         final TextView tv1 = view.findViewById(R.id.cvc);
         final TextView tv2 = view.findViewById(R.id.date);
+        final TextView tv3 = view.findViewById(R.id.tv3);
 
 
         final EditText et = view.findViewById(R.id.editCardNumber);
@@ -50,6 +52,7 @@ public class PaymentFragment extends Fragment implements Step {
         tv.setVisibility(View.GONE);
         tv1.setVisibility(View.GONE);
         tv2.setVisibility(View.GONE);
+        tv3.setVisibility(View.GONE);
 
         et.setVisibility(View.GONE);
         et1.setVisibility(View.GONE);
@@ -101,9 +104,38 @@ public class PaymentFragment extends Fragment implements Step {
                                                if (isChecked == true) {
 
                                                    linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
+
+                                                   tv3.setVisibility(View.VISIBLE);
+
                                                    cb.setChecked(false);
                                                } else {
 
+                                                   tv3.setVisibility(View.GONE);
+                                                   linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                                               }
+                                           }
+                                       }
+
+        );
+
+        cb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                           @Override
+                                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                                               LinearLayout linearLayout = view.findViewById(R.id.linearPaypal);
+
+                                               if (isChecked == true) {
+
+                                                   linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
+
+                                                   tv3.setVisibility(View.VISIBLE);
+
+                                                   cb.setChecked(false);
+                                                   cb1.setChecked(false);
+                                               } else {
+
+                                                   tv3.setVisibility(View.GONE);
                                                    linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                                                }
                                            }
@@ -111,6 +143,8 @@ public class PaymentFragment extends Fragment implements Step {
 
         );
     }
+
+
 
 
     @Nullable

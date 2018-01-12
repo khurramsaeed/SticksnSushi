@@ -53,7 +53,6 @@ public class CheckoutTimeFragment extends Fragment implements Step {
         chooseRestaurant = view.findViewById(R.id.chooseRestaurant);
         rbDelivery = view.findViewById(R.id.rB_delivery);
         rbPickup = view.findViewById(R.id.rB_pickup);
-        nextScreenButton = view.findViewById(R.id.nextScreenButtom);
         chooseTime.setVisibility(View.GONE);
         setDelivery();
         return view;
