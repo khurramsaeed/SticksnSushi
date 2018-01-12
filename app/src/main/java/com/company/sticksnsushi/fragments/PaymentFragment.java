@@ -58,7 +58,7 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
         final TextView tv1 = view.findViewById(R.id.cvc);
         final TextView tv2 = view.findViewById(R.id.date);
 
-        final Button pay = view.findViewById(R.id.payButton);;
+        final Button pay = view.findViewById(R.id.payButton);
 
         final EditText et = view.findViewById(R.id.editCardNumber);
         final EditText et1 = view.findViewById(R.id.editCvc);
@@ -72,6 +72,7 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
         et1.setVisibility(View.GONE);
         et2.setVisibility(View.GONE);
 
+        pay.setOnClickListener(this);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                           @Override

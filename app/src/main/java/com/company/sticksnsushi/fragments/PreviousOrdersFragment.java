@@ -9,13 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.Cart;
 import com.company.sticksnsushi.infrastructure.PreviousOrdersItem;
+import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.
@@ -29,13 +37,17 @@ public class PreviousOrdersFragment extends Fragment {
     private static final String TAG = "Previous";
 
     private RecyclerView recyclerView;
-
+    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private DatabaseReference databaseReference;
+    List<Cart> cartItems = new ArrayList<>();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         getActivity().setTitle("Tidligere ordrer");
+        FirebaseUser user = app.firebaseAuth.getCurrentUser();
+        assert user != null;
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
     }
 
     @Nullable
@@ -51,18 +63,16 @@ public class PreviousOrdersFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         // Intantiating Adapter.
-        CustomDataAdapter adapter = new CustomDataAdapter();
+
 
         //Dummie data for testing
-        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
-        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
-        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
-        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "199 kr.", "30/11-2017"));
+//        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "30/11-2017", "199 kr. (3 emner)"));
 
+
+        CustomDataAdapter adapter = new CustomDataAdapter();
         // Add dataCategories to my adapter
-        // Add dataCategories to my adapter
-        for (int i = 0; i < dataPreviousOrders.size(); i++) {
-            adapter.addItem(dataPreviousOrders.get(i));
+        for (int i = 0; i < cartItems.size(); i++) {
+            adapter.addItem(cartItems.get(i));
         }
 
             recyclerView.setAdapter(adapter);
@@ -70,26 +80,44 @@ public class PreviousOrdersFragment extends Fragment {
             return rootView;
         }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                cartItems.clear();
+                GenericTypeIndicator<ArrayList<Cart>> t = new GenericTypeIndicator<ArrayList<Cart>>() {};
+                cartItems = dataSnapshot.getValue(t);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
 
     /**
      * Custom Adapter
      * @author Khurram Saeed Malik
      */
     public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
-        private final ArrayList<PreviousOrdersItem> items;
+        private final ArrayList<Cart> items;
 
         public CustomDataAdapter() {
             this.items = new ArrayList<>();
         }
 
-        public void addItem(PreviousOrdersItem item) {
-            items.add(item);
+        public void addItem(Cart cart) {
+            items.add(cart);
             // Sidste element af Array
             notifyItemInserted(items.size() - 1);
         }
 
         // If we want to remove item
-        public void removeItem(Item item) {
+        public void removeItem(Cart item) {
             int position = items.indexOf(item);
             if (position == -1) {
                 return;
@@ -106,7 +134,7 @@ public class PreviousOrdersFragment extends Fragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "Item clicked", Toast.LENGTH_SHORT).show();
+                    // TODO: 12/01/2018 LOGIC
                 }
             });
 
@@ -115,11 +143,11 @@ public class PreviousOrdersFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-           PreviousOrdersItem item = dataPreviousOrders.get(position);
+           Cart order = items.get(position);
 
-            holder.info.setText(item.getInfo());
-            holder.price.setText(item.getPrice());
-            holder.date.setText(item.getDate());
+            holder.info.setText(order.getOrderId());
+            holder.price.setText(order.getTotal());
+            holder.date.setText(order.getOrderDate());
         }
 
         @Override
@@ -137,8 +165,7 @@ public class PreviousOrdersFragment extends Fragment {
 
         public DataListViewHolder(View itemView) {
             super(itemView);
-
-            info = itemView.findViewById(R.id.previous_orders_info);
+            info = itemView.findViewById(R.id.previous_orders_orderId);
             price = itemView.findViewById(R.id.previous_orders_price);
             date = itemView.findViewById(R.id.previous_orders_date);
         }
