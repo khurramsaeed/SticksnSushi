@@ -12,14 +12,12 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.Cart;
-import com.company.sticksnsushi.infrastructure.PreviousOrdersItem;
 import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -30,66 +28,39 @@ import java.util.List;
  */
 
 public class PreviousOrdersFragment extends Fragment {
-
-    public static ArrayList<PreviousOrdersItem> dataPreviousOrders = new ArrayList<>();
-
     // For debugging purposes
     private static final String TAG = "Previous";
 
     private RecyclerView recyclerView;
     private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
     private DatabaseReference databaseReference;
-    List<Cart> cartItems = new ArrayList<>();
+    private List<Cart> orders = new ArrayList<>();
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Tidligere ordrer");
-        FirebaseUser user = app.firebaseAuth.getCurrentUser();
-        assert user != null;
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
         rootView.setTag(TAG);
-
+        FirebaseUser user = app.firebaseAuth.getCurrentUser();
+        assert user != null;
+        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        // Intantiating Adapter.
-
-
-        //Dummie data for testing
-//        dataPreviousOrders.add(new PreviousOrdersItem("Ebi hapsere", "30/11-2017", "199 kr. (3 emner)"));
-
-
-        CustomDataAdapter adapter = new CustomDataAdapter();
-        // Add dataCategories to my adapter
-        for (int i = 0; i < cartItems.size(); i++) {
-            adapter.addItem(cartItems.get(i));
-        }
-
-            recyclerView.setAdapter(adapter);
-
-            return rootView;
-        }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                cartItems.clear();
-                GenericTypeIndicator<ArrayList<Cart>> t = new GenericTypeIndicator<ArrayList<Cart>>() {};
-                cartItems = dataSnapshot.getValue(t);
+                // TODO: 12/01/2018 IMPLEMENET LOGIC
+                //orders.add(dataSnapshot.getValue();
             }
 
             @Override
@@ -97,34 +68,44 @@ public class PreviousOrdersFragment extends Fragment {
 
             }
         });
-    }
+
+        CustomDataAdapter adapter = new CustomDataAdapter();
+        // Add dataCategories to my adapter
+        for (int i = 0; i < orders.size(); i++) {
+            adapter.addItem(orders.get(i));
+        }
+            recyclerView.setAdapter(adapter);
+
+            return rootView;
+        }
+
 
     /**
      * Custom Adapter
      * @author Khurram Saeed Malik
      */
     public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
-        private final ArrayList<Cart> items;
+        private final ArrayList<Cart> orders;
 
         public CustomDataAdapter() {
-            this.items = new ArrayList<>();
+            this.orders = new ArrayList<>();
         }
 
-        public void addItem(Cart cart) {
-            items.add(cart);
+        public void addItem(Cart order) {
+            orders.add(order);
             // Sidste element af Array
-            notifyItemInserted(items.size() - 1);
+            notifyItemInserted(orders.size() - 1);
         }
 
         // If we want to remove item
-        public void removeItem(Cart item) {
-            int position = items.indexOf(item);
+        public void removeItem(Cart order) {
+            int position = orders.indexOf(order);
             if (position == -1) {
                 return;
             }
-            items.remove(position);
+            orders.remove(position);
             notifyItemRemoved(position);
-            notifyItemRangeChanged(position, items.size() );
+            notifyItemRangeChanged(position, orders.size() );
         }
 
         @Override
@@ -143,16 +124,16 @@ public class PreviousOrdersFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
-           Cart order = items.get(position);
+           Cart order = orders.get(position);
 
-            holder.info.setText(order.getOrderId());
-            holder.price.setText(order.getTotal());
-            holder.date.setText(order.getOrderDate());
+            holder.orderId.setText(order.getOrderId());
+            holder.total.setText(order.getTotal());
+            holder.orderDate.setText(order.getOrderDate());
         }
 
         @Override
         public int getItemCount() {
-            return items.size();
+            return orders.size();
         }
     }
 
@@ -161,13 +142,13 @@ public class PreviousOrdersFragment extends Fragment {
      * til de enkelte items som vises i RecyclerView
      */
     private class DataListViewHolder extends RecyclerView.ViewHolder {
-        private TextView info, date, price;
+        private TextView orderId, orderDate, total;
 
         public DataListViewHolder(View itemView) {
             super(itemView);
-            info = itemView.findViewById(R.id.previous_orders_orderId);
-            price = itemView.findViewById(R.id.previous_orders_price);
-            date = itemView.findViewById(R.id.previous_orders_date);
+            orderId = itemView.findViewById(R.id.previous_orders_orderId);
+            orderDate = itemView.findViewById(R.id.previous_orders_date);
+            total = itemView.findViewById(R.id.previous_orders_price);
         }
 
     }

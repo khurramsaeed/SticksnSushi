@@ -11,8 +11,7 @@ public class Cart {
     private int orderId;
     private String orderDate;
     private int total = 0;
-
-    ArrayList<Item> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
     public Cart() {}
 
@@ -43,6 +42,10 @@ public class Cart {
 
     public int getTotal() {
         return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
     }
 
     public ArrayList<Item> getItems() {

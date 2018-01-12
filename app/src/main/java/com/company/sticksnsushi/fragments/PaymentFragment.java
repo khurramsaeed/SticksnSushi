@@ -132,6 +132,7 @@ public class PaymentFragment extends Fragment implements View.OnClickListener, S
     private void saveOrder() {
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
+        app.getCart().getItems().get(0).setItemImage(null);
         databaseReference.child(user.getUid()).setValue(app.getCart());
         app.longToastMessage("Bestilling gemt");
     }
