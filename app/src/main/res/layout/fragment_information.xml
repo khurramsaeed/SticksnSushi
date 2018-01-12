@@ -122,15 +122,6 @@
             android:text=""/>
 
 
-            <Button
-                android:id="@+id/nextScreenButtom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Videre"
-                android:textColor="@color/colorPrimaryText" />
-
 
         </LinearLayout>
 

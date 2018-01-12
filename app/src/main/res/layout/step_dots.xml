@@ -6,4 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    app:ms_stepperType="dots" />
+    app:ms_stepperType="dots"
+    app:ms_activeStepColor="@color/colorAccent"
+    app:ms_completeButtonText="@string/Betal"
+    app:ms_bottomNavigationBackground="@color/colorSecondary"/>
+

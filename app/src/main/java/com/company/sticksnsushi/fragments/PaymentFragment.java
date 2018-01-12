@@ -60,6 +60,7 @@ public class PaymentFragment extends Fragment implements Step {
                                           @Override
                                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
+
                                               LinearLayout linearLayout = view.findViewById(R.id.linearKredit);
 
                                               if (isChecked == true) {

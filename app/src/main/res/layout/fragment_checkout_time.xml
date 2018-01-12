@@ -71,16 +71,6 @@
         android:textColor="@color/greyNew"
         android:textSize="16sp" />
 
-    <Button
-        android:id="@+id/nextScreenButtom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Videre"
-        android:layout_marginTop="59dp"
-        android:layout_below="@+id/chooseRestaurant"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorPrimaryText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
+
 
 </RelativeLayout>
