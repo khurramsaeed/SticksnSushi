@@ -65,6 +65,7 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
     @Override
     public void onCompleted(View completeButton) {
+        saveOrder();
 
         startActivity(new Intent(this, ConfirmationActivity.class));
 
