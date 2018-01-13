@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/editTextAdsress"
+            <EditText android:id="@+id/editTextAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
@@ -79,7 +79,7 @@
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/editTextPostalAdsress"
+            <EditText android:id="@+id/editTextPostalAdress"
                 android:layout_width="match_parent"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
