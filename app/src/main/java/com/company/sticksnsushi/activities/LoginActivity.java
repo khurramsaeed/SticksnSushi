@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,7 +25,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private EditText editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
     FirebaseAuth firebaseAuth;
 
 
@@ -36,11 +36,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         app.network.observer.add(this);
 
-        if (app.network.isOnline()) {
-            app.shortToastMessage("CONNECTED");
-        } else if (!app.network.isOnline()) {
-            app.shortToastMessage("NOT CONNECTED");
-        }
 
         progressDialog = new ProgressDialog(this);
         firebaseAuth = app.firebaseAuth;

@@ -6,13 +6,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
 
     private static int SPLASH_TIME_OUT = 1500;
-    Application app = Application.getInstance();
+    App app = App.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

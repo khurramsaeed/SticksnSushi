@@ -26,15 +26,16 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
+import android.app.Application;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
  */
 
-public class Application extends android.app.Application {
-    private static final String TAG = "Application";
+public class App extends Application {
+    private static final String TAG = "App";
 
-    private static Application instance;
+    private static App instance;
 
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
@@ -89,7 +90,7 @@ public class Application extends android.app.Application {
         retrieveJSONData();
     }
 
-    public static Application getInstance() {
+    public static App getInstance() {
         return instance;
     }
 

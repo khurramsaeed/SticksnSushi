@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class TakeAwayFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
 
 
     @Override

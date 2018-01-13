@@ -24,7 +24,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,7 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected Toolbar toolbar;
     protected PopupCartAdapter adapter;
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
 
     @Override
     protected void onCreate(Bundle savedState) {

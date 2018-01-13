@@ -7,7 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class NetworkStatus extends BroadcastReceiver {
     WIFI, MOBILE, NONE
   }
 
-  Application app = Application.getInstance();
+  App app = App.getInstance();
 
   public Status status;
   public List<Runnable> observer = new ArrayList<Runnable>();

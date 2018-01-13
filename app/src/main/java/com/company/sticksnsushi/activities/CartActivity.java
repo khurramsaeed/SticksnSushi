@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.Application;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Item;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import java.util.ArrayList;
 
 public class CartActivity extends BaseActivity {
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
     private CartAdapter adapter;
     TextView priceTotal;
 

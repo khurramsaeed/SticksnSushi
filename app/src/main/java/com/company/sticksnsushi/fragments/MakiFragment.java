@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Categories;
-import com.company.sticksnsushi.infrastructure.Application;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,7 @@ import java.util.ArrayList;
     // For debugging purposes
     private static final String TAG = "MakiFragment";
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
     private RecyclerView recyclerView;
 
 

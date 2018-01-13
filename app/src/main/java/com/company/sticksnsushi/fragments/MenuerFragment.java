@@ -15,8 +15,8 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Item;
-import com.company.sticksnsushi.infrastructure.Application;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class MenuerFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "MenuerFragment";
 
-    Application app = Application.getInstance();
+    App app = App.getInstance();
     private RecyclerView recyclerView;
     Item item;
     AllergiesFragment allergies = new AllergiesFragment();
@@ -138,7 +138,7 @@ public class MenuerFragment extends BaseFragment {
 
 //        @Override
 //        public void onBindViewHolder(TakeAwayFragment.DataListViewHolder holder, int position) {
-//            Categories item = Application.dataCategories.get(position);
+//            Categories item = App.dataCategories.get(position);
 //
 //            holder.title.setText(item.getItemName());
 //            holder.image.setImageBitmap(item.getItemImage());
@@ -177,7 +177,7 @@ public class MenuerFragment extends BaseFragment {
         while(i < allergies.getAllergies().size()) {
             try {
                 String checkedAllergy = allergies.getAllergies().get(i);
-                Application app = Application.getInstance();
+                App app = App.getInstance();
                 inputStr = app.dataMenuer.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
