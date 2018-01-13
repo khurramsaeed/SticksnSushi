@@ -34,12 +34,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        app.network.observer.add(this);
-
+        app.register(this);
 
         progressDialog = new ProgressDialog(this);
         firebaseAuth = app.firebaseAuth;
-
 
         //initializing views
         editTextEmail = findViewById(R.id.input_email);
@@ -116,15 +114,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
         }
         else if(view == button_login){
+            if (!app.network.isOnline()) {
+                app.shortToastMessage("Venligst forbinde enheden med nettet!");
+                return;
+            }
             userLogin();
-
         }
     }
 
     @Override
     protected void onDestroy() {
+        app.unregister(this);
         super.onDestroy();
-        app.network.observer.remove(this);
     }
 
     @Override

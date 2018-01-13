@@ -45,9 +45,9 @@ public class App extends Application {
     public static FirebaseAuth firebaseAuth;
 
     public static NetworkStatus network;
+    public static ArrayList<Runnable> observers = new ArrayList<>();
 
     private Auth auth;
-    private User user;
     private Cart cart;
 
     public ArrayList<Categories> dataCategories = new ArrayList<>();
@@ -74,9 +74,7 @@ public class App extends Application {
         firebaseAuth = FirebaseAuth.getInstance();
 
         auth = new Auth(this);
-        user = new User();
         cart = new Cart();
-
 
         dataCategories = new ArrayList<>();
         dataMakiCategories = new ArrayList<>();
@@ -102,6 +100,19 @@ public class App extends Application {
         return auth;
     }
 
+
+    // Observer methods
+    public void register (Runnable r) {
+        observers.add(r);
+    }
+
+    public void unregister (Runnable r) {
+        observers.remove(r);
+    }
+
+    public void update () {
+        for (Runnable r : observers) r.run();
+    }
 
 
     /***

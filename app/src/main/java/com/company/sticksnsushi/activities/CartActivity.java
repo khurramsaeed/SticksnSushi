@@ -54,7 +54,15 @@ public class CartActivity extends BaseActivity {
     }
 
     public void startCheckoutActivity(View view) {
-        startActivity(new Intent(this, CheckoutActivity.class));
+        if (!app.network.isOnline()) {
+            app.shortToastMessage("Venligst forbinde enheden med nettet!");
+            return;
+        }
+        if (!app.getCart().getItems().isEmpty()) {
+            startActivity(new Intent(this, CheckoutActivity.class));
+        } else {
+            app.shortToastMessage("Kurven er tom!");
+        }
     }
 
     /**

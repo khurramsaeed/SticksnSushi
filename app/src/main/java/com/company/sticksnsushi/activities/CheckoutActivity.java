@@ -65,8 +65,11 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
     @Override
     public void onCompleted(View completeButton) {
+        if (!app.network.isOnline()) {
+            app.shortToastMessage("Venligst forbinde enheden med nettet!");
+            return;
+        }
         saveOrder();
-
         startActivity(new Intent(this, ConfirmationActivity.class));
 
     }

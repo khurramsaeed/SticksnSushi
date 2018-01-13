@@ -131,6 +131,10 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         }
         else if(view == buttonSignup){
+           if (!app.network.isOnline()) {
+               app.shortToastMessage("Venligst forbinde enheden med nettet!");
+               return;
+           }
             //calling register method on click
             registerUser();
         }
