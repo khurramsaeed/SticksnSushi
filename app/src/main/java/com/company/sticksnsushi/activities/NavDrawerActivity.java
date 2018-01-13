@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
@@ -32,8 +33,11 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private static final int STATE_VIEWING = 1;
     private static final int STATE_EDITING = 2;
 
+    NavigationView navigationView;
+
     private int currentState;
     App app = App.getInstance();
+    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +51,24 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             toolbar.setTitle("Takeaway");
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Menu menu = navigationView.getMenu();
+        if(currentUser != null){
+            menu.findItem(R.id.item_signOut).setTitle("Log ud");
+        }
+        else if(currentUser == null){
+            menu.findItem(R.id.item_signOut).setTitle("Log ind");
+        }
+
 
 
         // Screen rotation: Editing fields fix
@@ -153,13 +167,18 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                 break;
 
             case R.id.item_signOut:
-                final FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
                 if(currentUser!=null){
                     app.firebaseAuth.signOut();
                     System.out.println("Bruger logget ud");
+                    Intent welcomeIntent = new Intent(NavDrawerActivity.this, WelcomeActivity.class);
+                    startActivity(welcomeIntent);
                 }
-                else{
-                    setTitle("Log ind");
+                else if(currentUser == null) {
+
+                    System.out.println("Bruger ikke logget ind: Item sat til 'Log ind'");
+                    Intent loginIntent = new Intent(NavDrawerActivity.this, LoginActivity.class);
+                    startActivity(loginIntent);
+
                 }
 
         }
