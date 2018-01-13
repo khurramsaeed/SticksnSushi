@@ -8,6 +8,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +24,9 @@ import com.stepstone.stepper.VerificationError;
 public class InformationFragment extends Fragment implements BlockingStep {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
+
+    CheckBox userInfo;
+
 
     @Nullable
     @Override
@@ -39,6 +44,25 @@ public class InformationFragment extends Fragment implements BlockingStep {
         editAdress = (EditText) view.findViewById(R.id.editTextAdress);
         editPostalnr = (EditText) view.findViewById(R.id.editTextPostalAdress);
         editCity = (EditText) view.findViewById(R.id.editTextCity);
+
+        userInfo = (CheckBox) view.findViewById(R.id.userInfo);
+
+        userInfo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(userInfo.isChecked()){
+                    editFullName.setText("Søren");
+                    editPhone.setText("56575419");
+                    editAdress.setText("DTU Ballerup Campus");
+                    editPostalnr.setText("2750");
+                    editCity.setText("Ballerup");
+                    System.out.println("Søren");
+                }
+                else {
+                    editFullName.setText("");
+                }
+            }
+        });
 
         getActivity().setTitle("Bestilling");
 
