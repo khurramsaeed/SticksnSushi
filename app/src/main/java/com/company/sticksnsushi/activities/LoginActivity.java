@@ -94,7 +94,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
                     app.getAuth().getUser().setLoggedIn(true);
                     app.getAuth().getUser().setEmail(email);
 
-                    Intent intentMenuOverview = new Intent(LoginActivity.this, MenuOverviewActivity.class);
+                    Intent intentMenuOverview = new Intent(LoginActivity.this, NavDrawerActivity.class);
                     startActivity(intentMenuOverview);
                     finish();
                 }

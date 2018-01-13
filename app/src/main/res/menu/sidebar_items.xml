@@ -34,9 +34,9 @@
                 android:icon="@drawable/ic_notifications"
                 android:title="Notifikationer" />
             <item
-                android:id="@+id/item_settings"
+                android:id="@+id/item_signOut"
                 android:icon="@drawable/ic_settings"
-                android:title="Indstillinger" />
+                android:title="Log ud" />
         </menu>
     </item>
 

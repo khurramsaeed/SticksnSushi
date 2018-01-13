@@ -1,7 +1,6 @@
 package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,13 +10,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.AllergiesFragment;
 import com.company.sticksnsushi.fragments.PreviousOrdersFragment;
 import com.company.sticksnsushi.fragments.TakeAwayFragment;
-import com.company.sticksnsushi.fragments.AllergiesFragment;
+import com.company.sticksnsushi.infrastructure.App;
+import com.google.firebase.auth.FirebaseUser;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -33,7 +33,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private static final int STATE_EDITING = 2;
 
     private int currentState;
-
+    App app = App.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -151,6 +151,17 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             case R.id.item_profile:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
+
+            case R.id.item_signOut:
+                final FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+                if(currentUser!=null){
+                    app.firebaseAuth.signOut();
+                    System.out.println("Bruger logget ud");
+                }
+                else{
+                    setTitle("Log ind");
+                }
+
         }
 
         if (fragment != null) {
