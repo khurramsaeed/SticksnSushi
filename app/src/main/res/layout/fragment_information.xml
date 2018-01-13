@@ -31,7 +31,7 @@
                 android:textSize="15dp"
                 android:textColorHint="@color/colorPrimaryText"
                 android:textColor="@color/colorPrimaryText"
-                android:inputType="textPersonName"
+                android:inputType="textPersonName|textAutoComplete"
                 android:hint="Fulde navn"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -113,8 +113,9 @@
             android:layout_height="wrap_content"
             android:textColor="@color/greyNew"
             android:textColorHighlight="@color/greyNew"
+            android:id="@+id/userInfo"
             android:buttonTint="@color/greyNew"
-            android:text="Brug din kvitterings adresse" />
+            android:text="Brug dine oplysninger" />
 
         <TextView
             android:layout_width="match_parent"
