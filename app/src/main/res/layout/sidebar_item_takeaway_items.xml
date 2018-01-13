@@ -21,7 +21,7 @@
         android:paddingBottom="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryText"
+        android:textColor="@color/colorSecondaryText"
         android:textSize="28sp"
         android:text="@string/sample_item_name"
         android:id="@+id/takeaway_item_name"
