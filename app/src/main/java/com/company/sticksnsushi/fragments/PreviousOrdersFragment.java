@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.Application;
 import com.company.sticksnsushi.infrastructure.Cart;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,7 +32,7 @@ public class PreviousOrdersFragment extends Fragment {
     private static final String TAG = "Previous";
 
     private RecyclerView recyclerView;
-    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private Application app = Application.getInstance();
     private DatabaseReference databaseReference;
     private List<Cart> orders = new ArrayList<>();
 

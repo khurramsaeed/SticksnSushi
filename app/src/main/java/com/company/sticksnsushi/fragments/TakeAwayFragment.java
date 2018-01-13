@@ -11,16 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.Application;
 
 import java.util.ArrayList;
-
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.getInstance;
 
 
 /**
@@ -34,7 +31,7 @@ public class TakeAwayFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    Application app = Application.getInstance();
 
 
     @Override

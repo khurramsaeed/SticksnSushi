@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.Application;
 
 import java.util.Random;
 
@@ -21,7 +21,7 @@ import java.util.Random;
  */
 
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
-    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private Application app = Application.getInstance();
 
     private TextView itemName, itemPrice, itemDesc, allergies, recomItemName1, recomItemName2, recomItemName3;
     private String pcs;

@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.Application;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,7 +25,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private EditText editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    Application app = Application.getInstance();
     FirebaseAuth firebaseAuth;
 
 

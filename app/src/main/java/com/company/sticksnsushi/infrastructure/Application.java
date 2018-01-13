@@ -1,6 +1,5 @@
 package com.company.sticksnsushi.infrastructure;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
@@ -19,7 +18,6 @@ import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -33,10 +31,10 @@ import io.fabric.sdk.android.Fabric;
  * Created by Khurram Saeed Malik on 09/10/2017.
  */
 
-public class SticksnSushiApplication extends Application {
-    private static final String TAG = "SticksnSushiApplication";
+public class Application extends android.app.Application {
+    private static final String TAG = "Application";
 
-    private static SticksnSushiApplication instance;
+    private static Application instance;
 
     public static SharedPreferences prefs;
     public static ConnectivityManager connectivityManager;
@@ -91,7 +89,7 @@ public class SticksnSushiApplication extends Application {
         retrieveJSONData();
     }
 
-    public static SticksnSushiApplication getInstance() {
+    public static Application getInstance() {
         return instance;
     }
 

@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.StepperAdapter;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.Application;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,7 +28,7 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
     private ViewPager viewPager;
 
     DatabaseReference databaseReference;
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    Application app = Application.getInstance();
 
 
     @Override

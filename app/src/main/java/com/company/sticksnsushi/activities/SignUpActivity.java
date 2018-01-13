@@ -10,10 +10,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.Application;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -29,7 +28,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    private SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private Application app = Application.getInstance();
 
 
     @Override
@@ -99,7 +98,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                             app.getAuth().getUser().setHasPassword(true);
                             app.getAuth().getUser().setUserName(usersFullName);
 
-                            //userFullName = SticksnSushiApplication.getInstance().getAuth().getUser().setDisplayName(userName);
+                            //userFullName = Application.getInstance().getAuth().getUser().setDisplayName(userName);
 
                             //display some message here
                             app.longToastMessage("Konto oprettet");

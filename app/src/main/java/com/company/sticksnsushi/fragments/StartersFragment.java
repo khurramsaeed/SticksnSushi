@@ -16,8 +16,8 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
+import com.company.sticksnsushi.infrastructure.Application;
 import com.company.sticksnsushi.infrastructure.Item;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -30,7 +30,7 @@ public class StartersFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "StartersFragment";
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    Application app = Application.getInstance();
     private RecyclerView recyclerView;
     AllergiesFragment allergies = new AllergiesFragment();
     String allergyAlert;
@@ -182,7 +182,7 @@ public class StartersFragment extends BaseFragment {
         while(i < allergies.getAllergies().size()) {
             try {
                 String checkedAllergy = allergies.getAllergies().get(i);
-                SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+                Application app = Application.getInstance();
                 inputStr = app.dataStarters.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
