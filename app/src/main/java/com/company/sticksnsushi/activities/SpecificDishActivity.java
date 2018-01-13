@@ -131,7 +131,6 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.getCart().addItem(app.dataStarters.get(i));
                 quantity++;
                 app.dataStarters.get(i).setQuantity(quantity);
-
             }
             else if (category.equals("Menuer")){
                 app.getCart().addItem(app.dataMenuer.get(i));

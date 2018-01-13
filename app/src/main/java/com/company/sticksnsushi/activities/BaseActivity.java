@@ -31,20 +31,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 
-public abstract class BaseActivity extends AppCompatActivity {
-    private Button clickbtn;
+public abstract class BaseActivity extends AppCompatActivity implements Runnable {
     private MenuItem item;
     private ListView listView;
+    private App app = App.getInstance();
     protected Toolbar toolbar;
     protected PopupCartAdapter adapter;
-
-    App app = App.getInstance();
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
     }
-
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
@@ -53,7 +50,6 @@ public abstract class BaseActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.menu);
         }
-
     }
 
     @Override
@@ -77,13 +73,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
         item = menu.findItem(R.id.cartPopUp);
-        updatedCartBadgeCount();
+        updatedBadgeCount();
         return true;
     }
 
     @Override
-    protected void onResume() {
-        updatedCartBadgeCount();
+    public void onResume() {
+        updatedBadgeCount();
         super.onResume();
     }
 
@@ -91,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * Checks for boolean value becomes true
      * Then enables button input
      */
-    private Runnable updateBadgeCount = new Runnable() {
+    public Runnable updateBadgeCount = new Runnable() {
         int temp = 0;
         @Override
         public void run() {
@@ -100,17 +96,23 @@ public abstract class BaseActivity extends AppCompatActivity {
             if (temp != app.getCart().getItems().size()) {
                 temp = app.getCart().getItems().size();
                 LayerDrawable icon = (LayerDrawable) item.getIcon();
-                setBadgeCount(getApplicationContext(), icon, "" + app.getCart().getItems().size());
+
+                //Iterate in list to get the correct item amount in Cart
+                int itemsInCart = 0;
+                for (int i=0; i < app.getCart().getItems().size(); i++) {
+                    itemsInCart = itemsInCart + app.getCart().getItems().get(i).getQuantity();
+                }
+
+                setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
             }
         }
     };
 
-    private void updatedCartBadgeCount() {
+    public void updatedBadgeCount() {
         new Handler().post(updateBadgeCount);
     }
 
     private static void setBadgeCount(Context context, LayerDrawable icon, String count) {
-
         BadgeDrawable badge;
         // Reuse drawable if possible
         Drawable reuse = icon.findDrawableByLayerId(R.id.ic_badge);
@@ -128,10 +130,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-
         int id = item.getItemId();
         switch (id) {
             case R.id.cartPopUp:
@@ -144,6 +142,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * PopupWindow for Cart items
+     * Shows Items in Cart as ListView
+     * @return PopUp
+     */
     public PopupWindow popupDisplay() {
 
         final PopupWindow popupWindow = new PopupWindow(this);
@@ -165,18 +168,22 @@ public abstract class BaseActivity extends AppCompatActivity {
         popupWindow.setHeight(WindowManager.LayoutParams.WRAP_CONTENT);
         popupWindow.setContentView(view);
 
-        clickbtn = view.findViewById(R.id.button1);
-        clickbtn.setOnClickListener(new View.OnClickListener() {
+        Button popupPayButton = view.findViewById(R.id.popupPayButton);
+        popupPayButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), CartActivity.class));
                 //Close popup window
                 popupWindow.dismiss();
             }
         });
-
         return popupWindow;
     }
 
+
+    /**
+     * PopupCart Adapter - takes Item as ArrayAdapter
+     * Shows Cart items & Updates if item are removed
+     */
     public class PopupCartAdapter extends ArrayAdapter<Item> {
 
         public PopupCartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
@@ -200,5 +207,10 @@ public abstract class BaseActivity extends AppCompatActivity {
             return view;
 
         }
+    }
+
+    @Override
+    public void run() {
+
     }
 }

@@ -79,7 +79,6 @@ public class CartActivity extends BaseActivity {
 
     /**
      * Effects back button in current activity
-     *
      * @param item
      * @return
      */
@@ -89,7 +88,6 @@ public class CartActivity extends BaseActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
 

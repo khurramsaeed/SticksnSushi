@@ -168,6 +168,8 @@ public class StartersFragment extends BaseFragment {
                     app.getCart().addItem(app.dataStarters.get(index));
                     quantity++;
                     app.dataStarters.get(index).setQuantity(quantity);
+
+                    getActivity().invalidateOptionsMenu();
                 }
             });
         }
