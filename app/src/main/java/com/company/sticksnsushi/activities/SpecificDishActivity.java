@@ -29,7 +29,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private Button addToBasket;
     private String category, allergyAlert;
     private int i, recomID1, recomID2, recomID3;
-    private int quantity=app.dataStarters.get(i).getQuantity();
+    private int quantityStarters=app.dataStarters.get(i).getQuantity();
+    private int quantityKids=app.dataKids.get(i).getQuantity();
+    private int quantityMenuer=app.dataMenuer.get(i).getQuantity();
     private boolean containsAlllergies;
 
 
@@ -129,20 +131,27 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         if (view == addToBasket) {
             if(category.equals("Starters")) {
                 app.getCart().addItem(app.dataStarters.get(i));
-                quantity++;
-                app.dataStarters.get(i).setQuantity(quantity);
+                quantityStarters++;
+                app.dataStarters.get(i).setQuantity(quantityStarters);
+
+                //Calculates new total
+                app.cartTotal();
             }
             else if (category.equals("Menuer")){
                 app.getCart().addItem(app.dataMenuer.get(i));
-                quantity++;
-                app.dataMenuer.get(i).setQuantity(quantity);
+                quantityMenuer++;
+                app.dataMenuer.get(i).setQuantity(quantityMenuer);
 
+                //Calculates new total
+                app.cartTotal();
             }
             else if (category.equals("Kids")){
                 app.getCart().addItem(app.dataKids.get(i));
-                quantity++;
-                app.dataKids.get(i).setQuantity(quantity);
+                quantityKids++;
+                app.dataKids.get(i).setQuantity(quantityKids);
 
+                //Calculates new total
+                app.cartTotal();
             }
 
 

@@ -56,7 +56,7 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
     }
 
-    private void saveOrder() {
+    private void sendOrder() {
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
         databaseReference.child(user.getUid()).setValue(app.getCart());
@@ -69,9 +69,10 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
             app.shortToastMessage("Venligst forbinde enheden med nettet!");
             return;
         }
-        saveOrder();
+        sendOrder();
+        app.getCart().emptyCart();
         startActivity(new Intent(this, ConfirmationActivity.class));
-
+        finish();
     }
 
     @Override

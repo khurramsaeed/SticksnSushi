@@ -39,8 +39,9 @@ public class CartActivity extends BaseActivity {
 
         super.onCreate(savedState);
         setContentView(R.layout.activity_cart);
-
+        app.cartTotal();
         priceTotal = (TextView) findViewById(R.id.priceTotal);
+        priceTotal.setText(app.total + " kr.");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -59,6 +60,7 @@ public class CartActivity extends BaseActivity {
             return;
         }
         if (!app.getCart().getItems().isEmpty()) {
+            app.getCart().setTotal(app.total);
             startActivity(new Intent(this, CheckoutActivity.class));
         } else {
             app.shortToastMessage("Kurven er tom!");
@@ -90,7 +92,6 @@ public class CartActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     private void retrieveListView() {
 
         adapter = new CartAdapter(this, app.getCart().getItems());
@@ -127,18 +128,16 @@ public class CartActivity extends BaseActivity {
 
             itemName.setText(item.getItemName().toString());
             itemQuantity.setText("" + item.getQuantity());
-            pricePrItem.setText(item.getPrice() + "kr./stk.");
-            itemTotal.setText(item.getItemTotal() + "kr.");
+            pricePrItem.setText(item.getPrice() + " kr./stk.");
+            itemTotal.setText(item.getItemTotal() + " kr.");
             itemImage.setImageBitmap(item.getItemImage());
-
-            app.getCart().setTotal(item.getItemTotal());
-            priceTotal.setText(app.getCart().getTotal()+ " kr.");
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     item.setQuantity(item.getQuantity() + 1);
-
+                    app.cartTotal();
+                    priceTotal.setText(app.total + " kr.");
                     notifyDataSetChanged();
 
                 }
@@ -149,7 +148,8 @@ public class CartActivity extends BaseActivity {
                 public void onClick(View view) {
                     if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
-
+                        app.cartTotal();
+                        priceTotal.setText(app.total + " kr.");
                         notifyDataSetChanged();
 
                     } else {
@@ -166,6 +166,8 @@ public class CartActivity extends BaseActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     app.getCart().removeItem(item);
+                                                    app.cartTotal();
+                                                    priceTotal.setText(app.total + " kr.");
                                                     notifyDataSetChanged();
                                                 }
                                             }).show();

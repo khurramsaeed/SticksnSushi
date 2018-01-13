@@ -15,24 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".activities.NavDrawerActivity" />
         <activity android:name=".activities.WelcomeActivity"/>
-
-        <activity android:name=".activities.ConfirmationActivity" />
+        <activity android:name=".activities.ConfirmationActivity"
+            android:parentActivityName=".activities.MenuOverviewActivity" />
         <activity android:name=".activities.SpecificDishActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.CartActivity" />
+        <activity android:name=".activities.CheckoutActivity" />
+
         <activity
             android:name=".activities.MenuOverviewActivity"
             android:label="@string/title_activity_menu_overview" />
-        <activity android:name=".activities.CheckoutActivity" />
         <activity
             android:name=".activities.ProfileActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
@@ -41,9 +45,6 @@
             android:name="io.fabric.ApiKey"
             android:value="ca7ebe61a093b2b307fd35b1e2292088ad44f7b5" />
 
-        <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.CartActivity" ></activity>
     </application>
 
 </manifest>

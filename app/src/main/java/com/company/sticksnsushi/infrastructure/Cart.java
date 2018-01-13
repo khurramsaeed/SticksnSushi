@@ -48,12 +48,16 @@ public class Cart {
         return total;
     }
 
-    public void setTotal(int price) {
-        total = total + price;
+    public void setTotal(int total) {
+        total = total;
     }
 
     public ArrayList<Item> getItems() {
         return items;
     }
 
+    public void emptyCart() {
+        total =0;
+        items.clear();
+    }
 }
