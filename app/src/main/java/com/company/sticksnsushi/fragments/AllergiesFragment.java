@@ -1,14 +1,17 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.library.SupportPreferenceFragment;
 
 import java.util.ArrayList;
@@ -33,6 +36,32 @@ public class AllergiesFragment extends Fragment {
 
 
 
+    }
+
+    /**
+     * Back button override for Fragment
+     * Backs up to NavdrawerActivity
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    startActivity(new Intent(getContext(), NavDrawerActivity.class));
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    getActivity().finish();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 
