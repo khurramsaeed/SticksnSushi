@@ -5,6 +5,7 @@
     <color name="colorAccent">#d12012</color>
     <color name="colorSecondary">#1e1e1e</color>
     <color name="colorPrimaryText">#fff</color>
+    <color name="colorSecondaryText">#ceffffff</color>
 
     //Color_price
     <color name="price_color">#808080</color>
