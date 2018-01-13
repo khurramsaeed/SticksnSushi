@@ -75,6 +75,7 @@
         android:layout_below="@+id/editCardNumber"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryText"
         android:maxLines="1" />
 
     <TextView
@@ -95,6 +96,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/cvc"
         android:layout_marginEnd="17dp"
+        android:textColor="@color/colorPrimaryText"
         android:backgroundTint="@color/colorPrimary"
         android:maxLines="1" />
 

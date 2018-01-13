@@ -112,6 +112,8 @@ public class InformationFragment extends Fragment implements BlockingStep {
     @Override
     public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
 
+        callback.goToPrevStep();
+
     }
 }
 

@@ -280,6 +280,37 @@ public class CheckoutTimeFragment extends Fragment implements BlockingStep {
 
     @Override
     public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+
+
+        if(rbDelivery.isChecked()) {
+
+            if (chooseDate.getText().equals("Vælg dato for levering")) {
+                Toast.makeText(getContext(), "Vælg dato for levering", Toast.LENGTH_LONG).show();
+                chooseDate.setError("");
+                chooseDate.requestFocus();
+                return;
+            }
+
+            if (chooseTime.getText().equals("Vælg tidspunkt")){
+                Toast.makeText(getContext(), "Vælg tidspunkt for levering", Toast.LENGTH_LONG).show();
+                chooseTime.setError("");
+                chooseTime.requestFocus();
+                return;
+            }
+        }
+
+        if(rbPickup.isChecked()){
+
+
+            if (chooseRestaurant.getText().equals("Vælg restaurant")) {
+                Toast.makeText(getContext(), "Vælg en restaurant", Toast.LENGTH_LONG).show();
+                chooseRestaurant.setError("");
+                chooseRestaurant.requestFocus();
+                return;
+            }
+
+        }
+
         callback.goToNextStep();
 
     }
