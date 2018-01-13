@@ -1,12 +1,12 @@
 package com.company.sticksnsushi.infrastructure;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.LayerDrawable;
 import android.net.ConnectivityManager;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -19,6 +19,7 @@ import com.company.sticksnsushi.library.NetworkStatus;
 import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,7 +28,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
-import android.app.Application;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -44,6 +44,7 @@ public class App extends Application {
     public static Handler foregroundThread;
     public static Resources res;
     public static FirebaseAuth firebaseAuth;
+    public static FirebaseUser currentUser;
 
     public static NetworkStatus network;
     public static ArrayList<Runnable> observers = new ArrayList<>();
@@ -73,6 +74,7 @@ public class App extends Application {
         foregroundThread = new Handler();
         network = new NetworkStatus();
         firebaseAuth = FirebaseAuth.getInstance();
+        currentUser  = firebaseAuth.getCurrentUser();
 
         auth = new Auth(this);
         cart = new Cart();
