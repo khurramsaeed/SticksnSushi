@@ -16,7 +16,6 @@ import com.company.sticksnsushi.infrastructure.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener, Runnable {
 
@@ -26,7 +25,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private ProgressDialog progressDialog;
 
     App app = App.getInstance();
-    FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -37,7 +35,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         app.register(this);
 
         progressDialog = new ProgressDialog(this);
-        firebaseAuth = app.firebaseAuth;
 
         //initializing views
         editTextEmail = findViewById(R.id.input_email);
@@ -83,14 +80,14 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         progressDialog.setMessage("Logger ind...");
         progressDialog.show();
 
-        firebaseAuth.signInWithEmailAndPassword(email, password)
+        app.firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //User is logged in
-                    app.getAuth().getUser().setLoggedIn(true);
                     app.getAuth().getUser().setEmail(email);
+                    app.getAuth().getUser().getUserName();
 
                     Intent intentMenuOverview = new Intent(LoginActivity.this, NavDrawerActivity.class);
                     startActivity(intentMenuOverview);
@@ -108,8 +105,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     @Override
     public void onClick(View view) {
         if(view == linkSignUp) {
-            Intent i = new Intent(this, SignUpActivity.class);
-            startActivity(i);
+            Intent loginIntent = new Intent(this, SignUpActivity.class);
+            loginIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(loginIntent);
             finish();
 
         }

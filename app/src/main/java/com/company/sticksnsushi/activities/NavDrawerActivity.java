@@ -172,12 +172,14 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                     System.out.println("Bruger logget ud");
                     Intent welcomeIntent = new Intent(NavDrawerActivity.this, WelcomeActivity.class);
                     startActivity(welcomeIntent);
+                    finish();
                 }
                 else if(currentUser == null) {
 
-                    System.out.println("Bruger ikke logget ind: Item sat til 'Log ind'");
+                    System.out.println("Bruger ikke logget ind: NavItem sat til 'Log ind'");
                     Intent loginIntent = new Intent(NavDrawerActivity.this, LoginActivity.class);
                     startActivity(loginIntent);
+                    finish();
 
                 }
 

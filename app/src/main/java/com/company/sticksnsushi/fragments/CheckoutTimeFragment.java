@@ -21,7 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.Step;
+import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 import java.text.ParseException;
@@ -35,7 +37,7 @@ import static android.content.ContentValues.TAG;
  * Created by Khurram Saeed Malik on 20/11/2017.
  */
 
-public class CheckoutTimeFragment extends Fragment implements Step {
+public class CheckoutTimeFragment extends Fragment implements BlockingStep {
     long elapsedDays;
     RadioButton rbDelivery, rbPickup;
     TextView chooseDate, chooseTime, chooseRestaurant;
@@ -273,6 +275,22 @@ public class CheckoutTimeFragment extends Fragment implements Step {
 
     @Override
     public void onError(@NonNull VerificationError error) {
+
+    }
+
+    @Override
+    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+        callback.goToNextStep();
+
+    }
+
+    @Override
+    public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
 
     }
 }
