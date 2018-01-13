@@ -155,7 +155,8 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
 
 
         TextView priceTotal = view.findViewById(R.id.popup_cart_totalPrice);
-        priceTotal.setText(app.getCart().getTotal() + " kr.");
+        app.cartTotal();
+        priceTotal.setText(app.total + " kr.");
 
         //Add cart data to listview
         listView = view.findViewById(R.id.popup_cart_listView);

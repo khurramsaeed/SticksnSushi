@@ -51,6 +51,7 @@ public class App extends Application {
 
     private Auth auth;
     private Cart cart;
+    public static int total =0;
 
     public ArrayList<Categories> dataCategories = new ArrayList<>();
     public ArrayList<Categories> dataMakiCategories = new ArrayList<>();
@@ -101,6 +102,13 @@ public class App extends Application {
 
     public Auth getAuth() {
         return auth;
+    }
+
+    public void cartTotal() {
+        total=0;
+        for (int i=0; i < getCart().getItems().size(); i++) {
+            total = total + getCart().getItems().get(i).getItemTotal();
+        }
     }
 
 

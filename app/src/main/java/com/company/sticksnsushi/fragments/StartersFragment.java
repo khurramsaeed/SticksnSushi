@@ -170,6 +170,9 @@ public class StartersFragment extends BaseFragment {
                     app.dataStarters.get(index).setQuantity(quantity);
 
                     getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
                 }
             });
         }
