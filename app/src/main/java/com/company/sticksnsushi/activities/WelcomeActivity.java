@@ -34,9 +34,14 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 
         checkout = (Button) findViewById(R.id.seeCheckoutButton);
         checkout.setOnClickListener(this);
-
      }
 
+    public void updateScreen(){
+        if(currentUser != null) {
+            loginButton.setVisibility(TextView.GONE);
+            signUp.setVisibility(Button.GONE);
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -61,4 +66,10 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        currentUser = app.firebaseAuth.getCurrentUser();
+        updateScreen();
+    }
 }
