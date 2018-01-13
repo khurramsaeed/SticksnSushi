@@ -116,7 +116,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -137,7 +136,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
         return true;
     }
-
 
     /**
      * Handles logic of changning fragment while selecting Item from NavDrawer
@@ -170,19 +168,14 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                 if(currentUser!=null){
                     app.firebaseAuth.signOut();
                     System.out.println("Bruger logget ud");
-                    Intent welcomeIntent = new Intent(NavDrawerActivity.this, WelcomeActivity.class);
-                    startActivity(welcomeIntent);
                     finish();
                 }
                 else if(currentUser == null) {
-
                     System.out.println("Bruger ikke logget ind: NavItem sat til 'Log ind'");
                     Intent loginIntent = new Intent(NavDrawerActivity.this, LoginActivity.class);
                     startActivity(loginIntent);
                     finish();
-
                 }
-
         }
 
         if (fragment != null) {

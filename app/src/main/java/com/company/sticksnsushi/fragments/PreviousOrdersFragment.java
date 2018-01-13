@@ -1,16 +1,21 @@
 package com.company.sticksnsushi.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Cart;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +48,32 @@ public class PreviousOrdersFragment extends Fragment {
 
     }
 
+    /**
+     * Back button override for Fragment
+     * Backs up to NavdrawerActivity
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    startActivity(new Intent(getContext(), NavDrawerActivity.class));
+                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                    getActivity().finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,13 +81,13 @@ public class PreviousOrdersFragment extends Fragment {
         rootView.setTag(TAG);
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         assert user != null;
-        databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
+        //databaseReference = FirebaseDatabase.getInstance().getReference(user.getUid());
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+   /*    databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // TODO: 12/01/2018 IMPLEMENET LOGIC
@@ -67,7 +98,7 @@ public class PreviousOrdersFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        }); */
 
         CustomDataAdapter adapter = new CustomDataAdapter();
         // Add dataCategories to my adapter
