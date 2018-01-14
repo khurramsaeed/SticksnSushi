@@ -18,7 +18,7 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
 
     private App app = App.getInstance();
     private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
-    private Button seeMenu, signUp, checkout;
+    private Button seeMenu, signUp;
     private TextView loginButton;
 
     @Override
@@ -51,8 +51,6 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         loginButton = (TextView) findViewById(R.id.LoginButton);
         loginButton.setOnClickListener(this);
 
-        checkout = (Button) findViewById(R.id.seeCheckoutButton);
-        checkout.setOnClickListener(this);
      }
 
     public void updateScreen(){
@@ -77,11 +75,6 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         if(view == loginButton){
             Intent loginIntent = new Intent(this, LoginActivity.class);
             startActivity(loginIntent);
-        }
-
-        if (view == checkout){
-            Intent checkoutIntent = new Intent(this, CheckoutActivity.class);
-            startActivity(checkoutIntent);
         }
     }
 

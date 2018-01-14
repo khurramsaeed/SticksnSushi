@@ -56,8 +56,6 @@
         android:text="Opret Profil"
         android:textColor="#ffff"/>
 
-
-
     <TextView
         android:id="@+id/LoginButton"
         android:layout_width="wrap_content"
@@ -67,20 +65,6 @@
         android:layout_gravity="center_horizontal"
         android:text="Login"
         android:textColor="#b2ffffff"/>
-
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/seeCheckoutButton"
-        android:layout_width="50dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="50dp"
-        android:height="45dp"
-        android:background="#21ffffff"
-        android:padding="12dp"
-        android:text="Checkout"
-        android:textColor="#ffff" />
-
 
     </LinearLayout>
 
