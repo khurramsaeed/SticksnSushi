@@ -2,6 +2,7 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,10 +26,15 @@ public class WelcomeActivity extends BaseActivity implements View.OnClickListene
         super.onCreate(savedState);
         setContentView(R.layout.activity_welcome);
 
-        // LinearLayout that holds logo & buttons
-        View view = (View) findViewById(R.id.activity_welcome_linearLayout);
+        View relativeLayout = (View) findViewById(R.id.activity_welcome_relativeLayout);
+        View linearLayout = (View) findViewById(R.id.activity_welcome_linearLayout);
         // For modifying layout parameters
-        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
+        RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) linearLayout.getLayoutParams();
+
+        if (Build.VERSION.SDK_INT < 22) {
+            //Resolves issues with background rendering high quality bitmaps
+            relativeLayout.setBackgroundColor(app.res.getColor(R.color.colorSecondary));
+        }
 
         if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             params.setMargins(0, 0, 0, 0);
