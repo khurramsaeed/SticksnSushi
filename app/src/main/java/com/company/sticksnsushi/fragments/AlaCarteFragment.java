@@ -9,12 +9,11 @@ import android.view.ViewGroup;
 import com.company.sticksnsushi.R;
 
 /**
- * Created by Nikolaj on 13-01-2018.
+ * Created by Nikolaj on 14-01-2018.
  */
 
-public class DipFragment extends BaseFragment {
+public class AlaCarteFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_dip, container, false);
-    }
-}
+        return inflater.inflate(R.layout.fragment_alacarte, container, false);
+    }}
