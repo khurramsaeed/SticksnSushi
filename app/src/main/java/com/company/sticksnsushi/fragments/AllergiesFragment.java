@@ -54,9 +54,8 @@ public class AllergiesFragment extends BaseFragment {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
                 if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
-                    startActivity(new Intent(getContext(), NavDrawerActivity.class));
-                    getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                    getActivity().finish();
+                    ((NavDrawerActivity)getActivity()).navigationView.setCheckedItem(R.id.item_takeaway);
+                    ((NavDrawerActivity)getActivity()).displaySelectedItem(R.id.item_takeaway);
                     return true;
                 }
                 return false;

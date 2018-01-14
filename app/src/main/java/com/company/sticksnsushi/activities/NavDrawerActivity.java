@@ -33,11 +33,11 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private static final int STATE_VIEWING = 1;
     private static final int STATE_EDITING = 2;
 
-    NavigationView navigationView;
+    public NavigationView navigationView;
 
     private int currentState;
-    App app = App.getInstance();
-    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    private App app = App.getInstance();
+    private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +142,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
      *
      * @param id
      */
-    private void displaySelectedItem(int id) {
+    public void displaySelectedItem(int id) {
         Fragment fragment = null;
 
         switch (id) {
