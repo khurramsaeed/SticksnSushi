@@ -1,6 +1,7 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -50,8 +51,13 @@ public class TakeAwayFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // Different layout configurations for landscape/portrait mode
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
 
         // Intantiating custom Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();

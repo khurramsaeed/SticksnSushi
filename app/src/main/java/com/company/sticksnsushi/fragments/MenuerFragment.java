@@ -2,6 +2,7 @@ package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -52,8 +53,13 @@ public class MenuerFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMenuer);
 
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 1 row.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        // Different layout configurations for landscape/portrait mode
+        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
 
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
