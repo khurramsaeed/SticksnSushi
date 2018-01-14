@@ -68,7 +68,6 @@ public class App extends Application {
         Fabric.with(this, new Crashlytics.Builder().core(core).build());
         instance = this;
 
-        //foregroundThread = new Handler();
         connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
         res = getInstance().getResources();
