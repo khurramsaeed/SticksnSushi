@@ -53,8 +53,11 @@ public class KidsFragment extends BaseFragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewKids);
 
         // Different layout configurations for landscape/portrait mode
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
