@@ -10,6 +10,7 @@ import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -37,6 +38,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     private App app = App.getInstance();
     protected Toolbar toolbar;
     protected PopupCartAdapter adapter;
+    protected boolean isTablet;
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -45,6 +47,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
+
+        // This gets information about device screen size
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        isTablet = (metrics.widthPixels / metrics.density) >= 600;
+
         toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);

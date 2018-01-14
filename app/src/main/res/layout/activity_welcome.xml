@@ -6,13 +6,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="50dp"
         android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:id="@+id/activity_welcome_linearLayout">
 
     <ImageView
+        android:id="@+id/activity_welcome_logo"
         android:layout_width="250dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/logo"/>
 
