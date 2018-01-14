@@ -30,11 +30,11 @@ public class MenuerFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "MenuerFragment";
 
-    App app = App.getInstance();
+    private App app = App.getInstance();
     private RecyclerView recyclerView;
-    Item item;
-    AllergiesFragment allergies = new AllergiesFragment();
-    String allergyAlert;
+    private Item item;
+    private AllergiesFragment allergies = new AllergiesFragment();
+    private String allergyAlert;
     boolean containsAllergies = false;
 
     @Override
@@ -54,11 +54,14 @@ public class MenuerFragment extends BaseFragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMenuer);
 
         // Different layout configurations for landscape/portrait mode
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        } else {
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         }
 
         // Intantiating Adapter.
