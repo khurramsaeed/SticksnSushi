@@ -11,7 +11,7 @@ import com.stepstone.stepper.VerificationError;
  * Created by Swagam on 12/01/2018.
  */
 
-public class StepperFragment extends Fragment implements Step {
+public class StepperFragment extends BaseFragment implements Step {
 
     @Nullable
     @Override

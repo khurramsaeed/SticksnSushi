@@ -32,7 +32,7 @@ import java.util.List;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class PreviousOrdersFragment extends Fragment {
+public class PreviousOrdersFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "Previous";
 

@@ -37,7 +37,7 @@ import static android.content.ContentValues.TAG;
  * Created by Khurram Saeed Malik on 20/11/2017.
  */
 
-public class CheckoutTimeFragment extends Fragment implements BlockingStep {
+public class CheckoutTimeFragment extends BaseFragment implements BlockingStep {
     long elapsedDays;
     RadioButton rbDelivery, rbPickup;
     TextView chooseDate, chooseTime, chooseRestaurant;

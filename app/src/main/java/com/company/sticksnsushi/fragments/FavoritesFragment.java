@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Swagam on 29/11/2017.
  */
 
-public class FavoritesFragment extends Fragment {
+public class FavoritesFragment extends BaseFragment {
 
     @Nullable
     @Override

@@ -20,7 +20,7 @@ import java.util.ArrayList;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class AllergiesFragment extends Fragment {
+public class AllergiesFragment extends BaseFragment {
     public static ArrayList<String> allergyList = new ArrayList<String>();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

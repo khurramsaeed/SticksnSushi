@@ -21,7 +21,7 @@ import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 
-public class InformationFragment extends Fragment implements BlockingStep {
+public class InformationFragment extends BaseFragment implements BlockingStep {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
 

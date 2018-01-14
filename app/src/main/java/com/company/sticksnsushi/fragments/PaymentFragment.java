@@ -20,7 +20,7 @@ import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
-public class PaymentFragment extends Fragment implements BlockingStep {
+public class PaymentFragment extends BaseFragment implements BlockingStep {
 
     CheckBox cb;
     CheckBox cb1;

@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class TakeAwayFragment extends Fragment {
+public class TakeAwayFragment extends BaseFragment {
 
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
@@ -52,8 +52,11 @@ public class TakeAwayFragment extends Fragment {
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
         // Different layout configurations for landscape/portrait mode
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
-            // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));

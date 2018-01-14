@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Nikolaj on 13-01-2018.
  */
 
-public class DipFragment extends Fragment {
+public class DipFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
