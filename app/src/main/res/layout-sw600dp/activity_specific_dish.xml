@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <include
+            layout="@layout/include_toolbar"
+            android:id="@id/include_toolbar" />
+    </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/dishTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingStart="10dp"
+                android:paddingTop="10dp"
+                android:layout_weight="15"
+                android:text=""
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="32sp"
+                tools:text="dishTitle" />
+
+                <ImageView
+                    android:id="@+id/allergyAlert"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/alert_octagon_white"
+                    android:tint="@color/colorAccent"
+                    android:visibility="invisible" />
+             </LinearLayout>
+            <ImageView
+                android:id="@+id/dishImage"
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_gravity="center"      />
+
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/dishPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:paddingStart="40dp"
+                    android:textColor="@color/price_color"
+                    android:textSize="16sp"
+                    tools:text="dishPrice+pcs" />
+
+                <Button
+                    android:id="@+id/addToBasket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:text="Tilføj til kurv"
+                    android:background="@color/colorAccent"
+                    android:textColor="@color/colorPrimaryText" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/dishDisciption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18sp"
+                tools:text="description" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/titleRecommendations"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center_horizontal"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="17sp"
+                android:text="Anbefalinger" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item1"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image1"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/recom_name1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        android:singleLine="true"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item2"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image2"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/recom_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:singleLine="true"
+                        android:textSize="16sp"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:id="@+id/recom_starters_item3"
+                    android:layout_gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_height="70dp"
+                        android:layout_width="70dp"
+                        android:src="@drawable/maki_01"
+                        android:id="@+id/recom_image3"
+                        android:layout_gravity="center_horizontal"
+                        android:contentDescription="@string/app_name"
+                        android:scrollbars="vertical"/>
+
+                    <TextView
+                        android:id="@+id/recom_name3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:scrollbars="vertical"
+                        android:text="@string/sample_item_name"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp"
+                        android:singleLine="true"
+                        tools:text="ItemName"
+                        tools:textColor="@color/colorSecondary"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@color/colorPrimary"/>
+
+            <TextView
+                android:id="@+id/titleAllergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18sp"
+                android:text="Allergener:" />
+
+            <TextView
+                android:id="@+id/dishAllergies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="15dp"
+                android:textSize="16sp"
+                android:textColor="@color/price_color"
+                tools:text="Allergies" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
