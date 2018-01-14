@@ -6,11 +6,13 @@ import android.os.Handler;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends BaseActivity {
 
     private static int SPLASH_TIME_OUT = 1500;
     App app = App.getInstance();
+    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +24,8 @@ public class SplashActivity extends BaseActivity {
 
                 @Override
                 public void run(){
-                    if(app.currentUser != null) {
-                        System.out.println("Bruger logget ind - SPLASH: " + app.currentUser);
+                    if(currentUser != null) {
+                        System.out.println("Bruger logget ind - SPLASH: " + currentUser);
                         Intent menuInent = new Intent(SplashActivity.this, NavDrawerActivity.class);
                         startActivity(menuInent);
                         finish();
