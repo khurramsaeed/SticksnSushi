@@ -72,6 +72,21 @@
                 android:id="@+id/kids_item_pcs"
                 android:scrollbars="vertical"/>
 
+
+            <ImageButton
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/plus"
+                android:backgroundTint="@color/colorAccent"
+                android:paddingRight="8dp"
+                android:layout_marginBottom="7dp"
+                android:id="@+id/kids_item_addToBasket"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="16dp" />
+
         </LinearLayout>
     </LinearLayout>
 
