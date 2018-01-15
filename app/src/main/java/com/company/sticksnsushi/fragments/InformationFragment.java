@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,8 +16,11 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.stepstone.stepper.BlockingStep;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
@@ -24,6 +28,7 @@ import com.stepstone.stepper.VerificationError;
 
 public class InformationFragment extends BaseFragment implements BlockingStep {
 
+    private static final String TAG = "INFORMATION: ";
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
     App app = App.getInstance();
     FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
@@ -34,21 +39,22 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_information, container, false);
-    }
 
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
+        View view = inflater.inflate(R.layout.fragment_information, container, false);
         editFullName = (EditText) view.findViewById(R.id.editTextName);
         editPhone = (EditText) view.findViewById(R.id.editTextPhone);
         editAdress = (EditText) view.findViewById(R.id.editTextAdress);
         editPostalnr = (EditText) view.findViewById(R.id.editTextPostalAdress);
         editCity = (EditText) view.findViewById(R.id.editTextCity);
-
         userInfo = (CheckBox) view.findViewById(R.id.userInfo);
+
+        if (currentUser!=null){
+            editFullName.setText(user.getDisplayName());
+            editPhone.setText(user.getPhone());
+            editAdress.setText(user.getAddress());
+            editPostalnr.setText(user.getPostalNr());
+            editCity.setText(user.getCity());
+        }
 
         userInfo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -69,18 +75,21 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
 
         getActivity().setTitle("Bestilling");
 
+        return view;
     }
 
+    /**
+     * Saves logged in users data in Firebase by its ID
+     */
     private void saveUserDetailsFirebase(){
-            editFullName.setText(user.getDisplayName());
-            String address = editAdress.getText().toString().trim();
-            String phone = editPhone.getText().toString().trim();
-            String city  = editCity.getText().toString().trim();
-            String postalnr = editPostalnr.getText().toString().trim();
-            user.setDeliveryDetails(address, city, phone, postalnr);
-            DatabaseReference databaseReference;
-            databaseReference = FirebaseDatabase.getInstance().getReference();
-            databaseReference.child("users").child(currentUser.getUid()).child("personal_details").setValue(app.getAuth().getUser());
+        String address = editAdress.getText().toString().trim();
+        String phone = editPhone.getText().toString().trim();
+        String city  = editCity.getText().toString().trim();
+        String postalnr = editPostalnr.getText().toString().trim();
+        user.setDeliveryDetails(address, city, phone, postalnr);
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("users").child(app.getAuth().getUser().getId()).child("personal_details").setValue(app.getAuth().getUser());
     }
 
     @Nullable
@@ -141,7 +150,6 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
 
         if(currentUser != null){
             // TODO: 15-01-2018 Run commented method
-            //getActivity().getDetails();
             saveUserDetailsFirebase();
         }
 

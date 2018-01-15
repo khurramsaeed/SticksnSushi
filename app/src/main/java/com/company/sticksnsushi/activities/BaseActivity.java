@@ -50,7 +50,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     protected boolean isTablet;
     public int itemsInCart;
     private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
 
     @Override
@@ -60,7 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         isTablet = (metrics.widthPixels / metrics.density) >= 600;
 
+        if (app.network.isOnline()) {getDetails();}
     }
+
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
         super.setContentView(layoutResID);
@@ -75,12 +76,11 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-        if(currentUser != null){
+        if (currentUser != null) {
 //        if(app.getAuth().getUser().isLoggedIn()){
             System.out.println("Bruger logget ind: " + currentUser);
             System.out.println("Bruger med email: " + currentUser.getEmail());
-        }
-        else {
+        } else {
             System.out.println("Bruger ikke logget ind");
         }
     }
@@ -94,13 +94,13 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
         item = menu.findItem(R.id.cartPopUp);
         LayerDrawable icon = (LayerDrawable) item.getIcon();
         updateBadgeCount();
-        setBadgeCount(getApplicationContext(), icon, ""+itemsInCart);
+        setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
         return true;
     }
 
     @Override
     public void onResume() {
-       invalidateOptionsMenu();
+        invalidateOptionsMenu();
         super.onResume();
     }
 
@@ -110,20 +110,20 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
      */
     public void updateBadgeCount() {
         int temp = 0;
-            // Vi er for tidligt på den og Menuen er ikke oprettet endnu - der kommer et kald i forbindelse ned oprettelse af menuen
-            if (item==null) return;
-            LayerDrawable icon = (LayerDrawable) item.getIcon();
-            itemsInCart = 0;
-            if (temp != app.getCart().getItems().size()) {
-                temp = app.getCart().getItems().size();
+        // Vi er for tidligt på den og Menuen er ikke oprettet endnu - der kommer et kald i forbindelse ned oprettelse af menuen
+        if (item == null) return;
+        LayerDrawable icon = (LayerDrawable) item.getIcon();
+        itemsInCart = 0;
+        if (temp != app.getCart().getItems().size()) {
+            temp = app.getCart().getItems().size();
 
-                //Iterate in list to get the correct item amount in Cart
-                for (int i=0; i < app.getCart().getItems().size(); i++) {
-                    itemsInCart = itemsInCart + app.getCart().getItems().get(i).getQuantity();
-                }
-                app.shortToastMessage(itemsInCart+"");
-                setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
+            //Iterate in list to get the correct item amount in Cart
+            for (int i = 0; i < app.getCart().getItems().size(); i++) {
+                itemsInCart = itemsInCart + app.getCart().getItems().get(i).getQuantity();
             }
+            app.shortToastMessage(itemsInCart + "");
+            setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
+        }
     }
 
     private static void setBadgeCount(Context context, LayerDrawable icon, String count) {
@@ -159,6 +159,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     /**
      * PopupWindow for Cart items
      * Shows Items in Cart as ListView
+     *
      * @return PopUp
      */
     public PopupWindow popupDisplay() {
@@ -217,7 +218,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
             TextView itemQuantity = (TextView) view.findViewById(R.id.popup_itemQuantity);
 
             itemName.setText(item.getItemName().toString());
-            itemQuantity.setText(" x "+item.getQuantity());
+            itemQuantity.setText(" x " + item.getQuantity());
 
             return view;
 
@@ -229,25 +230,26 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
 
     }
 
-
+    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
     public void getDetails() {
+        if (currentUser==null) {return;}
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users").child(firebaseUser.getUid()).child("personal_details");
         // Read from 1the database
-        databaseReference.addValueEventListener(new
-                                                        ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange (DataSnapshot dataSnapshot){
-                                                                // This method is called once with the initial value and again
-                                                                // whenever data at this location is updated.
-                                                                User user = dataSnapshot.getValue(User.class);
-                                                                app.getAuth().getUser().setUser(user);
-                                                            }
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
 
-                                                            @Override
-                                                            public void onCancelled (DatabaseError error){
-                                                                // Failed to read value
-                                                                Log.w(TAG, "Failed to read value.", error.toException());
-                                                            }
-                                                        });
+                System.out.println("DATASNAPSHOT "+user.toString());
+                app.getAuth().getUser().setDeliveryDetails(user.getAddress(), user.getCity(), user.getPhone(), user.getPostalNr());
+                app.getAuth().getUser().setPersonalDetails(user.getId(), user.getDisplayName(), user.getEmail());
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException());
+            }
+            });
     }
 
 }

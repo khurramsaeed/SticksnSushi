@@ -25,7 +25,6 @@ import java.util.Locale;
 public class CheckoutActivity extends BaseActivity implements StepperLayout.StepperListener{
 
     private StepperLayout mStepperLayout;
-    private ViewPager viewPager;
 
     DatabaseReference databaseReference;
     App app = App.getInstance();

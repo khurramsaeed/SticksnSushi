@@ -11,7 +11,6 @@ public class User {
     private boolean isLoggedIn;
     private boolean hasPassword;
     private String email;
-    private User user;
 
     public void setPersonalDetails(String id, String displayName, String email) {
         this.id = id;
@@ -98,11 +97,19 @@ public class User {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
 
-    public void setUser(User user) {
-        this.user = user;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", displayName='" + displayName + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", phone='" + phone + '\'' +
+                ", postalNr='" + postalNr + '\'' +
+                ", isLoggedIn=" + isLoggedIn +
+                ", hasPassword=" + hasPassword +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
