@@ -85,10 +85,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //User is logged in
-                    app.getAuth().getUser().setEmail(email);
-                    app.getAuth().getUser().getUserName();
-
                     Intent intentMenuOverview = new Intent(LoginActivity.this, NavDrawerActivity.class);
                     startActivity(intentMenuOverview);
                     finish();

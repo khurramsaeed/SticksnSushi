@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 // The following code originates mainly from: https://www.simplifiedcoding.net/android-firebase-tutorial-1/
 
@@ -28,6 +30,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
     private App app = App.getInstance();
 
 
@@ -38,6 +41,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         //initializing firebase auth object
         firebaseAuth = app.firebaseAuth;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         //initializing views
         editTextEmail = findViewById(R.id.editTextSignUpEmail);
@@ -54,6 +58,18 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         //attaching listener to button
         buttonSignup.setOnClickListener(this);
 
+    }
+
+    private void createUser(){
+        String userId = firebaseAuth.getCurrentUser().getUid();
+        String userEmail = firebaseAuth.getCurrentUser().getEmail();
+        String displayName = editTextUsersFullName.getText().toString().trim();
+        app.getAuth().getUser().setHasPassword(true);
+        app.getAuth().getUser().setLoggedIn(true);
+
+        app.getAuth().getUser().setDetails(userId, displayName, userEmail);
+
+        databaseReference.child("users").setValue(app.getAuth().getUser());
     }
 
     private void registerUser(){
@@ -94,9 +110,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if(task.isSuccessful()){
-                            app.getAuth().getUser().setEmail(email);
-                            app.getAuth().getUser().setHasPassword(true);
-                            app.getAuth().getUser().setUserName(usersFullName);
+                            createUser();
+
 
                             //userFullName = App.getInstance().getAuth().getUser().setDisplayName(userName);
 
