@@ -40,39 +40,45 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_height="45dp"
+            android:gravity="center_horizontal">
 
             <TextView
                 android:paddingBottom="16dp"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/price_color"
+                android:layout_marginStart="25dp"
                 android:textSize="13sp"
                 android:text="Price"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:layout_gravity="center_horizontal"
+                android:textAlignment="viewEnd"
                 android:id="@+id/menuer_item_price"
                 android:scrollbars="vertical"/>
 
             <TextView
                 android:paddingBottom="16dp"
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/price_color"
                 android:textSize="13sp"
-                android:layout_gravity="center_horizontal"
                 android:text="pcs"
                 android:id="@+id/menuer_item_pcs"
+                android:layout_toEndOf="@id/menuer_item_price"
                 android:scrollbars="vertical"/>
 
-        </LinearLayout>
+            <ImageButton
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:background="@drawable/plus"
+                android:backgroundTint="@color/colorAccent"
+                android:paddingRight="8dp"
+                android:layout_marginBottom="7dp"
+                android:layout_alignEnd="@id/menuer_item_pcs"
+                android:id="@+id/menuer_item_addToBasket"/>
+
+        </RelativeLayout>
     </LinearLayout>
 
 </FrameLayout>

@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class MenuerFragment extends BaseFragment {
     private AllergiesFragment allergies = new AllergiesFragment();
     private String allergyAlert;
     boolean containsAllergies = false;
+    private ImageButton addToBasket;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -175,6 +177,23 @@ public class MenuerFragment extends BaseFragment {
             pcs = itemView.findViewById(R.id.menuer_item_pcs);
             price = itemView.findViewById(R.id.menuer_item_price);
             image = itemView.findViewById(R.id.menuer_item_image);
+            addToBasket = itemView.findViewById(R.id.menuer_item_addToBasket);
+
+            addToBasket.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity=app.dataMenuer.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataMenuer.get(index));
+                    quantity++;
+                    app.dataMenuer.get(index).setQuantity(quantity);
+
+                    getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
+                }
+            });
         }
 
     }
