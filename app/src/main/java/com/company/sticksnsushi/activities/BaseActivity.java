@@ -121,7 +121,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
             for (int i = 0; i < app.getCart().getItems().size(); i++) {
                 itemsInCart = itemsInCart + app.getCart().getItems().get(i).getQuantity();
             }
-            app.shortToastMessage(itemsInCart + "");
+
             setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
         }
     }

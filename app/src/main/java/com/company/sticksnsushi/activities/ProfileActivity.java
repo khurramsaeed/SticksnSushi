@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.fragments.UserInfoFragment;
+import com.company.sticksnsushi.fragments.PersonalinfoFragment;
 import com.company.sticksnsushi.fragments.FavoritesFragment;
 
 /**
@@ -29,7 +29,7 @@ public class ProfileActivity extends BaseActivity {
         Fragment fragment = null;
 
         switch (id) {
-            case R.id.editInfo: fragment = new UserInfoFragment();
+            case R.id.editInfo: fragment = new PersonalinfoFragment();
                 break;
             case R.id.editFav: fragment = new FavoritesFragment();
                 break;

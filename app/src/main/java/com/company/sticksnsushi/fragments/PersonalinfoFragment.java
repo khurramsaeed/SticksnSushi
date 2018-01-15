@@ -13,7 +13,7 @@ import com.company.sticksnsushi.R;
  * Created by Swagam on 29/11/2017.
  */
 
-public class UserInfoFragment extends BaseFragment {
+public class PersonalinfoFragment extends BaseFragment {
         @Nullable
         @Override
         public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

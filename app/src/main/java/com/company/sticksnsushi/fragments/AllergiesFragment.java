@@ -1,10 +1,8 @@
 package com.company.sticksnsushi.fragments;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,20 +22,13 @@ public class AllergiesFragment extends BaseFragment {
     public static ArrayList<String> allergyList = new ArrayList<String>();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sidebar_item_allergies, container, false);
-    }
+        View view = inflater.inflate(R.layout.sidebar_item_allergies, container, false);
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Allergener");
         getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
-        //markAllergies();
 
-
-
+        return view;
     }
-
     /**
      * Back button override for Fragment
      * Backs up to NavdrawerActivity
@@ -63,12 +54,13 @@ public class AllergiesFragment extends BaseFragment {
         });
     }
 
-
+    /**
+     * Sets preference screen as layout
+     */
     public static class AllergyScreen extends SupportPreferenceFragment {
         public  void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.allergies);
-
         }
     }
 
@@ -134,13 +126,6 @@ public class AllergiesFragment extends BaseFragment {
             if (allergiAeg) {
             allergyList.add("æg");
             }
-
-
-
-
-
-
-
 
     }
 
