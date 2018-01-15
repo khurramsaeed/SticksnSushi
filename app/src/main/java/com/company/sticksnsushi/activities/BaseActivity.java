@@ -39,24 +39,27 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     protected Toolbar toolbar;
     protected PopupCartAdapter adapter;
     protected boolean isTablet;
+    public int itemsInCart;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-    }
-    @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        super.setContentView(layoutResID);
-
         // This gets information about device screen size
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         isTablet = (metrics.widthPixels / metrics.density) >= 600;
 
+    }
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+        super.setContentView(layoutResID);
         toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.menu);
         }
+
+
+
     }
 
     @Override
@@ -80,13 +83,17 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
         item = menu.findItem(R.id.cartPopUp);
-        updatedBadgeCount();
+        //updatedBadgeCount();
+        app.shortToastMessage("onCreateOptions");
+        LayerDrawable icon = (LayerDrawable) item.getIcon();
+        updateBadgeCount();
+        setBadgeCount(getApplicationContext(), icon, ""+itemsInCart);
         return true;
     }
 
     @Override
     public void onResume() {
-        updatedBadgeCount();
+       invalidateOptionsMenu();
         super.onResume();
     }
 
@@ -94,29 +101,22 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
      * Checks for boolean value becomes true
      * Then enables button input
      */
-    public Runnable updateBadgeCount = new Runnable() {
+    public void updateBadgeCount() {
         int temp = 0;
-        @Override
-        public void run() {
             // Vi er for tidligt på den og Menuen er ikke oprettet endnu - der kommer et kald i forbindelse ned oprettelse af menuen
             if (item==null) return;
+            LayerDrawable icon = (LayerDrawable) item.getIcon();
+            itemsInCart = 0;
             if (temp != app.getCart().getItems().size()) {
                 temp = app.getCart().getItems().size();
-                LayerDrawable icon = (LayerDrawable) item.getIcon();
 
                 //Iterate in list to get the correct item amount in Cart
-                int itemsInCart = 0;
                 for (int i=0; i < app.getCart().getItems().size(); i++) {
                     itemsInCart = itemsInCart + app.getCart().getItems().get(i).getQuantity();
                 }
-
+                app.shortToastMessage(itemsInCart+"");
                 setBadgeCount(getApplicationContext(), icon, "" + itemsInCart);
             }
-        }
-    };
-
-    public void updatedBadgeCount() {
-        new Handler().post(updateBadgeCount);
     }
 
     private static void setBadgeCount(Context context, LayerDrawable icon, String count) {

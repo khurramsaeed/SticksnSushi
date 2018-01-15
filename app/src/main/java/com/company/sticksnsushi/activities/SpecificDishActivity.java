@@ -133,27 +133,20 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.getCart().addItem(app.dataStarters.get(i));
                 quantityStarters++;
                 app.dataStarters.get(i).setQuantity(quantityStarters);
-
-                //Calculates new total
-                app.cartTotal();
             }
             else if (category.equals("Menuer")){
                 app.getCart().addItem(app.dataMenuer.get(i));
                 quantityMenuer++;
                 app.dataMenuer.get(i).setQuantity(quantityMenuer);
-
-                //Calculates new total
-                app.cartTotal();
             }
             else if (category.equals("Kids")){
                 app.getCart().addItem(app.dataKids.get(i));
                 quantityKids++;
                 app.dataKids.get(i).setQuantity(quantityKids);
-
-                //Calculates new total
-                app.cartTotal();
             }
-
+            //Calculates new total
+            app.cartTotal();
+            invalidateOptionsMenu();
 
         }
         if (view==allergyAlertButton){
