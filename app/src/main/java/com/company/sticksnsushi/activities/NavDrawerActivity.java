@@ -161,7 +161,12 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                 break;
 
             case R.id.item_profile:
-                startActivity(new Intent(this, LoginActivity.class));
+                if(currentUser != null){
+                    startActivity(new Intent(this, ProfileActivity.class));
+                }
+                else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
 
             case R.id.item_signOut:
