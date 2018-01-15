@@ -3,7 +3,6 @@ package com.company.sticksnsushi.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.App;
+import com.company.sticksnsushi.infrastructure.User;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.stepstone.stepper.BlockingStep;
-import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
@@ -24,7 +25,9 @@ import com.stepstone.stepper.VerificationError;
 public class InformationFragment extends BaseFragment implements BlockingStep {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
-
+    App app = App.getInstance();
+    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    User user = app.getAuth().getUser();
     CheckBox userInfo;
 
 
@@ -66,6 +69,18 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
 
         getActivity().setTitle("Bestilling");
 
+    }
+
+    private void saveUserDetailsFirebase(){
+            editFullName.setText(user.getDisplayName());
+            String address = editAdress.getText().toString().trim();
+            String phone = editPhone.getText().toString().trim();
+            String city  = editCity.getText().toString().trim();
+            String postalnr = editPostalnr.getText().toString().trim();
+            user.setDeliveryDetails(address, city, phone, postalnr);
+            DatabaseReference databaseReference;
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference.child("users").child(currentUser.getUid()).child("personal_details").setValue(app.getAuth().getUser());
     }
 
     @Nullable
@@ -122,6 +137,12 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
             editCity.setError("Du skal indtaste din by");
             editCity.requestFocus();
             return;
+        }
+
+        if(currentUser != null){
+            // TODO: 15-01-2018 Run commented method
+            //getActivity().getDetails();
+            saveUserDetailsFirebase();
         }
 
         callback.goToNextStep();

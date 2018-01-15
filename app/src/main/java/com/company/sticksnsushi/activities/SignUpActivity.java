@@ -25,13 +25,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class SignUpActivity extends BaseActivity implements View.OnClickListener {
 
+    private App app = App.getInstance();
     private EditText editTextEmail, editTextPassword, editTextUsersFullName;
     private Button buttonSignup;
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
-    private App app = App.getInstance();
 
 
     @Override
@@ -39,7 +39,6 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        //initializing firebase auth object
         firebaseAuth = app.firebaseAuth;
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -67,9 +66,9 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         app.getAuth().getUser().setHasPassword(true);
         app.getAuth().getUser().setLoggedIn(true);
 
-        app.getAuth().getUser().setDetails(userId, displayName, userEmail);
+        app.getAuth().getUser().setPersonalDetails(userId, displayName, userEmail);
 
-        databaseReference.child("users").setValue(app.getAuth().getUser());
+        databaseReference.child("users").child(userId).child("personal_details").setValue(app.getAuth().getUser());
     }
 
     private void registerUser(){

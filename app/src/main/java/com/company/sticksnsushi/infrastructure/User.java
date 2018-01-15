@@ -7,15 +7,55 @@ package com.company.sticksnsushi.infrastructure;
 
 public class User {
     private String id;
-    private String displayName;
+    private String displayName, address, city, phone, postalNr;
     private boolean isLoggedIn;
     private boolean hasPassword;
     private String email;
+    private User user;
 
-    public void setDetails(String id, String displayName, String email) {
+    public void setPersonalDetails(String id, String displayName, String email) {
         this.id = id;
         this.displayName = displayName;
         this.email = email;
+    }
+
+    public void setDeliveryDetails(String address, String city, String phone, String postalNr) {
+        this.address = address;
+        this.city = city;
+        this.phone = phone;
+        this.postalNr = postalNr;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPostalNr() {
+        return postalNr;
+    }
+
+    public void setPostalNr(String postalNr) {
+        this.postalNr = postalNr;
     }
 
     public boolean isLoggedIn() {
@@ -58,4 +98,11 @@ public class User {
         this.id = id;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

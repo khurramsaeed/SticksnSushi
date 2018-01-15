@@ -46,12 +46,13 @@ public class App extends Application {
     public static FirebaseAuth firebaseAuth;
     public static FirebaseUser currentUser;
 
+
     public static NetworkStatus network;
     public static ArrayList<Runnable> observers = new ArrayList<>();
 
     private Auth auth;
     private Cart cart;
-    public static int total =0;
+    public static int total = 0;
 
     public ArrayList<Categories> dataCategories = new ArrayList<>();
     public ArrayList<Categories> dataMakiCategories = new ArrayList<>();
@@ -74,7 +75,7 @@ public class App extends Application {
         foregroundThread = new Handler();
         network = new NetworkStatus();
         firebaseAuth = FirebaseAuth.getInstance();
-        currentUser  = firebaseAuth.getCurrentUser();
+        currentUser = firebaseAuth.getCurrentUser();
 
         auth = new Auth(this);
         cart = new Cart();

@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -28,11 +28,20 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.BadgeDrawable;
 import com.company.sticksnsushi.infrastructure.Item;
+import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+import static com.company.sticksnsushi.infrastructure.App.firebaseAuth;
+
 public abstract class BaseActivity extends AppCompatActivity implements Runnable {
+    private static final String TAG = "Base";
     private MenuItem item;
     private ListView listView;
     private App app = App.getInstance();
@@ -40,6 +49,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     protected PopupCartAdapter adapter;
     protected boolean isTablet;
     public int itemsInCart;
+    private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("users");
+
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -57,15 +69,12 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
             setSupportActionBar(toolbar);
             toolbar.setNavigationIcon(R.drawable.menu);
         }
-
-
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if(currentUser != null){
 //        if(app.getAuth().getUser().isLoggedIn()){
             System.out.println("Bruger logget ind: " + currentUser);
@@ -83,8 +92,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cart_pop_up, menu);
         item = menu.findItem(R.id.cartPopUp);
-        //updatedBadgeCount();
-        app.shortToastMessage("onCreateOptions");
         LayerDrawable icon = (LayerDrawable) item.getIcon();
         updateBadgeCount();
         setBadgeCount(getApplicationContext(), icon, ""+itemsInCart);
@@ -221,4 +228,26 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
     public void run() {
 
     }
+
+
+    public void getDetails() {
+        // Read from 1the database
+        databaseReference.addValueEventListener(new
+                                                        ValueEventListener() {
+                                                            @Override
+                                                            public void onDataChange (DataSnapshot dataSnapshot){
+                                                                // This method is called once with the initial value and again
+                                                                // whenever data at this location is updated.
+                                                                User user = dataSnapshot.getValue(User.class);
+                                                                app.getAuth().getUser().setUser(user);
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled (DatabaseError error){
+                                                                // Failed to read value
+                                                                Log.w(TAG, "Failed to read value.", error.toException());
+                                                            }
+                                                        });
+    }
+
 }
