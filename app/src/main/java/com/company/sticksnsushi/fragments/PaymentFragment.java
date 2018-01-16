@@ -56,6 +56,8 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
         editCVC.setVisibility(View.GONE);
         editDate.setVisibility(View.GONE);
 
+        tv1.setVisibility(View.GONE);
+
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
                                           @Override
@@ -168,6 +170,10 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
         String cardNumber = editCardNumber.getText().toString().trim();
         String cvc = editCVC.getText().toString().trim();
         String date = editDate.getText().toString().trim();
+
+        if(cb1.isChecked()){
+            callback.complete();
+        }
 
         if(TextUtils.isEmpty(cardNumber)){
             editCardNumber.setError("Angiv dit kort nummer");
