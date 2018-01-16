@@ -6,6 +6,8 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,6 +37,7 @@ public class PreviousOrdersFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
         rootView.setTag(TAG);
+        setHasOptionsMenu(true);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
 
@@ -57,9 +60,16 @@ public class PreviousOrdersFragment extends BaseFragment {
         }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Tidligere ordrer");
+
 
         System.out.println("onViewCreated(): Adapter");
 

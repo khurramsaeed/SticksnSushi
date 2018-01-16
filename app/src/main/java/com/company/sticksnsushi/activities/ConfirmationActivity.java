@@ -2,6 +2,7 @@ package com.company.sticksnsushi.activities;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -29,6 +30,13 @@ public class ConfirmationActivity extends BaseActivity {
         }
         TextView txtSummary = (TextView) findViewById(R.id.txtSuccesSummary);
         txtSummary.setText("Kommer til at indeholde information om bestilling");
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return true;
     }
 
     /**
