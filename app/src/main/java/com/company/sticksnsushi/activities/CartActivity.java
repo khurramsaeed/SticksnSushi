@@ -166,6 +166,7 @@ public class CartActivity extends BaseActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                     app.getCart().removeItem(item);
+                                                    item.setQuantity(0);
                                                     app.cartTotal();
                                                     priceTotal.setText(app.total + " kr.");
                                                     notifyDataSetChanged();
