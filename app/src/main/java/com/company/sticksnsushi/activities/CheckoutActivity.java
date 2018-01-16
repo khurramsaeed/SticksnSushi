@@ -69,6 +69,10 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
             return;
         }
         sendOrder();
+        //Resets quantity pr. item in cart after order is completed
+        for (int i =0; i <app.getCart().getItems().size(); i++) {
+            app.getCart().getItems().get(i).resetQuantity();
+        }
         app.getCart().emptyCart();
         startActivity(new Intent(this, ConfirmationActivity.class));
         finish();
