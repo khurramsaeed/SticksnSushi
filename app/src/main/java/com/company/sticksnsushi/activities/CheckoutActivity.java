@@ -55,6 +55,8 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
     }
 
+
+
     private void sendOrder() {
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
