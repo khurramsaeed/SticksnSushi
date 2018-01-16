@@ -85,7 +85,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    Intent intentMenuOverview = new Intent(LoginActivity.this, NavDrawerActivity.class);
+                    Intent intentMenuOverview = new Intent(LoginActivity.this, MenuOverviewActivity.class);
                     startActivity(intentMenuOverview);
                     finish();
                 }

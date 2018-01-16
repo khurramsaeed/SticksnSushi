@@ -26,7 +26,7 @@ public class SplashActivity extends BaseActivity {
                 public void run(){
                     if(currentUser != null) {
                         System.out.println("Bruger logget ind - SPLASH: " + currentUser);
-                        Intent menuInent = new Intent(SplashActivity.this, NavDrawerActivity.class);
+                        Intent menuInent = new Intent(SplashActivity.this, MenuOverviewActivity.class);
                         startActivity(menuInent);
                         finish();
                     }
