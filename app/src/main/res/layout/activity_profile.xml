@@ -6,12 +6,18 @@
     android:orientation="vertical"
     android:background="@color/colorSecondary">
 
+    <include
+        layout="@layout/include_toolbar"
+        />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="160dp"
-        android:background="@drawable/bg_header"
+        android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="horizontal">
+
 
         <TextView
 
@@ -45,9 +51,6 @@
 
     </RelativeLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,107 +59,102 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
-            <LinearLayout
-                android:id="@+id/editInfo"
+            <!-- Name Label -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/pencil" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#ffff"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/editTextName"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Information"
+                    android:textSize="15dp"
+                    android:textColorHint="@color/colorPrimaryText"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:inputType="textPersonName|textAutoComplete"
+                    android:hint="Fulde navn"/>
+            </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/editFav"
+            <!-- Phone number Label -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/heart" />
-
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#ffff"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Favoritter"
+                    android:textSize="15dp"
+                    android:textColorHint="@color/colorPrimaryText"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:inputType="number"
+                    android:hint="Telefonnummer"/>
+            </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/editAllergies"
+            <!-- Address Label -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/alert_octagon_white" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#ffff"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/editTextAdress"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Allergener"
+                    android:textSize="15dp"
+                    android:textColorHint="@color/colorPrimaryText"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:inputType="text"
+                    android:hint="Adresse"/>
+            </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/editRestaurant"
+            <!-- PostalAddress Label -->
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/silverware" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#ffff"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/editTextPostalAdress"
+                    android:layout_width="match_parent"
+                    android:textSize="15dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger primære restaurant"
+                    android:textColorHint="@color/colorPrimaryText"
                     android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:inputType="phone"
+                    android:hint="Postnummer"/>
+            </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
+
+            <!-- City Label -->
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColorHint="#ffff"
+                android:layout_marginBottom="8dp">
+                <EditText android:id="@+id/editTextCity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:textColorHint="@color/colorPrimaryText"
+                    android:textColor="@color/colorPrimaryText"
+                    android:inputType="text"
+                    android:hint="By"/>
+            </android.support.design.widget.TextInputLayout>
+
+
+
         </LinearLayout>
-    </ScrollView>
+
+
+
 </LinearLayout>
+
+
+
