@@ -68,6 +68,7 @@ public class CheckoutTimeFragment extends BaseFragment implements BlockingStep {
             @Override
             public void onClick(View v) {
                 setPickup();
+                showRestaurantPopup(v);
             }
         });
 

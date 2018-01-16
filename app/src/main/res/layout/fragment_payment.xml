@@ -97,7 +97,7 @@
             android:textColorHint="#ffff"
             android:textSize="15dp"
             android:textColor="#ffff"
-            android:inputType="date"
+            android:inputType="number|date"
             android:hint="Udløbs dato"/>
     </android.support.design.widget.TextInputLayout>
 
@@ -106,7 +106,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/linearKredit"
+        android:layout_marginBottom="50dp"
         android:layout_below="@+id/linearCVCandDate"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
