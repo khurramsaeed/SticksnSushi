@@ -16,6 +16,7 @@ import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Cart;
+import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -132,7 +133,7 @@ public class PreviousOrdersFragment extends BaseFragment {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // TODO: 12/01/2018 LOGIC
+                    // TODO: 12/01/2018 Implement logic here
                 }
             });
 
@@ -142,13 +143,15 @@ public class PreviousOrdersFragment extends BaseFragment {
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
            Cart order = orders.get(position);
+           ArrayList<Item> items = order.getItems();
 
-            holder.orderId.setText(order.getOrderDate().toString());
-            for (int i=0; i < order.getItems().size(); i++) {
-                holder.orderedItems.append(order.getItems().get(i).getQuantity() + " x " + order.getItems().get(i).getItemName() + "\n");
-            }
-            holder.total.setText(order.getTotal() + " kr.");
-
+           holder.orderId.setText(order.getOrderDate().toString());
+           for (int i=0; i < items.size(); i++) {
+               holder.orderedItems.append(items.get(i).getQuantity() + " x " + items.get(i).getItemName() + "\n");
+           }
+           String emne;
+           if (items.size() ==1) {emne="emne";} else {emne="emner";}
+           holder.total.setText(order.getTotal() + " kr. (" + items.size() +" "+ emne + ")");
 
         }
 
