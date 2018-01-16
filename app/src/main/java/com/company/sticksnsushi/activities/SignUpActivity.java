@@ -116,7 +116,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
                             //display some message here
                             app.longToastMessage("Konto oprettet");
-                            Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);
+                            Intent intentMenuOverview = new Intent(SignUpActivity.this, NavDrawerActivity.class);
                             startActivity(intentMenuOverview);
                             finish();
                         }
