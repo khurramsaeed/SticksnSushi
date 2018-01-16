@@ -132,6 +132,7 @@ public class App extends Application {
 
 
     public void getPreviousOrders(DatabaseReference reference) {
+        if (getAuth().getUser().getId() == null) {return;}
         reference.child("users").child(getAuth().getUser().getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

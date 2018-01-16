@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
+import com.company.sticksnsushi.infrastructure.Cart;
 import com.company.sticksnsushi.infrastructure.StepperAdapter;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -24,8 +25,9 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
     private StepperLayout mStepperLayout;
 
-    DatabaseReference databaseReference;
-    App app = App.getInstance();
+    private App app = App.getInstance();
+    private DatabaseReference databaseReference;
+    private FirebaseUser currentUser;
 
 
     @Override
@@ -46,6 +48,7 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
         }
 
         databaseReference = FirebaseDatabase.getInstance().getReference();
+        currentUser = app.firebaseAuth.getCurrentUser();
 
         mStepperLayout = (StepperLayout) findViewById(R.id.stepperLayout);
         mStepperLayout.setAdapter(new StepperAdapter(getSupportFragmentManager(), this));
@@ -55,7 +58,7 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
 
 
-    private void sendOrder() {
+    private void completeOrder() {
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
         app.getCart().setTotal(app.total);
         //Resets quantity pr. item in cart after order is completed
@@ -74,16 +77,23 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
             app.shortToastMessage("Venligst forbinde enheden med nettet!");
             return;
         }
-
-
-        sendOrder();
-        //Clear orders
-        app.orders.clear();
-        //Resets quantity pr. item in cart after order is completed
-        for (int i =0; i <app.getCart().getItems().size(); i++) {
-            app.getCart().getItems().get(i).resetQuantity();
+        
+        if (currentUser==null) {
+            app.shortToastMessage("Du kan ikke bestille uden logind");
+            return;
         }
-        app.getCart().emptyCart();
+
+        completeOrder();
+
+        // Reset/Empty cart & order
+        app.orders.clear();
+        Cart cart = app.getCart();
+        for (int i =0; i <cart.getItems().size(); i++) {
+            cart.getItems().get(i).resetQuantity();
+        }
+        cart.emptyCart();
+
+        // Order Confirmation
         startActivity(new Intent(this, ConfirmationActivity.class));
         finish();
     }
