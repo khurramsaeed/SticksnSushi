@@ -3,7 +3,6 @@ package com.company.sticksnsushi.fragments;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,24 +15,17 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.stepstone.stepper.BlockingStep;
-import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 public class PaymentFragment extends BaseFragment implements BlockingStep {
 
-    CheckBox cb;
-    CheckBox cb1;
-    CheckBox cb2;
+    CheckBox cb, cb1, cb2;
 
-    TextView tv;
+    EditText editCardNumber, editCVC, editDate;
+
     TextView tv1;
-    TextView tv2;
-    TextView tv3;
 
-    EditText editCardNumber ;
-    EditText editCvc;
-    EditText editDate;
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
@@ -53,23 +45,15 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
         cb1 = view.findViewById(R.id.checkMobilePay);
         cb2 = view.findViewById(R.id.checkPaypal);
 
-        tv = view.findViewById(R.id.cardnr);
-        tv1 = view.findViewById(R.id.cvc);
-        tv2 = view.findViewById(R.id.date);
-        tv3 = view.findViewById(R.id.tv3);
+        editCardNumber = view.findViewById(R.id.input_cardNumber);
+        editCVC = view.findViewById(R.id.input_cvc);
+        editDate = view.findViewById(R.id.input_date);
 
-        editCardNumber = view.findViewById(R.id.editCardNumber);
-        editCvc = view.findViewById(R.id.editCvc);
-        editDate = view.findViewById(R.id.editDate);
+        tv1 = view.findViewById(R.id.notImplemented);
 
-
-        tv.setVisibility(View.GONE);
-        tv1.setVisibility(View.GONE);
-        tv2.setVisibility(View.GONE);
-        tv3.setVisibility(View.GONE);
 
         editCardNumber.setVisibility(View.GONE);
-        editCvc.setVisibility(View.GONE);
+        editCVC.setVisibility(View.GONE);
         editDate.setVisibility(View.GONE);
 
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -84,11 +68,10 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
 
                                                   linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
 
-                                                  tv.setVisibility(View.VISIBLE);
                                                   editCardNumber.setVisibility(View.VISIBLE);
-                                                  tv1.setVisibility(View.VISIBLE);
-                                                  editCvc.setVisibility(View.VISIBLE);
-                                                  tv2.setVisibility(View.VISIBLE);
+
+                                                  editCVC.setVisibility(View.VISIBLE);
+
                                                   editDate.setVisibility(View.VISIBLE);
                                                   cb1.setChecked(false);
 
@@ -96,12 +79,9 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
 
                                                   linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-                                                  tv.setVisibility(View.GONE);
-                                                  tv1.setVisibility(View.GONE);
-                                                  tv2.setVisibility(View.GONE);
 
                                                   editCardNumber.setVisibility(View.GONE);
-                                                  editCvc.setVisibility(View.GONE);
+                                                  editCVC.setVisibility(View.GONE);
                                                   editDate.setVisibility(View.GONE);
                                               }
                                           }
@@ -119,12 +99,12 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
 
                                                    linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
 
-                                                   tv3.setVisibility(View.VISIBLE);
+                                                   tv1.setVisibility(View.VISIBLE);
 
                                                    cb.setChecked(false);
                                                } else {
 
-                                                   tv3.setVisibility(View.GONE);
+                                                   tv1.setVisibility(View.GONE);
                                                    linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                                                }
                                            }
@@ -143,13 +123,13 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
 
                                                    linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
 
-                                                   tv3.setVisibility(View.VISIBLE);
+                                                   tv1.setVisibility(View.VISIBLE);
 
                                                    cb.setChecked(false);
                                                    cb1.setChecked(false);
                                                } else {
 
-                                                   tv3.setVisibility(View.GONE);
+                                                   tv1.setVisibility(View.GONE);
                                                    linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                                                }
                                            }
@@ -186,7 +166,7 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
     public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
 
         String cardNumber = editCardNumber.getText().toString().trim();
-        String cvc = editCvc.getText().toString().trim();
+        String cvc = editCVC.getText().toString().trim();
         String date = editDate.getText().toString().trim();
 
         if(TextUtils.isEmpty(cardNumber)){
@@ -196,8 +176,8 @@ public class PaymentFragment extends BaseFragment implements BlockingStep {
         }
 
         if(TextUtils.isEmpty(cvc)){
-            editCvc.setError("Angiv dit CVC nummer");
-            editCvc.requestFocus();
+            editCVC.setError("Angiv dit CVC nummer");
+            editCVC.requestFocus();
             return;
         }
 
