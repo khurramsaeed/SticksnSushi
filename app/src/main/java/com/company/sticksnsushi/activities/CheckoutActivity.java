@@ -71,6 +71,8 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
             app.shortToastMessage("Venligst forbinde enheden med nettet!");
             return;
         }
+
+
         sendOrder();
         //Resets quantity pr. item in cart after order is completed
         for (int i =0; i <app.getCart().getItems().size(); i++) {
