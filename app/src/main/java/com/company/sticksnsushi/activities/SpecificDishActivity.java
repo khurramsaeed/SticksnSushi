@@ -23,17 +23,16 @@ import java.util.Random;
 public class SpecificDishActivity extends BaseActivity implements View.OnClickListener {
     private App app = App.getInstance();
 
-    private TextView itemName, itemPrice, itemDesc, allergies, recomItemName1, recomItemName2, recomItemName3;
-    private String pcs;
-    private ImageView itemImage, recomItemImage1, recomItemImage2, recomItemImage3, allergyAlertButton;
+    private TextView recomItemName1, recomItemName2, recomItemName3;
+    private ImageView recomItemImage1, recomItemImage2, recomItemImage3;
+    private ImageView allergyAlertButton;
     private Button addToBasket;
+
     private String category, allergyAlert;
     private int i, recomID1, recomID2, recomID3;
-    private int quantityStarters=app.dataStarters.get(i).getQuantity();
-    private int quantityKids=app.dataKids.get(i).getQuantity();
-    private int quantityMenuer=app.dataMenuer.get(i).getQuantity();
-    private boolean containsAlllergies;
-
+    private int quantityStarters;
+    private int quantityKids;
+    private int quantityMenuer;
 
 
     protected void onCreate(Bundle savedState) {
@@ -41,7 +40,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_specific_dish);
         i = getIntent().getIntExtra("ID",0);
         category = getIntent().getStringExtra("Category");
-        containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
+        boolean containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
         if(containsAlllergies){
             allergyAlert = getIntent().getStringExtra("AllergiesAlert");
             allergyAlertButton = findViewById(R.id.allergyAlert);
@@ -63,11 +62,11 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         addToBasket = (Button) findViewById(R.id.addToBasket);
         addToBasket.setOnClickListener(this);
 
-        itemName = findViewById(R.id.dishTitle);
-        itemPrice = findViewById(R.id.dishPrice);
-        itemDesc = findViewById(R.id.dishDisciption);
-        itemImage = findViewById(R.id.dishImage);
-        allergies = findViewById(R.id.dishAllergies);
+        TextView itemName = findViewById(R.id.dishTitle);
+        TextView itemPrice = findViewById(R.id.dishPrice);
+        TextView itemDesc = findViewById(R.id.dishDisciption);
+        ImageView itemImage = findViewById(R.id.dishImage);
+        TextView allergies = findViewById(R.id.dishAllergies);
 
         recomItemName1 = findViewById(R.id.recom_name1);
         recomItemImage1 = findViewById(R.id.recom_image1);
@@ -82,6 +81,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         recomItemImage3.setOnClickListener(this);
 
 
+        String pcs;
         if(category.equals("Starters")) {
             itemName.setText(app.dataStarters.get(i).getItemName());
             pcs = app.dataStarters.get(i).getItemPCS();
@@ -110,6 +110,15 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
         addRecom();
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        quantityStarters = app.dataStarters.get(i).getQuantity();
+        quantityKids = app.dataKids.get(i).getQuantity();
+        quantityMenuer = app.dataMenuer.get(i).getQuantity();
+    }
+
     /**
      * Effects back button in current activity
      * @param item
