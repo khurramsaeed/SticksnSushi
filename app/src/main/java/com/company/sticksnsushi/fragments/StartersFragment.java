@@ -180,7 +180,7 @@ public class StartersFragment extends BaseFragment {
                         app.getCart().addItem(app.dataStarters.get(index));
                         quantity++;
                         app.dataStarters.get(index).setQuantity(quantity);
-
+                        app.shortToastMessage("Tilføjet til kurv");
                         getActivity().invalidateOptionsMenu();
 
                         //Calculates new total
@@ -196,7 +196,7 @@ public class StartersFragment extends BaseFragment {
                     app.getCart().addItem(app.dataStarters.get(index));
                     quantity++;
                     app.dataStarters.get(index).setQuantity(quantity);
-
+                    app.shortToastMessage("Tilføjet til kurv");
                     getActivity().invalidateOptionsMenu();
 
                     //Calculates new total

@@ -190,7 +190,7 @@ public class MenuerFragment extends BaseFragment {
                     app.getCart().addItem(app.dataMenuer.get(index));
                     quantity++;
                     app.dataMenuer.get(index).setQuantity(quantity);
-
+                    app.shortToastMessage("Tilføjet til kurv");
                     getActivity().invalidateOptionsMenu();
 
                     //Calculates new total
@@ -206,7 +206,7 @@ public class MenuerFragment extends BaseFragment {
                     app.getCart().addItem(app.dataMenuer.get(index));
                     quantity++;
                     app.dataMenuer.get(index).setQuantity(quantity);
-
+                    app.shortToastMessage("Tilføjet til kurv");
                     getActivity().invalidateOptionsMenu();
 
                     //Calculates new total

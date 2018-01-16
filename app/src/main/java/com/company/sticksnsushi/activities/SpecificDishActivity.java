@@ -153,6 +153,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 quantityKids++;
                 app.dataKids.get(i).setQuantity(quantityKids);
             }
+            app.shortToastMessage("Tilføjet til kurv");
             //Calculates new total
             app.cartTotal();
             invalidateOptionsMenu();

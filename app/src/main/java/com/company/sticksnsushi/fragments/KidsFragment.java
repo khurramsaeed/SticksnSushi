@@ -188,7 +188,7 @@ public class KidsFragment extends BaseFragment {
                     app.getCart().addItem(app.dataKids.get(index));
                     quantity++;
                     app.dataKids.get(index).setQuantity(quantity);
-
+                    app.shortToastMessage("Tilføjet til kurv");
                     getActivity().invalidateOptionsMenu();
 
                     //Calculates new total
@@ -203,7 +203,7 @@ public class KidsFragment extends BaseFragment {
                 app.getCart().addItem(app.dataKids.get(index));
                 quantity++;
                 app.dataKids.get(index).setQuantity(quantity);
-
+                app.shortToastMessage("Tilføjet til kurv");
                 getActivity().invalidateOptionsMenu();
 
                 //Calculates new total
