@@ -63,7 +63,7 @@
 
             <TextView
                 android:paddingBottom="16dp"
-                android:layout_weight="1"
+                android:layout_weight=".7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/price_color"
@@ -73,20 +73,21 @@
                 android:id="@+id/starters_item_pcs"
                 android:scrollbars="vertical"/>
 
-            <ImageButton
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/plus"
-                android:backgroundTint="@color/colorAccent"
-                android:paddingRight="8dp"
-                android:layout_marginBottom="7dp"
-                android:id="@+id/starters_item_addToBasket"/>
+            <LinearLayout
+                android:id="@+id/starters_item_addToBasketFrame"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.1">
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight=".3"
-                android:paddingRight="4dp" />
+                <ImageButton
+                    android:id="@+id/starters_item_addToBasket"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/plus"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginStart="17dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

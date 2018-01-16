@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
@@ -38,6 +39,7 @@ public class MenuerFragment extends BaseFragment {
     private String allergyAlert;
     boolean containsAllergies = false;
     private ImageButton addToBasket;
+    private LinearLayout addToBasketFrame;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -178,8 +180,25 @@ public class MenuerFragment extends BaseFragment {
             price = itemView.findViewById(R.id.menuer_item_price);
             image = itemView.findViewById(R.id.menuer_item_image);
             addToBasket = itemView.findViewById(R.id.menuer_item_addToBasket);
+            addToBasketFrame = itemView.findViewById(R.id.menuer_item_addToBasketFrame);
 
             addToBasket.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity=app.dataMenuer.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataMenuer.get(index));
+                    quantity++;
+                    app.dataMenuer.get(index).setQuantity(quantity);
+
+                    getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
+                }
+            });
+
+            addToBasketFrame.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int quantity=app.dataMenuer.get(getAdapterPosition()).getQuantity();

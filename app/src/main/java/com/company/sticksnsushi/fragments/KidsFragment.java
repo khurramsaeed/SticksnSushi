@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
@@ -166,6 +167,8 @@ public class KidsFragment extends BaseFragment {
         private TextView title, pcs, price;
         private ImageView image;
         private ImageButton addToBasket;
+        private LinearLayout addToBasketFrame;
+
 
         public DataListViewHolder(View itemView) {
             super(itemView);
@@ -175,6 +178,7 @@ public class KidsFragment extends BaseFragment {
             price = itemView.findViewById(R.id.kids_item_price);
             image = itemView.findViewById(R.id.kids_item_image);
             addToBasket = itemView.findViewById(R.id.kids_item_addToBasket);
+            addToBasketFrame = itemView.findViewById(R.id.kids_item_addToBasketFrame);
 
             addToBasket.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -191,8 +195,22 @@ public class KidsFragment extends BaseFragment {
                     app.cartTotal();
                 }
             });
-        }
+            addToBasketFrame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int quantity=app.dataKids.get(getAdapterPosition()).getQuantity();
+                int index = getAdapterPosition();
+                app.getCart().addItem(app.dataKids.get(index));
+                quantity++;
+                app.dataKids.get(index).setQuantity(quantity);
 
+                getActivity().invalidateOptionsMenu();
+
+                //Calculates new total
+                app.cartTotal();
+            }
+        });
+    }
     }
     public void checkForAllergies(View view) {
         int id = recyclerView.getChildLayoutPosition(view);
