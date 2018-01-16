@@ -60,7 +60,8 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
     private void sendOrder() {
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
-        databaseReference.child(user.getUid()).setValue(app.getCart());
+        app.getCart().setTotal(app.total);
+        databaseReference.child("users").child(app.getAuth().getUser().getId()).child("orders").push().setValue(app.getCart());
         app.longToastMessage("Bestilling gemt");
     }
 

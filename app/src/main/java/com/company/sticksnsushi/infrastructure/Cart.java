@@ -8,7 +8,6 @@ import java.util.Date;
  */
 
 public class Cart {
-    private int orderId;
     private String orderDate;
     private int total = 0;
     private ArrayList<Item> items = new ArrayList<>();
@@ -35,21 +34,13 @@ public class Cart {
         return orderDate;
     }
 
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
 
     public int getTotal() {
         return total;
     }
 
     public void setTotal(int total) {
-        total = total;
+        this.total = total;
     }
 
     public ArrayList<Item> getItems() {
