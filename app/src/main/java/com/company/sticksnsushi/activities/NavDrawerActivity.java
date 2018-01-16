@@ -19,6 +19,8 @@ import com.company.sticksnsushi.fragments.PreviousOrdersFragment;
 import com.company.sticksnsushi.fragments.TakeAwayFragment;
 import com.company.sticksnsushi.infrastructure.App;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -38,6 +40,7 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private int currentState;
     private App app = App.getInstance();
     private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +67,10 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         Menu menu = navigationView.getMenu();
         if(currentUser != null){
             menu.findItem(R.id.item_signOut).setTitle("Log ud");
+            app.orders.clear();
+            app.getPreviousOrders(databaseReference);
         }
+
         else if(currentUser == null){
             menu.findItem(R.id.item_signOut).setTitle("Log ind");
         }
@@ -86,7 +92,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             changeState(savedInstanceState.getInt(BUNDLE_STATE));
         }
     }
-    
 
     /**
      * This method is called when you rotate screen

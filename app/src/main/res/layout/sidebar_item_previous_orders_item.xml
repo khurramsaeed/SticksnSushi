@@ -27,14 +27,15 @@
                 android:id="@+id/previous_orders_orderId"
                 android:text="Bestillingsnr. 2235522"
                 android:textSize="16sp"
-                android:textColor="@color/colorPrimaryText"/>
+                android:textColor="@color/colorPrimaryText"
+                android:paddingBottom="8dp"/>
 
             <TextView
                 android:id="@+id/previous_orders_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="2017-08-03"
+                android:paddingStart="8dp"
+                tools:text="2017-08-03"
                 android:textSize="14sp"
                 android:textColor="@color/price_color"/>
             <TextView
@@ -44,17 +45,20 @@
                 android:textColor="@color/price_color"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:text="134,87 kr. (2 emner)"
+                tools:text="134,87 kr. (2 emner)"
                 android:gravity="left"
                 android:id="@+id/previous_orders_price" />
         </LinearLayout>
 
-        <ImageView
-            android:layout_margin="16dp"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/alacarte_01"
-            android:layout_gravity="center"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
+            android:text="Genbestil"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_marginEnd="16dp"
+            android:padding="16dp"
+            android:layout_gravity="center_vertical"/>
 
     </LinearLayout>
 

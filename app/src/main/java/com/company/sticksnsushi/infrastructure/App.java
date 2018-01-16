@@ -20,6 +20,10 @@ import com.crashlytics.android.Crashlytics;
 import com.crashlytics.android.core.CrashlyticsCore;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -45,6 +49,7 @@ public class App extends Application {
     public static Resources res;
     public static FirebaseAuth firebaseAuth;
     public static FirebaseUser currentUser;
+    public static ArrayList<Cart> orders = new ArrayList<>();
 
 
     public static NetworkStatus network;
@@ -125,6 +130,27 @@ public class App extends Application {
         for (Runnable r : observers) r.run();
     }
 
+
+    public void getPreviousOrders(DatabaseReference reference) {
+        reference.child("users").child(getAuth().getUser().getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Cart cart = snapshot.getValue(Cart.class);
+                    Log.d(TAG, "Value is: " + cart.toString());
+                    orders.add(cart);
+                    System.out.println("Number of orders: "+orders.size());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+                shortToastMessage("Der opstod en fejl i hentning af ordrer");
+            }
+        });
+    }
 
     /***
      * Gets rows from JSON and puts in ArrayList, HashMap

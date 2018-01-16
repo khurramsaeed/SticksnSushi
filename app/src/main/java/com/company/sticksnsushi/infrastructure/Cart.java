@@ -1,7 +1,6 @@
 package com.company.sticksnsushi.infrastructure;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Khurram Saeed Malik on 09/01/2018.
@@ -13,6 +12,12 @@ public class Cart {
     private ArrayList<Item> items = new ArrayList<>();
 
     public Cart() {}
+
+    public Cart(String orderDate, int total, ArrayList<Item> items) {
+        this.orderDate = orderDate;
+        this.total = total;
+        this.items = items;
+    }
 
     public void addItem(Item item) {
         if (items.contains(item)) {return;}
@@ -50,5 +55,14 @@ public class Cart {
     public void emptyCart() {
         total =0;
         items.clear();
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "orderDate='" + orderDate + '\'' +
+                ", total=" + total +
+                ", items=" + items +
+                '}';
     }
 }

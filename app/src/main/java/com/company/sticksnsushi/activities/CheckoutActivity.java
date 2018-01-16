@@ -2,12 +2,10 @@ package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
@@ -61,8 +59,13 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
         FirebaseUser user = app.firebaseAuth.getCurrentUser();
         app.getCart().setOrderDate(new SimpleDateFormat("dd-MM-yyyy HH:mm", Locale.getDefault()).format(new Date()));
         app.getCart().setTotal(app.total);
+        //Resets quantity pr. item in cart after order is completed
+        for (int i =0; i <app.getCart().getItems().size(); i++) {
+            app.getCart().getItems().get(i).setItemImage(null);
+        }
         databaseReference.child("users").child(app.getAuth().getUser().getId()).child("orders").push().setValue(app.getCart());
         app.longToastMessage("Bestilling gemt");
+
     }
 
     @Override
@@ -74,6 +77,8 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
 
 
         sendOrder();
+        //Clear orders
+        app.orders.clear();
         //Resets quantity pr. item in cart after order is completed
         for (int i =0; i <app.getCart().getItems().size(); i++) {
             app.getCart().getItems().get(i).resetQuantity();
