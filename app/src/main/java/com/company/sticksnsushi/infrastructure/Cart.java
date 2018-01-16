@@ -13,12 +13,6 @@ public class Cart {
 
     public Cart() {}
 
-    public Cart(String orderDate, int total, ArrayList<Item> items) {
-        this.orderDate = orderDate;
-        this.total = total;
-        this.items = items;
-    }
-
     public void addItem(Item item) {
         if (items.contains(item)) {return;}
         items.add(item);

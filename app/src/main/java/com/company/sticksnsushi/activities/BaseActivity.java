@@ -59,7 +59,10 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         isTablet = (metrics.widthPixels / metrics.density) >= 600;
 
-        if (app.network.isOnline()) {getDetails();}
+        if (app.network.isOnline()) {
+            if (currentUser==null){return;}
+            getDetails();
+        }
     }
 
     @Override

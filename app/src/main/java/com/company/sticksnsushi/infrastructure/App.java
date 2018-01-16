@@ -156,7 +156,11 @@ public class App extends Application {
      * Gets rows from JSON and puts in ArrayList, HashMap
      * afterwards SimpleAdapter is used to create list item views from item
      */
-    private void retrieveJSONData() {
+    public void retrieveJSONData() {
+        dataMenuer.clear();
+        dataCategories.clear();
+        dataKids.clear();
+        dataStarters.clear();
 
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.data_backend);

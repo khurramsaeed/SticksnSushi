@@ -29,29 +29,23 @@ public class PreviousOrdersFragment extends BaseFragment {
 
     private RecyclerView recyclerView;
     private App app = App.getInstance();
-    //private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    //private ArrayList<Cart> orders = new ArrayList<>();
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
         rootView.setTag(TAG);
-        FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
-        assert currentUser != null;
-        User user = app.getAuth().getUser();
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
-
-
-    /*    orders.add(new Cart("DATE", 1200, app.dataKids));
-        orders.add(new Cart("DATE", 1200, app.dataMenuer));
-        orders.add(new Cart("DATE", 1200, app.dataStarters));
-*/
         CustomDataAdapter adapter = new CustomDataAdapter();
+
+        if (savedInstanceState !=null) {
+            adapter.clearItems();
+        }
         // Add dataCategories to my adapter
         for (int i = 0; i < app.orders.size(); i++) {
             adapter.addItem(app.orders.get(i));
@@ -115,6 +109,10 @@ public class PreviousOrdersFragment extends BaseFragment {
             orders.add(order);
             // Sidste element af Array
             notifyItemInserted(orders.size() - 1);
+        }
+
+        public void clearItems(){
+            orders.clear();
         }
 
         @Override
