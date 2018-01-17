@@ -24,12 +24,21 @@ import com.stepstone.stepper.VerificationError;
 
 public class InformationFragment extends BaseFragment implements BlockingStep {
 
+    private static final int STATE_VIEWING = 2;
+    private static final String BUNDLE_STATE = "BUNDLE_STATE";
+
+    private int currentState;
+
+
+
     private static final String TAG = "INFORMATION: ";
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
     App app = App.getInstance();
     FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
     User user = app.getAuth().getUser();
     CheckBox userInfo;
+
+
 
 
     @Nullable
@@ -44,51 +53,64 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
         editCity = (EditText) view.findViewById(R.id.editTextCity);
         userInfo = (CheckBox) view.findViewById(R.id.userInfo);
 
-        if (currentUser!=null){
-            editFullName.setText(user.getDisplayName());
-            editPhone.setText(user.getPhone());
-            editAdress.setText(user.getAddress());
-            editPostalnr.setText(user.getPostalNr());
-            editCity.setText(user.getCity());
-        }
 
         userInfo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(userInfo.isChecked()){
-                    editFullName.setText("Søren");
-                    editPhone.setText("56575419");
-                    editAdress.setText("DTU Ballerup Campus");
-                    editPostalnr.setText("2750");
-                    editCity.setText("Ballerup");
-                    System.out.println("Søren");
+                    editFullName.setText(user.getDisplayName());
+                    editPhone.setText(user.getPhone());
+                    editAdress.setText(user.getAddress());
+                    editPostalnr.setText(user.getPostalNr());
+                    editCity.setText(user.getCity());
                 }
                 else {
                     editFullName.setText("");
+                    editPhone.setText("");
+                    editAdress.setText("");
+                    editPostalnr.setText("");
+                    editCity.setText("");
                 }
             }
         });
+
+
+        changeState(STATE_VIEWING);
+
+        if (savedInstanceState == null) {
+            changeState(STATE_VIEWING);
+        } else {
+            changeState(savedInstanceState.getInt(BUNDLE_STATE));
+        }
 
         getActivity().setTitle("Bestilling");
 
         return view;
     }
 
-    /**
-     * Saves logged in users data in Firebase by its ID
-     */
-    private void saveUserDetailsFirebase(){
-        String name = editFullName.getText().toString().trim();
-        String address = editAdress.getText().toString().trim();
-        String phone = editPhone.getText().toString().trim();
-        String city  = editCity.getText().toString().trim();
-        String postalnr = editPostalnr.getText().toString().trim();
-        user.setDeliveryDetails(address, city, phone, postalnr);
-        user.setDisplayName(name);
-        DatabaseReference databaseReference;
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("users").child(app.getAuth().getUser().getId()).child("personal_details").setValue(app.getAuth().getUser());
+
+    private void changeState(int state){
+
+        if(state == currentState){
+            return;
+        }
+
+        currentState = state;
+
     }
+
+    /**
+     * This method is called when you rotate screen
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Saved state is reloaded here
+        outState.putInt(BUNDLE_STATE, currentState);
+    }
+
 
     @Nullable
     @Override
@@ -144,11 +166,6 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
             editCity.setError("Du skal indtaste din by");
             editCity.requestFocus();
             return;
-        }
-
-        if(currentUser != null){
-            // TODO: 15-01-2018 Run commented method
-            saveUserDetailsFirebase();
         }
 
         callback.goToNextStep();

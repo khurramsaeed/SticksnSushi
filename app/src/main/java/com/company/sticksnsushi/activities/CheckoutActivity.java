@@ -29,7 +29,6 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
     private DatabaseReference databaseReference;
     private FirebaseUser currentUser;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,8 +50,10 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
         currentUser = app.firebaseAuth.getCurrentUser();
 
         mStepperLayout = (StepperLayout) findViewById(R.id.stepperLayout);
+
         mStepperLayout.setAdapter(new StepperAdapter(getSupportFragmentManager(), this));
         mStepperLayout.setListener(this);
+
 
     }
 
