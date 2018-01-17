@@ -42,6 +42,8 @@ public class PreviousOrdersFragment extends BaseFragment {
     private App app = App.getInstance();
     private User user = app.getAuth().getUser();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+    private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    private TextView info;
 
     @Nullable
     @Override
@@ -52,18 +54,22 @@ public class PreviousOrdersFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         final CustomDataAdapter adapter = new CustomDataAdapter();
-        if (user.getId() == null) {
+        if (currentUser == null) {
+            info = rootView.findViewById(R.id.previous_orders_info);
+            info.setText("Du er ikke logget ind!");
             return rootView;
         }
+
         databaseReference.child("users").child(user.getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 recyclerView.setAdapter(adapter);
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Cart cart = snapshot.getValue(Cart.class);
-                    Log.d(TAG, "Value is: " + cart.toString());
-                    adapter.addItem(cart);
+                    Cart order = snapshot.getValue(Cart.class);
+                    Log.d(TAG, "Value is: " + order.toString());
+                    adapter.addItem(order);
                 }
+
             }
 
             @Override

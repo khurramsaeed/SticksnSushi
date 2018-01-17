@@ -33,7 +33,6 @@ public class ConfirmationActivity extends BaseActivity {
         txtSummary.setText("Kommer til at indeholde information om bestilling");
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.clear();

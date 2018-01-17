@@ -97,6 +97,12 @@ public class User {
         this.id = id;
     }
 
+    public void resetUser(){
+        setPersonalDetails(null,"","");
+        setDeliveryDetails("","","","");
+
+    }
+
 
     @Override
     public String toString() {

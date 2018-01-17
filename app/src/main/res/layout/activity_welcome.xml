@@ -31,7 +31,7 @@
             android:background="@drawable/bg_button"
             android:text="Vores Menu"
             android:textAllCaps="false"
-            android:drawableStart="@drawable/cultures_sushi_icon"
+            android:drawableStart="@drawable/sushinsticks"
             android:drawableTint="@color/colorPrimaryText"
 
             android:paddingLeft="16dp"
@@ -48,7 +48,6 @@
         android:layout_marginTop="18dp"
         android:layout_gravity="center_horizontal"
         android:drawableStart="@drawable/account_outline"
-        android:drawableTint="@color/colorPrimaryText"
         android:background="@drawable/bg_button"
         android:paddingLeft="16dp"
         android:paddingRight="30dp"

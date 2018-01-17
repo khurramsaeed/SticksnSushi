@@ -6,6 +6,7 @@
     android:background="@color/colorSecondary">
 
     <TextView
+        android:id="@+id/previous_orders_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Press and Hold"
