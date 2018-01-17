@@ -43,7 +43,6 @@ public class ProfileActivity extends BaseActivity {
         editPostalnr = (EditText) findViewById(R.id.editTextPostalAdress);
         editCity = (EditText) findViewById(R.id.editTextName);
 
-
         changeState(STATE_VIEWING);
 
         setTitle("Profile");

@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/Widget.AppCompat.Toolbar</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionBarStyle">@style/CustomActionBar</item>
+        <item name="actionBarStyle">@style/CustomActionBar</item>
+
 
 
     </style>
@@ -31,14 +35,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="CustomActionModeStyle" parent="Base.Widget.AppCompat.ActionMode">
-        <item name="background">@color/colorAccent</item>
+    <style name="CustomActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="background">@color/colorPrimary</item>
 
     </style>
-    <style name="CustomeActionModeTextStyle" parent="TextAppearance.AppCompat.Widget.ActionMode.Title">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/colorAccent</item>
-    </style>
-
 
 </resources>
