@@ -87,16 +87,19 @@ public class ProfileActivity extends BaseActivity {
 
     }
 
-
-
+    /**
+     * Save/updates users details on Firebase
+     */
     private void saveUserDetailsFirebase(){
         String address = editAdress.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String city  = editCity.getText().toString().trim();
         String postalnr = editPostalnr.getText().toString().trim();
         String name = editFullName.getText().toString().trim();
+
         user.setDisplayName(name);
         user.setDeliveryDetails(address, city, phone, postalnr);
+
         DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("users").child(user.getId()).child("personal_details").setValue(app.getAuth().getUser());
@@ -104,7 +107,6 @@ public class ProfileActivity extends BaseActivity {
 
     private String getInitials(){
         String initials = user.getDisplayName();
-
         return initials.substring(0, 1);
     }
 
@@ -210,13 +212,11 @@ public class ProfileActivity extends BaseActivity {
             return true;
         }
 
-
         @Override
         public void onDestroyActionMode(ActionMode actionMode) {
             if(currentState != STATE_VIEWING){
                 changeState(STATE_VIEWING);
             }
-
         }
     }
 

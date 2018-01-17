@@ -38,13 +38,7 @@
             android:name=".activities.MenuOverviewActivity"
             android:label="@string/title_activity_menu_overview" />
         <activity
-            android:name=".activities.ProfileActivity"
-            android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:name=".activities.ProfileActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
