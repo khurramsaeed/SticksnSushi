@@ -8,10 +8,17 @@ import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.fragments.PersonalinfoFragment;
 import com.company.sticksnsushi.fragments.FavoritesFragment;
+import com.company.sticksnsushi.infrastructure.App;
+import com.company.sticksnsushi.infrastructure.User;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Swagam on 20/11/2017.
@@ -22,6 +29,8 @@ public class ProfileActivity extends BaseActivity {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
 
+    TextView displayName, initials;
+
     private static final int STATE_EDITING = 1;
 
     private static final int STATE_VIEWING = 2;
@@ -30,6 +39,10 @@ public class ProfileActivity extends BaseActivity {
 
     private int currentState;
 
+    App app = App.getInstance();
+
+    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
+    User user = app.getAuth().getUser();
 
     @Override
     protected void onCreate(Bundle savedState) {
@@ -41,15 +54,37 @@ public class ProfileActivity extends BaseActivity {
         editPhone = (EditText) findViewById(R.id.editTextPhone);
         editAdress = (EditText) findViewById(R.id.editTextAdress);
         editPostalnr = (EditText) findViewById(R.id.editTextPostalAdress);
-        editCity = (EditText) findViewById(R.id.editTextName);
+        editCity = (EditText) findViewById(R.id.editTextCity);
+
+        displayName = (TextView) findViewById(R.id.displayName);
+        initials = (TextView) findViewById(R.id.initials);
 
         changeState(STATE_VIEWING);
 
         setTitle("Profile");
 
+        editFullName.setText(user.getDisplayName());
+        editPhone.setText(user.getPhone());
+        editAdress.setText(user.getAddress());
+        editPostalnr.setText(user.getPostalNr());
+        editCity.setText(user.getCity());
+
+        displayName.setText(user.getDisplayName());
     }
 
-
+    private void saveUserDetailsFirebase(){
+        String address = editAdress.getText().toString().trim();
+        String phone = editPhone.getText().toString().trim();
+        String city  = editCity.getText().toString().trim();
+        String postalnr = editPostalnr.getText().toString().trim();
+        String name = editFullName.getText().toString().trim();
+        user.setDisplayName(name);
+        user.setDeliveryDetails(address, city, phone, postalnr);
+        DatabaseReference databaseReference;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference.child("users").child(user.getId()).child("personal_details").setValue(app.getAuth().getUser());
+    }
+    
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_profile, menu);
@@ -123,6 +158,10 @@ public class ProfileActivity extends BaseActivity {
             if(itemId == R.id.activity_profile_editDone){
 
                 changeState(STATE_VIEWING);
+
+                saveUserDetailsFirebase();
+
+                app.shortToastMessage("Oplysninger opdateret");
             }
 
             return true;
