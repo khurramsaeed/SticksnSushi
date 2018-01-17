@@ -80,6 +80,7 @@ public class ProfileActivity extends BaseActivity {
         } else {
             changeState(savedState.getInt(BUNDLE_STATE));
         }
+
     }
 
     private void saveUserDetailsFirebase(){
