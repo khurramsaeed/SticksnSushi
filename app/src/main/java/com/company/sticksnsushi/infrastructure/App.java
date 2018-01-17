@@ -60,6 +60,10 @@ public class App extends Application {
     public ArrayList<Categories> dataCategories = new ArrayList<>();
     public ArrayList<Categories> dataMakiCategories = new ArrayList<>();
     public ArrayList<Item> dataStarters = new ArrayList<>();
+    public ArrayList<Item> dataUramaki = new ArrayList<>();
+    public ArrayList<Item> dataFutomaki = new ArrayList<>();
+    public ArrayList<Item> dataHosomaki = new ArrayList<>();
+    public ArrayList<Item> dataKaburimaki = new ArrayList<>();
     public ArrayList<Item> dataKids = new ArrayList<>();
     public ArrayList<Item> dataMenuer = new ArrayList<>();
 
@@ -82,12 +86,6 @@ public class App extends Application {
 
         auth = new Auth(this);
         cart = new Cart();
-
-        dataCategories = new ArrayList<>();
-        dataMakiCategories = new ArrayList<>();
-        dataStarters = new ArrayList<>();
-        dataKids = new ArrayList<>();
-        dataMenuer = new ArrayList<>();
 
         registerReceiver(network, new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         network.onReceive(this, null); // Update network status
@@ -146,6 +144,11 @@ public class App extends Application {
         dataCategories.clear();
         dataKids.clear();
         dataStarters.clear();
+        dataMakiCategories.clear();
+        dataUramaki.clear();
+        dataFutomaki.clear();
+        dataHosomaki.clear();
+        dataKaburimaki.clear();
 
         try {
             InputStream inputStream = getResources().openRawResource(R.raw.data_backend);
@@ -162,6 +165,10 @@ public class App extends Application {
             JSONArray starters = json.getJSONArray("starters");
             JSONArray kids = json.getJSONArray("kids");
             JSONArray menuer = json.getJSONArray("menuer");
+            JSONArray uramakis = json.getJSONArray("uramaki");
+            JSONArray kaburimakis = json.getJSONArray("kaburimaki");
+            JSONArray futomakis = json.getJSONArray("futomaki");
+            JSONArray hosomakis = json.getJSONArray("hosomaki");
 
             //Data for categories
             int number = categories.length();
@@ -265,6 +272,110 @@ public class App extends Application {
                 Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
                 // TODO: 27-11-2017 Item entity: update constructor id
                 dataMenuer.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
+            }
+
+            //Data for uramaki
+            int numberUramaki = uramakis.length();
+            for (int i = 0; i < numberUramaki; i++) {
+                JSONObject uramaki = uramakis.getJSONObject(i);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                //int id = uramaki.getInt("id");
+                int price = uramaki.getInt("price");
+                String title = uramaki.getString("title");
+                String PCS = uramaki.getString("pcs");
+                String description = (String) uramaki.get("description");
+                String category = uramaki.getString("category");
+                String imageName = uramaki.getString("imageName");
+
+                String allergies=uramaki.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataUramaki.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
+            }
+
+            //Data for kaburimaki
+            int numberKaburimaki = kaburimakis.length();
+            for (int i = 0; i < numberKaburimaki; i++) {
+                JSONObject kaburimaki = kaburimakis.getJSONObject(i);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                //int id = kaburimaki.getInt("id");
+                int price = kaburimaki.getInt("price");
+                String title = kaburimaki.getString("title");
+                String PCS = kaburimaki.getString("pcs");
+                String description = (String) kaburimaki.get("description");
+                String category = kaburimaki.getString("category");
+                String imageName = kaburimaki.getString("imageName");
+
+                String allergies=kaburimaki.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataKaburimaki.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
+            }
+
+            //Data for futomaki
+            int numberFutomaki = futomakis.length();
+            for (int i = 0; i < numberFutomaki; i++) {
+                JSONObject futomaki = futomakis.getJSONObject(i);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                //int id = futomaki.getInt("id");
+                int price = futomaki.getInt("price");
+                String title = futomaki.getString("title");
+                String PCS = futomaki.getString("pcs");
+                String description = (String) futomaki.get("description");
+                String category = futomaki.getString("category");
+                String imageName = futomaki.getString("imageName");
+
+                String allergies=futomaki.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataFutomaki.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
+            }
+
+            //Data for hosomaki
+            int numberHosomaki = hosomakis.length();
+            for (int i = 0; i < numberHosomaki; i++) {
+                JSONObject hosomaki = hosomakis.getJSONObject(i);
+
+                // Get id, price, title, PCS, description, category and imageName from JSON-file
+                //int id = hosomaki.getInt("id");
+                int price = hosomaki.getInt("price");
+                String title = hosomaki.getString("title");
+                String PCS = hosomaki.getString("pcs");
+                String description = (String) hosomaki.get("description");
+                String category = hosomaki.getString("category");
+                String imageName = hosomaki.getString("imageName");
+
+                String allergies=hosomaki.getJSONArray("allergies").toString();
+                allergies = allergies.replace("[", "");
+                allergies = allergies.replace("]", "");
+                allergies = allergies.replace("\"", "");
+                allergies = allergies.replace(",", ", ");
+
+                int resId = getResources().getIdentifier(imageName, "drawable", getPackageName());
+                Bitmap itemImage = BitmapFactory.decodeResource(getResources(), resId);
+
+                dataHosomaki.add(new Item(0, price, title, PCS, description, category, allergies, itemImage));
             }
 
         } catch (Exception e) {

@@ -33,9 +33,17 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private int quantityStarters;
     private int quantityKids;
     private int quantityMenuer;
+    private int quantityUramaki;
+    private int quantityKaburimaki;
+    private int quantityHosomaki;
+    private int quantityFutomaki;
     private int indexKids;
     private int indexStarters;
     private int indexMenuer;
+    private int indexUramaki;
+    private int indexKaburimaki;
+    private int indexHosomaki;
+    private int indexFutomaki;
 
 
     protected void onCreate(Bundle savedState) {
@@ -45,6 +53,10 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         indexKids = getIntent().getIntExtra("kidsID", 0);
         indexStarters = getIntent().getIntExtra("startersID", 0);
         indexMenuer = getIntent().getIntExtra("menuerID", 0);
+        indexUramaki = getIntent().getIntExtra("uramakiID",0);
+        indexKaburimaki = getIntent().getIntExtra("kaburimakiID",0);
+        indexHosomaki = getIntent().getIntExtra("hosomakiID",0);
+        indexFutomaki = getIntent().getIntExtra("futomakiID",0);
 
         category = getIntent().getStringExtra("Category");
         boolean containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
@@ -114,6 +126,39 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             allergies.setText(app.dataKids.get(indexKids).getAllergies());
             itemImage.setImageBitmap(app.dataKids.get(indexKids).getItemImage());
         }
+        else if (category.equals("Uramaki")){
+            itemName.setText(app.dataUramaki.get(indexUramaki).getItemName());
+            pcs = app.dataUramaki.get(indexUramaki).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataUramaki.get(indexUramaki).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataUramaki.get(indexUramaki).getItemDescription());
+            allergies.setText(app.dataUramaki.get(indexUramaki).getAllergies());
+            itemImage.setImageBitmap(app.dataUramaki.get(indexUramaki).getItemImage());
+        }
+
+        else if (category.equals("Kaburimaki")){
+            itemName.setText(app.dataKaburimaki.get(indexKaburimaki).getItemName());
+            pcs = app.dataKaburimaki.get(indexKaburimaki).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataKaburimaki.get(indexKaburimaki).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataKaburimaki.get(indexKaburimaki).getItemDescription());
+            allergies.setText(app.dataKaburimaki.get(indexKaburimaki).getAllergies());
+            itemImage.setImageBitmap(app.dataKaburimaki.get(indexKaburimaki).getItemImage());
+        }
+        else if (category.equals("Futomaki")){
+            itemName.setText(app.dataFutomaki.get(indexFutomaki).getItemName());
+            pcs = app.dataFutomaki.get(indexFutomaki).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataFutomaki.get(indexFutomaki).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataFutomaki.get(indexFutomaki).getItemDescription());
+            allergies.setText(app.dataFutomaki.get(indexFutomaki).getAllergies());
+            itemImage.setImageBitmap(app.dataFutomaki.get(indexFutomaki).getItemImage());
+        }
+        else if (category.equals("Hosomaki")){
+            itemName.setText(app.dataHosomaki.get(indexHosomaki).getItemName());
+            pcs = app.dataHosomaki.get(indexHosomaki).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataHosomaki.get(indexHosomaki).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataHosomaki.get(indexHosomaki).getItemDescription());
+            allergies.setText(app.dataHosomaki.get(indexHosomaki).getAllergies());
+            itemImage.setImageBitmap(app.dataHosomaki.get(indexHosomaki).getItemImage());
+        }
 
         addRecom();
     }
@@ -124,6 +169,8 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         quantityStarters = app.dataStarters.get(indexStarters).getQuantity();
         quantityKids = app.dataKids.get(indexKids).getQuantity();
         quantityMenuer = app.dataMenuer.get(indexMenuer).getQuantity();
+        quantityUramaki = app.dataUramaki.get(indexUramaki).getQuantity();
+        quantityKaburimaki = app.dataKaburimaki.get(indexKaburimaki).getQuantity();
     }
 
     /**
@@ -159,6 +206,26 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
                 app.getCart().addItem(app.dataKids.get(indexKids));
                 quantityKids++;
                 app.dataKids.get(indexKids).setQuantity(quantityKids);
+            }
+            else if (category.equals("Uramaki")){
+                app.getCart().addItem(app.dataUramaki.get(indexUramaki));
+                quantityUramaki++;
+                app.dataUramaki.get(indexUramaki).setQuantity(quantityUramaki);
+            }
+            else if (category.equals("Kaburimaki")){
+                app.getCart().addItem(app.dataKaburimaki.get(indexKaburimaki));
+                quantityKaburimaki++;
+                app.dataKaburimaki.get(indexKaburimaki).setQuantity(quantityKaburimaki);
+            }
+            else if (category.equals("Futomaki")){
+                app.getCart().addItem(app.dataFutomaki.get(indexFutomaki));
+                quantityFutomaki++;
+                app.dataFutomaki.get(indexFutomaki).setQuantity(quantityFutomaki);
+            }
+            else if (category.equals("Hosomaki")){
+                app.getCart().addItem(app.dataHosomaki.get(indexHosomaki));
+                quantityHosomaki++;
+                app.dataHosomaki.get(indexHosomaki).setQuantity(quantityHosomaki);
             }
             app.shortToastMessage("Tilføjet til kurv");
             //Calculates new total
