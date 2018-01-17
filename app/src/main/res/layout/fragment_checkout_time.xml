@@ -19,7 +19,7 @@
         android:layout_marginTop="8dp"
         android:checked="true"
         android:layout_gravity="center_horizontal"
-        android:text="Sticks'N'Sushi leveret lige til døren"
+        android:text="Sticks'n'Sushi leveret lige til døren"
         android:textColor="@color/colorPrimaryText"
         android:textSize="18sp" />
 
@@ -58,10 +58,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:checked="false"
-        android:text="Hent selv Sticks'N'Sushi"
+        android:text="Hent selv hos Sticks'n'Sushi"
         android:layout_gravity="center_horizontal"
         android:textColor="@color/colorPrimaryText"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
 
     <TextView
