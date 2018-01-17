@@ -24,12 +24,22 @@ import com.stepstone.stepper.VerificationError;
 
 public class InformationFragment extends BaseFragment implements BlockingStep {
 
+    private static final int STATE_EDITING = 1;
+    private static final int STATE_VIEWING = 2;
+    private static final String BUNDLE_STATE = "BUNDLE_STATE";
+
+    private int currentState;
+
+
+
     private static final String TAG = "INFORMATION: ";
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
     App app = App.getInstance();
     FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
     User user = app.getAuth().getUser();
     CheckBox userInfo;
+
+
 
 
     @Nullable
@@ -44,30 +54,34 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
         editCity = (EditText) view.findViewById(R.id.editTextCity);
         userInfo = (CheckBox) view.findViewById(R.id.userInfo);
 
-        if (currentUser!=null){
-            editFullName.setText(user.getDisplayName());
-            editPhone.setText(user.getPhone());
-            editAdress.setText(user.getAddress());
-            editPostalnr.setText(user.getPostalNr());
-            editCity.setText(user.getCity());
-        }
 
         userInfo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(userInfo.isChecked()){
-                    editFullName.setText("Søren");
-                    editPhone.setText("56575419");
-                    editAdress.setText("DTU Ballerup Campus");
-                    editPostalnr.setText("2750");
-                    editCity.setText("Ballerup");
-                    System.out.println("Søren");
+                    editFullName.setText(user.getDisplayName());
+                    editPhone.setText(user.getPhone());
+                    editAdress.setText(user.getAddress());
+                    editPostalnr.setText(user.getPostalNr());
+                    editCity.setText(user.getCity());
                 }
                 else {
                     editFullName.setText("");
+                    editPhone.setText("");
+                    editAdress.setText("");
+                    editPostalnr.setText("");
+                    editCity.setText("");
                 }
             }
         });
+
+        changeState(STATE_VIEWING);
+
+        if (savedInstanceState == null) {
+            changeState(STATE_VIEWING);
+        } else {
+            changeState(savedInstanceState.getInt(BUNDLE_STATE));
+        }
 
         getActivity().setTitle("Bestilling");
 
@@ -89,6 +103,29 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("users").child(app.getAuth().getUser().getId()).child("personal_details").setValue(app.getAuth().getUser());
     }
+
+    private void changeState(int state){
+
+        if(state == currentState){
+            return;
+        }
+
+        currentState = state;
+
+    }
+
+    /**
+     * This method is called when you rotate screen
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Saved state is reloaded here
+        outState.putInt(BUNDLE_STATE, currentState);
+    }
+
 
     @Nullable
     @Override

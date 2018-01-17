@@ -39,14 +39,14 @@ public class StepperAdapter extends AbstractFragmentStepAdapter{
             case 1:
                 InformationFragment step2 = new InformationFragment();
                 Bundle b2 = new Bundle();
-                b2.putInt("1", position);
+                b2.putInt("2", position);
                 step2.setArguments(b2);
                 return step2;
 
             case 2:
                 PaymentFragment step3 = new PaymentFragment();
                 Bundle b3 = new Bundle();
-                b3.putInt("1", position);
+                b3.putInt("3", position);
                 step3.setArguments(b3);
                 return step3;
 
