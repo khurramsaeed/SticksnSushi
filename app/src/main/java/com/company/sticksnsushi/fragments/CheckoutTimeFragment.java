@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -22,7 +21,6 @@ import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.stepstone.stepper.BlockingStep;
-import com.stepstone.stepper.Step;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
@@ -75,6 +73,7 @@ public class CheckoutTimeFragment extends BaseFragment implements BlockingStep {
         rbDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 setDelivery();
             }
         });
@@ -142,6 +141,7 @@ public class CheckoutTimeFragment extends BaseFragment implements BlockingStep {
                     }
                 }
             };
+
     }
 
     public void showRestaurantPopup(View v) {

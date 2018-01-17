@@ -1,5 +1,6 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -54,5 +55,14 @@ public class ConfirmationActivity extends BaseActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, NavDrawerActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        startActivity(i);
     }
 }
