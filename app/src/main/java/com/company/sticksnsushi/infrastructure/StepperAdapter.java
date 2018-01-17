@@ -4,13 +4,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.company.sticksnsushi.fragments.CheckoutTimeFragment;
 import com.company.sticksnsushi.fragments.InformationFragment;
 import com.company.sticksnsushi.fragments.PaymentFragment;
-import com.company.sticksnsushi.fragments.StepperFragment;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.adapter.AbstractFragmentStepAdapter;
 import com.stepstone.stepper.viewmodel.StepViewModel;
