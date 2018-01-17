@@ -67,8 +67,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         Menu menu = navigationView.getMenu();
         if(currentUser != null){
             menu.findItem(R.id.item_signOut).setTitle("Log ud");
-            app.orders.clear();
-            app.getPreviousOrders(databaseReference);
         }
 
         else if(currentUser == null){
@@ -87,10 +85,15 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             changeState(STATE_VIEWING);
         } else {
             Log.d(TAG, "onCreate: BUNDLE_STATE");
-
-
             changeState(savedInstanceState.getInt(BUNDLE_STATE));
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Get updated previous orders
+        app.getPreviousOrders(databaseReference);
     }
 
     /**

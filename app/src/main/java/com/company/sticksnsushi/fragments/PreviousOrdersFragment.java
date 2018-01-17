@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -41,9 +42,7 @@ public class PreviousOrdersFragment extends BaseFragment {
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
         setHasOptionsMenu(true);
         RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
-
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         CustomDataAdapter adapter = new CustomDataAdapter();
 
@@ -53,8 +52,7 @@ public class PreviousOrdersFragment extends BaseFragment {
         }
         recyclerView.setAdapter(adapter);
 
-
-            return rootView;
+        return rootView;
         }
 
     @Override
