@@ -40,7 +40,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private int currentState;
     private App app = App.getInstance();
     private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,13 +86,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             Log.d(TAG, "onCreate: BUNDLE_STATE");
             changeState(savedInstanceState.getInt(BUNDLE_STATE));
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // Get updated previous orders
-        app.getPreviousOrders(databaseReference);
     }
 
     /**

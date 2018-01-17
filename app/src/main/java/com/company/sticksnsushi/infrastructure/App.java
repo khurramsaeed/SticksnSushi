@@ -49,7 +49,6 @@ public class App extends Application {
     public static Resources res;
     public static FirebaseAuth firebaseAuth;
     public static FirebaseUser currentUser;
-    public static ArrayList<Cart> orders = new ArrayList<>();
 
     public static NetworkStatus network;
 
@@ -112,29 +111,6 @@ public class App extends Application {
         }
     }
 
-
-    public void getPreviousOrders(DatabaseReference reference) {
-        orders.clear();
-        if (getAuth().getUser().getId() == null) {return;}
-        reference.child("users").child(getAuth().getUser().getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                    Cart cart = snapshot.getValue(Cart.class);
-                    Log.d(TAG, "Value is: " + cart.toString());
-                    orders.add(cart);
-                    System.out.println("Number of orders: "+orders.size());
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", databaseError.toException());
-                shortToastMessage("Der opstod en fejl i hentning af ordrer");
-            }
-        });
-    }
 
     /***
      * Gets rows from JSON and puts in ArrayList, HashMap

@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,8 +25,11 @@ import com.company.sticksnsushi.infrastructure.Cart;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -34,23 +38,41 @@ import java.util.ArrayList;
  */
 
 public class PreviousOrdersFragment extends BaseFragment {
+    private static final String TAG = "PreviousOrders: ";
     private App app = App.getInstance();
+    private User user = app.getAuth().getUser();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
         setHasOptionsMenu(true);
-        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
+        final RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        CustomDataAdapter adapter = new CustomDataAdapter();
-
-        // Add dataCategories to my adapter
-        for (int i = 0; i < app.orders.size(); i++) {
-            adapter.addItem(app.orders.get(i));
+        final CustomDataAdapter adapter = new CustomDataAdapter();
+        if (user.getId() == null) {
+            return rootView;
         }
-        recyclerView.setAdapter(adapter);
+        databaseReference.child("users").child(user.getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                recyclerView.setAdapter(adapter);
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                    Cart cart = snapshot.getValue(Cart.class);
+                    Log.d(TAG, "Value is: " + cart.toString());
+                    adapter.addItem(cart);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", databaseError.toException());
+                app.shortToastMessage("Der opstod en fejl i hentning af ordrer");
+            }
+        });
 
         return rootView;
         }

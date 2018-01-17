@@ -86,7 +86,6 @@ public class CheckoutActivity extends BaseActivity implements StepperLayout.Step
         completeOrder();
 
         // Reset/Empty cart & order
-        app.orders.clear();
         Cart cart = app.getCart();
         for (int i =0; i <cart.getItems().size(); i++) {
             cart.getItems().get(i).resetQuantity();
