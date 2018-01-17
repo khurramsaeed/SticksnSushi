@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener, Runnable {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private TextView linkSignUp;
     private Button button_login;
@@ -31,8 +31,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        app.register(this);
 
         progressDialog = new ProgressDialog(this);
 
@@ -116,14 +114,4 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        app.unregister(this);
-        super.onDestroy();
-    }
-
-    @Override
-    public void run() {
-
-    }
 }

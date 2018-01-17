@@ -40,7 +40,7 @@ import java.util.ArrayList;
 
 import static com.company.sticksnsushi.infrastructure.App.firebaseAuth;
 
-public abstract class BaseActivity extends AppCompatActivity implements Runnable {
+public abstract class BaseActivity extends AppCompatActivity {
     private static final String TAG = "Base";
     private MenuItem item;
     private ListView listView;
@@ -226,11 +226,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
             return view;
 
         }
-    }
-
-    @Override
-    public void run() {
-
     }
 
     FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();

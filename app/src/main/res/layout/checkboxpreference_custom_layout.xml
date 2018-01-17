@@ -6,7 +6,8 @@
     android:gravity="center_vertical"
     android:paddingEnd="?android:attr/scrollbarSize"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:background="@color/colorSecondary">
+    tools:background="@color/colorSecondary"
+    android:background="@drawable/custom_ripple_effect">
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -27,7 +28,6 @@
 
     </RelativeLayout>
 
-    <!-- Preference should place its actual preference widget here. -->
     <LinearLayout
         android:id="@android:id/widget_frame"
         android:layout_width="wrap_content"

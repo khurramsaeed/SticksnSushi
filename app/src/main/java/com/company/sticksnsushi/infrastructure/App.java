@@ -51,9 +51,7 @@ public class App extends Application {
     public static FirebaseUser currentUser;
     public static ArrayList<Cart> orders = new ArrayList<>();
 
-
     public static NetworkStatus network;
-    public static ArrayList<Runnable> observers = new ArrayList<>();
 
     private Auth auth;
     private Cart cart;
@@ -114,20 +112,6 @@ public class App extends Application {
         for (int i=0; i < getCart().getItems().size(); i++) {
             total = total + getCart().getItems().get(i).getItemTotal();
         }
-    }
-
-
-    // Observer methods
-    public void register (Runnable r) {
-        observers.add(r);
-    }
-
-    public void unregister (Runnable r) {
-        observers.remove(r);
-    }
-
-    public void update () {
-        for (Runnable r : observers) r.run();
     }
 
 

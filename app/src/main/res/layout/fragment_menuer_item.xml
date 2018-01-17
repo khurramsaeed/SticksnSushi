@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:background="@color/colorSecondary"
     android:orientation="vertical"
-    android:background="@drawable/ripple_effect"
+    android:background="@drawable/custom_ripple_effect"
     android:clickable="true">
     <LinearLayout
         android:layout_width="match_parent"
