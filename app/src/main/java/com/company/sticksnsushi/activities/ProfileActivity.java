@@ -2,8 +2,10 @@ package com.company.sticksnsushi.activities;
 
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,8 +34,8 @@ public class ProfileActivity extends BaseActivity {
     TextView displayName, initials;
 
     private static final int STATE_EDITING = 1;
-
     private static final int STATE_VIEWING = 2;
+    private static final String BUNDLE_STATE = "BUNDLE_STATE";
 
     ActionMode editProfileActionMode;
 
@@ -70,7 +72,14 @@ public class ProfileActivity extends BaseActivity {
         editCity.setText(user.getCity());
 
         displayName.setText(user.getDisplayName());
-        initials.setText(getInitials());                          
+        initials.setText(getInitials());
+
+        // Screen rotation: Editing fields fix
+        if (savedState == null) {
+            changeState(STATE_VIEWING);
+        } else {
+            changeState(savedState.getInt(BUNDLE_STATE));
+        }
     }
 
     private void saveUserDetailsFirebase(){
@@ -92,6 +101,17 @@ public class ProfileActivity extends BaseActivity {
         return initials.substring(0, 1);
     }
 
+    /**
+     * This method is called when you rotate screen
+     * @param outState
+     */
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Saved state is reloaded here
+        outState.putInt(BUNDLE_STATE, currentState);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
