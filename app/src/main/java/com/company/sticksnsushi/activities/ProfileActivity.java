@@ -70,6 +70,7 @@ public class ProfileActivity extends BaseActivity {
         editCity.setText(user.getCity());
 
         displayName.setText(user.getDisplayName());
+        initials.setText(getInitials());                          
     }
 
     private void saveUserDetailsFirebase(){
@@ -84,7 +85,14 @@ public class ProfileActivity extends BaseActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("users").child(user.getId()).child("personal_details").setValue(app.getAuth().getUser());
     }
-    
+
+    private String getInitials(){
+        String initials = user.getDisplayName();
+
+        return initials.substring(0, 1);
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_profile, menu);
@@ -161,6 +169,8 @@ public class ProfileActivity extends BaseActivity {
 
                 saveUserDetailsFirebase();
 
+                displayName.setText(user.getDisplayName());
+                initials.setText(getInitials());
                 app.shortToastMessage("Oplysninger opdateret");
             }
 
