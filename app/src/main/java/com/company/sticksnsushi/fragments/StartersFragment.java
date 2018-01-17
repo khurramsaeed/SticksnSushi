@@ -121,7 +121,7 @@ public class StartersFragment extends BaseFragment {
                     checkForAllergies(view);
                     Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
                     myintent.putExtra("Category", category);
-                    myintent.putExtra("ID", id);
+                    myintent.putExtra("startersID", id);
                     myintent.putExtra("AllergiesBoolean", containsAllergies);
                     if(containsAllergies){
                         myintent.putExtra("AllergiesAlert", allergyAlert);

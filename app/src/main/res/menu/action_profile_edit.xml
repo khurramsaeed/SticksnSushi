@@ -5,7 +5,7 @@
     <item
         android:id="@+id/activity_profile_editDone"
         android:title="Save"
-        android:icon="@drawable/cart"
+        android:icon="@drawable/ic_check"
         app:showAsAction="always"/>
 
 </menu>

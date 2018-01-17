@@ -18,8 +18,6 @@ import com.company.sticksnsushi.fragments.FavoritesFragment;
  */
 
 
-
-
 public class ProfileActivity extends BaseActivity {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
@@ -130,6 +128,7 @@ public class ProfileActivity extends BaseActivity {
 
             return true;
         }
+
 
         @Override
         public void onDestroyActionMode(ActionMode actionMode) {

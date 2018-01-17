@@ -121,7 +121,7 @@ public class KidsFragment extends BaseFragment {
                     checkForAllergies(view);
                     Intent kidsIntent=new Intent(getContext(), SpecificDishActivity.class);
                     kidsIntent.putExtra("Category", category);
-                    kidsIntent.putExtra("ID", id);
+                    kidsIntent.putExtra("kidsID", id);
                     kidsIntent.putExtra("AllergiesBoolean", containsAllergies);
                     if(containsAllergies){
                         kidsIntent.putExtra("AllergiesAlert", allergyAlert);

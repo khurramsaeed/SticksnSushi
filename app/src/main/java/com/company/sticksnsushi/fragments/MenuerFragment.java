@@ -123,7 +123,7 @@ public class MenuerFragment extends BaseFragment {
                     checkForAllergies(view);
                     Intent menuerIntent=new Intent(getContext(), SpecificDishActivity.class);
                     menuerIntent.putExtra("Category", category);
-                    menuerIntent.putExtra("ID", id);
+                    menuerIntent.putExtra("menuerID", id);
                     menuerIntent.putExtra("AllergiesBoolean", containsAllergies);
                     if(containsAllergies){
                         menuerIntent.putExtra("AllergiesAlert", allergyAlert);

@@ -29,16 +29,23 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     private Button addToBasket;
 
     private String category, allergyAlert;
-    private int i, recomID1, recomID2, recomID3;
+    private int recomID1, recomID2, recomID3;
     private int quantityStarters;
     private int quantityKids;
     private int quantityMenuer;
+    private int indexKids;
+    private int indexStarters;
+    private int indexMenuer;
 
 
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         setContentView(R.layout.activity_specific_dish);
-        i = getIntent().getIntExtra("ID",0);
+
+        indexKids = getIntent().getIntExtra("kidsID", 0);
+        indexStarters = getIntent().getIntExtra("startersID", 0);
+        indexMenuer = getIntent().getIntExtra("menuerID", 0);
+
         category = getIntent().getStringExtra("Category");
         boolean containsAlllergies = getIntent().getBooleanExtra("AllergiesBoolean", false);
         if(containsAlllergies){
@@ -83,29 +90,29 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
 
         String pcs;
         if(category.equals("Starters")) {
-            itemName.setText(app.dataStarters.get(i).getItemName());
-            pcs = app.dataStarters.get(i).getItemPCS();
-            itemPrice.setText(Integer.toString(app.dataStarters.get(i).getPrice()) + " kr./ " + pcs);
-            itemDesc.setText(app.dataStarters.get(i).getItemDescription());
-            allergies.setText(app.dataStarters.get(i).getAllergies());
-            itemImage.setImageBitmap(app.dataStarters.get(i).getItemImage());
+            itemName.setText(app.dataStarters.get(indexStarters).getItemName());
+            pcs = app.dataStarters.get(indexStarters).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataStarters.get(indexStarters).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataStarters.get(indexStarters).getItemDescription());
+            allergies.setText(app.dataStarters.get(indexStarters).getAllergies());
+            itemImage.setImageBitmap(app.dataStarters.get(indexStarters).getItemImage());
         }
         else if (category.equals("Menuer")){
-            itemName.setText(app.dataMenuer.get(i).getItemName());
-            pcs = app.dataMenuer.get(i).getItemPCS();
-            itemPrice.setText(Integer.toString(app.dataMenuer.get(i).getPrice()) + " kr./ " + pcs);
-            itemDesc.setText(app.dataMenuer.get(i).getItemDescription());
-            allergies.setText(app.dataMenuer.get(i).getAllergies());
-            itemImage.setImageBitmap(app.dataMenuer.get(i).getItemImage());
+            itemName.setText(app.dataMenuer.get(indexMenuer).getItemName());
+            pcs = app.dataMenuer.get(indexMenuer).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataMenuer.get(indexMenuer).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataMenuer.get(indexMenuer).getItemDescription());
+            allergies.setText(app.dataMenuer.get(indexMenuer).getAllergies());
+            itemImage.setImageBitmap(app.dataMenuer.get(indexMenuer).getItemImage());
         }
 
         else if (category.equals("Kids")){
-            itemName.setText(app.dataKids.get(i).getItemName());
-            pcs = app.dataKids.get(i).getItemPCS();
-            itemPrice.setText(Integer.toString(app.dataKids.get(i).getPrice()) + " kr./ " + pcs);
-            itemDesc.setText(app.dataKids.get(i).getItemDescription());
-            allergies.setText(app.dataKids.get(i).getAllergies());
-            itemImage.setImageBitmap(app.dataKids.get(i).getItemImage());
+            itemName.setText(app.dataKids.get(indexKids).getItemName());
+            pcs = app.dataKids.get(indexKids).getItemPCS();
+            itemPrice.setText(Integer.toString(app.dataKids.get(indexKids).getPrice()) + " kr./ " + pcs);
+            itemDesc.setText(app.dataKids.get(indexKids).getItemDescription());
+            allergies.setText(app.dataKids.get(indexKids).getAllergies());
+            itemImage.setImageBitmap(app.dataKids.get(indexKids).getItemImage());
         }
 
         addRecom();
@@ -114,9 +121,9 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onResume() {
         super.onResume();
-        quantityStarters = app.dataStarters.get(i).getQuantity();
-        quantityKids = app.dataKids.get(i).getQuantity();
-        quantityMenuer = app.dataMenuer.get(i).getQuantity();
+        quantityStarters = app.dataStarters.get(indexStarters).getQuantity();
+        quantityKids = app.dataKids.get(indexKids).getQuantity();
+        quantityMenuer = app.dataMenuer.get(indexMenuer).getQuantity();
     }
 
     /**
@@ -139,19 +146,19 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View view) {
         if (view == addToBasket) {
             if(category.equals("Starters")) {
-                app.getCart().addItem(app.dataStarters.get(i));
+                app.getCart().addItem(app.dataStarters.get(indexStarters));
                 quantityStarters++;
-                app.dataStarters.get(i).setQuantity(quantityStarters);
+                app.dataStarters.get(indexStarters).setQuantity(quantityStarters);
             }
             else if (category.equals("Menuer")){
-                app.getCart().addItem(app.dataMenuer.get(i));
+                app.getCart().addItem(app.dataMenuer.get(indexMenuer));
                 quantityMenuer++;
-                app.dataMenuer.get(i).setQuantity(quantityMenuer);
+                app.dataMenuer.get(indexMenuer).setQuantity(quantityMenuer);
             }
             else if (category.equals("Kids")){
-                app.getCart().addItem(app.dataKids.get(i));
+                app.getCart().addItem(app.dataKids.get(indexKids));
                 quantityKids++;
-                app.dataKids.get(i).setQuantity(quantityKids);
+                app.dataKids.get(indexKids).setQuantity(quantityKids);
             }
             app.shortToastMessage("Tilføjet til kurv");
             //Calculates new total
@@ -208,7 +215,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         while (nextRec <=3) {
             if (nextRec==1) {
                 recomID1 = rand.nextInt(5);
-                while (recomID1 == i){
+                while (recomID1 == indexStarters){
                     recomID1 = rand.nextInt(5);
                 }
                 recomItemName1.setText(app.dataStarters.get(recomID1).getItemName());
@@ -216,7 +223,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             }
             else if (nextRec==2){
                 recomID2=rand.nextInt(6)+ 6;
-                while (recomID2 == i){
+                while (recomID2 == indexStarters){
                     recomID2 = rand.nextInt(6)+ 6;
                 }
                 recomItemName2.setText(app.dataStarters.get(recomID2).getItemName());
@@ -224,7 +231,7 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
             }
             else if (nextRec==3){
                 recomID3=rand.nextInt(4)+13;
-                while (recomID3 == i){
+                while (recomID3 == indexStarters){
                     recomID3 = rand.nextInt(4)+13;
                 }
                 recomItemName3.setText(app.dataStarters.get(recomID3).getItemName());

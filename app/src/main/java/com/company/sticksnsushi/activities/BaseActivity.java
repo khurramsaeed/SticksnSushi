@@ -243,7 +243,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Runnable
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
 
-                System.out.println("DATASNAPSHOT "+user.toString());
+                System.out.println("DATASNAPSHOT "+ user.toString());
                 app.getAuth().getUser().setDeliveryDetails(user.getAddress(), user.getCity(), user.getPhone(), user.getPostalNr());
                 app.getAuth().getUser().setPersonalDetails(user.getId(), user.getDisplayName(), user.getEmail());
             }
