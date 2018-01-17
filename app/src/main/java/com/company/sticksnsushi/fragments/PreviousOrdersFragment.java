@@ -1,5 +1,7 @@
 package com.company.sticksnsushi.fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,9 +12,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.CartActivity;
 import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Cart;
@@ -110,7 +114,7 @@ public class PreviousOrdersFragment extends BaseFragment {
      * @author Khurram Saeed Malik
      */
     public class CustomDataAdapter extends RecyclerView.Adapter<DataListViewHolder> {
-        private final ArrayList<Cart> orders;
+        public final ArrayList<Cart> orders;
 
         public CustomDataAdapter() {
             this.orders = new ArrayList<>();
@@ -130,10 +134,26 @@ public class PreviousOrdersFragment extends BaseFragment {
         public DataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.sidebar_item_previous_orders_item, parent, false);
 
-            view.setOnClickListener(new View.OnClickListener() {
+
+            view.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
-                public void onClick(View view) {
-                    // TODO: 12/01/2018 Implement logic here
+                public boolean onLongClick(View view) {
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Du er ved at genbestille")
+                            .setMessage("Er du sikker på du vil genbestille igen?")
+                            .setCancelable(true)
+                            .setNegativeButton("Nej", null)
+                            .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    app.shortToastMessage("Ikke implementeret");
+                                    notifyDataSetChanged();
+                                }
+                            }).show();
+
+
+
+                    return false;
                 }
             });
 
@@ -146,6 +166,7 @@ public class PreviousOrdersFragment extends BaseFragment {
            ArrayList<Item> items = order.getItems();
 
            holder.orderId.setText(order.getOrderDate().toString());
+            holder.orderedItems.setText("");
            for (int i=0; i < items.size(); i++) {
                holder.orderedItems.append(items.get(i).getQuantity() + " x " + items.get(i).getItemName() + "\n");
            }
@@ -173,6 +194,7 @@ public class PreviousOrdersFragment extends BaseFragment {
             orderId = itemView.findViewById(R.id.previous_orders_orderId);
             orderedItems = itemView.findViewById(R.id.previous_orders_date);
             total = itemView.findViewById(R.id.previous_orders_price);
+
         }
 
     }

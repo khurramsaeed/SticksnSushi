@@ -50,16 +50,6 @@
                 android:id="@+id/previous_orders_price" />
         </LinearLayout>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/colorAccent"
-            android:text="Genbestil"
-            android:textColor="@color/colorPrimaryText"
-            android:layout_marginEnd="16dp"
-            android:padding="16dp"
-            android:layout_gravity="center_vertical"/>
-
     </LinearLayout>
 
 </FrameLayout>
