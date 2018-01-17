@@ -23,6 +23,8 @@ import com.company.sticksnsushi.infrastructure.Cart;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -31,29 +33,20 @@ import java.util.ArrayList;
  */
 
 public class PreviousOrdersFragment extends BaseFragment {
-    // For debugging purposes
-    private static final String TAG = "Previous";
-
-    private RecyclerView recyclerView;
     private App app = App.getInstance();
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sidebar_item_previous_orders, container, false);
-        rootView.setTag(TAG);
         setHasOptionsMenu(true);
-
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
+        RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewPreviousOrders);
 
         // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
 
         CustomDataAdapter adapter = new CustomDataAdapter();
 
-        if (savedInstanceState !=null) {
-            adapter.clearItems();
-        }
         // Add dataCategories to my adapter
         for (int i = 0; i < app.orders.size(); i++) {
             adapter.addItem(app.orders.get(i));
@@ -74,11 +67,6 @@ public class PreviousOrdersFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Tidligere ordrer");
-
-
-        System.out.println("onViewCreated(): Adapter");
-
-
     }
 
 
@@ -105,6 +93,7 @@ public class PreviousOrdersFragment extends BaseFragment {
                 return false;
             }
         });
+
     }
 
 
@@ -124,10 +113,6 @@ public class PreviousOrdersFragment extends BaseFragment {
             orders.add(order);
             // Sidste element af Array
             notifyItemInserted(orders.size() - 1);
-        }
-
-        public void clearItems(){
-            orders.clear();
         }
 
         @Override

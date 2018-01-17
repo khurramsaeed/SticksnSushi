@@ -78,11 +78,13 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
      * Saves logged in users data in Firebase by its ID
      */
     private void saveUserDetailsFirebase(){
+        String name = editFullName.getText().toString().trim();
         String address = editAdress.getText().toString().trim();
         String phone = editPhone.getText().toString().trim();
         String city  = editCity.getText().toString().trim();
         String postalnr = editPostalnr.getText().toString().trim();
         user.setDeliveryDetails(address, city, phone, postalnr);
+        user.setDisplayName(name);
         DatabaseReference databaseReference;
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("users").child(app.getAuth().getUser().getId()).child("personal_details").setValue(app.getAuth().getUser());
