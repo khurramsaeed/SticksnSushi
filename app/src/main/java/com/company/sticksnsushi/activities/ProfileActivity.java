@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
@@ -30,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ProfileActivity extends BaseActivity {
 
     EditText editFullName, editPhone, editAdress, editPostalnr, editCity;
-
     TextView displayName, initials;
 
     private static final int STATE_EDITING = 1;
@@ -43,14 +43,22 @@ public class ProfileActivity extends BaseActivity {
 
     App app = App.getInstance();
 
-    FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
     User user = app.getAuth().getUser();
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-
         setContentView(R.layout.activity_profile);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
+        setSupportActionBar(toolbar);
+        // Back button on Toolbar
+        if (getSupportActionBar() != null){
+            toolbar.setTitle("Profil");
+            toolbar.setNavigationIcon(R.drawable.arrow_left);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         editFullName = (EditText) findViewById(R.id.editTextName);
         editPhone = (EditText) findViewById(R.id.editTextPhone);
@@ -60,10 +68,6 @@ public class ProfileActivity extends BaseActivity {
 
         displayName = (TextView) findViewById(R.id.displayName);
         initials = (TextView) findViewById(R.id.initials);
-
-        changeState(STATE_VIEWING);
-
-        setTitle("Profile");
 
         editFullName.setText(user.getDisplayName());
         editPhone.setText(user.getPhone());
@@ -82,6 +86,8 @@ public class ProfileActivity extends BaseActivity {
         }
 
     }
+
+
 
     private void saveUserDetailsFirebase(){
         String address = editAdress.getText().toString().trim();
@@ -127,6 +133,12 @@ public class ProfileActivity extends BaseActivity {
         if(itemId == R.id.activity_profile_edit){
             changeState(STATE_EDITING);
             return true;
+        }
+
+        if (item.getItemId() == android.R.id.home) {
+            finish(); // close this activity and return to preview activity (if there is any)
+            //Override animation
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return false;
