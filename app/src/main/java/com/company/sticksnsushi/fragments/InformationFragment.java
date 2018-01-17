@@ -75,6 +75,7 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
             }
         });
 
+
         changeState(STATE_VIEWING);
 
         if (savedInstanceState == null) {
