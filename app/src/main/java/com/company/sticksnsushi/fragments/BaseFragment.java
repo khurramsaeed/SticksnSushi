@@ -17,4 +17,5 @@ public abstract class BaseFragment extends Fragment{
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         isTablet = (metrics.widthPixels / metrics.density) >= 600;
     }
+
 }

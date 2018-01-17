@@ -1,8 +1,10 @@
 package com.company.sticksnsushi.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Categories;
 
@@ -63,6 +64,7 @@ import java.util.ArrayList;
         return rootView;
     }
 
+
     /**
      * Custom Adapter
      * @author Khurram Saeed Malik
@@ -93,22 +95,46 @@ import java.util.ArrayList;
         }
 
         @Override
-        public DataListViewHolder onCreateViewHolder(ViewGroup parent, final int viewType) {
+        public DataListViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
             View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_maki_item, parent, false);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
-                    Intent myintent=new Intent(getContext(), MenuOverviewActivity.class);
-                    myintent.putExtra("index", id);
+                    if(id==0) {
+                        FragmentManager fm = getChildFragmentManager();
+                        Fragment newFragment = new UramakiFragment();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_container_maki, newFragment).addToBackStack("Maki").commit();
+                    }
 
-                    startActivity(myintent);
+                    else if(id==1) {
+                        FragmentManager fm = getChildFragmentManager();
+                        Fragment newFragment = new KaburimakiFragment();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_container_maki, newFragment).addToBackStack("Maki").commit();
+                    }
+
+                    else if(id==2) {
+                        FragmentManager fm = getChildFragmentManager();
+                        Fragment newFragment = new FutomakiFragment();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_container_maki, newFragment).addToBackStack("Maki").commit();
+                    }
+                    else if(id==3) {
+                        FragmentManager fm = getChildFragmentManager();
+                        Fragment newFragment = new HosomakiFragment();
+                        FragmentTransaction ft = fm.beginTransaction();
+                        ft.replace(R.id.fragment_container_maki, newFragment).addToBackStack("Maki").commit();
+                    }
+
                 }
             });
 
             return new DataListViewHolder(view);
         }
+
 
         @Override
         public void onBindViewHolder(DataListViewHolder holder, int position) {
@@ -118,6 +144,8 @@ import java.util.ArrayList;
             holder.image.setImageBitmap(item.getItemImage());
 
         }
+
+
 
         @Override
         public int getItemCount() {
