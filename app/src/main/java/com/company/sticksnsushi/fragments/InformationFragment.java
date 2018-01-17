@@ -24,7 +24,6 @@ import com.stepstone.stepper.VerificationError;
 
 public class InformationFragment extends BaseFragment implements BlockingStep {
 
-    private static final int STATE_EDITING = 1;
     private static final int STATE_VIEWING = 2;
     private static final String BUNDLE_STATE = "BUNDLE_STATE";
 
@@ -89,21 +88,6 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
         return view;
     }
 
-    /**
-     * Saves logged in users data in Firebase by its ID
-     */
-    private void saveUserDetailsFirebase(){
-        String name = editFullName.getText().toString().trim();
-        String address = editAdress.getText().toString().trim();
-        String phone = editPhone.getText().toString().trim();
-        String city  = editCity.getText().toString().trim();
-        String postalnr = editPostalnr.getText().toString().trim();
-        user.setDeliveryDetails(address, city, phone, postalnr);
-        user.setDisplayName(name);
-        DatabaseReference databaseReference;
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("users").child(app.getAuth().getUser().getId()).child("personal_details").setValue(app.getAuth().getUser());
-    }
 
     private void changeState(int state){
 
@@ -182,11 +166,6 @@ public class InformationFragment extends BaseFragment implements BlockingStep {
             editCity.setError("Du skal indtaste din by");
             editCity.requestFocus();
             return;
-        }
-
-        if(currentUser != null){
-            // TODO: 15-01-2018 Run commented method
-            saveUserDetailsFirebase();
         }
 
         callback.goToNextStep();
