@@ -60,6 +60,10 @@ public class PreviousOrdersFragment extends BaseFragment {
             return rootView;
         }
 
+        if (!app.network.isOnline()) {
+            app.longToastMessage("Du skal have internet for at kunne se din tidligere ordre!");
+            return rootView;
+        }
         databaseReference.child("users").child(user.getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
