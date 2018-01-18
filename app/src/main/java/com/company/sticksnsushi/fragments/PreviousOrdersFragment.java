@@ -77,7 +77,6 @@ public class PreviousOrdersFragment extends BaseFragment {
             public void onCancelled(DatabaseError databaseError) {
                 // Failed to read value
                 Log.w(TAG, "Failed to read value.", databaseError.toException());
-                app.shortToastMessage("Der opstod en fejl i hentning af ordrer");
             }
         });
 
