@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
@@ -23,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 // The following code originates mainly from: https://www.simplifiedcoding.net/android-firebase-tutorial-1/
 
-public class SignUpActivity extends BaseActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
     private App app = App.getInstance();
     private EditText editTextEmail, editTextPassword, editTextUsersFullName;

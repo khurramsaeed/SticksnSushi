@@ -22,7 +22,8 @@ public class Cart {
         int itemTotal = item.getItemTotal();
         total = total - itemTotal;
         if (items.contains(item)) {
-            items.remove(item);}
+            items.remove(item);
+        }
     }
 
     public void setOrderDate(String orderDate) {
