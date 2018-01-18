@@ -15,6 +15,7 @@ import com.stepstone.stepper.viewmodel.StepViewModel;
 
 /**
  * Created by Swagam on 12/01/2018.
+ * Kilde: https://github.com/stepstone-tech/android-material-stepper
  */
 public class StepperAdapter extends AbstractFragmentStepAdapter{
 
