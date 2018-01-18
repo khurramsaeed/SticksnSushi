@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,11 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.activities.CartActivity;
 import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Cart;
@@ -61,7 +58,7 @@ public class PreviousOrdersFragment extends BaseFragment {
         }
 
         if (!app.network.isOnline()) {
-            app.longToastMessage("Du skal have internet for at kunne se din tidligere ordre!");
+            app.longToastMessage("Du skal have internet for at kunne se dine tidligere ordrer!");
             return rootView;
         }
         databaseReference.child("users").child(user.getId()).child("orders").getRef().addValueEventListener(new ValueEventListener() {
