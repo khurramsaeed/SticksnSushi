@@ -2,24 +2,16 @@ package com.company.sticksnsushi.activities;
 
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.fragments.PersonalinfoFragment;
-import com.company.sticksnsushi.fragments.FavoritesFragment;
 import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.User;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

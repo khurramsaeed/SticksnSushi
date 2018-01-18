@@ -238,25 +238,28 @@ public class SpecificDishActivity extends BaseActivity implements View.OnClickLi
         }
         if(view==recomItemImage1){
             String category = app.dataStarters.get(recomID1).getCategory();
+            int id = app.dataStarters.get(recomID1).getId()-1;
             Intent myintent=new Intent(this, SpecificDishActivity.class);
             myintent.putExtra("Category", category);
-            myintent.putExtra("ID", recomID1);
+            myintent.putExtra("startersID", id);
             myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(myintent);
         }
         if(view==recomItemImage2){
             String category = app.dataStarters.get(recomID2).getCategory();
+            int id = app.dataStarters.get(recomID2).getId()-1;
             Intent myintent=new Intent(this, SpecificDishActivity.class);
             myintent.putExtra("Category", category);
-            myintent.putExtra("ID", recomID2);
+            myintent.putExtra("startersID", id);
             myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(myintent);
         }
         if(view==recomItemImage3){
             String category = app.dataStarters.get(recomID3).getCategory();
+            int id = app.dataStarters.get(recomID3).getId()-1;
             Intent myintent=new Intent(this, SpecificDishActivity.class);
             myintent.putExtra("Category", category);
-            myintent.putExtra("ID", recomID3);
+            myintent.putExtra("startersID", id);
             myintent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             startActivity(myintent);
         }
