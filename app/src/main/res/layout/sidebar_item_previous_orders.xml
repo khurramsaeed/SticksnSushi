@@ -5,6 +5,16 @@
     android:orientation="vertical"
     android:background="@color/colorSecondary">
 
+    <TextView
+        android:id="@+id/previous_orders_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Press and Hold"
+        android:textStyle="italic"
+        android:textColor="@color/colorPrimaryText"
+        android:gravity="center"
+        android:padding="16dp"/>
+
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerViewPreviousOrders"

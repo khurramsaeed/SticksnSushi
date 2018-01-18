@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">STICKS|N|SUSHI</string>
+    <string name="app_name">23 Sushi</string>
     <string name="hello_world_nikolaj">Hello World! Nikolaj er med på Git</string>
     <string name="title_activity_side_bar_nav">SideBarNav</string>
 
@@ -401,8 +401,7 @@
     <string name="Betal">Betal</string>
     <string name="sample_item_name">Item name</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="auth_failed">Fejl i indregsitrereing af bruger</string>
+    <string name="group_text">Gruppe 23 \n Agamjyot Singh - s165155 \n Nikolaj Ellebye Holm - s165151 \n Khurram Saeed Malik - s165162  \n Morten Tang Christiansen - s162682</string>
 
 </resources>

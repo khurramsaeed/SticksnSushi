@@ -3,12 +3,15 @@ package com.company.sticksnsushi.fragments;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.activities.NavDrawerActivity;
 import com.company.sticksnsushi.library.SupportPreferenceFragment;
 
 import java.util.ArrayList;
@@ -17,30 +20,57 @@ import java.util.ArrayList;
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class AllergiesFragment extends Fragment {
+public class AllergiesFragment extends BaseFragment {
     public static ArrayList<String> allergyList = new ArrayList<String>();
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.sidebar_item_allergies, container, false);
+        View view = inflater.inflate(R.layout.sidebar_item_allergies, container, false);
+        setHasOptionsMenu(true);
+
+        getActivity().setTitle("Allergener");
+        getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
+
+        return view;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        getActivity().setTitle("Allergener");
-        getFragmentManager().beginTransaction().replace(R.id.sidebar_allergies, new AllergyScreen()).commit();
-        //markAllergies();
-
-
-
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
     }
 
+    /**
+     * Back button override for Fragment
+     * Backs up to NavdrawerActivity
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(getView() == null){
+            return;
+        }
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    ((NavDrawerActivity)getActivity()).navigationView.setCheckedItem(R.id.item_takeaway);
+                    ((NavDrawerActivity)getActivity()).displaySelectedItem(R.id.item_takeaway);
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
 
+    /**
+     * Sets preference screen as layout
+     */
     public static class AllergyScreen extends SupportPreferenceFragment {
         public  void onCreate(Bundle savedInstanceState){
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.allergies);
-
         }
     }
 
@@ -106,13 +136,6 @@ public class AllergiesFragment extends Fragment {
             if (allergiAeg) {
             allergyList.add("æg");
             }
-
-
-
-
-
-
-
 
     }
 

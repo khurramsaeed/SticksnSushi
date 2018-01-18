@@ -15,7 +15,7 @@ public class Item {
     private String category;
     private String allergies;
     private Bitmap itemImage;
-    private int quantity;
+    private int quantity=0;
 
     public Item() {
     }
@@ -29,6 +29,10 @@ public class Item {
         this.category = category;
         this.allergies = allergies;
         this.itemImage = itemImage;
+    }
+
+    public int getItemTotal() {
+        return getPrice() * getQuantity();
     }
 
     public int getId() {
@@ -96,5 +100,9 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void resetQuantity() {
+        quantity=0;
     }
 }

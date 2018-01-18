@@ -1,44 +1,39 @@
 package com.company.sticksnsushi.infrastructure;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Khurram Saeed Malik on 09/01/2018.
  */
 
 public class Cart {
-    private int itemId;
-    private int quantity = 1;
-    private int total;
-
-    ArrayList<Item> items = new ArrayList<>();
+    private String orderDate;
+    private int total = 0;
+    private ArrayList<Item> items = new ArrayList<>();
 
     public Cart() {}
 
-
     public void addItem(Item item) {
-        this.items.add(item);
-    }
-    public void updateQuantity(int quantity) {
-        this.quantity = quantity;
+        if (items.contains(item)) {return;}
+        items.add(item);
     }
 
-    public int getItemId() {
-        return itemId;
+    public void removeItem(Item item) {
+        int itemTotal = item.getItemTotal();
+        total = total - itemTotal;
+        if (items.contains(item)) {
+            items.remove(item);
+        }
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
+    public void setOrderDate(String orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public String getOrderDate() {
+        return orderDate;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public int getTotal() {
         return total;
@@ -52,4 +47,17 @@ public class Cart {
         return items;
     }
 
+    public void emptyCart() {
+        total =0;
+        items.clear();
+    }
+
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "orderDate='" + orderDate + '\'' +
+                ", total=" + total +
+                ", items=" + items +
+                '}';
+    }
 }

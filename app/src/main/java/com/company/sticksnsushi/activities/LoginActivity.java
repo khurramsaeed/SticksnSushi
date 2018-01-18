@@ -4,37 +4,37 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends BaseActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView linkSignUp;
     private Button button_login;
     private EditText editTextEmail, editTextPassword;
     private ProgressDialog progressDialog;
-    private FirebaseAuth firebaseAuth;
+
+    App app = App.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         progressDialog = new ProgressDialog(this);
-
-        firebaseAuth = FirebaseAuth.getInstance();
 
         //initializing views
         editTextEmail = findViewById(R.id.input_email);
@@ -50,12 +50,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private void userLogin(){
 
         //getting email and password from edit texts
-        String email = editTextEmail.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
         String password  = editTextPassword.getText().toString().trim();
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Skriv venligst din email",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst din email");
             return;
         }
 
@@ -66,11 +66,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
 
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Skriv venligst dit password",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst dit password");
             return;
         }
         if(password.length() < 6){
-            Toast.makeText(this, "Skriv minimum 6 tegn", Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv minimum 6 tegn");
+            return;
         }
 
         //if the email and password are not empty
@@ -79,20 +80,17 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         progressDialog.setMessage("Logger ind...");
         progressDialog.show();
 
-        firebaseAuth.signInWithEmailAndPassword(email, password)
+        app.firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //User is logged in
-                    app.getAuth().getUser().setLoggedIn(true);
-
-                    Intent intentMenuOverview = new Intent(LoginActivity.this, MenuOverviewActivity.class);
+                    Intent intentMenuOverview = new Intent(LoginActivity.this, NavDrawerActivity.class);
                     startActivity(intentMenuOverview);
                     finish();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    app.longToastMessage(task.getException().getMessage());
                 }
                 progressDialog.dismiss();
             }
@@ -100,18 +98,28 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return true;
+    }
 
     @Override
     public void onClick(View view) {
         if(view == linkSignUp) {
-            Intent i = new Intent(this, SignUpActivity.class);
-            startActivity(i);
+            Intent loginIntent = new Intent(this, SignUpActivity.class);
+            loginIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+            startActivity(loginIntent);
             finish();
 
         }
         else if(view == button_login){
+            if (!app.network.isOnline()) {
+                app.shortToastMessage("Venligst forbinde enheden med nettet!");
+                return;
+            }
             userLogin();
-
         }
     }
+
 }

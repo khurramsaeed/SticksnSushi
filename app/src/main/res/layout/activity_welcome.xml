@@ -1,33 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:background="@drawable/welcome_background_org"
-    android:orientation="vertical">
-
+    android:id="@+id/activity_welcome_relativeLayout">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="50dp"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:id="@+id/activity_welcome_linearLayout">
 
     <ImageView
+        android:id="@+id/activity_welcome_logo"
         android:layout_width="250dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
         android:layout_gravity="center_horizontal"
         android:src="@drawable/logo"/>
 
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/seeMenuButton"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:height="45dp"
+            android:background="@drawable/bg_button"
+            android:text="Vores Menu"
+            android:textAllCaps="false"
+            android:drawableStart="@drawable/sushinsticks"
+            android:drawableTint="@color/colorPrimaryText"
 
-
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/seeMenuButton"
-        android:layout_width="200dp"
-        android:layout_height="40dp"
-        android:height="45dp"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:layout_marginTop="18dp"
-        android:background="#FFD10C13"
-        android:text="Vores Menu"
-        android:layout_gravity="center_horizontal"
-        android:textColor="#ffff"
-        android:onClick="startOverviewActivity"/>
+            android:paddingLeft="16dp"
+            android:paddingRight="30dp"
+            android:textColor="#ffff"
+            android:textSize="18sp" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/signUpButton"
@@ -37,12 +47,13 @@
         android:textAllCaps="false"
         android:layout_marginTop="18dp"
         android:layout_gravity="center_horizontal"
-        android:background="#8d8d8d"
+        android:drawableStart="@drawable/account_outline"
+        android:background="@drawable/bg_button"
+        android:paddingLeft="16dp"
+        android:paddingRight="30dp"
+        android:backgroundTint="#8d8d8d"
         android:text="Opret Profil"
-        android:textColor="#ffff"
-        android:onClick="startSignUpActivity"/>
-
-
+        android:textColor="#ffff"/>
 
     <TextView
         android:id="@+id/LoginButton"
@@ -52,25 +63,17 @@
         android:layout_marginTop="18dp"
         android:layout_gravity="center_horizontal"
         android:text="Login"
-        android:textColor="#b2ffffff"
-        android:onClick="startLoginActivity"/>
+        android:textColor="#b2ffffff"/>
 
+    </LinearLayout>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/seeCheckoutButton"
-        android:layout_width="50dp"
-        android:layout_height="45dp"
-        android:layout_marginBottom="1dp"
-        android:layout_marginTop="50dp"
-        android:height="45dp"
-        android:background="#21ffffff"
-        android:onClick="startCheckoutActivity"
-        android:padding="12dp"
-        android:text="Checkout"
-        android:textColor="#ffff" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/group_text"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="@color/price_color"
+        android:layout_alignParentBottom="true"/>
 
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

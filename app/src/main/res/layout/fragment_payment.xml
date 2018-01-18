@@ -38,73 +38,76 @@
 
    </LinearLayout>
 
-    <TextView
-        android:id="@+id/cardnr"
+
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearKredit"
-        android:layout_marginTop="19dp"
-        android:text="Kort Nummer"
-        android:textColor="@color/greyNew" />
-
-    <EditText
         android:id="@+id/editCardNumber"
+        android:layout_below="@+id/linearKredit"
+        android:layout_marginTop="8dp"
+        android:textColorHint="#ffff"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_cardNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#ffff"
+            android:textSize="15dp"
+            android:textColor="#ffff"
+            android:inputType="number"
+            android:hint="Kort nummer"/>
+    </android.support.design.widget.TextInputLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/linearCVCandDate"
+    android:layout_below="@id/editCardNumber">
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="68dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:backgroundTint="@color/colorPrimary"
-        android:maxLines="1"
-        android:textColor="@color/colorPrimaryText"/>
-
-    <TextView
-        android:id="@+id/cvc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/editCvc"
-        android:text="CVC Nummer"
-        android:textColor="@color/greyNew" />
-
-
-    <EditText
-        android:id="@+id/editCvc"
-        android:layout_width="170dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_weight="1"
+        android:id="@+id/editCVC"
         android:layout_below="@+id/editCardNumber"
         android:layout_marginTop="10dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:maxLines="1" />
+        android:textColorHint="#ffff"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_cvc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#ffff"
+            android:textSize="15dp"
+            android:textColor="#ffff"
+            android:inputType="number"
+            android:hint="CVC"/>
+    </android.support.design.widget.TextInputLayout>
 
-    <TextView
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cvc"
-        android:layout_alignBottom="@+id/cvc"
-        android:layout_alignStart="@+id/editDate"
-        android:id="@+id/date"
-        android:text="Udløbs Dato"
-        android:textColor="@color/greyNew" />
-
-
-    <EditText
+        android:layout_weight="1"
         android:id="@+id/editDate"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/cvc"
-        android:layout_marginEnd="17dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:maxLines="1" />
+        android:layout_below="@+id/editCardNumber"
+        android:layout_alignRight="@+id/editCVC"
+        android:layout_marginTop="10dp"
+        android:textColorHint="#ffff"
+        android:layout_marginBottom="8dp">
+        <EditText android:id="@+id/input_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#ffff"
+            android:textSize="15dp"
+            android:textColor="#ffff"
+            android:inputType="date"
+            android:hint="Udløbs dato"/>
+    </android.support.design.widget.TextInputLayout>
 
 
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_alignBaseline="@+id/linearKredit"
-        android:layout_below="@+id/editCvc"
-        android:layout_marginTop="60dp"
+        android:layout_marginBottom="50dp"
+        android:layout_below="@+id/linearCVCandDate"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:id="@+id/linearMobile">
@@ -132,15 +135,17 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearPaypal"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@+id/linearMobile"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/notImplemented"
         android:layout_marginTop="16dp"
         android:background="@color/colorPrimary"
-        android:orientation="horizontal"
-        android:id="@+id/linearLayout3">
+        android:orientation="horizontal">
 
         <CheckBox
+            android:id="@+id/checkPaypal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -160,6 +165,19 @@
 
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/notImplemented"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearMobile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Ikke implementeret"
+        android:textColor="@color/colorPrimaryText"
+        android:textSize="20dp" />
+
+
 
 
 </RelativeLayout>

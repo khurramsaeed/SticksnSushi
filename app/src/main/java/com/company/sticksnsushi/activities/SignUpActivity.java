@@ -4,34 +4,35 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.App;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 // The following code originates mainly from: https://www.simplifiedcoding.net/android-firebase-tutorial-1/
 
-public class SignUpActivity extends BaseActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private App app = App.getInstance();
     private EditText editTextEmail, editTextPassword, editTextUsersFullName;
     private Button buttonSignup;
     private TextView linkLogin;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
-    String usersFullName;
-
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -39,8 +40,8 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        //initializing firebase auth object
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = app.firebaseAuth;
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         //initializing views
         editTextEmail = findViewById(R.id.editTextSignUpEmail);
@@ -59,6 +60,18 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
     }
 
+    private void createUser(){
+        String userId = firebaseAuth.getCurrentUser().getUid();
+        String userEmail = firebaseAuth.getCurrentUser().getEmail();
+        String displayName = editTextUsersFullName.getText().toString().trim();
+        app.getAuth().getUser().setHasPassword(true);
+        app.getAuth().getUser().setLoggedIn(true);
+
+        app.getAuth().getUser().setPersonalDetails(userId, displayName, userEmail);
+
+        databaseReference.child("users").child(userId).child("personal_details").setValue(app.getAuth().getUser());
+    }
+
     private void registerUser(){
 
         //getting email and password from edit texts
@@ -68,7 +81,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         //checking if email and passwords are empty
         if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Skriv venligst din email",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst din email");
             return;
         }
 
@@ -79,7 +92,7 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
         }
 
         if(TextUtils.isEmpty(password)){
-            Toast.makeText(this,"Skriv venligst dit password",Toast.LENGTH_LONG).show();
+            app.longToastMessage("Skriv venligst dit password");
             return;
         }
 
@@ -97,24 +110,23 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if(task.isSuccessful()){
-                            app.getAuth().getUser().setEmail(email);
-                            app.getAuth().getUser().setHasPassword(true);
-                            app.getAuth().getUser().setUserName(usersFullName);
+                            createUser();
 
-                            //userFullName = SticksnSushiApplication.getInstance().getAuth().getUser().setDisplayName(userName);
+
+                            //userFullName = App.getInstance().getAuth().getUser().setDisplayName(userName);
 
                             //display some message here
-                            Toast.makeText(SignUpActivity.this,"Konto oprettet",Toast.LENGTH_LONG).show();
-                            Intent intentMenuOverview = new Intent(SignUpActivity.this, MenuOverviewActivity.class);
+                            app.longToastMessage("Konto oprettet");
+                            Intent intentMenuOverview = new Intent(SignUpActivity.this, NavDrawerActivity.class);
                             startActivity(intentMenuOverview);
                             finish();
                         }
                         else{
                             if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(getApplicationContext(), "Du har allerede en konto", Toast.LENGTH_LONG).show();
+                                app.longToastMessage("Du har allerede en konto");
                             }
                             else {
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                app.longToastMessage(task.getException().getMessage());
                             }
 //                            //display some message here
 //                            Toast.makeText(SignUpActivity.this,"Registration Error",Toast.LENGTH_LONG).show();
@@ -134,7 +146,12 @@ public class SignUpActivity extends BaseActivity implements View.OnClickListener
 
         }
         else if(view == buttonSignup){
+           if (!app.network.isOnline()) {
+               app.shortToastMessage("Venligst forbind enheden med nettet!");
+               return;
+           }
             //calling register method on click
+           app.getAuth().getUser().resetUser();
             registerUser();
         }
     }

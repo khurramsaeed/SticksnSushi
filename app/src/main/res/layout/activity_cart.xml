@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary">
@@ -10,16 +10,13 @@
         layout="@layout/include_toolbar"
         android:id="@+id/include_toolbar" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
         <LinearLayout
+            android:id="@+id/activity_cart_container"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:orientation="horizontal"
-            android:padding="8dp">
+            android:padding="8dp"
+            android:layout_below="@id/include_toolbar">
 
             <View
                 android:layout_width="60dp"
@@ -59,22 +56,55 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1.5dp"
-            android:background="@color/colorAccent" />
-
+            android:background="@color/colorAccent"
+            android:id="@+id/separator"
+            android:layout_below="@id/activity_cart_container"/>
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/activity_cart_listView">
+            android:id="@+id/activity_cart_listView"
+            android:layout_below="@id/separator"
+            android:layout_above="@id/activity_cart_bottom">
         </ListView>
 
-
-
         <LinearLayout
+            android:id="@+id/activity_cart_bottom"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="bottom">
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_total_outline"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="1dp"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Total"
+                    android:textColor="@color/colorPrimaryText"
+                    android:layout_gravity="left"/>
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="textEnd"
+                    android:id="@+id/priceTotal"
+                    android:textStyle="bold"
+                    tools:text="0 kr."
+                    android:textColor="@color/colorPrimaryText"/>
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/activity_cart_checkoutButton"
                 android:layout_width="match_parent"
@@ -84,8 +114,8 @@
                 android:textColor="@color/colorPrimaryText"
                 android:textSize="18sp"
                 android:onClick="startCheckoutActivity"/>
+
         </LinearLayout>
 
-    </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

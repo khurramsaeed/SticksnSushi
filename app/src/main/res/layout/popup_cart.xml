@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
     android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/popup_cart_listView">
+        android:id="@+id/popup_cart_listView"
+        android:layout_weight="1">
     </ListView>
 
 
@@ -21,47 +21,46 @@
         android:layout_height="1dp"
         android:background="@color/colorAccent" />
 
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:id="@+id/total"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/price"
-        android:layout_alignBottom="@+id/price"
-        android:layout_alignParentStart="true"
-        android:layout_gravity="center"
-        android:text="Total"
-        android:textAlignment="gravity"
-        android:textColor="@color/colorPrimaryText" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="44dp"
-        android:layout_toEndOf="@+id/total"
-        android:padding="16dp"
-        android:text="89 kr."
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryText" />
+        <TextView
+            android:id="@+id/popup_cart_totalText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/popup_cart_totalPrice"
+            android:layout_alignBottom="@+id/popup_cart_totalPrice"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="center"
+            android:text="Total"
+            android:textAlignment="gravity"
+            android:textColor="@color/colorPrimaryText" />
+
+        <TextView
+            android:id="@+id/popup_cart_totalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="44dp"
+            android:layout_toEndOf="@+id/popup_cart_totalText"
+            android:padding="16dp"
+            android:text="89 kr."
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryText" />
 
 
-</RelativeLayout>
-
-
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
-        android:text="Gå til kassen"
-        android:padding="16dp"
-        android:textColor="@color/colorPrimaryText"
-        android:textSize="14dp" />
+        <Button
+            android:id="@+id/popupPayButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="Gå til kassen"
+            android:padding="16dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/colorPrimaryText"
+            android:layout_below="@id/popup_cart_totalPrice"
+            android:textSize="14sp"/>
+    </RelativeLayout>
 
 </LinearLayout>

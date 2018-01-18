@@ -1,7 +1,9 @@
 package com.company.sticksnsushi.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
@@ -14,7 +16,7 @@ import com.company.sticksnsushi.R;
 public class ConfirmationActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
@@ -31,6 +33,12 @@ public class ConfirmationActivity extends BaseActivity {
         txtSummary.setText("Kommer til at indeholde information om bestilling");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.clear();
+        return true;
+    }
+
     /**
      * Effects back button in current activity
      * @param item
@@ -41,8 +49,19 @@ public class ConfirmationActivity extends BaseActivity {
         // handle arrow click here
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
+            //Override animation
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, NavDrawerActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        startActivity(i);
     }
 }

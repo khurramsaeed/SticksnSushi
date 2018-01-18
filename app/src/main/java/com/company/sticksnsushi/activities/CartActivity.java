@@ -19,8 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Item;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -30,15 +30,18 @@ import java.util.ArrayList;
 
 public class CartActivity extends BaseActivity {
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    App app = App.getInstance();
     private CartAdapter adapter;
+    TextView priceTotal;
 
     @Override
     protected void onCreate(Bundle savedState) {
 
         super.onCreate(savedState);
-
         setContentView(R.layout.activity_cart);
+        app.cartTotal();
+        priceTotal = (TextView) findViewById(R.id.priceTotal);
+        priceTotal.setText(app.total + " kr.");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.include_toolbar);
         setSupportActionBar(toolbar);
@@ -52,7 +55,16 @@ public class CartActivity extends BaseActivity {
     }
 
     public void startCheckoutActivity(View view) {
-        startActivity(new Intent(this, CheckoutActivity.class));
+        if (!app.network.isOnline()) {
+            app.shortToastMessage("Venligst forbinde enheden med nettet!");
+            return;
+        }
+        if (!app.getCart().getItems().isEmpty()) {
+            app.getCart().setTotal(app.total);
+            startActivity(new Intent(this, CheckoutActivity.class));
+        } else {
+            app.shortToastMessage("Kurven er tom!");
+        }
     }
 
     /**
@@ -69,7 +81,6 @@ public class CartActivity extends BaseActivity {
 
     /**
      * Effects back button in current activity
-     *
      * @param item
      * @return
      */
@@ -79,10 +90,8 @@ public class CartActivity extends BaseActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
         }
-
         return super.onOptionsItemSelected(item);
     }
-
     private void retrieveListView() {
 
         adapter = new CartAdapter(this, app.getCart().getItems());
@@ -92,9 +101,7 @@ public class CartActivity extends BaseActivity {
 
     }
 
-
     public class CartAdapter extends ArrayAdapter<Item> {
-
 
         public CartAdapter(@NonNull Context context, ArrayList<Item> itemArrayList) {
             super(context, 0, itemArrayList);
@@ -111,7 +118,7 @@ public class CartActivity extends BaseActivity {
             TextView itemName = (TextView) view.findViewById(R.id.cart_itemName);
             TextView itemQuantity = (TextView) view.findViewById(R.id.cart_itemAmount);
             TextView pricePrItem = (TextView) view.findViewById(R.id.cart_pricePrItem);
-            TextView priceTotal = (TextView) view.findViewById(R.id.cart_priceTotal);
+            TextView itemTotal = (TextView) view.findViewById(R.id.cart_itemTotal);
 
             ImageView itemImage = (ImageView) view.findViewById(R.id.cart_itemImage);
 
@@ -121,16 +128,16 @@ public class CartActivity extends BaseActivity {
 
             itemName.setText(item.getItemName().toString());
             itemQuantity.setText("" + item.getQuantity());
-            pricePrItem.setText(item.getPrice() + "kr./stk.");
-            priceTotal.setText(item.getQuantity() * item.getPrice() + "kr.");
+            pricePrItem.setText(item.getPrice() + " kr./stk.");
+            itemTotal.setText(item.getItemTotal() + " kr.");
             itemImage.setImageBitmap(item.getItemImage());
-
 
             plusQuantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
                     item.setQuantity(item.getQuantity() + 1);
+                    app.cartTotal();
+                    priceTotal.setText(app.total + " kr.");
                     notifyDataSetChanged();
 
                 }
@@ -141,6 +148,8 @@ public class CartActivity extends BaseActivity {
                 public void onClick(View view) {
                     if (item.getQuantity() > 1) {
                         item.setQuantity(item.getQuantity() - 1);
+                        app.cartTotal();
+                        priceTotal.setText(app.total + " kr.");
                         notifyDataSetChanged();
 
                     } else {
@@ -156,7 +165,10 @@ public class CartActivity extends BaseActivity {
                                             .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    app.getCart().getItems().remove(item);
+                                                    app.getCart().removeItem(item);
+                                                    item.setQuantity(0);
+                                                    app.cartTotal();
+                                                    priceTotal.setText(app.total + " kr.");
                                                     notifyDataSetChanged();
                                                 }
                                             }).show();
@@ -166,8 +178,6 @@ public class CartActivity extends BaseActivity {
                     }
                 }
             });
-
-
             return view;
 
         }

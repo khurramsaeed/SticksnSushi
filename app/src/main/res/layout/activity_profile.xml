@@ -6,44 +6,9 @@
     android:orientation="vertical"
     android:background="@color/colorSecondary">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:background="@drawable/bg_header"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
-
-            android:id="@+id/fullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="left|center_vertical"
-            android:layout_marginBottom="17dp"
-            android:gravity="center"
-            android:paddingTop="20dp"
-            android:text="John Smith"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="18sp" />
-
-
-        <TextView
-            android:id="@+id/initials"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/bgred"
-            android:gravity="center"
-            android:text="JS"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="24sp" />
-
-    </RelativeLayout>
+    <include
+        layout="@layout/include_toolbar"
+        android:id="@+id/include_toolbar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -51,112 +16,152 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:padding="16dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
 
 
-            <LinearLayout
-                android:id="@+id/editInfo"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="50dp"
-                android:background="@drawable/bg_outline">
+            <TextView
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/pencil" />
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Information"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/editFav"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/heart" />
+                android:id="@+id/displayName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="left|center_vertical"
+                android:layout_marginBottom="17dp"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:text="John Smith"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="18sp" />
 
 
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Favoritter"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+            <TextView
+                android:id="@+id/initials"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bgred"
+                android:gravity="center"
+                android:text="JS"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="24sp" />
 
-            </LinearLayout>
+        </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/editAllergies"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
 
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/alert_octagon_white" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                <!-- Name Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger Allergener"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="#ffff"
+                    android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/editTextName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColorHint="@color/colorPrimaryText"
+                        android:textColor="@color/colorPrimaryText"
+                        android:inputType="textPersonName|textAutoComplete"
+                        android:hint="Fulde navn"/>
+                </android.support.design.widget.TextInputLayout>
 
-            </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/editRestaurant"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="26dp"
-                android:background="@drawable/bg_outline">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/silverware" />
-
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="wrap_content"
+                <!-- Phone number Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:paddingLeft="20dp"
-                    android:text="Rediger primære restaurant"
-                    android:textColor="@color/colorPrimaryText"
-                    android:textSize="18dp" />
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="#ffff"
+                    android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/editTextPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColorHint="@color/colorPrimaryText"
+                        android:textColor="@color/colorPrimaryText"
+                        android:inputType="number"
+                        android:hint="Telefonnummer"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <!-- Address Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="#ffff"
+                    android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/editTextAdress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColorHint="@color/colorPrimaryText"
+                        android:textColor="@color/colorPrimaryText"
+                        android:inputType="text"
+                        android:hint="Adresse"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <!-- PostalAddress Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="#ffff"
+                    android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/editTextPostalAdress"
+                        android:layout_width="match_parent"
+                        android:textSize="15dp"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/colorPrimaryText"
+                        android:textColor="@color/colorPrimaryText"
+                        android:inputType="phone"
+                        android:hint="Postnummer"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+                <!-- City Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textColorHint="#ffff"
+                    android:layout_marginBottom="8dp">
+                    <EditText android:id="@+id/editTextCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15dp"
+                        android:textColorHint="@color/colorPrimaryText"
+                        android:textColor="@color/colorPrimaryText"
+                        android:inputType="text"
+                        android:hint="By"/>
+                </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+
+
+
+

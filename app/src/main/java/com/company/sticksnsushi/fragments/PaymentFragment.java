@@ -1,9 +1,9 @@
 package com.company.sticksnsushi.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-
-import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,25 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import com.company.sticksnsushi.R;
+import com.stepstone.stepper.BlockingStep;
+import com.stepstone.stepper.StepperLayout;
+import com.stepstone.stepper.VerificationError;
 
-public class PaymentFragment extends Fragment {
+public class PaymentFragment extends BaseFragment implements BlockingStep {
+
+    CheckBox cb, cb1, cb2;
+
+    EditText editCardNumber, editCVC, editDate;
+
+    TextView tv1;
+
 
     @Override
     public View onCreateView(LayoutInflater layoutInflater, ViewGroup container, Bundle savedState) {
         ViewGroup PaymentView = (ViewGroup) layoutInflater.inflate(R.layout.fragment_payment, container, false);
         setHasOptionsMenu(true);
+
 
         return PaymentView;
 
@@ -31,98 +41,167 @@ public class PaymentFragment extends Fragment {
     public void onViewCreated(final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-                final CheckBox cb = view.findViewById(R.id.checkKredit);
-                final CheckBox cb1 = view.findViewById(R.id.checkMobilePay);
+        cb = view.findViewById(R.id.checkKredit);
+        cb1 = view.findViewById(R.id.checkMobilePay);
+        cb2 = view.findViewById(R.id.checkPaypal);
+
+        editCardNumber = view.findViewById(R.id.input_cardNumber);
+        editCVC = view.findViewById(R.id.input_cvc);
+        editDate = view.findViewById(R.id.input_date);
+
+        tv1 = view.findViewById(R.id.notImplemented);
 
 
-                final TextView tv = view.findViewById(R.id.cardnr);
-                final TextView tv1 = view.findViewById(R.id.cvc);
-                final TextView tv2 = view.findViewById(R.id.date);
+        editCardNumber.setVisibility(View.GONE);
+        editCVC.setVisibility(View.GONE);
+        editDate.setVisibility(View.GONE);
+
+        tv1.setVisibility(View.GONE);
+
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                          @Override
+                                          public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
 
-                final EditText et = view.findViewById(R.id.editCardNumber);
-                final EditText et1 = view.findViewById(R.id.editCvc);
-                final EditText et2 = view.findViewById(R.id.editDate);
+                                              LinearLayout linearLayout = view.findViewById(R.id.linearKredit);
 
-                tv.setVisibility(View.GONE);
-                tv1.setVisibility(View.GONE);
-                tv2.setVisibility(View.GONE);
+                                              if (isChecked == true) {
 
-                et.setVisibility(View.GONE);
-                et1.setVisibility(View.GONE);
-                et2.setVisibility(View.GONE);
+                                                  linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
 
-                cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                                  editCardNumber.setVisibility(View.VISIBLE);
 
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                                  editCVC.setVisibility(View.VISIBLE);
 
-                            LinearLayout linearLayout = view.findViewById(R.id.linearKredit);
+                                                  editDate.setVisibility(View.VISIBLE);
+                                                  cb1.setChecked(false);
+
+                                              } else {
+
+                                                  linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 
-                        if(isChecked == true) {
-
-                            linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
-
-                            tv.setVisibility(View.VISIBLE);
-
-                            et.setVisibility(View.VISIBLE);
-
-                            tv1.setVisibility(View.VISIBLE);
-
-                            et1.setVisibility(View.VISIBLE);
-
-                            tv2.setVisibility(View.VISIBLE);
-
-                            et2.setVisibility(View.VISIBLE);
-
-
-                            cb1.setChecked(false);
-                }
-                        else{
-
-                            linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-
-                            tv.setVisibility(View.GONE);
-                            tv1.setVisibility(View.GONE);
-                            tv2.setVisibility(View.GONE);
-
-
-                            et.setVisibility(View.GONE);
-                            et1.setVisibility(View.GONE);
-                            et2.setVisibility(View.GONE);
-                }
-
-            }
-        }
-
+                                                  editCardNumber.setVisibility(View.GONE);
+                                                  editCVC.setVisibility(View.GONE);
+                                                  editDate.setVisibility(View.GONE);
+                                              }
+                                          }
+                                      }
         );
-
 
         cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                           @Override
+                                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                LinearLayout linearLayout = view.findViewById(R.id.linearMobile);
+                                               LinearLayout linearLayout = view.findViewById(R.id.linearMobile);
 
+                                               if (isChecked == true) {
 
-                if(isChecked == true) {
+                                                   linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
 
-                    linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
-                    cb.setChecked(false);
-                }
+                                                   tv1.setVisibility(View.VISIBLE);
 
-                else{
+                                                   cb.setChecked(false);
+                                               } else {
 
-                    linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                }
-             }
-        }
+                                                   tv1.setVisibility(View.GONE);
+                                                   linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                                               }
+                                           }
+                                       }
+
+        );
+
+        cb2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+                                           @Override
+                                           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                                               LinearLayout linearLayout = view.findViewById(R.id.linearPaypal);
+
+                                               if (isChecked == true) {
+
+                                                   linearLayout.setBackground(getResources().getDrawable(R.drawable.bg_outline));
+
+                                                   tv1.setVisibility(View.VISIBLE);
+
+                                                   cb.setChecked(false);
+                                                   cb1.setChecked(false);
+                                               } else {
+
+                                                   tv1.setVisibility(View.GONE);
+                                                   linearLayout.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                                               }
+                                           }
+                                       }
 
         );
     }
 
-}
 
+
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        return null;
+    }
+
+    @Override
+    public void onSelected() {
+
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
+
+    }
+
+    @Override
+    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
+
+        String cardNumber = editCardNumber.getText().toString().trim();
+        String cvc = editCVC.getText().toString().trim();
+        String date = editDate.getText().toString().trim();
+
+        if(cb1.isChecked()){
+            callback.complete();
+        }
+
+        if(TextUtils.isEmpty(cardNumber)){
+            editCardNumber.setError("Angiv dit kort nummer");
+            editCardNumber.requestFocus();
+            return;
+        }
+
+        if(TextUtils.isEmpty(cvc)){
+            editCVC.setError("Angiv dit CVC nummer");
+            editCVC.requestFocus();
+            return;
+        }
+
+        if (TextUtils.isEmpty(date)){
+            editDate.setError("Angiv udløbsdato");
+            editDate.requestFocus();
+            return;
+        }
+
+        callback.complete();
+
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
+
+        callback.goToPrevStep();
+
+    }
+}
 

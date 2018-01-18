@@ -31,7 +31,7 @@
                 android:textSize="15dp"
                 android:textColorHint="@color/colorPrimaryText"
                 android:textColor="@color/colorPrimaryText"
-                android:inputType="textPersonName"
+                android:inputType="textPersonName|textAutoComplete"
                 android:hint="Fulde navn"/>
         </android.support.design.widget.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/editTextAdsress"
+            <EditText android:id="@+id/editTextAdress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
@@ -79,7 +79,7 @@
             android:layout_marginTop="8dp"
             android:textColorHint="#ffff"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/editTextPostalAdsress"
+            <EditText android:id="@+id/editTextPostalAdress"
                 android:layout_width="match_parent"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
@@ -113,23 +113,15 @@
             android:layout_height="wrap_content"
             android:textColor="@color/greyNew"
             android:textColorHighlight="@color/greyNew"
+            android:id="@+id/userInfo"
             android:buttonTint="@color/greyNew"
-            android:text="Brug din kvitterings adresse" />
+            android:text="Brug dine oplysninger" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text=""/>
 
-
-            <Button
-                android:id="@+id/nextScreenButtom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:text="Videre"
-                android:textColor="@color/colorPrimaryText" />
 
 
         </LinearLayout>

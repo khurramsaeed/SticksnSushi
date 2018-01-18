@@ -2,6 +2,7 @@ package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -10,14 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Item;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -30,10 +32,14 @@ public class MenuerFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "MenuerFragment";
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    private App app = App.getInstance();
     private RecyclerView recyclerView;
-    Item item;
-    AllergiesFragment allergies = new AllergiesFragment();
+    private Item item;
+    private AllergiesFragment allergies = new AllergiesFragment();
+    private String allergyAlert;
+    boolean containsAllergies = false;
+    private ImageButton addToBasket;
+    private LinearLayout addToBasketFrame;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -51,8 +57,16 @@ public class MenuerFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewMenuer);
 
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 1 row.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        // Different layout configurations for landscape/portrait mode
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        }
 
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
@@ -106,10 +120,15 @@ public class MenuerFragment extends BaseFragment {
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
                     String category = app.dataMenuer.get(id).getCategory();
+                    checkForAllergies(view);
                     Intent menuerIntent=new Intent(getContext(), SpecificDishActivity.class);
                     menuerIntent.putExtra("Category", category);
-                    menuerIntent.putExtra("ID", id);
-                    checkForAllergies(view);
+                    menuerIntent.putExtra("menuerID", id);
+                    menuerIntent.putExtra("AllergiesBoolean", containsAllergies);
+                    if(containsAllergies){
+                        menuerIntent.putExtra("AllergiesAlert", allergyAlert);
+                    }
+
                     startActivity(menuerIntent);
                 }
             });
@@ -132,7 +151,7 @@ public class MenuerFragment extends BaseFragment {
 
 //        @Override
 //        public void onBindViewHolder(TakeAwayFragment.DataListViewHolder holder, int position) {
-//            Categories item = SticksnSushiApplication.dataCategories.get(position);
+//            Categories item = App.dataCategories.get(position);
 //
 //            holder.title.setText(item.getItemName());
 //            holder.image.setImageBitmap(item.getItemImage());
@@ -160,6 +179,40 @@ public class MenuerFragment extends BaseFragment {
             pcs = itemView.findViewById(R.id.menuer_item_pcs);
             price = itemView.findViewById(R.id.menuer_item_price);
             image = itemView.findViewById(R.id.menuer_item_image);
+            addToBasket = itemView.findViewById(R.id.menuer_item_addToBasket);
+            addToBasketFrame = itemView.findViewById(R.id.menuer_item_addToBasketFrame);
+
+            addToBasket.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity=app.dataMenuer.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataMenuer.get(index));
+                    quantity++;
+                    app.dataMenuer.get(index).setQuantity(quantity);
+                    app.shortToastMessage("Tilføjet til kurv");
+                    getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
+                }
+            });
+
+            addToBasketFrame.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity=app.dataMenuer.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataMenuer.get(index));
+                    quantity++;
+                    app.dataMenuer.get(index).setQuantity(quantity);
+                    app.shortToastMessage("Tilføjet til kurv");
+                    getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
+                }
+            });
         }
 
     }
@@ -171,14 +224,14 @@ public class MenuerFragment extends BaseFragment {
         while(i < allergies.getAllergies().size()) {
             try {
                 String checkedAllergy = allergies.getAllergies().get(i);
-                SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+                App app = App.getInstance();
                 inputStr = app.dataMenuer.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
-                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                        matchedAllergies = matchedAllergies +   "     - "+checkedAllergy;
                     }
                     else if (matchedAllergies.length()>1){
-                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                        matchedAllergies = matchedAllergies + "\n" + "     - "+ checkedAllergy;
                     }
 
                 }
@@ -189,8 +242,10 @@ public class MenuerFragment extends BaseFragment {
             }
             i++;
         }
+        containsAllergies=false;
         if(matchedAllergies.length()>0) {
-            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+            allergyAlert ="Denne ret indeholder:\n" +matchedAllergies;
+            containsAllergies=true;
         }
     }
 

@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".infrastructure.SticksnSushiApplication"
+        android:name=".infrastructure.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,32 +14,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.NavDrawerActivity" />
-        <activity android:name=".activities.WelcomeActivity">
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.ConfirmationActivity" />
-        <activity android:name=".activities.SpecificDishActivity"/>
+
+        <activity android:name=".activities.NavDrawerActivity" />
+        <activity android:name=".activities.WelcomeActivity"/>
+        <activity android:name=".activities.ConfirmationActivity"
+            android:parentActivityName=".activities.MenuOverviewActivity" />
+        <activity android:name=".activities.SpecificDishActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.CartActivity" />
+        <activity android:name=".activities.CheckoutActivity" android:configChanges="orientation|screenSize"/>
 
         <activity
             android:name=".activities.MenuOverviewActivity"
-            android:label="@string/title_activity_menu_overview"/>
-        <activity android:name=".activities.CheckoutActivity" />
+            android:label="@string/title_activity_menu_overview" />
         <activity
-            android:name=".activities.ProfileActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar" />
+            android:name=".activities.ProfileActivity" />
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="ca7ebe61a093b2b307fd35b1e2292088ad44f7b5" />
 
-        <activity android:name=".activities.LoginActivity"/>
-        <activity android:name=".activities.SignUpActivity"/>
-        <activity android:name=".activities.CartActivity"/>
     </application>
 
 </manifest>

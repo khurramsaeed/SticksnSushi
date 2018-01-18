@@ -1,7 +1,6 @@
 package com.company.sticksnsushi.activities;
 
 import android.content.Intent;
-import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -15,9 +14,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.company.sticksnsushi.R;
+import com.company.sticksnsushi.fragments.AllergiesFragment;
 import com.company.sticksnsushi.fragments.PreviousOrdersFragment;
 import com.company.sticksnsushi.fragments.TakeAwayFragment;
-import com.company.sticksnsushi.fragments.AllergiesFragment;
+import com.company.sticksnsushi.infrastructure.App;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * Created by Khurram Saeed Malik on 09/10/2017.
@@ -32,8 +35,11 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
     private static final int STATE_VIEWING = 1;
     private static final int STATE_EDITING = 2;
 
-    private int currentState;
+    public NavigationView navigationView;
 
+    private int currentState;
+    private App app = App.getInstance();
+    private FirebaseUser currentUser = app.firebaseAuth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +53,25 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             toolbar.setTitle("Takeaway");
         }
 
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Menu menu = navigationView.getMenu();
+        if(currentUser != null){
+            menu.findItem(R.id.item_signOut).setTitle("Log ud");
+        }
+
+        else if(currentUser == null){
+            menu.findItem(R.id.item_signOut).setTitle("Log ind");
+        }
+
 
 
         // Screen rotation: Editing fields fix
@@ -67,12 +84,9 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
             changeState(STATE_VIEWING);
         } else {
             Log.d(TAG, "onCreate: BUNDLE_STATE");
-
-
             changeState(savedInstanceState.getInt(BUNDLE_STATE));
         }
     }
-    
 
     /**
      * This method is called when you rotate screen
@@ -102,7 +116,6 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -124,13 +137,12 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
         return true;
     }
 
-
     /**
      * Handles logic of changning fragment while selecting Item from NavDrawer
      *
      * @param id
      */
-    private void displaySelectedItem(int id) {
+    public void displaySelectedItem(int id) {
         Fragment fragment = null;
 
         switch (id) {
@@ -149,8 +161,33 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
                 break;
 
             case R.id.item_profile:
-                startActivity(new Intent(this, LoginActivity.class));
+                if(currentUser != null){
+                    if (app.network.isOnline()) {
+                        startActivity(new Intent(this, ProfileActivity.class));
+                    } else {
+                        app.shortToastMessage("Du skal have internettet for se din profil!");
+                    }
+                }
+                else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
+
+            case R.id.item_signOut:
+                if(currentUser!=null){
+                    app.firebaseAuth.signOut();
+                    System.out.println("Bruger logget ud");
+                    Intent welcomeIntent = new Intent(NavDrawerActivity.this, WelcomeActivity.class);
+                    startActivity(welcomeIntent);
+                    finish();
+
+                }
+                else if(currentUser == null) {
+                    System.out.println("Bruger ikke logget ind: NavItem sat til 'Log ind'");
+                    Intent loginIntent = new Intent(NavDrawerActivity.this, LoginActivity.class);
+                    startActivity(loginIntent);
+                    finish();
+                }
         }
 
         if (fragment != null) {

@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/item_takeaway"
-            android:icon="@drawable/heart"
+            android:icon="@drawable/sushinsticks"
             android:title="Takeaway"
             />
         <item
@@ -29,14 +29,11 @@
                 android:id="@+id/item_cart"
                 android:icon="@drawable/cart_black"
                 android:title="@string/Kurv"/>
+
             <item
-                android:id="@+id/item_notifications"
-                android:icon="@drawable/ic_notifications"
-                android:title="Notifikationer" />
-            <item
-                android:id="@+id/item_settings"
-                android:icon="@drawable/ic_settings"
-                android:title="Indstillinger" />
+                android:id="@+id/item_signOut"
+                android:icon="@drawable/login"
+                android:title="Log ud" />
         </menu>
     </item>
 

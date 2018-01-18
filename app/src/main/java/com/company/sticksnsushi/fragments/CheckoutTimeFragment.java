@@ -4,8 +4,8 @@ import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -20,6 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
+import com.stepstone.stepper.BlockingStep;
+import com.stepstone.stepper.StepperLayout;
+import com.stepstone.stepper.VerificationError;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,7 +35,7 @@ import static android.content.ContentValues.TAG;
  * Created by Khurram Saeed Malik on 20/11/2017.
  */
 
-public class CheckoutTimeFragment extends Fragment {
+public class CheckoutTimeFragment extends BaseFragment implements BlockingStep {
     long elapsedDays;
     RadioButton rbDelivery, rbPickup;
     TextView chooseDate, chooseTime, chooseRestaurant;
@@ -50,7 +53,6 @@ public class CheckoutTimeFragment extends Fragment {
         chooseRestaurant = view.findViewById(R.id.chooseRestaurant);
         rbDelivery = view.findViewById(R.id.rB_delivery);
         rbPickup = view.findViewById(R.id.rB_pickup);
-        nextScreenButton = view.findViewById(R.id.nextScreenButtom);
         chooseTime.setVisibility(View.GONE);
         setDelivery();
         return view;
@@ -64,12 +66,14 @@ public class CheckoutTimeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 setPickup();
+                showRestaurantPopup(v);
             }
         });
 
         rbDelivery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 setDelivery();
             }
         });
@@ -137,6 +141,7 @@ public class CheckoutTimeFragment extends Fragment {
                     }
                 }
             };
+
     }
 
     public void showRestaurantPopup(View v) {
@@ -257,4 +262,67 @@ public class CheckoutTimeFragment extends Fragment {
         chooseTime.setText("Vælg tidspunkt");
         chooseTime.setVisibility(View.INVISIBLE);
     }
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        return null;
     }
+
+    @Override
+    public void onSelected() {
+
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
+
+    }
+
+    @Override
+    public void onNextClicked(StepperLayout.OnNextClickedCallback callback) {
+
+
+        if(rbDelivery.isChecked()) {
+
+            if (chooseDate.getText().equals("Vælg dato for levering")) {
+                Toast.makeText(getContext(), "Vælg dato for levering", Toast.LENGTH_LONG).show();
+                chooseDate.setError("");
+                chooseDate.requestFocus();
+                return;
+            }
+
+            if (chooseTime.getText().equals("Vælg tidspunkt")){
+                Toast.makeText(getContext(), "Vælg tidspunkt for levering", Toast.LENGTH_LONG).show();
+                chooseTime.setError("");
+                chooseTime.requestFocus();
+                return;
+            }
+        }
+
+        if(rbPickup.isChecked()){
+
+
+            if (chooseRestaurant.getText().equals("Vælg restaurant")) {
+                Toast.makeText(getContext(), "Vælg en restaurant", Toast.LENGTH_LONG).show();
+                chooseRestaurant.setError("");
+                chooseRestaurant.requestFocus();
+                return;
+            }
+
+        }
+
+        callback.goToNextStep();
+
+    }
+
+    @Override
+    public void onCompleteClicked(StepperLayout.OnCompleteClickedCallback callback) {
+
+    }
+
+    @Override
+    public void onBackClicked(StepperLayout.OnBackClickedCallback callback) {
+
+    }
+}

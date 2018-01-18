@@ -2,6 +2,7 @@ package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -10,14 +11,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.SpecificDishActivity;
+import com.company.sticksnsushi.infrastructure.App;
 import com.company.sticksnsushi.infrastructure.Item;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
 
 import java.util.ArrayList;
 
@@ -30,9 +32,11 @@ public class StartersFragment extends BaseFragment {
     // For debugging purposes
     private static final String TAG = "StartersFragment";
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    App app = App.getInstance();
     private RecyclerView recyclerView;
     AllergiesFragment allergies = new AllergiesFragment();
+    String allergyAlert;
+    boolean containsAllergies = false;
 
 
     @Override
@@ -51,8 +55,16 @@ public class StartersFragment extends BaseFragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerViewStarters);
 
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // Different layout configurations for landscape/portrait mode
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
 
         // Intantiating Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
@@ -106,10 +118,15 @@ public class StartersFragment extends BaseFragment {
                 public void onClick(View view) {
                     int id = recyclerView.getChildLayoutPosition(view);
                     String category = app.dataStarters.get(id).getCategory();
+                    checkForAllergies(view);
                     Intent myintent=new Intent(getContext(), SpecificDishActivity.class);
                     myintent.putExtra("Category", category);
-                    myintent.putExtra("ID", id);
-                    checkForAllergies(view);
+                    myintent.putExtra("startersID", id);
+                    myintent.putExtra("AllergiesBoolean", containsAllergies);
+                    if(containsAllergies){
+                        myintent.putExtra("AllergiesAlert", allergyAlert);
+                    }
+
 
                     startActivity(myintent);
                 }
@@ -142,14 +159,50 @@ public class StartersFragment extends BaseFragment {
     private class DataListViewHolder extends RecyclerView.ViewHolder {
         private TextView title, pcs, price;
         private ImageView image;
+        private ImageButton addToBasket;
+        private LinearLayout addToBasketFrame;
 
-        public DataListViewHolder(View itemView) {
+
+        public DataListViewHolder(final View itemView) {
             super(itemView);
-
             title = itemView.findViewById(R.id.starters_item_name);
             pcs = itemView.findViewById(R.id.starters_item_pcs);
             price = itemView.findViewById(R.id.starters_item_price);
             image = itemView.findViewById(R.id.starters_item_image);
+            addToBasket = itemView.findViewById(R.id.starters_item_addToBasket);
+            addToBasketFrame = itemView.findViewById(R.id.starters_item_addToBasketFrame);
+
+            addToBasket.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                        int quantity = app.dataStarters.get(getAdapterPosition()).getQuantity();
+                        int index = getAdapterPosition();
+                        app.getCart().addItem(app.dataStarters.get(index));
+                        quantity++;
+                        app.dataStarters.get(index).setQuantity(quantity);
+                        app.shortToastMessage("Tilføjet til kurv");
+                        getActivity().invalidateOptionsMenu();
+
+                        //Calculates new total
+                        app.cartTotal();
+                    }
+            });
+
+            addToBasketFrame.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int quantity = app.dataStarters.get(getAdapterPosition()).getQuantity();
+                    int index = getAdapterPosition();
+                    app.getCart().addItem(app.dataStarters.get(index));
+                    quantity++;
+                    app.dataStarters.get(index).setQuantity(quantity);
+                    app.shortToastMessage("Tilføjet til kurv");
+                    getActivity().invalidateOptionsMenu();
+
+                    //Calculates new total
+                    app.cartTotal();
+                }
+            });
         }
 
     }
@@ -162,14 +215,14 @@ public class StartersFragment extends BaseFragment {
         while(i < allergies.getAllergies().size()) {
             try {
                 String checkedAllergy = allergies.getAllergies().get(i);
-                SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+                App app = App.getInstance();
                 inputStr = app.dataStarters.get(id).getAllergies().toLowerCase();
                 if (inputStr.contains(checkedAllergy)) {
                     if(matchedAllergies.equals("")){
-                        matchedAllergies = matchedAllergies +  checkedAllergy;
+                        matchedAllergies = matchedAllergies +   "     - "+checkedAllergy;
                     }
                     else if (matchedAllergies.length()>1){
-                        matchedAllergies = matchedAllergies + ", " +checkedAllergy;
+                        matchedAllergies = matchedAllergies + "\n" + "     - "+ checkedAllergy;
                     }
 
                 }
@@ -180,8 +233,10 @@ public class StartersFragment extends BaseFragment {
             }
             i++;
         }
+        containsAllergies=false;
         if(matchedAllergies.length()>0) {
-            Toast.makeText(getContext(), "BEMÆRK, retten indeholder: " + matchedAllergies, Toast.LENGTH_LONG).show();
+            allergyAlert ="Denne ret indeholder:\n" +matchedAllergies;
+            containsAllergies=true;
         }
     }
 }

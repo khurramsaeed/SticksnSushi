@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="180dp"
     android:orientation="vertical"
-    android:background="?attr/selectableItemBackground"
+    android:background="@drawable/custom_ripple_effect"
     android:clickable="true">
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,7 +62,7 @@
 
             <TextView
                 android:paddingBottom="16dp"
-                android:layout_weight="1"
+                android:layout_weight="0.7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/price_color"
@@ -71,6 +71,22 @@
                 android:text="pcs"
                 android:id="@+id/kids_item_pcs"
                 android:scrollbars="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/kids_item_addToBasketFrame"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight="0.1">
+
+                <ImageButton
+                    android:id="@+id/kids_item_addToBasket"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/plus"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginStart="17dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

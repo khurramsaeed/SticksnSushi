@@ -2,9 +2,11 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="180dp"
+    android:layout_height="230dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/colorSecondary"
     android:orientation="vertical"
-    android:background="?attr/selectableItemBackground"
+    android:background="@drawable/custom_ripple_effect"
     android:clickable="true">
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,9 +21,7 @@
             android:id="@+id/fragment_menuer_item_top">
 
             <ImageView
-                android:paddingTop="16dp"
-                android:layout_height="0dp"
-                android:layout_weight="9"
+                android:layout_height="160dp"
                 android:layout_width="match_parent"
                 android:src="@drawable/maki_01"
                 android:id="@+id/menuer_item_image"
@@ -51,26 +51,42 @@
                 android:paddingBottom="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:textColor="@color/price_color"
+                android:layout_marginStart="25dp"
                 android:textSize="13sp"
                 android:text="Price"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:layout_gravity="center_horizontal"
+                android:textAlignment="viewEnd"
                 android:id="@+id/menuer_item_price"
                 android:scrollbars="vertical"/>
 
             <TextView
                 android:paddingBottom="16dp"
-                android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight=".5"
                 android:textColor="@color/price_color"
                 android:textSize="13sp"
-                android:layout_gravity="center_horizontal"
                 android:text="pcs"
                 android:id="@+id/menuer_item_pcs"
+                android:layout_toEndOf="@id/menuer_item_price"
                 android:scrollbars="vertical"/>
+
+            <LinearLayout
+                android:id="@+id/menuer_item_addToBasketFrame"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_weight=".3">
+
+                <ImageButton
+                    android:id="@+id/menuer_item_addToBasket"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/plus"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginStart="17dp" />
+            </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>

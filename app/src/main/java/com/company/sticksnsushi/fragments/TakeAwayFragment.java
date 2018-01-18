@@ -1,6 +1,7 @@
 package com.company.sticksnsushi.fragments;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,30 +12,27 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.activities.MenuOverviewActivity;
 import com.company.sticksnsushi.infrastructure.Categories;
-import com.company.sticksnsushi.infrastructure.SticksnSushiApplication;
+import com.company.sticksnsushi.infrastructure.App;
 
 import java.util.ArrayList;
-
-import static com.company.sticksnsushi.infrastructure.SticksnSushiApplication.getInstance;
 
 
 /**
  * Created by Khurram Saeed Malik on 02/11/2017.
  */
 
-public class TakeAwayFragment extends Fragment {
+public class TakeAwayFragment extends BaseFragment {
 
     // For debugging purposes
     private static final String TAG = "TakeAwayFragment";
 
     private RecyclerView recyclerView;
 
-    SticksnSushiApplication app = SticksnSushiApplication.getInstance();
+    App app = App.getInstance();
 
 
     @Override
@@ -53,8 +51,16 @@ public class TakeAwayFragment extends Fragment {
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerView);
 
-        // setLayoutManager is required in RecyclerView - GridLayout is used with 2 rows.
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        // Different layout configurations for landscape/portrait mode
+        if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        } else if (isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else if (!isTablet && getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
+        } else {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
+        }
 
         // Intantiating custom Adapter.
         CustomDataAdapter adapter = new CustomDataAdapter();
