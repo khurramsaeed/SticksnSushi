@@ -20,9 +20,9 @@
 
             <ImageView
                 android:paddingTop="16dp"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_weight="9"
-                android:layout_width="match_parent"
                 android:src="@drawable/maki_01"
                 android:id="@+id/futomaki_item_image"
                 android:contentDescription="@string/app_name"
