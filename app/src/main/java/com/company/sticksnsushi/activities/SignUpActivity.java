@@ -147,10 +147,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
         else if(view == buttonSignup){
            if (!app.network.isOnline()) {
-               app.shortToastMessage("Venligst forbinde enheden med nettet!");
+               app.shortToastMessage("Venligst forbind enheden med nettet!");
                return;
            }
             //calling register method on click
+           app.getAuth().getUser().resetUser();
             registerUser();
         }
     }

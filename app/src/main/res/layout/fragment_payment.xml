@@ -68,7 +68,7 @@
         android:layout_weight="1"
         android:id="@+id/editCVC"
         android:layout_below="@+id/editCardNumber"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="#ffff"
         android:layout_marginBottom="8dp">
         <EditText android:id="@+id/input_cvc"
@@ -88,7 +88,7 @@
         android:id="@+id/editDate"
         android:layout_below="@+id/editCardNumber"
         android:layout_alignRight="@+id/editCVC"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:textColorHint="#ffff"
         android:layout_marginBottom="8dp">
         <EditText android:id="@+id/input_date"
@@ -97,7 +97,7 @@
             android:textColorHint="#ffff"
             android:textSize="15dp"
             android:textColor="#ffff"
-            android:inputType="number|date"
+            android:inputType="date"
             android:hint="Udløbs dato"/>
     </android.support.design.widget.TextInputLayout>
 

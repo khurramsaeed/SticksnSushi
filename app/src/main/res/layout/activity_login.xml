@@ -37,6 +37,7 @@
             <EditText android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:textColorHint="#ffff"
+                android:text="testuser@test.com"
                 android:textColor="#ffff"
                 android:textSize="15dp"
                 android:layout_height="wrap_content"
@@ -56,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="#ffff"
                 android:textSize="15dp"
+                android:text="123456"
                 android:textColor="#ffff"
                 android:inputType="textPassword"
                 android:hint="Password"/>
