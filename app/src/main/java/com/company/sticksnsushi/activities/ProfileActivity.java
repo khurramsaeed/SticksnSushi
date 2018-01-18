@@ -99,6 +99,9 @@ public class ProfileActivity extends BaseActivity {
 
     private String getInitials(){
         String initials = user.getDisplayName();
+        if (initials == null) {
+            initials="";
+            return initials; }
         return initials.substring(0, 1);
     }
 
@@ -194,11 +197,15 @@ public class ProfileActivity extends BaseActivity {
 
                 changeState(STATE_VIEWING);
 
-                saveUserDetailsFirebase();
-
+                if (app.network.isOnline()) {
+                    saveUserDetailsFirebase();
+                    app.shortToastMessage("Oplysninger opdateret");
+                } else {
+                    app.longToastMessage("Oplysninger kunne ikke opdateres");
+                }
                 displayName.setText(user.getDisplayName());
                 initials.setText(getInitials());
-                app.shortToastMessage("Oplysninger opdateret");
+
             }
 
             return true;
