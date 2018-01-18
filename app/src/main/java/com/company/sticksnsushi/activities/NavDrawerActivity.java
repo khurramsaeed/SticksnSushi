@@ -162,7 +162,11 @@ public class NavDrawerActivity extends BaseActivity implements NavigationView.On
 
             case R.id.item_profile:
                 if(currentUser != null){
-                    startActivity(new Intent(this, ProfileActivity.class));
+                    if (app.network.isOnline()) {
+                        startActivity(new Intent(this, ProfileActivity.class));
+                    } else {
+                        app.shortToastMessage("Du skal have internettet for se din profil!");
+                    }
                 }
                 else {
                     startActivity(new Intent(this, LoginActivity.class));
