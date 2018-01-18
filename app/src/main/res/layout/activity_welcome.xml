@@ -67,5 +67,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/group_text"
+        android:padding="16dp"
+        android:gravity="center"
+        android:textColor="@color/price_color"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
