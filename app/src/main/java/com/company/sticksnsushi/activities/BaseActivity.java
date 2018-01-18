@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import com.company.sticksnsushi.R;
 import com.company.sticksnsushi.infrastructure.App;
-import com.company.sticksnsushi.infrastructure.BadgeDrawable;
+import com.company.sticksnsushi.library.BadgeDrawable;
 import com.company.sticksnsushi.infrastructure.Item;
 import com.company.sticksnsushi.infrastructure.User;
 import com.google.firebase.auth.FirebaseUser;

@@ -1,4 +1,4 @@
-package com.company.sticksnsushi.infrastructure;
+package com.company.sticksnsushi.library;
 
 
 import android.content.Context;
@@ -17,6 +17,7 @@ import com.company.sticksnsushi.R;
 
 /**
  * Created by Swagam on 08/01/2018.
+ * Downloaded from https://mobikul.com/adding-badge-count-on-menu-items-like-cart-notification-etc/
  */
 
 public class BadgeDrawable extends Drawable {

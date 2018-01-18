@@ -122,8 +122,6 @@ public class PreviousOrdersFragment extends BaseFragment {
 
     }
 
-
-
     /**
      * Custom Adapter
      * @author Khurram Saeed Malik
